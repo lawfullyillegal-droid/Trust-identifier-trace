@@ -1,31 +1,37 @@
-name: Trust Scan Bot
+import requests
+from datetime import datetime
 
-on:
-  schedule:
-    - cron: '0 12 * * *'  # Runs daily at 12:00 UTC
-  workflow_dispatch:
+targets = [
+    "https://www.azcc.gov",
+    "https://www.sec.gov",
+    "https://opencorporates.com",
+    "https://www.lexisnexis.com",
+    "https://www.azdor.gov",
+    "https://www.azdes.gov",
+    "https://www.azdot.gov"
+]
 
-jobs:
-  scan:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+identifiers = [
+    "TRAVIS RYLE", "TRAVIS STEVEN RYLE",
+    "LexID 11133734", "Case Number 31568224", "PIN SMMT4WP",
+    "Birth Certificate Number 104-0190 003558", "SSN 602-05-7209",
+    "EIN 92-6319308", "ADOT Customer Number 31568224",
+    "Namespace ID SMMT4WP", "Child Support Participant ID 11133734",
+    "Withdrawal Reference 6789-RYLE", "Aztec Constructors", "INBC", "Edward Duarte"
+]
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+}
 
-      - name: Run Trust Scan Bot
-        run: |
-          pip install requests
-          python trust_scan_bot.py
-
-      - name: Commit scan log
-        run: |
-          git config --global user.name "TrustBot"
-          git config --global user.email "trustbot@github.com"
-          git add TrustScanLog.txt
-          git commit -m "Auto-scan: $(date -u +'%Y-%m-%d %H:%M:%S')"
-          git push
+for url in targets:
+    try:
+        response = requests.get(url, headers=headers, timeout=10)
+        content = response.text
+        for id in identifiers:
+            if id in content:
+                print(f"MATCH FOUND: '{id}' on {url}")
+                with open("TrustScanLog.txt", "a") as log:
+                    log.write(f"MATCH FOUND: '{id}' on {url} at {datetime.now()}\n")
+    except Exception as e:
+        print(f"ERROR scanning {url}: {e}")

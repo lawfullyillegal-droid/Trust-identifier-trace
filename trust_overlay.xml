@@ -2,7 +2,7 @@
 <TrustOverlay xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:noNamespaceSchemaLocation="trust_overlay.xsd"
               generatedBy="THE TRAVIS RYLE PRIVATE BANK–ESTATE & TRUST"
-              timestamp="2025-08-24T17:32:00-07:00"
+              timestamp="2025-08-24T18:12:00-07:00"
               jurisdiction="Arizona Republic, Sovereign Domain">
 
   <Authorship>
@@ -27,9 +27,11 @@
   </SymbolicAssertion>
 
   <TechnicalTrace>
-    <OverlayHash>[[INSERT HASH HERE]]</OverlayHash>
+    <OverlayHash>[PASTE YOUR SHA256 HASH HERE]</OverlayHash>
     <SourceRepo>https://github.com/lawfullyillegal-droid/Trust-identifier-trace</SourceRepo>
     <AuditTrail>All commits, overlays, and symbolic filings are timestamped and inspectable.</AuditTrail>
+    <AssertionStatus>GLEIF omission logged</AssertionStatus>
+    <TraceTimestamp>2025-08-24T18:12:00Z</TraceTimestamp>
   </TechnicalTrace>
 
 </TrustOverlay>

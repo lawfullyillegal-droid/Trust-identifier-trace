@@ -47,3 +47,4 @@ with open(log_path, "a") as log:
 
 # Force a log entry to trigger commit even if nothing changed
 log.write(f"Scan completed at {datetime.now()}\n")
+# Trigger reload

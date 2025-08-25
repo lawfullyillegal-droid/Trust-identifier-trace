@@ -1,0 +1,30 @@
+name: Trust Identifier Scan Bot
+
+on:
+  push:
+    paths:
+      - '**/*.yml'
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Normalize Identifiers
+        run: echo "LexID: 11133734 | Case: 31568224 | PIN: SMMT4WP"
+
+      - name: Log Challenge Targets
+        run: echo "Flagging Aztec Constructors INBC and Edward Duarte for unauthorized use"
+
+      - name: Timestamp Assertion
+        run: date > timestamp.txt
+
+      - name: Commit Overlay
+        run: |
+          git config --global user.name "Lawfully"
+          git config --global user.email "lawfully@trust.net"
+          git add .
+          git commit -m "Deploy Trust Scan Bot with LexisNexis challenge logic"
+          git push

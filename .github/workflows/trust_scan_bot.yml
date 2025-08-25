@@ -1,3 +1,9 @@
+name: Trust Scan Bot
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 12 * * *' # Daily at 12:00 UTC
 import requests
 from datetime import datetime
 

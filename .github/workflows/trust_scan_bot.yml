@@ -1,35 +1,43 @@
-name: Trust Scan Bot
+import requests
+from datetime import datetime
 
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: '0 12 * * *' # Daily at 12:00 UTC
+targets = [
+    "https://www.azcc.gov",
+    "https://www.sec.gov",
+    "https://opencorporates.com",
+    "https://www.lexisnexis.com",
+    "https://www.azdor.gov",
+    "https://www.azdes.gov",
+    "https://www.azdot.gov"
+]
 
-jobs:
-  scan:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+identifiers = [
+    "TRAVIS RYLE", "TRAVIS STEVEN RYLE", "LexID 11133734",
+    "Case Number 31568224", "PIN SMMT4WP", "Birth Certificate Number 104-0190 003558",
+    "SSN 602-05-7209", "EIN 92-6319308", "ADOT Customer Number 31568224",
+    "Namespace ID SMMT4WP", "Child Support Participant ID 11133734",
+    "Withdrawal Reference 6789-RYLE", "Aztec Constructors", "INBC", "Edward Duarte"
+]
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
+headers = { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)" }
 
-      - name: Install dependencies
-        run: pip install requests
+log_path = "TrustScanLog.txt"
 
-      - name: Run Trust Scan Bot
-        run: |
-          echo "Starting scan..."
-          python trust_scan_bot.py
-          echo "Scan complete."
+with open(log_path, "a") as log:
+    log.write(f"\n--- Scan started at {datetime.now()} ---\n")
+    for url in targets:
+        try:
+            response = requests.get(url, headers=headers, timeout=10)
+            content = response.text
+            match_count = 0
+            for id in identifiers:
+                if id in content:
+                    log.write(f"MATCH FOUND: '{id}' on {url} at {datetime.now()}\n")
+                    match_count += 1
+            if match_count == 0:
+                log.write(f"No matches on {url} at {datetime.now()}\n")
+        except Exception as e:
+            log.write(f"ERROR scanning {url}: {e} at {datetime.now()}\n")
 
-      - name: Commit scan log
-        run: |
-          git config --global user.name "TrustBot"
-          git config --global user.email "trustbot@github.com"
-          git add TrustScanLog.txt || echo "No changes to commit"
-          git commit -m "Auto-scan: $(date -u +'%Y-%m-%d %H:%M:%S')" || echo "No commit needed"
-          git push || echo "No push needed"
+# Force a log entry to trigger commit even if nothing changed
+log.write(f"Scan completed at {datetime.now()}\n")

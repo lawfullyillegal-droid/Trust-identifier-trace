@@ -1,9 +1,9 @@
 name: Trust Scan Bot
 
 on:
-  schedule:
-    - cron: '0 12 * * *'  # Runs daily at 12:00 UTC
   workflow_dispatch:
+  schedule:
+    - cron: '0 12 * * *' # Daily at 12:00 UTC
 
 jobs:
   scan:
@@ -17,10 +17,14 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Install dependencies
+        run: pip install requests
+
       - name: Run Trust Scan Bot
         run: |
-          pip install requests
+          echo "Starting scan..."
           python trust_scan_bot.py
+          echo "Scan complete."
 
       - name: Commit scan log
         run: |

@@ -1,30 +1,31 @@
-name: Trust Identifier Scan Bot
+name: Trust Scan Bot
 
 on:
-  push:
-    paths:
-      - '**/*.yml'
+  schedule:
+    - cron: '0 12 * * *'  # Runs daily at 12:00 UTC
+  workflow_dispatch:
 
 jobs:
   scan:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
-      - name: Normalize Identifiers
-        run: echo "LexID: 11133734 | Case: 31568224 | PIN: SMMT4WP"
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
 
-      - name: Log Challenge Targets
-        run: echo "Flagging Aztec Constructors INBC and Edward Duarte for unauthorized use"
-
-      - name: Timestamp Assertion
-        run: date > timestamp.txt
-
-      - name: Commit Overlay
+      - name: Run Trust Scan Bot
         run: |
-          git config --global user.name "Lawfully"
-          git config --global user.email "lawfully@trust.net"
-          git add .
-          git commit -m "Deploy Trust Scan Bot with LexisNexis challenge logic"
-          git push
+          pip install requests
+          python trust_scan_bot.py
+
+      - name: Commit scan log
+        run: |
+          git config --global user.name "TrustBot"
+          git config --global user.email "trustbot@github.com"
+          git add TrustScanLog.txt || echo "No changes to commit"
+          git commit -m "Auto-scan: $(date -u +'%Y-%m-%d %H:%M:%S')" || echo "No commit needed"
+          git push || echo "No push needed"

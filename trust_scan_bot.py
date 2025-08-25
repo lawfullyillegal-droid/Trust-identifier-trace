@@ -1,0 +1,31 @@
+name: Trust Scan Bot
+
+on:
+  schedule:
+    - cron: '0 12 * * *'  # Runs daily at 12:00 UTC
+  workflow_dispatch:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Run Trust Scan Bot
+        run: |
+          pip install requests
+          python trust_scan_bot.py
+
+      - name: Commit scan log
+        run: |
+          git config --global user.name "TrustBot"
+          git config --global user.email "trustbot@github.com"
+          git add TrustScanLog.txt
+          git commit -m "Auto-scan: $(date -u +'%Y-%m-%d %H:%M:%S')"
+          git push

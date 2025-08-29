@@ -10,6 +10,24 @@ def log(msg):
 def main():
     try:
         log("🚨 BOT STARTED")
+                log("✅ Loading identifiers.yaml...")
+        with open("identifiers.yaml", "r") as f:
+            identifiers = yaml.safe_load(f)
+
+        log("✅ Loading identity_profile.yaml...")
+        with open("identity_profile.yaml", "r") as f:
+            profile = yaml.safe_load(f)
+
+        log("✅ Loading trust_overlay.xml...")
+        with open("docs/trust_overlay.xml", "r") as f:
+            overlay = f.read()
+
+        log("✅ Writing output file...")
+        output_path = f"output/scan_log_{datetime.utcnow().isoformat()}Z.txt"
+        os.makedirs("output", exist_ok=True)
+        with open(output_path, "w") as f:
+            f.write("Scan complete.\n")
+
         log(f"📂 Current directory: {os.getcwd()}")
         log(f"📄 Files in repo: {os.listdir()}")
 

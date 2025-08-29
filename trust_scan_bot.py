@@ -64,6 +64,14 @@ def main():
             out.write(yaml.dump(profile))
             out.write("\nOverlay: trust_overlay.xml confirmed\n")
         log(f"📁 Output written to {output_path}")
+             # Auto-commit output and overlay
+        log("🔄 Committing output and overlay to GitHub...")
+        os.system("git config --global user.name 'TrustBot'")
+        os.system("git config --global user.email 'trustbot@localhost'")
+        os.system("git add output/*.txt docs/overlay.html")
+        os.system("git commit -m 'Auto-commit scan results'")
+        os.system("git push")
+   
 
     except Exception as e:
         log(f"❌ BOT ERROR: {str(e)}")

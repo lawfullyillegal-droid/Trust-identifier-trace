@@ -1,100 +1,36 @@
-print("🔥 BOT SCRIPT EXECUTED")
-import yaml
-import os
-import sys
-from datetime import datetime
-
-def log(msg):
-    print(f"🔹 {msg}")
-
 def main():
     try:
-        log("🚨 BOT STARTED")
-                log("✅ Loading identifiers.yaml...")
+        print("🔥 BOT STARTED")
+
+        print("✅ Loading identifiers.yaml...")
         with open("identifiers.yaml", "r") as f:
             identifiers = yaml.safe_load(f)
 
-        log("✅ Loading identity_profile.yaml...")
+        print("✅ Loading identity_profile.yaml...")
         with open("identity_profile.yaml", "r") as f:
             profile = yaml.safe_load(f)
 
-        log("✅ Loading trust_overlay.xml...")
+        print("✅ Loading trust_overlay.xml...")
         with open("docs/trust_overlay.xml", "r") as f:
             overlay = f.read()
 
-        log("✅ Writing output file...")
-        output_path = f"output/scan_log_{datetime.utcnow().isoformat()}Z.txt"
+        print("✅ Writing output file...")
         os.makedirs("output", exist_ok=True)
+        output_path = f"output/scan_log_{datetime.utcnow().isoformat()}Z.txt"
         with open(output_path, "w") as f:
             f.write("Scan complete.\n")
+            f.write(f"Identifiers: {identifiers}\n")
+            f.write(f"Profile: {profile}\n")
+            f.write("Overlay loaded.\n")
 
-        log(f"📂 Current directory: {os.getcwd()}")
-        log(f"📄 Files in repo: {os.listdir()}")
-
-        # Load identifiers
-        with open("identifiers.yaml", "r") as f:
-            identifiers = yaml.safe_load(f)
-        log(f"✅ Identifiers loaded: {identifiers}")
-
-        # Load identity profile
-        with open("identity_profile.yaml", "r") as f:
-            profile = yaml.safe_load(f)
-        log(f"✅ Identity profile loaded: {profile}")
-
-        # Scan ADOT identifiers
-        adot_ids = identifiers.get("adot_numbers", [])
-        if not adot_ids:
-            log("⚠️ No ADOT identifiers found.")
-        else:
-            log(f"🔍 Scanning {len(adot_ids)} ADOT identifiers...")
-            for aid in adot_ids:
-                if isinstance(aid, str) and aid.isdigit():
-                    log(f"✅ Valid ADOT ID: {aid}")
-                else:
-                    log(f"❌ Invalid ADOT ID format: {aid}")
-
-        # Confirm overlay presence
-        if os.path.exists("trust_overlay.xml"):
-            log("✅ Overlay file found: trust_overlay.xml")
-        else:
-            log("❌ Overlay file missing.")
-            sys.exit(1)
-
-        # Convert overlay to HTML for GitHub Pages
-        with open("trust_overlay.xml", "r") as xml_file:
-            overlay_content = xml_file.read()
-        html_overlay = f"<html><body><pre>{overlay_content}</pre></body></html>"
-        docs_path = "docs/overlay.html"
-        os.makedirs("docs", exist_ok=True)
-        with open(docs_path, "w") as html_file:
-            html_file.write(html_overlay)
-        log(f"🌐 Overlay HTML written to {docs_path}")
-
-        # Write output artifact
-        timestamp = datetime.utcnow().strftime("%Y-%m-%dT%H-%M-%SZ")
-        output_path = f"output/scan_log_{timestamp}.txt"
-        os.makedirs("output", exist_ok=True)
-        with open(output_path, "w") as out:
-            out.write("Trust Bot Scan Log\n")
-            out.write(f"Timestamp: {timestamp}\n\n")
-            out.write("Identifiers:\n")
-            out.write(yaml.dump(identifiers))
-            out.write("\nIdentity Profile:\n")
-            out.write(yaml.dump(profile))
-            out.write("\nOverlay: trust_overlay.xml confirmed\n")
-        log(f"📁 Output written to {output_path}")
-             # Auto-commit output and overlay
-        log("🔄 Committing output and overlay to GitHub...")
+        print("🔄 Committing output and overlay to GitHub...")
         os.system("git config --global user.name 'TrustBot'")
         os.system("git config --global user.email 'trustbot@localhost'")
         os.system("git add output/*.txt docs/overlay.html")
         os.system("git commit -m 'Auto-commit scan results'")
-        os.system("git push")
-   
+        os.system("git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }} HEAD:main")
+
+        print("✅ BOT COMPLETED")
 
     except Exception as e:
-        log(f"❌ BOT ERROR: {str(e)}")
-        sys.exit(1)
-
-if __name__ == "__main__":
-    main()
+        print(f"❌ BOT FAILED: {e}")

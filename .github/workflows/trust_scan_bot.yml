@@ -3,7 +3,7 @@ name: Trust Scan Bot
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 6 * * *'  # Runs daily at 6:00 UTC
+    - cron: '0 6 * * *'
 
 jobs:
   scan-and-inject:
@@ -19,7 +19,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt || echo "No requirements.txt found"
+          pip install pyyaml requests || echo "Dependencies failed"
 
       - name: Run Trust Bot
         run: |

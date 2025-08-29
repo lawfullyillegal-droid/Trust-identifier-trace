@@ -1,3 +1,4 @@
+print("🔥 BOT SCRIPT EXECUTED")
 import yaml
 import os
 import sys

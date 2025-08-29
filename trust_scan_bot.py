@@ -1,32 +1,51 @@
 import yaml
 import os
 import sys
+from datetime import datetime
+
+def log(msg):
+    print(f"🔹 {msg}")
 
 def main():
     try:
         # Load identifiers
+        if not os.path.exists("identifiers.yaml"):
+            log("❌ identifiers.yaml not found.")
+            sys.exit(1)
         with open("identifiers.yaml", "r") as f:
             identifiers = yaml.safe_load(f)
-        print("✅ Identifiers loaded:", identifiers)
+        log(f"✅ Identifiers loaded: {identifiers}")
 
         # Load identity profile
+        if not os.path.exists("identity_profile.yaml"):
+            log("❌ identity_profile.yaml not found.")
+            sys.exit(1)
         with open("identity_profile.yaml", "r") as f:
             profile = yaml.safe_load(f)
-        print("✅ Identity profile loaded:", profile)
+        log(f"✅ Identity profile loaded: {profile}")
 
         # Confirm overlay presence
-        if os.path.exists("trust_overlay.xml"):
-            print("✅ Overlay file found: trust_overlay.xml")
-        else:
-            print("❌ Overlay file missing.")
+        if not os.path.exists("trust_overlay.xml"):
+            log("❌ trust_overlay.xml missing.")
             sys.exit(1)
+        log("✅ Overlay file found: trust_overlay.xml")
 
-        # Simulate bot logic
-        print("🚀 Trust bot logic executing...")
-        # Add your scan, inject, or commit logic here
+        # Write output artifact
+        timestamp = datetime.utcnow().strftime("%Y-%m-%dT%H-%M-%SZ")
+        output_path = f"output/scan_log_{timestamp}.txt"
+        os.makedirs("output", exist_ok=True)
+        with open(output_path, "w") as out:
+            out.write("Trust Bot Scan Log\n")
+            out.write(f"Timestamp: {timestamp}\n\n")
+            out.write("Identifiers:\n")
+            out.write(yaml.dump(identifiers))
+            out.write("\nIdentity Profile:\n")
+            out.write(yaml.dump(profile))
+            out.write("\nOverlay: trust_overlay.xml confirmed\n")
+        log(f"📁 Output written to {output_path}")
 
     except Exception as e:
-        print("❌ BOT ERROR:", str(e))
+        log(f"❌ BOT ERROR: {str(e)}")
         sys.exit(1)
 
 if __name__ == "__main__":

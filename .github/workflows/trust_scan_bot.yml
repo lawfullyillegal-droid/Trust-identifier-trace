@@ -20,4 +20,12 @@ jobs:
         run: pip install pyyaml
 
       - name: Run bot script
+         - name: Auto-commit results
+     run: |
+       git config --global user.name "TrustBot"
+       git config --global user.email "trustbot@localhost"
+       git add output/*.txt docs/overlay.html
+       git commit -m "Auto-commit scan results"
+       git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }} HEAD:main
+
         run: python trust_scan_bot.py

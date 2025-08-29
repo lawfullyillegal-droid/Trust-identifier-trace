@@ -1,25 +1,3 @@
-Trust_Entity:
-  Name: TRAVIS STEVEN RYLE AKA"THE TRAVIS RYLE PRIVATE BANK ESTATE & TRUST"
-  Role: Benificial Equitable Title Holder
-  Jurisdiction: "USA, United States of America"
-
-Legal_Identifiers:
-  Full_Name: "Travis Steven Ryle" aka "TRAVIS STEVEN RYLE"
-  Birth_Certificate:COUNTY OF LOS ANGELES REGISTRAR
-    Number: "104-0190 003558"
-    Issued_By: "STATE OF CALIFORNIA"
-    Date: "1983-01-20"
-  SSN: "602-05-7209"
-  EIN: "92-6319308"
-
-Consumer_Profiles:
-  Experian_ID: "EXP-XXXXXXXX"
-  TransUnion_ID: "TU-XXXXXXXX"
-  Equifax_ID: "EQF-XXXXXXXX"
-  LexisNexis_ID: "LN-1113734"
-  CheckSystems_ID: "CS-XXXXXXXX"
-
-Symbolic_Claims:
-  XML_Overlay: "trust_overlay.xml"
-  Timestamped_Assertion: "2025-08-24T16:12:00Z"
-  GitHub_Repo: "trust-identifier-trace"
+name: Lawfully
+trust_reference: TRUST-0001
+timestamp: 2025-08-29T12:33:00Z

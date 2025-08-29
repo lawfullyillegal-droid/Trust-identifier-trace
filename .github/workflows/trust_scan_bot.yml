@@ -2,12 +2,11 @@ name: Trust Scan Bot
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 6 * * *'
 
 jobs:
-  scan-and-inject:
+  run-bot:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -18,9 +17,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: |
-          pip install pyyaml requests || echo "Dependencies failed"
+        run: pip install pyyaml
 
-      - name: Run Trust Bot
-        run: |
-          python3 trust_scan_bot.py || echo "Bot failed to execute"
+      - name: Run bot script
+        run: python trust_scan_bot.py

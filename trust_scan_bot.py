@@ -8,6 +8,10 @@ def log(msg):
 
 def main():
     try:
+        log("🚨 BOT STARTED")
+        log(f"📂 Current directory: {os.getcwd()}")
+        log(f"📄 Files in repo: {os.listdir()}")
+
         # Load identifiers
         with open("identifiers.yaml", "r") as f:
             identifiers = yaml.safe_load(f)

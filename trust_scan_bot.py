@@ -9,33 +9,16 @@ def log(msg):
 def main():
     try:
         # Load identifiers
-        if not os.path.exists("identifiers.yaml"):
-            log("❌ identifiers.yaml not found.")
-            sys.exit(1)
         with open("identifiers.yaml", "r") as f:
             identifiers = yaml.safe_load(f)
         log(f"✅ Identifiers loaded: {identifiers}")
-                # Scan ADOT identifiers
-        adot_ids = identifiers.get("adot_numbers", [])
-        if not adot_ids:
-            log("⚠️ No ADOT identifiers found.")
-        else:
-            log(f"🔍 Scanning {len(adot_ids)} ADOT identifiers...")
-            for aid in adot_ids:
-                if isinstance(aid, str) and aid.isdigit():
-                    log(f"✅ Valid ADOT ID: {aid}")
-                else:
-                    log(f"❌ Invalid ADOT ID format: {aid}")
-
 
         # Load identity profile
-        if not os.path.exists("identity_profile.yaml"):
-            log("❌ identity_profile.yaml not found.")
-            sys.exit(1)
         with open("identity_profile.yaml", "r") as f:
             profile = yaml.safe_load(f)
         log(f"✅ Identity profile loaded: {profile}")
-                # Scan ADOT identifiers
+
+        # Scan ADOT identifiers
         adot_ids = identifiers.get("adot_numbers", [])
         if not adot_ids:
             log("⚠️ No ADOT identifiers found.")
@@ -47,12 +30,22 @@ def main():
                 else:
                     log(f"❌ Invalid ADOT ID format: {aid}")
 
-
         # Confirm overlay presence
-        if not os.path.exists("trust_overlay.xml"):
-            log("❌ trust_overlay.xml missing.")
+        if os.path.exists("trust_overlay.xml"):
+            log("✅ Overlay file found: trust_overlay.xml")
+        else:
+            log("❌ Overlay file missing.")
             sys.exit(1)
-        log("✅ Overlay file found: trust_overlay.xml")
+
+        # Convert overlay to HTML for GitHub Pages
+        with open("trust_overlay.xml", "r") as xml_file:
+            overlay_content = xml_file.read()
+        html_overlay = f"<html><body><pre>{overlay_content}</pre></body></html>"
+        docs_path = "docs/overlay.html"
+        os.makedirs("docs", exist_ok=True)
+        with open(docs_path, "w") as html_file:
+            html_file.write(html_overlay)
+        log(f"🌐 Overlay HTML written to {docs_path}")
 
         # Write output artifact
         timestamp = datetime.utcnow().strftime("%Y-%m-%dT%H-%M-%SZ")

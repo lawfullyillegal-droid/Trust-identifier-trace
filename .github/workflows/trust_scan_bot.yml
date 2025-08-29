@@ -20,6 +20,12 @@ jobs:
         run: pip install pyyaml
         - name: Debug echo
   run: echo "🔥 Starting bot execution"
+  - name: Debug scan_log.txt existence
+  run: |
+    echo "Checking scan_log.txt..."
+    ls -l output/
+    cat output/scan_log.txt || echo "scan_log.txt not found"
+
 
 
       - name: Run bot script

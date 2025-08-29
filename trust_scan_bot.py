@@ -15,6 +15,18 @@ def main():
         with open("identifiers.yaml", "r") as f:
             identifiers = yaml.safe_load(f)
         log(f"✅ Identifiers loaded: {identifiers}")
+                # Scan ADOT identifiers
+        adot_ids = identifiers.get("adot_numbers", [])
+        if not adot_ids:
+            log("⚠️ No ADOT identifiers found.")
+        else:
+            log(f"🔍 Scanning {len(adot_ids)} ADOT identifiers...")
+            for aid in adot_ids:
+                if isinstance(aid, str) and aid.isdigit():
+                    log(f"✅ Valid ADOT ID: {aid}")
+                else:
+                    log(f"❌ Invalid ADOT ID format: {aid}")
+
 
         # Load identity profile
         if not os.path.exists("identity_profile.yaml"):
@@ -23,6 +35,18 @@ def main():
         with open("identity_profile.yaml", "r") as f:
             profile = yaml.safe_load(f)
         log(f"✅ Identity profile loaded: {profile}")
+                # Scan ADOT identifiers
+        adot_ids = identifiers.get("adot_numbers", [])
+        if not adot_ids:
+            log("⚠️ No ADOT identifiers found.")
+        else:
+            log(f"🔍 Scanning {len(adot_ids)} ADOT identifiers...")
+            for aid in adot_ids:
+                if isinstance(aid, str) and aid.isdigit():
+                    log(f"✅ Valid ADOT ID: {aid}")
+                else:
+                    log(f"❌ Invalid ADOT ID format: {aid}")
+
 
         # Confirm overlay presence
         if not os.path.exists("trust_overlay.xml"):

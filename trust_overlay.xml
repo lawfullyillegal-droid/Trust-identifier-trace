@@ -1,2 +1,6 @@
-Get-FileHash .\trust_overlay.xml -Algorithm SHA256
-
+<?xml version="1.0" encoding="UTF-8"?>
+<TrustOverlay>
+    <Reference>TRUST-0001</Reference>
+    <Author>Lawfully</Author>
+    <Timestamp>2025-08-29T12:19:00Z</Timestamp>
+</TrustOverlay>

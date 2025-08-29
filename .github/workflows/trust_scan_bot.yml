@@ -26,6 +26,26 @@ jobs:
          - name: Auto-commit results
      run: |
        git config --global user.name "TrustBot"
+           - name: Force commit via GitHub API
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.GH_TOKEN }}
+        script: |
+          const fs = require('fs');
+          const path = 'output/scan_log.txt';
+          const content = fs.readFileSync(path, 'utf8');
+          const { owner, repo } = context.repo;
+
+          await github.repos.createOrUpdateFileContents({
+            owner,
+            repo,
+            path,
+            message: 'Force commit via GitHub API',
+            content: Buffer.from(content).toString('base64'),
+            sha: null,
+            branch: 'main'
+          });
+
        git config --global user.email "trustbot@localhost"
        git add output/*.txt docs/overlay.html
        git commit -m "Auto-commit scan results"

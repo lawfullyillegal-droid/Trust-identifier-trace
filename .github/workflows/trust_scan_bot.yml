@@ -18,6 +18,9 @@ jobs:
 
       - name: Install dependencies
         run: pip install pyyaml
+        - name: Debug echo
+  run: echo "🔥 Starting bot execution"
+
 
       - name: Run bot script
          - name: Auto-commit results

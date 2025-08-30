@@ -1,0 +1,47 @@
+
+--- Scan started at 2025-08-26 22:42:58.242265 ---
+No matches on https://www.azcc.gov at 2025-08-26 22:43:00.412139
+No matches on https://www.sec.gov at 2025-08-26 22:43:02.033104
+No matches on https://opencorporates.com at 2025-08-26 22:43:03.384199
+No matches on https://www.lexisnexis.com at 2025-08-26 22:43:04.695199
+No matches on https://www.azdor.gov at 2025-08-26 22:43:07.326877
+No matches on https://www.azdes.gov at 2025-08-26 22:43:09.786315
+No matches on https://www.azdot.gov at 2025-08-26 22:43:12.272644
+
+--- Scan started at 2025-08-26 22:43:24.802022 ---
+No matches on https://www.azcc.gov at 2025-08-26 22:43:26.257486
+No matches on https://www.sec.gov at 2025-08-26 22:43:27.692097
+No matches on https://opencorporates.com at 2025-08-26 22:43:28.927565
+No matches on https://www.lexisnexis.com at 2025-08-26 22:43:30.257907
+No matches on https://www.azdor.gov at 2025-08-26 22:43:32.753879
+No matches on https://www.azdes.gov at 2025-08-26 22:43:35.279229
+No matches on https://www.azdot.gov at 2025-08-26 22:43:37.730129
+
+--- Scan started at 2025-08-26 22:57:27.955199 ---
+No matches on https://www.azcc.gov at 2025-08-26 22:57:29.386536
+No matches on https://www.sec.gov at 2025-08-26 22:57:30.787028
+No matches on https://opencorporates.com at 2025-08-26 22:57:32.021803
+No matches on https://www.lexisnexis.com at 2025-08-26 22:57:33.409707
+No matches on https://www.azdor.gov at 2025-08-26 22:57:36.064962
+No matches on https://www.azdes.gov at 2025-08-26 22:57:38.825181
+No matches on https://www.azdot.gov at 2025-08-26 22:57:41.655712
+
+--- Scan started at 2025-08-26 23:27:28.306676 ---
+No matches on https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/test_match_page.html at 2025-08-26 23:27:30.070462
+MATCH FOUND: 'NCES' on https://www.azcc.gov at 2025-08-26 23:27:31.909103
+MATCH FOUND: 'NCES' on https://www.sec.gov at 2025-08-26 23:27:33.615432
+No matches on https://opencorporates.com at 2025-08-26 23:27:34.939617
+No matches on https://www.lexisnexis.com at 2025-08-26 23:27:36.348317
+No matches on https://www.azdor.gov at 2025-08-26 23:27:39.116506
+No matches on https://www.azdes.gov at 2025-08-26 23:27:41.628677
+MATCH FOUND: 'NCES' on https://www.azdot.gov at 2025-08-26 23:27:44.595626
+
+--- Scan started at 2025-08-26 23:39:24.751203 ---
+No matches on https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/test_match_page.html at 2025-08-26 23:39:26.165853
+MATCH FOUND: 'NCES' on https://www.azcc.gov at 2025-08-26 23:39:27.683736
+MATCH FOUND: 'NCES' on https://www.sec.gov at 2025-08-26 23:39:29.585780
+No matches on https://opencorporates.com at 2025-08-26 23:39:31.084010
+No matches on https://www.lexisnexis.com at 2025-08-26 23:39:32.492806
+No matches on https://www.azdor.gov at 2025-08-26 23:39:35.033825
+No matches on https://www.azdes.gov at 2025-08-26 23:39:37.615137
+MATCH FOUND: 'NCES' on https://www.azdot.gov at 2025-08-26 23:39:40.346071

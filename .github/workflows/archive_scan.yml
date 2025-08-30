@@ -1,0 +1,31 @@
+name: Archive Scan Results
+
+on:
+  workflow_run:
+    workflows: ["Trust Scan Bot"]
+    types:
+      - completed
+
+jobs:
+  archive-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Timestamp scan_results.json
+        run: |
+          ts=\
+          mkdir -p archive
+          cp output/scan_results.json archive/scan_results_\.json
+
+      - name: Configure Git
+        run: |
+          git config user.name "TrustBot"
+          git config user.email "trustbot@local"
+
+      - name: Commit archive file
+        run: |
+          git add archive/
+          git commit -m "Archive scan results at \"
+          git push

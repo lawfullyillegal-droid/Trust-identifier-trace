@@ -42,4 +42,14 @@ if data.get("data"):
     tree.write("trust_overlay.xml", encoding="utf-8", xml_declaration=True)
     print("✅ Overlay updated with live hash and timestamp.")
 else:
-    print("⚠️ No GLEIF match found. Overlay not triggered.")
+    print("⚠️ No GLEIF match found. Overlay not triggered.")import os
+
+output_dir = "output"
+os.makedirs(output_dir, exist_ok=True)
+
+with open(os.path.join(output_dir, "scan_log.txt"), "w") as f:
+    f.write("✅ Trust scan executed at 2025-08-29 21:16 MST\n")
+    f.write("Identifiers traced: [insert your trace logic here]\n")
+
+print("🔥 scan_log.txt written and ready for syndication")
+

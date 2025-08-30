@@ -1,0 +1,32 @@
+name: Daily GLEIF Scan + Overlay Injection
+
+on:
+  schedule:
+    - cron: '0 12 * * *'  # Runs daily at 12:00 UTC
+  workflow_dispatch:
+
+jobs:
+  gleif-scan:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests pyyaml
+
+      - name: Run GLEIF alias scan
+        run: python gleif_alias_scan.py
+
+      - name: Commit results
+        run: |
+          git config user.name "TrustBot"
+          git config user.email "trustbot@travisryle.org"
+          git add gleif_results.xml trust_overlay.xml
+          git commit -m "Daily GLEIF scan + overlay update [$(Get-Date -Format 'yyyy-MM-dd_HH-mm-ss')]"
+          git push origin main

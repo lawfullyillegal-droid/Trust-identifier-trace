@@ -1,3 +1,7 @@
+ HEAD
+
+cat > identifiers.json <<EOF
+ 6630a7a465a9099f0f6e596ef7aa3c3b73c4beba
 [
   "TR-9X7KQ2",
   "CA-UCC-00451289",
@@ -5,3 +9,7 @@
   "NS-TRUSTX01",
   "TR-INVALID-XYZ"
 ]
+ HEAD
+
+EOF
+ 6630a7a465a9099f0f6e596ef7aa3c3b73c4beba

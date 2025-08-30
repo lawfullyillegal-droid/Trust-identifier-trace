@@ -14,21 +14,39 @@
 </head>
 <body>
   <h1>Trust Scan Dashboard</h1>
+  <div id="summary"></div>
   <table id="results">
-    <tr><th>Identifier</th><th>Status</th><th>Reason</th></tr>
+    <tr><th>Identifier</th><th>Status</th><th>Reason</th><th>Overlay</th></tr>
   </table>
   <script>
     fetch('output/scan_results.json')
       .then(res => res.json())
       .then(data => {
         const table = document.getElementById('results');
+        const summary = document.getElementById('summary');
+        let verified = 0, flagged = 0, unmatched = 0;
+
         data.forEach(item => {
+          if (item.status === "verified") verified++;
+          else if (item.status === "flagged") flagged++;
+          else unmatched++;
+
           const row = document.createElement('tr');
+          const overlayLink = item.status === "verified"
+            ? <a href='overlays/trust_overlay.yml' style='color:#0ff'>View Overlay</a>
+            : "-";
+
           row.innerHTML = <td></td>
                            <td class=""></td>
+                           <td></td>
                            <td></td>;
           table.appendChild(row);
         });
+
+        summary.innerHTML = <p>Total Scanned: </p>
+                             <p class='verified'>Verified: </p>
+                             <p class='flagged'>Flagged: </p>
+                             <p class='unmatched'>Unmatched: </p>;
       });
   </script>
 </body>

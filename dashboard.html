@@ -41,15 +41,17 @@
     <td><a href="overlays/registry_overlay.yml" style="color:#0ff">View Overlay</a></td>
   </tr>
   <tr>
-    <td>LN-NAME-RYLE-TRAVIS-STEVEN</td>
-    <td class="verified">Verified</td>
-    <td>LexisNexis</td>
-    <td>2025-08-30 12:17 MST</td>
-    <td><a href="overlays/registry_overlay.yml" style="color:#0ff">View Overlay</a></td>
-  </tr>
-  <tr>
-    <td>PROP-SS-GUARANTEE-104-0190-003558</td>
-    <td class="verified">Verified</td>
+  <script>
+document.getElementById('searchBar').addEventListener('input', function () {
+  const query = this.value.toLowerCase();
+  const rows = document.querySelectorAll('#results tr');
+  for (let i = 1; i < rows.length; i++) {
+    const rowText = rows[i].textContent.toLowerCase();
+    rows[i].style.display = rowText.includes(query) ? '' : 'none';
+  }
+});
+</script>
+
     <td>IRS Form 1099-A</td>
     <td>2025-08-30 12:16 MST</td>
     <td><a href="overlays/registry_overlay.yml" style="color:#0ff">View Overlay</a></td>

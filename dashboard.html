@@ -25,6 +25,7 @@
         const table = document.getElementById('results');
         const summary = document.getElementById('summary');
         let verified = 0, flagged = 0, unmatched = 0;
+<input type="text" id="searchBar" placeholder="🔍 Search identifiers, sources, overlays..." style="width:100%; padding:10px; font-size:16px; margin-bottom:20px;">
 
         data.forEach(item => {
           if (item.status === "verified") verified++;

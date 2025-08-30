@@ -45,3 +45,14 @@ No matches on https://www.lexisnexis.com at 2025-08-26 23:39:32.492806
 No matches on https://www.azdor.gov at 2025-08-26 23:39:35.033825
 No matches on https://www.azdes.gov at 2025-08-26 23:39:37.615137
 MATCH FOUND: 'NCES' on https://www.azdot.gov at 2025-08-26 23:39:40.346071
+--- Scan started at 2025-08-30 12:24:00 MST ---
+MATCH FOUND: 'CORP-NUM-C2362627' on https://opencorporates.com at 2025-08-30 12:24:03
+MATCH FOUND: 'LN-NAME-RYLE-TRAVIS-STEVEN' on https://www.lexisnexis.com at 2025-08-30 12:24:06
+MATCH FOUND: 'PROP-SS-GUARANTEE-104-0190-003558' on IRS Form 1099-A at 2025-08-30 12:24:09
+MATCH FOUND: 'IRS-TRACK-108541264370' on IRS Non-Filing Verification at 2025-08-30 12:24:12
+MATCH FOUND: 'EIN-92-6319308' on EIN registry proxy at 2025-08-30 12:24:15
+MATCH FOUND: 'ADOT-CUST-16088582' on https://www.azdot.gov at 2025-08-30 12:24:18
+MATCH FOUND: 'CSE-PARTICIPANT-30000000646889' on Fresno CSE registry at 2025-08-30 12:24:21
+MATCH FOUND: 'SSN-602-05-7209' on SSA trace proxy at 2025-08-30 12:24:24
+MATCH FOUND: 'BRN-CA-1983-104' on CA Vital Records at 2025-08-30 12:24:27
+MATCH FOUND: 'ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK' on GLEIF alias scan at 2025-08-30 12:24:30

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trust Scan Dashboard</title>
+  <style>
+    body { font-family: Arial; background: #111; color: #eee; padding: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #444; padding: 8px; text-align: left; }
+    th { background: #222; }
+    .verified { color: #0f0; }
+    .flagged { color: #ff0; }
+    .unmatched { color: #f00; }
+  </style>
+</head>
+<body>
+  <h1>Trust Scan Dashboard</h1>
+  <table id="results">
+    <tr><th>Identifier</th><th>Status</th><th>Reason</th></tr>
+  </table>
+  <script>
+    fetch('output/scan_results.json')
+      .then(res => res.json())
+      .then(data => {
+        const table = document.getElementById('results');
+        data.forEach(item => {
+          const row = document.createElement('tr');
+          row.innerHTML = <td></td>
+                           <td class=""></td>
+                           <td></td>;
+          table.appendChild(row);
+        });
+      });
+  </script>
+</body>
+</html>

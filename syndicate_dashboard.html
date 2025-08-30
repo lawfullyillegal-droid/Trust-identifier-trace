@@ -11,61 +11,55 @@
     .verified { color: #0f0; }
     .flagged { color: #ff0; }
     .unmatched { color: #f00; }
-    .assertion { background: #222; padding: 10px; margin-top: 20px; border: 1px solid #444; }
+    .error { color: #f00; margin-top: 20px; }
   </style>
 </head>
 <body>
   <h1>Syndicate Dashboard</h1>
   <div id="summary"></div>
   <div id="runs"></div>
-  <div id="assertions"></div>
+  <div id="error" class="error"></div>
   <script>
-    fetch('output/scan_results.json')
-      .then(res => res.json())
-      .then(data => {
-        let verified = 0, flagged = 0, unmatched = 0;
-        let assertions = { TrustID: [], UCCRef: [], StateAgency: [], NamespaceID: [] };
+    const archiveFiles = [
+      "output/scan_results.json",
+      "archive/scan_results_20250830-1049.json",
+      "archive/scan_results_20250830-1050.json"
+    ];
 
-        const table = document.createElement('table');
-        table.innerHTML = "<tr><th>Identifier</th><th>Status</th><th>Reason</th></tr>";
+    let total = 0, verified = 0, flagged = 0, unmatched = 0;
 
-        data.forEach(item => {
-          if (item.status === "verified") {
-            verified++;
-            if (item.identifier.startsWith("TR-")) assertions.TrustID.push(item.identifier);
-            else if (item.identifier.startsWith("CA-UCC-")) assertions.UCCRef.push(item.identifier);
-            else if (item.identifier.startsWith("STATE-")) assertions.StateAgency.push(item.identifier);
-            else if (item.identifier.startsWith("NS-")) assertions.NamespaceID.push(item.identifier);
-          } else if (item.status === "flagged") flagged++;
-          else unmatched++;
-
-          const row = document.createElement('tr');
-          row.innerHTML = <td></td>
-                           <td class=""></td>
-                           <td></td>;
-          table.appendChild(row);
+    archiveFiles.forEach((path, index) => {
+      fetch(path)
+        .then(res => {
+          if (!res.ok) throw new Error("File not found: " + path);
+          return res.json();
+        })
+        .then(data => {
+          total += data.length;
+          let runHTML = <h2>Run : </h2><table><tr><th>Identifier</th><th>Status</th><th>Reason</th></tr>;
+          data.forEach(item => {
+            if (item.status === "verified") verified++;
+            else if (item.status === "flagged") flagged++;
+            else unmatched++;
+            runHTML += <tr>
+                          <td></td>
+                          <td class=""></td>
+                          <td></td>
+                        </tr>;
+          });
+          runHTML += "</table>";
+          document.getElementById("runs").innerHTML += runHTML;
+          document.getElementById("summary").innerHTML = 
+            <p>Total Identifiers Scanned: </p>
+            <p class='verified'>Verified: </p>
+            <p class='flagged'>Flagged: </p>
+            <p class='unmatched'>Unmatched: </p>
+          ;
+        })
+        .catch(err => {
+          document.getElementById("error").innerHTML += <p></p>;
         });
-
-        document.getElementById("runs").appendChild(table);
-        document.getElementById("summary").innerHTML = 
-          <p>Total Scanned: </p>
-          <p class='verified'>Verified: </p>
-          <p class='flagged'>Flagged: </p>
-          <p class='unmatched'>Unmatched: </p>
-        ;
-
-        let assertionHTML = "<h2>Symbolic Assertions</h2>";
-        for (const [type, ids] of Object.entries(assertions)) {
-          if (ids.length > 0) {
-            assertionHTML += <div class='assertion'><strong></strong><ul>;
-            ids.forEach(id => {
-              assertionHTML += <li> — <span class='verified'>Verified </span></li>;
-            });
-            assertionHTML += "</ul></div>";
-          }
-        }
-        document.getElementById("assertions").innerHTML = assertionHTML;
-      });
+    });
   </script>
 </body>
 </html>

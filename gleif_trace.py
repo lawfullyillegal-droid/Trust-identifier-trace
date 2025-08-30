@@ -14,7 +14,20 @@ IDENTIFIER_PAYLOAD = [
     "IRS-TRACK-108541264370",
     "ACCT-433187894832",
     "PROP-SS-GUARANTEE-104-0190-003558"
-]
+]for identifier in IDENTIFIER_PAYLOAD:
+    print(f"🔍 Scanning external sources for: {identifier}")
+    # Example: build a query URL using the identifier
+    query_url = f"https://api.gleif.org/api/v1/lei-records?filter[entity.legalName]={identifier}"
+    response = requests.get(query_url)
+    data = response.json()
+
+    # Log result if match found
+    if data.get("data"):
+        print(f"✅ Match found for {identifier}")
+        # You can log to XML or TrustScanLog.txt here
+    else:
+        print(f"❌ No match for {identifier}")
+
 import traceback
 try:
     

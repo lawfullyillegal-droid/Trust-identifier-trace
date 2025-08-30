@@ -1,3 +1,5 @@
+import traceback
+print("🚀 gleif_trace.py started")
 import requests
 import xml.etree.ElementTree as ET
 from datetime import datetime

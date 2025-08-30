@@ -1,0 +1,9 @@
+cat > identifiers.json <<EOF
+[
+  "TR-9X7KQ2",
+  "CA-UCC-00451289",
+  "STATE-AZ-2023",
+  "NS-TRUSTX01",
+  "TR-INVALID-XYZ"
+]
+EOF

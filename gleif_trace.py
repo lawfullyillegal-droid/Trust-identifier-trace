@@ -1,3 +1,4 @@
+try:
 import traceback
 print("🚀 gleif_trace.py started")
 import requests
@@ -53,5 +54,8 @@ with open(os.path.join(output_dir, "scan_log.txt"), "w") as f:
     f.write("✅ Trust scan executed at 2025-08-29 21:16 MST\n")
     f.write("Identifiers traced: [insert your trace logic here]\n")
 
-print("🔥 scan_log.txt written and ready for syndication")
+print("🔥 scan_log.txt written and ready for syndication")except Exception as e:
+    print("❌ Script failed with error:")
+    traceback.print_exc()
+
 

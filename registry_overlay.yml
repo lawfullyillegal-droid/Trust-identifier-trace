@@ -1,0 +1,22 @@
+RegistryOverlay:
+  Verified:
+    TrustID:
+      - ID: TR-9X7KQ2
+        VerifiedBy: trust_overlay.yml
+        Assertion: Verified Trust Identifier
+        Timestamp: 2025-08-30T10:41:00Z
+    UCCRef:
+      - ID: CA-UCC-00451289
+        VerifiedBy: trust_overlay.yml
+        Assertion: Asserted UCC Reference
+        Timestamp: 2025-08-30T10:41:00Z
+    StateAgency:
+      - ID: STATE-AZ-2023
+        VerifiedBy: trust_overlay.yml
+        Assertion: Verified State Agency Identifier
+        Timestamp: 2025-08-30T10:41:00Z
+    NamespaceID:
+      - ID: NS-TRUSTX01
+        VerifiedBy: trust_overlay.yml
+        Assertion: Verified Namespace Trace
+        Timestamp: 2025-08-30T10:41:00Z

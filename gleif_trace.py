@@ -69,7 +69,17 @@ try:
     if data.get("data"):
         with open("trust_overlay.xml", "rb") as f:
             overlay = f.read()
-        hash_value = hashlib.sha256(overlay).hexdigest()
+       for identifier in IDENTIFIER_PAYLOAD:
+    print(f"🔍 Scanning external sources for: {identifier}")
+    query_url = f"https://api.gleif.org/api/v1/lei-records?filter[entity.legalName]={identifier}"
+    response = requests.get(query_url)
+    data = response.json()
+
+    if data.get("data"):
+        print(f"✅ Match found for {identifier}")
+    else:
+        print(f"❌ No match for {identifier}")
+ hash_value = hashlib.sha256(overlay).hexdigest()
         tree = ET.parse("trust_overlay.xml")
         root = tree.getroot()
         root.find("TechnicalTrace").find("OverlayHash").text = hash_value

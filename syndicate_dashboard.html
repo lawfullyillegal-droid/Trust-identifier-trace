@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Syndicate Dashboard</title>
+  <style>
+    body { font-family: Arial; background: #111; color: #eee; padding: 20px; }
+    h1, h2 { color: #0ff; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #444; padding: 8px; text-align: left; }
+    th { background: #222; }
+    .verified { color: #0f0; }
+    .flagged { color: #ff0; }
+    .unmatched { color: #f00; }
+  </style>
+</head>
+<body>
+  <h1>Syndicate Dashboard</h1>
+  <div id="summary"></div>
+  <div id="runs"></div>
+  <script>
+    const runs = ["output/scan_results.json"]; // Add more paths as needed
+
+    let total = 0, verified = 0, flagged = 0, unmatched = 0;
+
+    runs.forEach((path, index) => {
+      fetch(path)
+        .then(res => res.json())
+        .then(data => {
+          total += data.length;
+          let runHTML = <h2>Run </h2><table><tr><th>Identifier</th><th>Status</th><th>Reason</th></tr>;
+          data.forEach(item => {
+            if (item.status === "verified") verified++;
+            else if (item.status === "flagged") flagged++;
+            else unmatched++;
+            runHTML += <tr>
+                          <td></td>
+                          <td class=""></td>
+                          <td></td>
+                        </tr>;
+          });
+          runHTML += "</table>";
+          document.getElementById("runs").innerHTML += runHTML;
+          document.getElementById("summary").innerHTML = 
+            <p>Total Identifiers Scanned: </p>
+            <p class='verified'>Verified: </p>
+            <p class='flagged'>Flagged: </p>
+            <p class='unmatched'>Unmatched: </p>
+          ;
+        });
+    });
+  </script>
+</body>
+</html>

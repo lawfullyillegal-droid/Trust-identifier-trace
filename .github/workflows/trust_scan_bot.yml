@@ -1,6 +1,30 @@
 name: Trust Scan Bot
 
 on:
+  push:
+    paths:
+      - dummy_trigger.txt
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run bot script
+        run: python gleif_trace.py
+name: Trust Scan Bot
+
+on:
   workflow_dispatch:
 
 jobs:

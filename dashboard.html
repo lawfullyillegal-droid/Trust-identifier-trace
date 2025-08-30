@@ -30,6 +30,44 @@
           if (item.status === "verified") verified++;
           else if (item.status === "flagged") flagged++;
           else unmatched++;
+<table id="results">
+  <tr><th>Identifier</th><th>Status</th><th>Source</th><th>Timestamp</th><th>Overlay</th></tr>
+  <tr>
+    <td>CORP-NUM-C2362627</td>
+    <td class="verified">Verified</td>
+    <td>OpenCorporates</td>
+    <td>2025-08-30 12:18 MST</td>
+    <td><a href="overlays/registry_overlay.yml" style="color:#0ff">View Overlay</a></td>
+  </tr>
+  <tr>
+    <td>LN-NAME-RYLE-TRAVIS-STEVEN</td>
+    <td class="verified">Verified</td>
+    <td>LexisNexis</td>
+    <td>2025-08-30 12:17 MST</td>
+    <td><a href="overlays/registry_overlay.yml" style="color:#0ff">View Overlay</a></td>
+  </tr>
+  <tr>
+    <td>PROP-SS-GUARANTEE-104-0190-003558</td>
+    <td class="verified">Verified</td>
+    <td>IRS Form 1099-A</td>
+    <td>2025-08-30 12:16 MST</td>
+    <td><a href="overlays/registry_overlay.yml" style="color:#0ff">View Overlay</a></td>
+  </tr>
+  <tr>
+    <td>IRS-TRACK-108541264370</td>
+    <td class="verified">Verified</td>
+    <td>IRS Non-Filing Verification</td>
+    <td>2025-08-30 12:15 MST</td>
+    <td><a href="overlays/registry_overlay.yml" style="color:#0ff">View Overlay</a></td>
+  </tr>
+  <tr>
+    <td>EIN-92-6319308</td>
+    <td class="verified">Verified</td>
+    <td>EIN Registry Proxy</td>
+    <td>2025-08-30 12:14 MST</td>
+    <td><a href="overlays/registry_overlay.yml" style="color:#0ff">View Overlay</a></td>
+  </tr>
+</table>
 
           const row = document.createElement('tr');
           const overlayLink = item.status === "verified"

@@ -14,216 +14,159 @@
 </head>
 <body>
   <h1>Trust Scan Dashboard</h1>
+
+  <input type="text" id="searchBar" placeholder="🔍 Search identifiers, sources, overlays..." style="width:100%; padding:10px; font-size:16px; margin-bottom:20px;">
   <div id="summary"></div>
+
   <table id="results">
-    <tr><th>Identifier</th><th>Status</th><th>Reason</th><th>Overlay</th></tr>
+    <tr><th>Identifier</th><th>Status</th><th>Source</th><th>Timestamp</th><th>Overlay</th></tr>
   </table>
+
+  <h2 style="margin-top:40px;">🧠 Visual Trace Map</h2>
+  <div id="traceMap" style="width:100%; height:500px; background:#222; border:1px solid #444;"></div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
   <script>
     fetch('output/scan_results.json')
       .then(res => res.json())
       .then(data => {
         const table = document.getElementById('results');
         const summary = document.getElementById('summary');
+        const searchBar = document.getElementById('searchBar');
+
         let verified = 0, flagged = 0, unmatched = 0;
-<input type="text" id="searchBar" placeholder="🔍 Search identifiers, sources, overlays..." style="width:100%; padding:10px; font-size:16px; margin-bottom:20px;">
 
-        data.forEach(item => {
-          if (item.status === "verified") verified++;
-          else if (item.status === "flagged") flagged++;
-          else unmatched++;
-<table id="results">
-  <tr><th>Identifier</th><th>Status</th><th>Source</th><th>Timestamp</th><th>Overlay</th></tr>
-  <tr>
-    <td>CORP-NUM-C2362627</td>
-   <tr>
-  <td>CORP-NUM-C2362627</td>
-  <td class="verified">Verified</td>
-  <td>OpenCorporates</td>
-  <td>2025-08-30 12:18 MST</td>
-  <td><a href="overlays/registry_overlay.yml" style="color:#0ff">View Overlay</a></td>
-</tr>
-<tr>
-  <td>LN-NAME-RYLE-TRAVIS-STEVEN</td>
-  <td class="verified">Verified</td>
-  <td>LexisNexis</td>
-  <td>2025-08-30 12:17 MST</td>
-  <td><a href="overlays/registry_overlay.yml" style="color:#0ff">View Overlay</a></td>
-</tr>
-<tr>
-  <td>PROP-SS-GUARANTEE-104-0190-003558</td>
-<h2 style="margin-top:40px;">🧠 Visual Trace Map</h2>
-<div id="traceMap" style="width:100%; height:500px; background:#222; border:1px solid #444;"></div>
+        function renderTable(filteredData) {
+          table.innerHTML = '<tr><th>Identifier</th><th>Status</th><th>Source</th><th>Timestamp</th><th>Overlay</th></tr>';
+          filteredData.forEach(item => {
+            if (item.status === "verified") verified++;
+            else if (item.status === "flagged") flagged++;
+            else unmatched++;
 
-<script src="https://d3js.org/d3.v7.min.js"></script>
-<script>
-const nodes = [
-  { id: "CORP-NUM-C2362627", group: "Identifier" },
-  { id: "OpenCorporates", group: "Registry" },
-  { id: "LN-NAME-RYLE-TRAVIS-STEVEN", group: "Identifier" },
-  { id: "LexisNexis", group: "Registry" },
-  { id: "PROP-SS-GUARANTEE-104-0190-003558", group: "Identifier" },
-  { id: "IRS Form 1099-A", group: "Registry" },
-  { id: "IRS-TRACK-108541264370", group: "Identifier" },
-  { id: "IRS Non-Filing", group: "Registry" },
-  { id: "EIN-92-6319308", group: "Identifier" },
-  { id: "EIN Registry", group: "Registry" }
-];
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${item.identifier}</td>
+              <td class="${item.status}">${item.status}</td>
+              <td>${item.source}</td>
+              <td>${item.timestamp}</td>
+              <td><a href="${item.overlay}" style="color:#0ff">View Overlay</a></td>
+            `;
+            table.appendChild(row);
+          });
 
-const links = [
-  { source: "CORP-NUM-C2362627", target: "OpenCorporates" },
-  { source: "LN-NAME-RYLE-TRAVIS-STEVEN", target: "LexisNexis" },
-  { source: "PROP-SS-GUARANTEE-104-0190-003558", target: "IRS Form 1099-A" },
-  { source: "IRS-TRACK-108541264370", target: "IRS Non-Filing" },
-  { source: "EIN-92-6319308", target: "EIN Registry" }
-];
+          summary.innerHTML = `
+            <p>✅ Verified: ${verified}</p>
+            <p>⚠️ Flagged: ${flagged}</p>
+            <p>❌ Unmatched: ${unmatched}</p>
+          `;
+        }
 
-const svg = d3.select("#traceMap").append("svg")
-  .attr("width", "100%")
-  .attr("height", 500);
+        renderTable(data);
 
-const width = document.getElementById("traceMap").clientWidth;
-const height = 500;
+        searchBar.addEventListener('input', () => {
+          const query = searchBar.value.toLowerCase();
+          const filtered = data.filter(item =>
+            item.identifier.toLowerCase().includes(query) ||
+            item.source.toLowerCase().includes(query) ||
+            item.overlay.toLowerCase().includes(query)
+          );
+          verified = flagged = unmatched = 0;
+          renderTable(filtered);
+        });
+      })
+      .catch(err => {
+        document.getElementById('summary').innerHTML = "<p style='color:red'>Failed to load scan results.</p>";
+      });
 
-const simulation = d3.forceSimulation(nodes)
-  .force("link", d3.forceLink(links).id(d => d.id).distance(120))
-  .force("charge", d3.forceManyBody().strength(-300))
-  .force("center", d3.forceCenter(width / 2, height / 2));
+    const nodes = [
+      { id: "CORP-NUM-C2362627", group: "Identifier" },
+      { id: "OpenCorporates", group: "Registry" },
+      { id: "LN-NAME-RYLE-TRAVIS-STEVEN", group: "Identifier" },
+      { id: "LexisNexis", group: "Registry" },
+      { id: "PROP-SS-GUARANTEE-104-0190-003558", group: "Identifier" },
+      { id: "IRS Form 1099-A", group: "Registry" },
+      { id: "IRS-TRACK-108541264370", group: "Identifier" },
+      { id: "IRS Non-Filing", group: "Registry" },
+      { id: "EIN-92-6319308", group: "Identifier" },
+      { id: "EIN Registry", group: "Registry" }
+    ];
 
-const link = svg.append("g")
-  .selectAll("line")
-  .data(links)
-  .join("line")
-  .attr("stroke", "#888")
-  .attr("stroke-width", 2);
+    const links = [
+      { source: "CORP-NUM-C2362627", target: "OpenCorporates" },
+      { source: "LN-NAME-RYLE-TRAVIS-STEVEN", target: "LexisNexis" },
+      { source: "PROP-SS-GUARANTEE-104-0190-003558", target: "IRS Form 1099-A" },
+      { source: "IRS-TRACK-108541264370", target: "IRS Non-Filing" },
+      { source: "EIN-92-6319308", target: "EIN Registry" }
+    ];
 
-const node = svg.append("g")
-  .selectAll("circle")
-  .data(nodes)
-  .join("circle")
-  .attr("r", 10)
-  .attr("fill", d => d.group === "Registry" ? "#0ff" : "#0f0")
-  .call(drag(simulation));
+    const svg = d3.select("#traceMap").append("svg")
+      .attr("width", "100%")
+      .attr("height", 500);
 
-const label = svg.append("g")
-  .selectAll("text")
-  .data(nodes)
-  .join("text")
-  .text(d => d.id)
-  .attr("fill", "#eee")
-  .attr("font-size", "12px");
+    const width = document.getElementById("traceMap").clientWidth;
+    const height = 500;
 
-function drag(simulation) {
-  function dragstarted(event) {
-    if (!event.active) simulation.alphaTarget(0.3).restart();
-    event.subject.fx = event.subject.x;
-    event.subject.fy = event.subject.y;
-  }
-  function dragged(event) {
-    event.subject.fx = event.x;
-    event.subject.fy = event.y;
-  }
-  function dragended(event) {
-    if (!event.active) simulation.alphaTarget(0);
-    event.subject.fx = null;
-    event.subject.fy = null;
-  }
-  return d3.drag().on("start", dragstarted).on("drag", dragged).on("end", dragended);
-}
+    const simulation = d3.forceSimulation(nodes)
+      .force("link", d3.forceLink(links).id(d => d.id).distance(120))
+      .force("charge", d3.forceManyBody().strength(-300))
+      .force("center", d3.forceCenter(width / 2, height / 2));
 
-simulation.on("tick", () => {
-  link
-    .attr("x1", d => d.source.x)
-    .attr("y1", d => d.source.y)
-    .attr("x2", d => d.target.x)
-    .attr("y2", d => d.target.y);
+    const link = svg.append("g")
+      .selectAll("line")
+      .data(links)
+      .join("line")
+      .attr("stroke", "#888")
+      .attr("stroke-width", 2);
 
-  node
-    .attr("cx", d => d.x)
-    .attr("cy", d => d.y);
+    const node = svg.append("g")
+      .selectAll("circle")
+      .data(nodes)
+      .join("circle")
+      .attr("r", 10)
+      .attr("fill", d => d.group === "Registry" ? "#0ff" : "#0f0")
+      .call(drag(simulation));
 
-  label
-    .attr("x", d => d.x + 12)
-    .attr("y", d => d.y + 4);
-});
-</script>
-<h2 style="margin-top:40px;">🧠 Visual Trace Map</h2>
-<div id="traceMap" style="width:100%; height:500px; background:#222; border:1px solid #444;"></div>
+    const label = svg.append("g")
+      .selectAll("text")
+      .data(nodes)
+      .join("text")
+      .text(d => d.id)
+      .attr("fill", "#eee")
+      .attr("font-size", "12px");
 
-<script src="https://d3js.org/d3.v7.min.js"></script>
-<script>
-const nodes = [
-  { id: "CORP-NUM-C2362627", group: "Identifier" },
-  { id: "OpenCorporates", group: "Registry" },
-  { id: "LN-NAME-RYLE-TRAVIS-STEVEN", group: "Identifier" },
-  { id: "LexisNexis", group: "Registry" },
-  { id: "PROP-SS-GUARANTEE-104-0190-003558", group: "Identifier" },
-  { id: "IRS Form 1099-A", group: "Registry" },
-  { id: "IRS-TRACK-108541264370", group: "Identifier" },
-  { id: "IRS Non-Filing", group: "Registry" },
-  { id: "EIN-92-6319308", group: "Identifier" },
-  { id: "EIN Registry", group: "Registry" }
-];
+    function drag(simulation) {
+      function dragstarted(event) {
+        if (!event.active) simulation.alphaTarget(0.3).restart();
+        event.subject.fx = event.subject.x;
+        event.subject.fy = event.subject.y;
+      }
+      function dragged(event) {
+        event.subject.fx = event.x;
+        event.subject.fy = event.y;
+      }
+      function dragended(event) {
+        if (!event.active) simulation.alphaTarget(0);
+        event.subject.fx = null;
+        event.subject.fy = null;
+      }
+      return d3.drag().on("start", dragstarted).on("drag", dragged).on("end", dragended);
+    }
 
-const links = [
-  { source: "CORP-NUM-C2362627", target: "OpenCorporates" },
-  { source: "LN-NAME-RYLE-TRAVIS-STEVEN", target: "LexisNexis" },
-  { source: "PROP-SS-GUARANTEE-104-0190-003558", target: "IRS Form 1099-A" },
-  { source: "IRS-TRACK-108541264370", target: "IRS Non-Filing" },
-  { source: "EIN-92-6319308", target: "EIN Registry" }
-];
+    simulation.on("tick", () => {
+      link
+        .attr("x1", d => d.source.x)
+        .attr("y1", d => d.source.y)
+        .attr("x2", d => d.target.x)
+        .attr("y2", d => d.target.y);
 
-const svg = d3.select("#traceMap").append("svg")
-  .attr("width", "100%")
-  .attr("height", 500);
+      node
+        .attr("cx", d => d.x)
+        .attr("cy", d => d.y);
 
-const width = document.getElementById("traceMap").clientWidth;
-const height = 500;
-
-const simulation = d3.forceSimulation(nodes)
-  .force("link", d3.forceLink(links).id(d => d.id).distance(120))
-  .force("charge", d3.forceManyBody().strength(-300))
-  .force("center", d3.forceCenter(width / 2, height / 2));
-
-const link = svg.append("g")
-  .selectAll("line")
-  .data(links)
-  .join("line")
-  .attr("stroke", "#888")
-  .attr("stroke-width", 2);
-
-const node = svg.append("g")
-  .selectAll("circle")
-  .data(nodes)
-  .join("circle")
-  .attr("r", 10)
-  .attr("fill", d => d.group === "Registry" ? "#0ff" : "#0f0")
-  .call(drag(simulation));
-
-const label = svg.append("g")
-  .selectAll("text")
-  .data(nodes)
-  .join("text")
-  .text(d => d.id)
-  .attr("fill", "#eee")
-  .attr("font-size", "12px");
-
-function drag(simulation) {
-  function dragstarted(event) {
-    if (!event.active) simulation.alphaTarget(0.3).restart();
-    event.subject.fx = event.subject.x;
-    event.subject.fy = event.subject.y;
-  }
-  function dragged(event) {
-    event.subject.fx = event.x;
-    event.subject.fy = event.y;
-  }
-  function dragended(event) {
-    if (!event.active) simulation.alphaTarget(0);
-    event.subject.fx = null;
-    event.subject.fy = null;
-<h2 style="margin-top:40px;">🧠 Visual Trace Map</h2>
-<div id="traceMap" style="width:100%; height:500px; background:#222; border:1px solid #444;"></div>
-<script src="https://d3js.org/d3.v7.min.js"></script>
-<script>
-  ... (entire D3 logic block)
-</script>
+      label
+        .attr("x", d => d.x + 12)
+        .attr("y", d => d.y + 4);
+    });
+  </script>
+</body>
+</html>

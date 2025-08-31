@@ -25,8 +25,7 @@ jobs:
         run: python gleif_trace.py
 
       - name: Upload Scan Log
-  uses: actions/upload-artifact@v4
-  with:
-    name: scan_log
-    path: output/scan_log.txt
-
+        uses: actions/upload-artifact@v4
+        with:
+          name: scan_log
+          path: output/scan_log.txt

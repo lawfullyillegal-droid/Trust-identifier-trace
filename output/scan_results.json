@@ -1,0 +1,37 @@
+[
+  {
+    "identifier": "CORP-NUM-C2362627",
+    "status": "verified",
+    "source": "OpenCorporates",
+    "timestamp": "2025-08-30 12:18 MST",
+    "overlay": "overlays/registry_overlay.yml"
+  },
+  {
+    "identifier": "LN-NAME-RYLE-TRAVIS-STEVEN",
+    "status": "verified",
+    "source": "LexisNexis",
+    "timestamp": "2025-08-30 12:17 MST",
+    "overlay": "overlays/registry_overlay.yml"
+  },
+  {
+    "identifier": "PROP-SS-GUARANTEE-104-0190-003558",
+    "status": "flagged",
+    "source": "IRS Form 1099-A",
+    "timestamp": "2025-08-30 12:16 MST",
+    "overlay": "overlays/property_overlay.yml"
+  },
+  {
+    "identifier": "IRS-TRACK-108541264370",
+    "status": "unmatched",
+    "source": "IRS Non-Filing",
+    "timestamp": "2025-08-30 12:15 MST",
+    "overlay": "overlays/irs_overlay.yml"
+  },
+  {
+    "identifier": "EIN-92-6319308",
+    "status": "verified",
+    "source": "EIN Registry",
+    "timestamp": "2025-08-30 12:14 MST",
+    "overlay": "overlays/ein_overlay.yml"
+  }
+]

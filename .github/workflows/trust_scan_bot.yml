@@ -1,3 +1,8 @@
+- name: Upload Scan Log
+  uses: actions/upload-artifact@v3
+  with:
+    name: scan_log
+    path: output/scan_log.txt
 name: Trust Scan Bot
 
 on:

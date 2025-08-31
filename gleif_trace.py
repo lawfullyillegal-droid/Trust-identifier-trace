@@ -1,5 +1,5 @@
 print("🚀 gleif_trace.py started")
-IDENTIFIER_PAYLOAD = [
+IDENTIFIER_PAYLOAD = 
     "BRN-CA-1983-104",
     "CERT-CA-003558",
     "DOB-1983-01-20-0815",
@@ -14,7 +14,7 @@ IDENTIFIER_PAYLOAD = [
     "IRS-TRACK-108541264370",
     "ACCT-433187894832",
     "PROP-SS-GUARANTEE-104-0190-003558"
-]for identifier in IDENTIFIER_PAYLOAD:
+for identifier in IDENTIFIER_PAYLOAD:
     print(f"🔍 Scanning external sources for: {identifier}")
     # Example: build a query URL using the identifier
     query_url = f"https://api.gleif.org/api/v1/lei-records?filter[entity.legalName]={identifier}"

@@ -20,11 +20,20 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt || true
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Ensure output folder exists
+        run: mkdir -p output
 
       - name: Run Trust Scan Bot
         run: |
-          python trust_scan_bot.py > output/scan_results.json
+          set -e
+          if [ -f trust_scan_bot.py ]; then
+            python trust_scan_bot.py > output/scan_results.json
+          else
+            echo "ERROR: trust_scan_bot.py not found in repo root"
+            exit 1
+          fi
 
       - name: Commit scan results
         run: |

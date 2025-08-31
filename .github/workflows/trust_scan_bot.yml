@@ -20,6 +20,24 @@ jobs:
 
       - name: Install Dependencies
         run: pip install -r requirements.txt
+jobs:
+  generate-scan-results:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Run Trust Scan Bot
+        run: |
+          python trust_scan_bot.py > output/scan_results.json
+
+      - name: Commit scan results
+        run: |
+          git config user.name "Trust Scan Bot"
+          git config user.email "bot@trust.local"
+          git add output/scan_results.json
+          git commit -m "Auto-generate scan_results.json from bot run"
+          git push
 
       - name: Run Bot Script
         run: python gleif_trace.py

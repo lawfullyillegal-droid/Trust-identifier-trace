@@ -12,12 +12,10 @@ OVERLAYS_DIR = Path(__file__).parent / "overlays"
 OVERLAYS_DIR.mkdir(exist_ok=True)
 OUTPUT_FILE.parent.mkdir(exist_ok=True)
 
-# Load identifiers from JSON
 def load_identifiers():
     with open(IDENTIFIERS_FILE, "r") as f:
         return json.load(f)
 
-# Create overlay files if missing
 def ensure_overlays(overlay_files):
     for filename, desc in overlay_files.items():
         path = OVERLAYS_DIR / filename
@@ -25,12 +23,36 @@ def ensure_overlays(overlay_files):
             with open(path, "w") as f:
                 f.write(f"overlay_name: {desc}\ndescription: Auto-created by Trust Scan Bot\n")
 
-# Simulated scan logic — replace with real registry/API calls
 def scan_identifier(identifier):
-    # Always returns "verified" for demo; replace with actual match logic
+    # Placeholder scan logic — replace with real registry/API calls
     return "verified"
 
-# Main scan routine
 def run_scan(identifiers):
     results = []
-    overlay
+    overlay_files = {}
+    for ident in identifiers:
+        overlay_name = f"{ident['type'].lower()}_overlay.yml"
+        overlay_files[overlay_name] = f"{ident['type']} Overlay"
+        status = scan_identifier(ident)
+        results.append({
+            "identifier": ident["value"],
+            "status": status,
+            "source": ident["type"],
+            "timestamp": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+            "overlay": BASE_URL + overlay_name
+        })
+    ensure_overlays(overlay_files)
+    return results
+
+def render_results(results):
+    with open(OUTPUT_FILE, "w") as f:
+        json.dump(results, f, indent=2)
+    print(f"[+] scan_results.json generated with full overlay URLs at {OUTPUT_FILE}")
+
+def main():
+    identifiers = load_identifiers()
+    results = run_scan(identifiers)
+    render_results(results)
+
+if __name__ == "__main__":
+    main()

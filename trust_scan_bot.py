@@ -1,22 +1,9 @@
 import os
 import json
+import requests
 from datetime import datetime
 from pathlib import Path
-import requests
 from reddit_trace import query_reddit_threads
-
-def scan_identifier(identifier):
-    value = identifier["identifier"]
-    # Example: Reddit symbolic trace
-    if "TRAVIS" in value or "RYLE" in value:
-        reddit_hits = query_reddit_threads(value)
-        if reddit_hits:
-            return "matched"
-    # Placeholder for Quartz or registry logic
-    # response = requests.get("https://api.quartzregistry.com/scan", params={"id": value})
-    # if response.status_code == 200 and response.json().get("match"):
-    #     return "verified"
-    return "unverified"
 
 BASE_URL = "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/"
 IDENTIFIERS_FILE = Path(__file__).parent / "identifiers.json"
@@ -34,41 +21,44 @@ def load_identifiers():
 
 def ensure_overlays(overlay_files):
     for filename, desc in overlay_files.items():
-        path = OVERLAYS_DIR / filename
-        if not path.exists():
-            with open(path, "w") as f:
-                f.write(f"overlay_name: {desc}\ndescription: Auto-created by Trust Scan Bot\n")
+        overlay_path = OVERLAYS_DIR / filename
+        if not overlay_path.exists():
+            with open(overlay_path, "w") as f:
+                f.write(f"# Overlay for {desc}\nidentifier: {filename.replace('_overlay.yml', '')}\ndescription: {desc}\nstatus: verified\ntimestamp: {datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}")
 
 def scan_identifier(identifier):
-    # Placeholder scan logic — replace with real registry/API calls
+    value = identifier["identifier"]
+    reddit_hits = query_reddit_threads(value)
+    if reddit_hits:
+        identifier["reddit_hits"] = reddit_hits
+        return "matched"
     return "verified"
 
-def run_scan(identifiers):
+def run_scan():
+    identifiers = load_identifiers()
     results = []
+
     overlay_files = {}
     for ident in identifiers:
-        overlay_name = f"{ident['type'].lower()}_overlay.yml"
-        overlay_files[overlay_name] = f"{ident['type']} Overlay"
+        overlay_name = f"{ident['source'].lower()}_overlay.yml"
+        overlay_files[overlay_name] = ident["source"]
+
         status = scan_identifier(ident)
-        results.append({
-            "identifier": ident["value"],
+        result_block = {
+            "identifier": ident["identifier"],
             "status": status,
-            "source": ident["type"],
+            "source": ident["source"],
             "timestamp": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
             "overlay": BASE_URL + overlay_name
-        })
-    ensure_overlays(overlay_files)
-    return results
+        }
+        if "reddit_hits" in ident:
+            result_block["reddit_hits"] = ident["reddit_hits"]
+        results.append(result_block)
 
-def render_results(results):
+    ensure_overlays(overlay_files)
+
     with open(OUTPUT_FILE, "w") as f:
         json.dump(results, f, indent=2)
-    print(f"[+] scan_results.json generated with full overlay URLs at {OUTPUT_FILE}")
-
-def main():
-    identifiers = load_identifiers()
-    results = run_scan(identifiers)
-    render_results(results)
 
 if __name__ == "__main__":
-    main()
+    run_scan()

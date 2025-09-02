@@ -1,44 +1,65 @@
-import requests
-from reddit_trace import query_reddit_threads
-
-def scan_identifier(identifier):
-    value = identifier["identifier"]
-    hits = {}
-
-    # 1️⃣ Reddit symbolic trace
-    reddit_hits = query_reddit_threads(value)
-    if reddit_hits:
-        hits["reddit_hits"] = reddit_hits
-
-    # 2️⃣ SEC EDGAR search
-    try:
-        sec_url = f"https://efts.sec.gov/LATEST/search-index?q={value}"
-        sec_resp = requests.get(sec_url, headers={"User-Agent": "TrustScanBot/1.0"})
-        if sec_resp.status_code == 200 and value.lower() in sec_resp.text.lower():
-            hits["sec_match"] = True
-    except Exception as e:
-        hits["sec_error"] = str(e)
-
-    # 3️⃣ U.S. Treasury / Fiscal Service search
-    try:
-        treasury_url = f"https://www.treasurydirect.gov/TA_WS/securities?search={value}"
-        treasury_resp = requests.get(treasury_url, headers={"User-Agent": "TrustScanBot/1.0"})
-        if treasury_resp.status_code == 200 and value.lower() in treasury_resp.text.lower():
-            hits["treasury_match"] = True
-    except Exception as e:
-        hits["treasury_error"] = str(e)
-
-    # 4️⃣ Los Angeles County Registrar (public search portal)
-    try:
-        la_url = f"https://apps.lavote.net/BDM/Index.cfm?search={value}"
-        la_resp = requests.get(la_url, headers={"User-Agent": "TrustScanBot/1.0"})
-        if la_resp.status_code == 200 and value.lower() in la_resp.text.lower():
-            hits["la_county_match"] = True
-    except Exception as e:
-        hits["la_county_error"] = str(e)
-
-    # Return status
-    if hits:
-        identifier.update(hits)
-        return "matched"
-    return "unverified"
+[
+  {
+    "identifier": "EIN-92-6319308",
+    "source": "EIN",
+    "status": "pending",
+    "timestamp": "",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/ein_overlay.yml"
+  },
+  {
+    "identifier": "SSN-602-05-7209",
+    "source": "SSN",
+    "status": "pending",
+    "timestamp": "",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/ssn_overlay.yml"
+  },
+  {
+    "identifier": "IRS-TRACK-108541264370",
+    "source": "IRSTrack",
+    "status": "pending",
+    "timestamp": "",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/irstrack_overlay.yml"
+  },
+  {
+    "identifier": "CSE-CASE-200000002519088",
+    "source": "CSECase",
+    "status": "pending",
+    "timestamp": "",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/csecase_overlay.yml"
+  },
+  {
+    "identifier": "ADOT-CUST-16088582",
+    "source": "ADOTCust",
+    "status": "pending",
+    "timestamp": "",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/adotcust_overlay.yml"
+  },
+  {
+    "identifier": "ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413",
+    "source": "Address",
+    "status": "pending",
+    "timestamp": "",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/address_overlay.yml"
+  },
+  {
+    "identifier": "ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK",
+    "source": "EntityName",
+    "status": "pending",
+    "timestamp": "",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/entityname_overlay.yml"
+  },
+  {
+    "identifier": "LACOUNTY-BIRTH-REGISTRY-NUMBER",
+    "source": "BirthRegNum",
+    "status": "pending",
+    "timestamp": "",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/birthregnum_overlay.yml"
+  },
+  {
+    "identifier": "LACOUNTY-DEED-DOC-NUMBER",
+    "source": "PropertyRecord",
+    "status": "pending",
+    "timestamp": "",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/propertyrecord_overlay.yml"
+  }
+]

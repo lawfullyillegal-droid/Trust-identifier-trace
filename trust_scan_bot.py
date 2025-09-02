@@ -5,12 +5,13 @@ from pathlib import Path
 
 BASE_URL = "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/"
 IDENTIFIERS_FILE = Path(__file__).parent / "identifiers.json"
-OUTPUT_FILE = Path(__file__).parent / "output" / "scan_results.json"
+OUTPUT_DIR = Path(__file__).parent / "output"
+OUTPUT_FILE = OUTPUT_DIR / "scan_results.json"
 OVERLAYS_DIR = Path(__file__).parent / "overlays"
 
 # Ensure directories exist
 OVERLAYS_DIR.mkdir(exist_ok=True)
-OUTPUT_FILE.parent.mkdir(exist_ok=True)
+OUTPUT_DIR.mkdir(exist_ok=True)
 
 def load_identifiers():
     with open(IDENTIFIERS_FILE, "r") as f:

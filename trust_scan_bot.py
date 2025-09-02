@@ -3,6 +3,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 import requests
+from reddit_trace import query_reddit_threads
 
 def scan_identifier(identifier):
     value = identifier["identifier"]

@@ -1,37 +1,44 @@
-[
-  { "type": "BirthRegNum", "value": "BRN-CA-1983-104" },
-  { "type": "LienRefDoc", "value": "LRD-CA-0190" },
-  { "type": "Certificate", "value": "CERT-CA-003558" },
-  { "type": "MedLicense", "value": "MDLIC-G28013" },
-  { "type": "IssueCode", "value": "ISSUE-CODE-19-228114" },
-  { "type": "DOB", "value": "DOB-1983-01-20-0815" },
-  { "type": "RegAccepted", "value": "REG-ACCEPTED-1983-02-01" },
-  { "type": "MotherName", "value": "MOTHER-CATHY-JUNE-DICKERSON" },
-  { "type": "FatherName", "value": "FATHER-STEVEN-LEIGH-RYLE" },
-  { "type": "Facility", "value": "FACILITY-MEMORIAL-2801-ATLANTIC-LBCA" },
-  { "type": "Issuer", "value": "ISSUER-MIDWEST-BANKNOTE-1999-08-30" },
-  { "type": "SSN", "value": "SSN-602-05-7209" },
-  { "type": "SSNBack", "value": "SSN-BACK-F23579184" },
-  { "type": "SSNIssued", "value": "SSN-ISSUED-2007-10-09" },
-  { "type": "Entity", "value": "ENTITY-RYLE-TRAVIS" },
-  { "type": "Role", "value": "ROLE-INDIVIDUAL-BANKER-CFO" },
-  { "type": "TradeName", "value": "TRADE-RYLE-TRUST-BANK" },
-  { "type": "IRSForm", "value": "IRS-FORM-SS4" },
-  { "type": "Class", "value": "CLASS-FICTITIOUS-DECEDENT-ESTATE" },
-  { "type": "NameFormat", "value": "NAME-FORMAT-RYLE;TRAVIS" },
-  { "type": "EntityName", "value": "ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK" },
-  { "type": "EntityClass", "value": "CLASS-ESTATE-AND-TRUST" },
-  { "type": "Address", "value": "ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413" },
-  { "type": "County", "value": "COUNTY-MOHAVE-AZ" },
-  { "type": "EntityFormed", "value": "ENTITY-FORMED-2021-01-11" },
-  { "type": "EIN", "value": "EIN-92-6319308" },
-  { "type": "CSEParticipant", "value": "CSE-PARTICIPANT-30000000646889" },
-  { "type": "CSECase", "value": "CSE-CASE-200000002519088" },
-  { "type": "CSEJurisdiction", "value": "CSE-JURISDICTION-FRESNO-CA" },
-  { "type": "ADOTCust", "value": "ADOT-CUST-16088582" },
-  { "type": "StateAgency", "value": "STATE-AGENCY-AZ-ADOT" },
-  { "type": "IRSTrack", "value": "IRS-TRACK-108541264370" },
-  { "type": "Taxpayer", "value": "TAXPAYER-TRAVIS-STEVEN-RYLE" },
-  { "type": "TaxYear", "value": "TAX-YEAR-2023" },
-  { "type": "IRSForm1040", "value": "IRS-FORM-1040" }
-]
+import requests
+from reddit_trace import query_reddit_threads
+
+def scan_identifier(identifier):
+    value = identifier["identifier"]
+    hits = {}
+
+    # 1️⃣ Reddit symbolic trace
+    reddit_hits = query_reddit_threads(value)
+    if reddit_hits:
+        hits["reddit_hits"] = reddit_hits
+
+    # 2️⃣ SEC EDGAR search
+    try:
+        sec_url = f"https://efts.sec.gov/LATEST/search-index?q={value}"
+        sec_resp = requests.get(sec_url, headers={"User-Agent": "TrustScanBot/1.0"})
+        if sec_resp.status_code == 200 and value.lower() in sec_resp.text.lower():
+            hits["sec_match"] = True
+    except Exception as e:
+        hits["sec_error"] = str(e)
+
+    # 3️⃣ U.S. Treasury / Fiscal Service search
+    try:
+        treasury_url = f"https://www.treasurydirect.gov/TA_WS/securities?search={value}"
+        treasury_resp = requests.get(treasury_url, headers={"User-Agent": "TrustScanBot/1.0"})
+        if treasury_resp.status_code == 200 and value.lower() in treasury_resp.text.lower():
+            hits["treasury_match"] = True
+    except Exception as e:
+        hits["treasury_error"] = str(e)
+
+    # 4️⃣ Los Angeles County Registrar (public search portal)
+    try:
+        la_url = f"https://apps.lavote.net/BDM/Index.cfm?search={value}"
+        la_resp = requests.get(la_url, headers={"User-Agent": "TrustScanBot/1.0"})
+        if la_resp.status_code == 200 and value.lower() in la_resp.text.lower():
+            hits["la_county_match"] = True
+    except Exception as e:
+        hits["la_county_error"] = str(e)
+
+    # Return status
+    if hits:
+        identifier.update(hits)
+        return "matched"
+    return "unverified"

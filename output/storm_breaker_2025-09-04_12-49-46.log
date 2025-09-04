@@ -1,0 +1,31 @@
+[2025-09-04 12:49:46 UTC] [INFO] Starting Storm-Breaker comprehensive scan
+[2025-09-04 12:49:46 UTC] [INFO] Loaded 9 identifiers from /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/identifiers.json
+[2025-09-04 12:49:46 UTC] [INFO] Processing identifier 1/9
+[2025-09-04 12:49:46 UTC] [INFO] Scanning identifier: EIN-92-6319308
+[2025-09-04 12:49:46 UTC] [INFO] Created overlay file: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/overlays/ein_overlay.yml
+[2025-09-04 12:49:46 UTC] [INFO] Processing identifier 2/9
+[2025-09-04 12:49:46 UTC] [INFO] Scanning identifier: SSN-602-05-7209
+[2025-09-04 12:49:46 UTC] [INFO] Created overlay file: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/overlays/ssn_overlay.yml
+[2025-09-04 12:49:46 UTC] [INFO] Processing identifier 3/9
+[2025-09-04 12:49:46 UTC] [INFO] Scanning identifier: IRS-TRACK-108541264370
+[2025-09-04 12:49:46 UTC] [INFO] Created overlay file: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/overlays/irstrack_overlay.yml
+[2025-09-04 12:49:46 UTC] [INFO] Processing identifier 4/9
+[2025-09-04 12:49:46 UTC] [INFO] Scanning identifier: CSE-CASE-200000002519088
+[2025-09-04 12:49:46 UTC] [INFO] Created overlay file: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/overlays/csecase_overlay.yml
+[2025-09-04 12:49:46 UTC] [INFO] Processing identifier 5/9
+[2025-09-04 12:49:46 UTC] [INFO] Scanning identifier: ADOT-CUST-16088582
+[2025-09-04 12:49:46 UTC] [INFO] Created overlay file: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/overlays/adotcust_overlay.yml
+[2025-09-04 12:49:46 UTC] [INFO] Processing identifier 6/9
+[2025-09-04 12:49:46 UTC] [INFO] Scanning identifier: ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413
+[2025-09-04 12:49:46 UTC] [INFO] Created overlay file: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/overlays/address_overlay.yml
+[2025-09-04 12:49:47 UTC] [INFO] Processing identifier 7/9
+[2025-09-04 12:49:47 UTC] [INFO] Scanning identifier: ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK
+[2025-09-04 12:49:47 UTC] [INFO] Created overlay file: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/overlays/entityname_overlay.yml
+[2025-09-04 12:49:47 UTC] [INFO] Processing identifier 8/9
+[2025-09-04 12:49:47 UTC] [INFO] Scanning identifier: LACOUNTY-BIRTH-REGISTRY-NUMBER
+[2025-09-04 12:49:47 UTC] [INFO] Created overlay file: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/overlays/birthregnum_overlay.yml
+[2025-09-04 12:49:47 UTC] [INFO] Processing identifier 9/9
+[2025-09-04 12:49:47 UTC] [INFO] Scanning identifier: LACOUNTY-DEED-DOC-NUMBER
+[2025-09-04 12:49:47 UTC] [INFO] Created overlay file: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/overlays/propertyrecord_overlay.yml
+[2025-09-04 12:49:47 UTC] [INFO] Completed scan of 9 identifiers
+[2025-09-04 12:49:47 UTC] [INFO] Results saved to: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/output/test_run.json

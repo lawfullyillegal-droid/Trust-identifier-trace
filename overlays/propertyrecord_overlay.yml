@@ -2,12 +2,12 @@ analysis:
   contains_letters: true
   contains_numbers: false
   contains_special: true
-  length: 30
-  pattern_type: birth_registry
-description: Overlay for BirthRegNum identifier
-hash: 8a5ae646acaf4bd6
-identifier: LACOUNTY-BIRTH-REGISTRY-NUMBER
-source: BirthRegNum
+  length: 24
+  pattern_type: property_record
+description: Overlay for PropertyRecord identifier
+hash: 7f46e1fb5e4ffdd2
+identifier: LACOUNTY-DEED-DOC-NUMBER
+source: PropertyRecord
 status: verified
 timestamp: 2025-09-04 12:51 UTC
 validation:

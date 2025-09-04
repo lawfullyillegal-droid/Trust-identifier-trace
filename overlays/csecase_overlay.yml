@@ -1,2 +1,17 @@
-overlay_name: CSECase Overlay
-description: Auto-created by Trust Scan Bot
+analysis:
+  contains_letters: true
+  contains_numbers: true
+  contains_special: true
+  length: 24
+  pattern_type: child_support_enforcement
+description: Overlay for CSECase identifier
+hash: eea9e99c5ff446c9
+identifier: CSE-CASE-200000002519088
+source: CSECase
+status: verified
+timestamp: 2025-09-04 12:51 UTC
+validation:
+  checksum_valid: null
+  confidence: 0.8
+  format_valid: true
+  risk_level: low

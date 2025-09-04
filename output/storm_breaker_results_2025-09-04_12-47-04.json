@@ -1,0 +1,199 @@
+{
+  "scan_info": {
+    "timestamp": "2025-09-04_12-47-04",
+    "tool": "Storm-Breaker v1.0",
+    "total_identifiers": 9,
+    "scan_duration": "N/A"
+  },
+  "results": [
+    {
+      "identifier": "EIN-92-6319308",
+      "source": "EIN",
+      "hash": "fe628416a7bd99ee",
+      "scan_timestamp": "2025-09-04 12:47:04 UTC",
+      "analysis": {
+        "length": 14,
+        "contains_numbers": true,
+        "contains_letters": true,
+        "contains_special": true,
+        "pattern_type": "employer_identification"
+      },
+      "validation": {
+        "format_valid": true,
+        "checksum_valid": null,
+        "risk_level": "low",
+        "confidence": 0.8
+      },
+      "status": "scanned",
+      "overlay_path": "/home/runner/work/Trust-identifier-trace/Trust-identifier-trace/overlays/ein_overlay.yml"
+    },
+    {
+      "identifier": "SSN-602-05-7209",
+      "source": "SSN",
+      "hash": "040faed158542a9c",
+      "scan_timestamp": "2025-09-04 12:47:04 UTC",
+      "analysis": {
+        "length": 15,
+        "contains_numbers": true,
+        "contains_letters": true,
+        "contains_special": true,
+        "pattern_type": "social_security"
+      },
+      "validation": {
+        "format_valid": true,
+        "checksum_valid": null,
+        "risk_level": "low",
+        "confidence": 0.8
+      },
+      "status": "scanned",
+      "overlay_path": "/home/runner/work/Trust-identifier-trace/Trust-identifier-trace/overlays/ssn_overlay.yml"
+    },
+    {
+      "identifier": "IRS-TRACK-108541264370",
+      "source": "IRSTrack",
+      "hash": "25dc26a61acf8bc6",
+      "scan_timestamp": "2025-09-04 12:47:04 UTC",
+      "analysis": {
+        "length": 22,
+        "contains_numbers": true,
+        "contains_letters": true,
+        "contains_special": true,
+        "pattern_type": "irs_tracking"
+      },
+      "validation": {
+        "format_valid": true,
+        "checksum_valid": null,
+        "risk_level": "low",
+        "confidence": 0.8
+      },
+      "status": "scanned",
+      "overlay_path": "/home/runner/work/Trust-identifier-trace/Trust-identifier-trace/overlays/irstrack_overlay.yml"
+    },
+    {
+      "identifier": "CSE-CASE-200000002519088",
+      "source": "CSECase",
+      "hash": "eea9e99c5ff446c9",
+      "scan_timestamp": "2025-09-04 12:47:04 UTC",
+      "analysis": {
+        "length": 24,
+        "contains_numbers": true,
+        "contains_letters": true,
+        "contains_special": true,
+        "pattern_type": "child_support_enforcement"
+      },
+      "validation": {
+        "format_valid": true,
+        "checksum_valid": null,
+        "risk_level": "low",
+        "confidence": 0.8
+      },
+      "status": "scanned",
+      "overlay_path": "/home/runner/work/Trust-identifier-trace/Trust-identifier-trace/overlays/csecase_overlay.yml"
+    },
+    {
+      "identifier": "ADOT-CUST-16088582",
+      "source": "ADOTCust",
+      "hash": "07aa753efb175927",
+      "scan_timestamp": "2025-09-04 12:47:04 UTC",
+      "analysis": {
+        "length": 18,
+        "contains_numbers": true,
+        "contains_letters": true,
+        "contains_special": true,
+        "pattern_type": "arizona_dot_customer"
+      },
+      "validation": {
+        "format_valid": true,
+        "checksum_valid": null,
+        "risk_level": "low",
+        "confidence": 0.8
+      },
+      "status": "scanned",
+      "overlay_path": "/home/runner/work/Trust-identifier-trace/Trust-identifier-trace/overlays/adotcust_overlay.yml"
+    },
+    {
+      "identifier": "ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413",
+      "source": "Address",
+      "hash": "017ac2c3829d73f7",
+      "scan_timestamp": "2025-09-04 12:47:04 UTC",
+      "analysis": {
+        "length": 43,
+        "contains_numbers": true,
+        "contains_letters": true,
+        "contains_special": true,
+        "pattern_type": "address"
+      },
+      "validation": {
+        "format_valid": true,
+        "checksum_valid": null,
+        "risk_level": "low",
+        "confidence": 0.8
+      },
+      "status": "scanned",
+      "overlay_path": "/home/runner/work/Trust-identifier-trace/Trust-identifier-trace/overlays/address_overlay.yml"
+    },
+    {
+      "identifier": "ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK",
+      "source": "EntityName",
+      "hash": "0a022ef9bf8d7c37",
+      "scan_timestamp": "2025-09-04 12:47:05 UTC",
+      "analysis": {
+        "length": 35,
+        "contains_numbers": false,
+        "contains_letters": true,
+        "contains_special": true,
+        "pattern_type": "entity_name"
+      },
+      "validation": {
+        "format_valid": true,
+        "checksum_valid": null,
+        "risk_level": "low",
+        "confidence": 0.8
+      },
+      "status": "scanned",
+      "overlay_path": "/home/runner/work/Trust-identifier-trace/Trust-identifier-trace/overlays/entityname_overlay.yml"
+    },
+    {
+      "identifier": "LACOUNTY-BIRTH-REGISTRY-NUMBER",
+      "source": "BirthRegNum",
+      "hash": "8a5ae646acaf4bd6",
+      "scan_timestamp": "2025-09-04 12:47:05 UTC",
+      "analysis": {
+        "length": 30,
+        "contains_numbers": false,
+        "contains_letters": true,
+        "contains_special": true,
+        "pattern_type": "birth_registry"
+      },
+      "validation": {
+        "format_valid": true,
+        "checksum_valid": null,
+        "risk_level": "low",
+        "confidence": 0.8
+      },
+      "status": "scanned",
+      "overlay_path": "/home/runner/work/Trust-identifier-trace/Trust-identifier-trace/overlays/birthregnum_overlay.yml"
+    },
+    {
+      "identifier": "LACOUNTY-DEED-DOC-NUMBER",
+      "source": "PropertyRecord",
+      "hash": "7f46e1fb5e4ffdd2",
+      "scan_timestamp": "2025-09-04 12:47:05 UTC",
+      "analysis": {
+        "length": 24,
+        "contains_numbers": false,
+        "contains_letters": true,
+        "contains_special": true,
+        "pattern_type": "property_record"
+      },
+      "validation": {
+        "format_valid": true,
+        "checksum_valid": null,
+        "risk_level": "low",
+        "confidence": 0.8
+      },
+      "status": "scanned",
+      "overlay_path": "/home/runner/work/Trust-identifier-trace/Trust-identifier-trace/overlays/propertyrecord_overlay.yml"
+    }
+  ]
+}

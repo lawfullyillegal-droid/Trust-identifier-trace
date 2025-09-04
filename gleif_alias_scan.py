@@ -1,5 +1,5 @@
 import requests, xml.etree.ElementTree as ET
-from datetime import datetime
+from datetime import datetime, timezone
 import hashlib, yaml
 
 # Load aliases
@@ -8,8 +8,13 @@ with open("identifiers.yaml", "r") as f:
 
 # Pull GLEIF data
 gleif_url = "https://api.gleif.org/api/v1/lei-records?page[size]=1000"
-response = requests.get(gleif_url)
-data = response.json()
+try:
+    response = requests.get(gleif_url, timeout=30)
+    response.raise_for_status()
+    data = response.json()
+except Exception as e:
+    print(f"Warning: Could not fetch GLEIF data: {e}")
+    data = {"data": []}
 
 # Match aliases
 matches_found = []
@@ -22,7 +27,7 @@ for record in data.get("data", []):
 # Log to XML
 root = ET.Element("GLEIFResults")
 timestamp = ET.SubElement(root, "Timestamp")
-timestamp.text = datetime.now().isoformat()
+timestamp.text = datetime.now(timezone.utc).isoformat()
 matches = ET.SubElement(root, "Matches")
 
 for match in matches_found:
@@ -43,7 +48,7 @@ try:
     tree = ET.parse("trust_overlay.xml")
     root = tree.getroot()
     root.find("TechnicalTrace").find("OverlayHash").text = hash_value
-    root.set("timestamp", datetime.now().isoformat())
+    root.set("timestamp", datetime.now(timezone.utc).isoformat())
     tree.write("trust_overlay.xml", encoding="utf-8", xml_declaration=True)
     print("✅ Overlay updated.")
 except Exception as e:

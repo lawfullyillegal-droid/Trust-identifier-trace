@@ -1,6 +1,6 @@
 name: Trust Scan Override
 
-on:
+"on":
   workflow_dispatch:
 
 jobs:
@@ -13,10 +13,10 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install requests pyyaml
 
       - name: Run Trust Scan Bot
         run: |
@@ -34,7 +34,7 @@ jobs:
       - name: Commit scan log
         run: |
           git config --global user.name "TrustBot"
-          git config --global user.email "trustbot@github.com"
+          git config --global user.email "trustbot@travisryle.org"
           git add TrustScanLog.txt || echo "Nothing to add"
           git commit -m "Override scan: $(date -u +'%Y-%m-%d %H:%M:%S')" || echo "No commit needed"
           git push || echo "No push needed"

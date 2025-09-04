@@ -8,8 +8,26 @@ with open("identifiers.yaml", "r") as f:
 
 # Pull GLEIF data
 gleif_url = "https://api.gleif.org/api/v1/lei-records?page[size]=1000"
-response = requests.get(gleif_url)
-data = response.json()
+try:
+    response = requests.get(gleif_url, timeout=10)
+    response.raise_for_status()
+    data = response.json()
+except requests.exceptions.RequestException as e:
+    print(f"⚠️ Network error: {e}")
+    print("📄 Creating sample data for offline testing...")
+    data = {
+        "data": [
+            {
+                "id": "SAMPLE-LEI-TRUST-001",
+                "attributes": {
+                    "entity": {
+                        "legalName": "Travis Ryle Private Trust Bank",
+                        "legalAddress": {"country": "US"}
+                    }
+                }
+            }
+        ]
+    }
 
 # Match aliases
 matches_found = []

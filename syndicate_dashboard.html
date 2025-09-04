@@ -36,28 +36,27 @@
         })
         .then(data => {
           total += data.length;
-          let runHTML = <h2>Run : </h2><table><tr><th>Identifier</th><th>Status</th><th>Reason</th></tr>;
+          let runHTML = `<h2>Run ${index + 1}: </h2><table><tr><th>Identifier</th><th>Status</th><th>Reason</th></tr>`;
           data.forEach(item => {
             if (item.status === "verified") verified++;
             else if (item.status === "flagged") flagged++;
             else unmatched++;
-            runHTML += <tr>
-                          <td></td>
-                          <td class=""></td>
-                          <td></td>
-                        </tr>;
+            runHTML += `<tr>
+                          <td>${item.identifier}</td>
+                          <td class="${item.status}">${item.status}</td>
+                          <td>${item.reason || 'N/A'}</td>
+                        </tr>`;
           });
           runHTML += "</table>";
           document.getElementById("runs").innerHTML += runHTML;
           document.getElementById("summary").innerHTML = 
-            <p>Total Identifiers Scanned: </p>
-            <p class='verified'>Verified: </p>
-            <p class='flagged'>Flagged: </p>
-            <p class='unmatched'>Unmatched: </p>
-          ;
+            `<p>Total Identifiers Scanned: ${total}</p>
+            <p class='verified'>Verified: ${verified}</p>
+            <p class='flagged'>Flagged: ${flagged}</p>
+            <p class='unmatched'>Unmatched: ${unmatched}</p>`;
         })
         .catch(err => {
-          document.getElementById("error").innerHTML += <p></p>;
+          document.getElementById("error").innerHTML += `<p>Error loading ${path}: ${err.message}</p>`;
         });
     });
   </script>

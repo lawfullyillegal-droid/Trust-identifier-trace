@@ -25,7 +25,7 @@
   <h2 style="margin-top:40px;">🧠 Visual Trace Map</h2>
   <div id="traceMap" style="width:100%; height:500px; background:#222; border:1px solid #444;"></div>
 
-  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
   <script>
     fetch('output/scan_results.json')
       .then(res => res.json())
@@ -78,95 +78,115 @@
         document.getElementById('summary').innerHTML = "<p style='color:red'>Failed to load scan results.</p>";
       });
 
-    const nodes = [
-      { id: "CORP-NUM-C2362627", group: "Identifier" },
-      { id: "OpenCorporates", group: "Registry" },
-      { id: "LN-NAME-RYLE-TRAVIS-STEVEN", group: "Identifier" },
-      { id: "LexisNexis", group: "Registry" },
-      { id: "PROP-SS-GUARANTEE-104-0190-003558", group: "Identifier" },
-      { id: "IRS Form 1099-A", group: "Registry" },
-      { id: "IRS-TRACK-108541264370", group: "Identifier" },
-      { id: "IRS Non-Filing", group: "Registry" },
-      { id: "EIN-92-6319308", group: "Identifier" },
-      { id: "EIN Registry", group: "Registry" }
-    ];
+    // Visual Trace Map with fallback
+    if (typeof d3 !== 'undefined') {
+      // D3.js visualization code
+      const nodes = [
+        { id: "CORP-NUM-C2362627", group: "Identifier" },
+        { id: "OpenCorporates", group: "Registry" },
+        { id: "LN-NAME-RYLE-TRAVIS-STEVEN", group: "Identifier" },
+        { id: "LexisNexis", group: "Registry" },
+        { id: "PROP-SS-GUARANTEE-104-0190-003558", group: "Identifier" },
+        { id: "IRS Form 1099-A", group: "Registry" },
+        { id: "IRS-TRACK-108541264370", group: "Identifier" },
+        { id: "IRS Non-Filing", group: "Registry" },
+        { id: "EIN-92-6319308", group: "Identifier" },
+        { id: "EIN Registry", group: "Registry" }
+      ];
 
-    const links = [
-      { source: "CORP-NUM-C2362627", target: "OpenCorporates" },
-      { source: "LN-NAME-RYLE-TRAVIS-STEVEN", target: "LexisNexis" },
-      { source: "PROP-SS-GUARANTEE-104-0190-003558", target: "IRS Form 1099-A" },
-      { source: "IRS-TRACK-108541264370", target: "IRS Non-Filing" },
-      { source: "EIN-92-6319308", target: "EIN Registry" }
-    ];
+      const links = [
+        { source: "CORP-NUM-C2362627", target: "OpenCorporates" },
+        { source: "LN-NAME-RYLE-TRAVIS-STEVEN", target: "LexisNexis" },
+        { source: "PROP-SS-GUARANTEE-104-0190-003558", target: "IRS Form 1099-A" },
+        { source: "IRS-TRACK-108541264370", target: "IRS Non-Filing" },
+        { source: "EIN-92-6319308", target: "EIN Registry" }
+      ];
 
-    const svg = d3.select("#traceMap").append("svg")
-      .attr("width", "100%")
-      .attr("height", 500);
+      const svg = d3.select("#traceMap").append("svg")
+        .attr("width", "100%")
+        .attr("height", 500);
 
-    const width = document.getElementById("traceMap").clientWidth;
-    const height = 500;
+      const width = document.getElementById("traceMap").clientWidth;
+      const height = 500;
 
-    const simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links).id(d => d.id).distance(120))
-      .force("charge", d3.forceManyBody().strength(-300))
-      .force("center", d3.forceCenter(width / 2, height / 2));
+      const simulation = d3.forceSimulation(nodes)
+        .force("link", d3.forceLink(links).id(d => d.id).distance(120))
+        .force("charge", d3.forceManyBody().strength(-300))
+        .force("center", d3.forceCenter(width / 2, height / 2));
 
-    const link = svg.append("g")
-      .selectAll("line")
-      .data(links)
-      .join("line")
-      .attr("stroke", "#888")
-      .attr("stroke-width", 2);
+      const link = svg.append("g")
+        .selectAll("line")
+        .data(links)
+        .join("line")
+        .attr("stroke", "#888")
+        .attr("stroke-width", 2);
 
-    const node = svg.append("g")
-      .selectAll("circle")
-      .data(nodes)
-      .join("circle")
-      .attr("r", 10)
-      .attr("fill", d => d.group === "Registry" ? "#0ff" : "#0f0")
-      .call(drag(simulation));
+      const node = svg.append("g")
+        .selectAll("circle")
+        .data(nodes)
+        .join("circle")
+        .attr("r", 10)
+        .attr("fill", d => d.group === "Registry" ? "#0ff" : "#0f0")
+        .call(drag(simulation));
 
-    const label = svg.append("g")
-      .selectAll("text")
-      .data(nodes)
-      .join("text")
-      .text(d => d.id)
-      .attr("fill", "#eee")
-      .attr("font-size", "12px");
+      const label = svg.append("g")
+        .selectAll("text")
+        .data(nodes)
+        .join("text")
+        .text(d => d.id)
+        .attr("fill", "#eee")
+        .attr("font-size", "12px");
 
-    function drag(simulation) {
-      function dragstarted(event) {
-        if (!event.active) simulation.alphaTarget(0.3).restart();
-        event.subject.fx = event.subject.x;
-        event.subject.fy = event.subject.y;
+      function drag(simulation) {
+        function dragstarted(event) {
+          if (!event.active) simulation.alphaTarget(0.3).restart();
+          event.subject.fx = event.subject.x;
+          event.subject.fy = event.subject.y;
+        }
+        function dragged(event) {
+          event.subject.fx = event.x;
+          event.subject.fy = event.y;
+        }
+        function dragended(event) {
+          if (!event.active) simulation.alphaTarget(0);
+          event.subject.fx = null;
+          event.subject.fy = null;
+        }
+        return d3.drag().on("start", dragstarted).on("drag", dragged).on("end", dragended);
       }
-      function dragged(event) {
-        event.subject.fx = event.x;
-        event.subject.fy = event.y;
-      }
-      function dragended(event) {
-        if (!event.active) simulation.alphaTarget(0);
-        event.subject.fx = null;
-        event.subject.fy = null;
-      }
-      return d3.drag().on("start", dragstarted).on("drag", dragged).on("end", dragended);
+
+      simulation.on("tick", () => {
+        link
+          .attr("x1", d => d.source.x)
+          .attr("y1", d => d.source.y)
+          .attr("x2", d => d.target.x)
+          .attr("y2", d => d.target.y);
+
+        node
+          .attr("cx", d => d.x)
+          .attr("cy", d => d.y);
+
+        label
+          .attr("x", d => d.x + 12)
+          .attr("y", d => d.y + 4);
+      });
+    } else {
+      // Fallback when D3.js is not available
+      document.getElementById("traceMap").innerHTML = `
+        <div style="padding: 50px; text-align: center; color: #888;">
+          <h3>📊 Visual Trace Map</h3>
+          <p>Interactive visualization requires D3.js library</p>
+          <p style="margin-top: 20px;">Identifier connections:</p>
+          <ul style="text-align: left; max-width: 500px; margin: 0 auto;">
+            <li>CORP-NUM-C2362627 → OpenCorporates</li>
+            <li>LN-NAME-RYLE-TRAVIS-STEVEN → LexisNexis</li>
+            <li>PROP-SS-GUARANTEE-104-0190-003558 → IRS Form 1099-A</li>
+            <li>IRS-TRACK-108541264370 → IRS Non-Filing</li>
+            <li>EIN-92-6319308 → EIN Registry</li>
+          </ul>
+        </div>
+      `;
     }
-
-    simulation.on("tick", () => {
-      link
-        .attr("x1", d => d.source.x)
-        .attr("y1", d => d.source.y)
-        .attr("x2", d => d.target.x)
-        .attr("y2", d => d.target.y);
-
-      node
-        .attr("cx", d => d.x)
-        .attr("cy", d => d.y);
-
-      label
-        .attr("x", d => d.x + 12)
-        .attr("y", d => d.y + 4);
-    });
   </script>
 </body>
 </html>

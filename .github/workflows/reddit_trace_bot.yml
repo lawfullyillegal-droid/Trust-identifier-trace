@@ -1,0 +1,35 @@
+name: Reddit Thread Profiler
+
+"on":
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'  # Runs every 6 hours
+
+jobs:
+  scan_reddit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: pip install requests pyyaml
+
+      - name: Run Reddit Profiler
+        run: python reddit_trace.py
+
+      - name: Configure Git
+        run: |
+          git config user.name "TrustBot"
+          git config user.email "trustbot@travisryle.org"
+
+      - name: Commit results
+        run: |
+          git add -A
+          git commit -m "Reddit trace results [$(date -u +'%Y-%m-%d %H:%M:%S')]" || echo "No changes to commit"
+          git push

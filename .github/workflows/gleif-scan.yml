@@ -1,13 +1,13 @@
 name: Daily GLEIF Scan + Overlay Injection
 
-on:
+"on":
   schedule:
     - cron: '0 12 * * *'  # Runs daily at 12:00 UTC
   workflow_dispatch:
 
 jobs:
   gleif-scan:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -28,5 +28,5 @@ jobs:
           git config user.name "TrustBot"
           git config user.email "trustbot@travisryle.org"
           git add gleif_results.xml trust_overlay.xml
-          git commit -m "Daily GLEIF scan + overlay update [$(Get-Date -Format 'yyyy-MM-dd_HH-mm-ss')]"
+          git commit -m "Daily GLEIF scan + overlay update [$(date -u +'%Y-%m-%d %H:%M:%S')]"
           git push origin main

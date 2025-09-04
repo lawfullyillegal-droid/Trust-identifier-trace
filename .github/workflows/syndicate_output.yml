@@ -1,6 +1,6 @@
 name: Syndicate Scan Results
 
-on:
+"on":
   workflow_run:
     workflows: ["Trust Scan Bot"]
     types:
@@ -16,7 +16,7 @@ jobs:
       - name: Configure Git
         run: |
           git config user.name "TrustBot"
-          git config user.email "trustbot@local"
+          git config user.email "trustbot@travisryle.org"
 
       - name: Commit scan_results.json
         run: |

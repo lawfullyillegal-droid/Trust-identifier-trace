@@ -1,6 +1,6 @@
 import requests
 import xml.etree.ElementTree as ET
-from datetime import datetime
+from datetime import datetime, timezone
 import hashlib
 import os
 import traceback
@@ -36,11 +36,12 @@ log_path = "output/scan_log.txt"
 with open(log_path, "w") as log:
     for identifier in IDENTIFIER_PAYLOAD:
         print(f"🔍 Scanning external sources for: {identifier}")
-        log.write(f"[{datetime.now()}] Scanning: {identifier}\n")
+        log.write(f"[{datetime.now(timezone.utc)}] Scanning: {identifier}\n")
 
         try:
             query_url = f"https://api.gleif.org/api/v1/lei-records?filter[entity.legalName]={identifier}"
-            response = requests.get(query_url)
+            response = requests.get(query_url, timeout=30)
+            response.raise_for_status()
             data = response.json()
 
             if data.get("data"):

@@ -8,8 +8,13 @@ with open("identifiers.yaml", "r") as f:
 
 # Pull GLEIF data
 gleif_url = "https://api.gleif.org/api/v1/lei-records?page[size]=1000"
-response = requests.get(gleif_url)
-data = response.json()
+try:
+    response = requests.get(gleif_url)
+    data = response.json()
+except Exception as e:
+    print(f"⚠️ Network error querying GLEIF API: {e}")
+    # Create empty data structure to allow script to continue
+    data = {"data": []}
 
 # Match aliases
 matches_found = []
@@ -34,6 +39,7 @@ for match in matches_found:
 
 tree = ET.ElementTree(root)
 tree.write("gleif_results.xml", encoding="utf-8", xml_declaration=True)
+print(f"✅ GLEIF results saved with {len(matches_found)} matches found")
 
 # Inject overlay hash
 try:

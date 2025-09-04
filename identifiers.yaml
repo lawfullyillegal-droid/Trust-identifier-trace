@@ -1,3 +1,9 @@
+trust_aliases:
+  - "TRAVIS"
+  - "RYLE"
+  - "PRIVATE BANK"
+  - "ESTATE"
+  - "TRUST"
 adot_numbers:
   - "AZC-004921"
   - "ADOT-782134"

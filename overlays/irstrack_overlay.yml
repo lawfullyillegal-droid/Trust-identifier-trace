@@ -1,2 +1,17 @@
-overlay_name: IRSTrack Overlay
-description: Auto-created by Trust Scan Bot
+analysis:
+  contains_letters: true
+  contains_numbers: true
+  contains_special: true
+  length: 22
+  pattern_type: irs_tracking
+description: Overlay for IRSTrack identifier
+hash: 25dc26a61acf8bc6
+identifier: IRS-TRACK-108541264370
+source: IRSTrack
+status: verified
+timestamp: 2025-09-04 12:51 UTC
+validation:
+  checksum_valid: null
+  confidence: 0.8
+  format_valid: true
+  risk_level: low

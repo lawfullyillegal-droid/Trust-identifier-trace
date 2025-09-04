@@ -1,2 +1,17 @@
-overlay_name: SSN Overlay
-description: Auto-created by Trust Scan Bot
+analysis:
+  contains_letters: true
+  contains_numbers: true
+  contains_special: true
+  length: 15
+  pattern_type: social_security
+description: Overlay for SSN identifier
+hash: 040faed158542a9c
+identifier: SSN-602-05-7209
+source: SSN
+status: verified
+timestamp: 2025-09-04 12:51 UTC
+validation:
+  checksum_valid: null
+  confidence: 0.8
+  format_valid: true
+  risk_level: low

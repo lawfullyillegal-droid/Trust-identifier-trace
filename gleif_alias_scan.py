@@ -4,7 +4,7 @@ import hashlib, yaml
 
 # Load aliases
 with open("identifiers.yaml", "r") as f:
-    aliases = yaml.safe_load(f)["trust_aliases"]
+    aliases = yaml.safe_load(f).get("trust_aliases", [])
 
 # Pull GLEIF data
 gleif_url = "https://api.gleif.org/api/v1/lei-records?page[size]=1000"

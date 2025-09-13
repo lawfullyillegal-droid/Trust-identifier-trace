@@ -1,4 +1,4 @@
-[2025-09-13 17:38:39.652476] Scanning: BRN-CA-1983-104
+[2025-09-13 17:40:10.788775] Scanning: BRN-CA-1983-104
 [ERROR] BRN-CA-1983-104: Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
     sock = connection.create_connection(
@@ -28,7 +28,7 @@ Traceback (most recent call last):
                        ^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
     raise NameResolutionError(self.host, self, e) from e
-urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7f6a2ec62ba0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7fcb60a62b10>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
 
 The above exception was the direct cause of the following exception:
 
@@ -42,7 +42,7 @@ Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
     raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=BRN-CA-1983-104 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2ec62ba0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=BRN-CA-1983-104 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb60a62b10>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
 During handling of the above exception, another exception occurred:
 
@@ -64,9 +64,9 @@ Traceback (most recent call last):
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
     raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=BRN-CA-1983-104 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2ec62ba0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=BRN-CA-1983-104 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb60a62b10>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
-[2025-09-13 17:38:39.662199] Scanning: CERT-CA-003558
+[2025-09-13 17:40:10.794854] Scanning: CERT-CA-003558
 [ERROR] CERT-CA-003558: Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
     sock = connection.create_connection(
@@ -96,7 +96,7 @@ Traceback (most recent call last):
                        ^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
     raise NameResolutionError(self.host, self, e) from e
-urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7f6a2eab67e0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7fcb608b74d0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
 
 The above exception was the direct cause of the following exception:
 
@@ -110,7 +110,7 @@ Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
     raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=CERT-CA-003558 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2eab67e0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=CERT-CA-003558 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608b74d0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
 During handling of the above exception, another exception occurred:
 
@@ -132,9 +132,9 @@ Traceback (most recent call last):
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
     raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=CERT-CA-003558 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2eab67e0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=CERT-CA-003558 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608b74d0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
-[2025-09-13 17:38:39.666593] Scanning: DOB-1983-01-20-0815
+[2025-09-13 17:40:10.797955] Scanning: DOB-1983-01-20-0815
 [ERROR] DOB-1983-01-20-0815: Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
     sock = connection.create_connection(
@@ -164,7 +164,7 @@ Traceback (most recent call last):
                        ^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
     raise NameResolutionError(self.host, self, e) from e
-urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7f6a2eab7d10>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7fcb608b7c20>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
 
 The above exception was the direct cause of the following exception:
 
@@ -178,7 +178,7 @@ Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
     raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=DOB-1983-01-20-0815 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2eab7d10>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=DOB-1983-01-20-0815 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608b7c20>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
 During handling of the above exception, another exception occurred:
 
@@ -200,9 +200,9 @@ Traceback (most recent call last):
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
     raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=DOB-1983-01-20-0815 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2eab7d10>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=DOB-1983-01-20-0815 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608b7c20>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
-[2025-09-13 17:38:39.671384] Scanning: SSN-602-05-7209
+[2025-09-13 17:40:10.800973] Scanning: SSN-602-05-7209
 [ERROR] SSN-602-05-7209: Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
     sock = connection.create_connection(
@@ -232,7 +232,7 @@ Traceback (most recent call last):
                        ^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
     raise NameResolutionError(self.host, self, e) from e
-urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7f6a2ead4560>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7fcb608d4230>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
 
 The above exception was the direct cause of the following exception:
 
@@ -246,7 +246,7 @@ Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
     raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=SSN-602-05-7209 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2ead4560>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=SSN-602-05-7209 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608d4230>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
 During handling of the above exception, another exception occurred:
 
@@ -268,9 +268,9 @@ Traceback (most recent call last):
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
     raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=SSN-602-05-7209 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2ead4560>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=SSN-602-05-7209 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608d4230>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
-[2025-09-13 17:38:39.675362] Scanning: EIN-92-6319308
+[2025-09-13 17:40:10.805403] Scanning: EIN-92-6319308
 [ERROR] EIN-92-6319308: Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
     sock = connection.create_connection(
@@ -300,7 +300,7 @@ Traceback (most recent call last):
                        ^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
     raise NameResolutionError(self.host, self, e) from e
-urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7f6a2ead4c20>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7fcb608d4920>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
 
 The above exception was the direct cause of the following exception:
 
@@ -314,7 +314,7 @@ Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
     raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=EIN-92-6319308 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2ead4c20>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=EIN-92-6319308 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608d4920>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
 During handling of the above exception, another exception occurred:
 
@@ -336,9 +336,9 @@ Traceback (most recent call last):
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
     raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=EIN-92-6319308 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2ead4c20>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=EIN-92-6319308 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608d4920>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
-[2025-09-13 17:38:39.679925] Scanning: ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK
+[2025-09-13 17:40:10.815140] Scanning: ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK
 [ERROR] ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK: Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
     sock = connection.create_connection(
@@ -368,7 +368,7 @@ Traceback (most recent call last):
                        ^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
     raise NameResolutionError(self.host, self, e) from e
-urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7f6a2eab7440>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7fcb608b7ef0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
 
 The above exception was the direct cause of the following exception:
 
@@ -382,7 +382,7 @@ Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
     raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2eab7440>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608b7ef0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
 During handling of the above exception, another exception occurred:
 
@@ -404,9 +404,9 @@ Traceback (most recent call last):
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
     raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2eab7440>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608b7ef0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
-[2025-09-13 17:38:39.684638] Scanning: ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413
+[2025-09-13 17:40:10.822480] Scanning: ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413
 [ERROR] ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413: Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
     sock = connection.create_connection(
@@ -436,7 +436,7 @@ Traceback (most recent call last):
                        ^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
     raise NameResolutionError(self.host, self, e) from e
-urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7f6a2ead4ef0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7fcb6164cb90>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
 
 The above exception was the direct cause of the following exception:
 
@@ -450,7 +450,7 @@ Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
     raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2ead4ef0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb6164cb90>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
 During handling of the above exception, another exception occurred:
 
@@ -472,9 +472,9 @@ Traceback (most recent call last):
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
     raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2ead4ef0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb6164cb90>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
-[2025-09-13 17:38:39.695955] Scanning: CSE-PARTICIPANT-30000000646889
+[2025-09-13 17:40:10.826481] Scanning: CSE-PARTICIPANT-30000000646889
 [ERROR] CSE-PARTICIPANT-30000000646889: Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
     sock = connection.create_connection(
@@ -504,7 +504,7 @@ Traceback (most recent call last):
                        ^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
     raise NameResolutionError(self.host, self, e) from e
-urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7f6a2ead5040>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7fcb608d4f20>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
 
 The above exception was the direct cause of the following exception:
 
@@ -518,7 +518,7 @@ Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
     raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=CSE-PARTICIPANT-30000000646889 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2ead5040>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=CSE-PARTICIPANT-30000000646889 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608d4f20>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
 During handling of the above exception, another exception occurred:
 
@@ -540,9 +540,9 @@ Traceback (most recent call last):
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
     raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=CSE-PARTICIPANT-30000000646889 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2ead5040>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=CSE-PARTICIPANT-30000000646889 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608d4f20>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
-[2025-09-13 17:38:39.709227] Scanning: ADOT-CUST-16088582
+[2025-09-13 17:40:10.829823] Scanning: ADOT-CUST-16088582
 [ERROR] ADOT-CUST-16088582: Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
     sock = connection.create_connection(
@@ -572,7 +572,7 @@ Traceback (most recent call last):
                        ^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
     raise NameResolutionError(self.host, self, e) from e
-urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7f6a2ead58b0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7fcb608d5790>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
 
 The above exception was the direct cause of the following exception:
 
@@ -586,7 +586,7 @@ Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
     raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=ADOT-CUST-16088582 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2ead58b0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=ADOT-CUST-16088582 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608d5790>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
 During handling of the above exception, another exception occurred:
 
@@ -608,9 +608,9 @@ Traceback (most recent call last):
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
     raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=ADOT-CUST-16088582 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2ead58b0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=ADOT-CUST-16088582 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608d5790>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
-[2025-09-13 17:38:39.714566] Scanning: LN-NAME-RYLE-TRAVIS-STEVEN
+[2025-09-13 17:40:10.833200] Scanning: LN-NAME-RYLE-TRAVIS-STEVEN
 [ERROR] LN-NAME-RYLE-TRAVIS-STEVEN: Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
     sock = connection.create_connection(
@@ -640,7 +640,7 @@ Traceback (most recent call last):
                        ^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
     raise NameResolutionError(self.host, self, e) from e
-urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7f6a2ead61b0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7fcb608d6090>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
 
 The above exception was the direct cause of the following exception:
 
@@ -654,7 +654,7 @@ Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
     raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=LN-NAME-RYLE-TRAVIS-STEVEN (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2ead61b0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=LN-NAME-RYLE-TRAVIS-STEVEN (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608d6090>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
 During handling of the above exception, another exception occurred:
 
@@ -676,9 +676,9 @@ Traceback (most recent call last):
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
     raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=LN-NAME-RYLE-TRAVIS-STEVEN (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2ead61b0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=LN-NAME-RYLE-TRAVIS-STEVEN (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608d6090>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
-[2025-09-13 17:38:39.719991] Scanning: CORP-NUM-C2362627
+[2025-09-13 17:40:10.836891] Scanning: CORP-NUM-C2362627
 [ERROR] CORP-NUM-C2362627: Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
     sock = connection.create_connection(
@@ -708,7 +708,7 @@ Traceback (most recent call last):
                        ^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
     raise NameResolutionError(self.host, self, e) from e
-urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7f6a2ead6a80>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7fcb608d6930>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
 
 The above exception was the direct cause of the following exception:
 
@@ -722,7 +722,7 @@ Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
     raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=CORP-NUM-C2362627 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2ead6a80>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=CORP-NUM-C2362627 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608d6930>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
 During handling of the above exception, another exception occurred:
 
@@ -744,9 +744,9 @@ Traceback (most recent call last):
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
     raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=CORP-NUM-C2362627 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2ead6a80>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=CORP-NUM-C2362627 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608d6930>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
-[2025-09-13 17:38:39.725522] Scanning: IRS-TRACK-108541264370
+[2025-09-13 17:40:10.840603] Scanning: IRS-TRACK-108541264370
 [ERROR] IRS-TRACK-108541264370: Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
     sock = connection.create_connection(
@@ -776,7 +776,7 @@ Traceback (most recent call last):
                        ^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
     raise NameResolutionError(self.host, self, e) from e
-urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7f6a2eab74a0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7fcb608b7b60>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
 
 The above exception was the direct cause of the following exception:
 
@@ -790,7 +790,7 @@ Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
     raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=IRS-TRACK-108541264370 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2eab74a0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=IRS-TRACK-108541264370 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608b7b60>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
 During handling of the above exception, another exception occurred:
 
@@ -812,9 +812,9 @@ Traceback (most recent call last):
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
     raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=IRS-TRACK-108541264370 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2eab74a0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=IRS-TRACK-108541264370 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608b7b60>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
-[2025-09-13 17:38:39.731179] Scanning: ACCT-433187894832
+[2025-09-13 17:40:10.843773] Scanning: ACCT-433187894832
 [ERROR] ACCT-433187894832: Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
     sock = connection.create_connection(
@@ -844,7 +844,7 @@ Traceback (most recent call last):
                        ^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
     raise NameResolutionError(self.host, self, e) from e
-urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7f6a2ead5e20>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7fcb608d60f0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
 
 The above exception was the direct cause of the following exception:
 
@@ -858,7 +858,7 @@ Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
     raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=ACCT-433187894832 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2ead5e20>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=ACCT-433187894832 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608d60f0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
 During handling of the above exception, another exception occurred:
 
@@ -880,9 +880,9 @@ Traceback (most recent call last):
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
     raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=ACCT-433187894832 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2ead5e20>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=ACCT-433187894832 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608d60f0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
-[2025-09-13 17:38:39.739554] Scanning: PROP-SS-GUARANTEE-104-0190-003558
+[2025-09-13 17:40:10.846964] Scanning: PROP-SS-GUARANTEE-104-0190-003558
 [ERROR] PROP-SS-GUARANTEE-104-0190-003558: Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
     sock = connection.create_connection(
@@ -912,7 +912,7 @@ Traceback (most recent call last):
                        ^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 210, in _new_conn
     raise NameResolutionError(self.host, self, e) from e
-urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7f6a2ead5670>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x7fcb608d56d0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)
 
 The above exception was the direct cause of the following exception:
 
@@ -926,7 +926,7 @@ Traceback (most recent call last):
   File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
     raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=PROP-SS-GUARANTEE-104-0190-003558 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2ead5670>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=PROP-SS-GUARANTEE-104-0190-003558 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608d56d0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 
 During handling of the above exception, another exception occurred:
 
@@ -948,5 +948,5 @@ Traceback (most recent call last):
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
     raise ConnectionError(e, request=request)
-requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=PROP-SS-GUARANTEE-104-0190-003558 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7f6a2ead5670>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?filter%5Bentity.legalName%5D=PROP-SS-GUARANTEE-104-0190-003558 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7fcb608d56d0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)"))
 

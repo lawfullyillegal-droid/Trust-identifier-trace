@@ -1,0 +1,26 @@
+[
+  {
+    "identifier": "EIN-92-6319308",
+    "status": "verified",
+    "source": "EIN Registry",
+    "timestamp": "2025-08-30 10:50 UTC",
+    "overlay": "overlays/ein_overlay.yml",
+    "reason": "Full match confirmed"
+  },
+  {
+    "identifier": "IRS-TRACK-108541264370",
+    "status": "unmatched",
+    "source": "IRS Non-Filing",
+    "timestamp": "2025-08-30 10:50 UTC",
+    "overlay": "overlays/irs_overlay.yml",
+    "reason": "No records found"
+  },
+  {
+    "identifier": "PROP-SS-GUARANTEE-104-0190-003558",
+    "status": "flagged",
+    "source": "IRS Form 1099-A", 
+    "timestamp": "2025-08-30 10:50 UTC",
+    "overlay": "overlays/property_overlay.yml",
+    "reason": "Pending verification"
+  }
+]

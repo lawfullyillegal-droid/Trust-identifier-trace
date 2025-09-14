@@ -41,4 +41,5 @@ jobs:
           git config user.email "bot@trust.local"
           git add output/scan_results.json
           git commit -m "Auto-generate scan_results.json from bot run" || echo "No changes to commit"
+          git pull --rebase origin main
           git push

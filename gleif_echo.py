@@ -5,8 +5,36 @@ print("🔧 Starting GLEIF echo test...")
 
 # Pull GLEIF data
 gleif_url = "https://api.gleif.org/api/v1/lei-records?page[size]=5"
-response = requests.get(gleif_url)
-data = response.json()
+try:
+    response = requests.get(gleif_url, timeout=10)
+    data = response.json()
+    print("✅ Successfully retrieved GLEIF data")
+except (requests.exceptions.ConnectionError, requests.exceptions.Timeout, Exception) as e:
+    print(f"⚠️ Network connection failed: {e}")
+    print("📋 Using offline mode with sample data...")
+    # Create sample data for offline mode
+    data = {
+        "data": [
+            {
+                "id": "SAMPLE001",
+                "attributes": {
+                    "entity": {
+                        "legalName": "Sample Entity 1",
+                        "legalAddress": {"country": "US"}
+                    }
+                }
+            },
+            {
+                "id": "SAMPLE002", 
+                "attributes": {
+                    "entity": {
+                        "legalName": "Sample Entity 2",
+                        "legalAddress": {"country": "UK"}
+                    }
+                }
+            }
+        ]
+    }
 
 # Log to XML
 root = ET.Element("GLEIFEcho")

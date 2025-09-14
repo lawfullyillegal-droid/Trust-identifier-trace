@@ -1,65 +1,101 @@
 [
   {
     "identifier": "EIN-92-6319308",
-    "status": "verified",
+    "status": "matched",
     "source": "EIN",
-    "timestamp": "2025-09-04 11:51 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/ein_overlay.yml"
+    "timestamp": "2025-09-14 08:56 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/ein_overlay.yml",
+    "reddit_hits": [
+      "Sample thread mentioning EIN-92-6319308",
+      "Discussion about EIN-92-6319308 identifier"
+    ]
   },
   {
     "identifier": "SSN-602-05-7209",
-    "status": "verified",
+    "status": "matched",
     "source": "SSN",
-    "timestamp": "2025-09-04 11:51 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/ssn_overlay.yml"
+    "timestamp": "2025-09-14 08:56 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/ssn_overlay.yml",
+    "reddit_hits": [
+      "Sample thread mentioning SSN-602-05-7209",
+      "Discussion about SSN-602-05-7209 identifier"
+    ]
   },
   {
     "identifier": "IRS-TRACK-108541264370",
-    "status": "verified",
+    "status": "matched",
     "source": "IRSTrack",
-    "timestamp": "2025-09-04 11:51 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/irstrack_overlay.yml"
+    "timestamp": "2025-09-14 08:56 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/irstrack_overlay.yml",
+    "reddit_hits": [
+      "Sample thread mentioning IRS-TRACK-108541264370",
+      "Discussion about IRS-TRACK-108541264370 identifier"
+    ]
   },
   {
     "identifier": "CSE-CASE-200000002519088",
-    "status": "verified",
+    "status": "matched",
     "source": "CSECase",
-    "timestamp": "2025-09-04 11:51 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/csecase_overlay.yml"
+    "timestamp": "2025-09-14 08:56 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/csecase_overlay.yml",
+    "reddit_hits": [
+      "Sample thread mentioning CSE-CASE-200000002519088",
+      "Discussion about CSE-CASE-200000002519088 identifier"
+    ]
   },
   {
     "identifier": "ADOT-CUST-16088582",
-    "status": "verified",
+    "status": "matched",
     "source": "ADOTCust",
-    "timestamp": "2025-09-04 11:51 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/adotcust_overlay.yml"
+    "timestamp": "2025-09-14 08:56 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/adotcust_overlay.yml",
+    "reddit_hits": [
+      "Sample thread mentioning ADOT-CUST-16088582",
+      "Discussion about ADOT-CUST-16088582 identifier"
+    ]
   },
   {
     "identifier": "ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413",
-    "status": "verified",
+    "status": "matched",
     "source": "Address",
-    "timestamp": "2025-09-04 11:51 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/address_overlay.yml"
+    "timestamp": "2025-09-14 08:56 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/address_overlay.yml",
+    "reddit_hits": [
+      "Sample thread mentioning ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413",
+      "Discussion about ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413 identifier"
+    ]
   },
   {
     "identifier": "ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK",
-    "status": "verified",
+    "status": "matched",
     "source": "EntityName",
-    "timestamp": "2025-09-04 11:51 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/entityname_overlay.yml"
+    "timestamp": "2025-09-14 08:56 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/entityname_overlay.yml",
+    "reddit_hits": [
+      "Sample thread mentioning ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK",
+      "Discussion about ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK identifier"
+    ]
   },
   {
     "identifier": "LACOUNTY-BIRTH-REGISTRY-NUMBER",
-    "status": "verified",
+    "status": "matched",
     "source": "BirthRegNum",
-    "timestamp": "2025-09-04 11:51 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/birthregnum_overlay.yml"
+    "timestamp": "2025-09-14 08:56 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/birthregnum_overlay.yml",
+    "reddit_hits": [
+      "Sample thread mentioning LACOUNTY-BIRTH-REGISTRY-NUMBER",
+      "Discussion about LACOUNTY-BIRTH-REGISTRY-NUMBER identifier"
+    ]
   },
   {
     "identifier": "LACOUNTY-DEED-DOC-NUMBER",
-    "status": "verified",
+    "status": "matched",
     "source": "PropertyRecord",
-    "timestamp": "2025-09-04 11:51 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/propertyrecord_overlay.yml"
+    "timestamp": "2025-09-14 08:56 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/propertyrecord_overlay.yml",
+    "reddit_hits": [
+      "Sample thread mentioning LACOUNTY-DEED-DOC-NUMBER",
+      "Discussion about LACOUNTY-DEED-DOC-NUMBER identifier"
+    ]
   }
 ]

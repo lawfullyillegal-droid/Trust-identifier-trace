@@ -39,7 +39,34 @@ jobs:
         run: |
           git config user.name "Trust Scan Bot"
           git config user.email "bot@trust.local"
+          
+          # Check if there are any changes to commit
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          
           git add output/scan_results.json
           git commit -m "Auto-generate scan_results.json from bot run" || echo "No changes to commit"
-          git pull --rebase origin main
-          git push
+          
+          # Pull and handle conflicts before pushing
+          git fetch origin main
+          if ! git merge origin/main --no-edit; then
+            echo "Merge conflict detected, attempting to resolve..."
+            # Accept our changes for scan_results.json
+            git checkout --ours output/scan_results.json
+            git add output/scan_results.json
+            git commit -m "Resolve merge conflict - keep bot-generated scan_results.json"
+          fi
+          
+          # Retry push with backoff
+          for i in {1..3}; do
+            if git push origin main; then
+              echo "Push successful"
+              break
+            else
+              echo "Push failed, retrying in $((i * 2)) seconds..."
+              sleep $((i * 2))
+              git pull --rebase origin main
+            fi
+          done

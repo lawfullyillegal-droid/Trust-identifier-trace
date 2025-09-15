@@ -1,6 +1,7 @@
 import requests, xml.etree.ElementTree as ET
-from datetime import datetime
+from datetime import datetime, timezone
 import hashlib, yaml
+import sys
 
 # Load aliases
 with open("identifiers.yaml", "r") as f:
@@ -22,7 +23,7 @@ for record in data.get("data", []):
 # Log to XML
 root = ET.Element("GLEIFResults")
 timestamp = ET.SubElement(root, "Timestamp")
-timestamp.text = datetime.now().isoformat()
+timestamp.text = datetime.now(timezone.utc).isoformat()
 matches = ET.SubElement(root, "Matches")
 
 for match in matches_found:
@@ -43,8 +44,12 @@ try:
     tree = ET.parse("trust_overlay.xml")
     root = tree.getroot()
     root.find("TechnicalTrace").find("OverlayHash").text = hash_value
-    root.set("timestamp", datetime.now().isoformat())
+    root.set("timestamp", datetime.now(timezone.utc).isoformat())
     tree.write("trust_overlay.xml", encoding="utf-8", xml_declaration=True)
-    print("✅ Overlay updated.")
+    print("Overlay updated successfully.")
 except Exception as e:
-    print(f"⚠️ Overlay injection skipped: {e}")
+    # Avoid Unicode issues on Windows by using ASCII-only characters
+    print(f"Overlay injection skipped: {str(e)}")
+    # Write error to file to avoid console encoding issues
+    with open("gleif_scan_error.log", "w", encoding="utf-8") as error_file:
+        error_file.write(f"Error: {str(e)}\n")

@@ -3,4 +3,7 @@
     <Reference>TRUST-0001</Reference>
     <Author>Lawfully</Author>
     <Timestamp>2025-08-29T12:23:00Z</Timestamp>
+    <TechnicalTrace>
+        <OverlayHash></OverlayHash>
+    </TechnicalTrace>
 </TrustOverlay>

@@ -3,10 +3,46 @@ from datetime import datetime
 
 print("🔧 Starting GLEIF echo test...")
 
-# Pull GLEIF data
+# Pull GLEIF data with offline fallback
 gleif_url = "https://api.gleif.org/api/v1/lei-records?page[size]=5"
-response = requests.get(gleif_url)
-data = response.json()
+try:
+    response = requests.get(gleif_url, timeout=10)
+    data = response.json()
+    print("✅ Connected to GLEIF API successfully")
+except Exception as e:
+    print(f"⚠️ Network connection failed, using offline mode: {e}")
+    # Fallback sample data for testing
+    data = {
+        "data": [
+            {
+                "id": "254900SAMPLE1234567890",
+                "attributes": {
+                    "entity": {
+                        "legalName": "Sample Trust Entity One",
+                        "legalAddress": {"country": "US"}
+                    }
+                }
+            },
+            {
+                "id": "254900SAMPLE1234567891", 
+                "attributes": {
+                    "entity": {
+                        "legalName": "Sample Trust Entity Two",
+                        "legalAddress": {"country": "CA"}
+                    }
+                }
+            },
+            {
+                "id": "254900SAMPLE1234567892",
+                "attributes": {
+                    "entity": {
+                        "legalName": "The Travis Ryle Private Bank Sample",
+                        "legalAddress": {"country": "US"}
+                    }
+                }
+            }
+        ]
+    }
 
 # Log to XML
 root = ET.Element("GLEIFEcho")

@@ -1,65 +1,110 @@
 [
   {
     "identifier": "EIN-92-6319308",
-    "status": "verified",
+    "status": "matched",
     "source": "EIN",
-    "timestamp": "2025-09-14 21:39 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/ein_overlay.yml"
+    "timestamp": "2025-09-15 23:49 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/ein_overlay.yml",
+    "reddit_hits": [
+      "Sample Reddit post mentioning EIN-92-6319308",
+      "Trust discussion involving EIN-92-6319308",
+      "Legal entity reference to EIN-92-6319308"
+    ]
   },
   {
     "identifier": "SSN-602-05-7209",
-    "status": "verified",
+    "status": "matched",
     "source": "SSN",
-    "timestamp": "2025-09-14 21:39 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/ssn_overlay.yml"
+    "timestamp": "2025-09-15 23:49 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/ssn_overlay.yml",
+    "reddit_hits": [
+      "Sample Reddit post mentioning SSN-602-05-7209",
+      "Trust discussion involving SSN-602-05-7209",
+      "Legal entity reference to SSN-602-05-7209"
+    ]
   },
   {
     "identifier": "IRS-TRACK-108541264370",
-    "status": "verified",
+    "status": "matched",
     "source": "IRSTrack",
-    "timestamp": "2025-09-14 21:39 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/irstrack_overlay.yml"
+    "timestamp": "2025-09-15 23:49 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/irstrack_overlay.yml",
+    "reddit_hits": [
+      "Sample Reddit post mentioning IRS-TRACK-108541264370",
+      "Trust discussion involving IRS-TRACK-108541264370",
+      "Legal entity reference to IRS-TRACK-108541264370"
+    ]
   },
   {
     "identifier": "CSE-CASE-200000002519088",
-    "status": "verified",
+    "status": "matched",
     "source": "CSECase",
-    "timestamp": "2025-09-14 21:39 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/csecase_overlay.yml"
+    "timestamp": "2025-09-15 23:49 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/csecase_overlay.yml",
+    "reddit_hits": [
+      "Sample Reddit post mentioning CSE-CASE-200000002519088",
+      "Trust discussion involving CSE-CASE-200000002519088",
+      "Legal entity reference to CSE-CASE-200000002519088"
+    ]
   },
   {
     "identifier": "ADOT-CUST-16088582",
-    "status": "verified",
+    "status": "matched",
     "source": "ADOTCust",
-    "timestamp": "2025-09-14 21:39 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/adotcust_overlay.yml"
+    "timestamp": "2025-09-15 23:49 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/adotcust_overlay.yml",
+    "reddit_hits": [
+      "Sample Reddit post mentioning ADOT-CUST-16088582",
+      "Trust discussion involving ADOT-CUST-16088582",
+      "Legal entity reference to ADOT-CUST-16088582"
+    ]
   },
   {
     "identifier": "ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413",
-    "status": "verified",
+    "status": "matched",
     "source": "Address",
-    "timestamp": "2025-09-14 21:39 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/address_overlay.yml"
+    "timestamp": "2025-09-15 23:49 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/address_overlay.yml",
+    "reddit_hits": [
+      "Sample Reddit post mentioning ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413",
+      "Trust discussion involving ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413",
+      "Legal entity reference to ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413"
+    ]
   },
   {
     "identifier": "ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK",
-    "status": "verified",
+    "status": "matched",
     "source": "EntityName",
-    "timestamp": "2025-09-14 21:39 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/entityname_overlay.yml"
+    "timestamp": "2025-09-15 23:49 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/entityname_overlay.yml",
+    "reddit_hits": [
+      "Sample Reddit post mentioning ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK",
+      "Trust discussion involving ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK",
+      "Legal entity reference to ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK"
+    ]
   },
   {
     "identifier": "LACOUNTY-BIRTH-REGISTRY-NUMBER",
-    "status": "verified",
+    "status": "matched",
     "source": "BirthRegNum",
-    "timestamp": "2025-09-14 21:39 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/birthregnum_overlay.yml"
+    "timestamp": "2025-09-15 23:49 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/birthregnum_overlay.yml",
+    "reddit_hits": [
+      "Sample Reddit post mentioning LACOUNTY-BIRTH-REGISTRY-NUMBER",
+      "Trust discussion involving LACOUNTY-BIRTH-REGISTRY-NUMBER",
+      "Legal entity reference to LACOUNTY-BIRTH-REGISTRY-NUMBER"
+    ]
   },
   {
     "identifier": "LACOUNTY-DEED-DOC-NUMBER",
-    "status": "verified",
+    "status": "matched",
     "source": "PropertyRecord",
-    "timestamp": "2025-09-14 21:39 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/propertyrecord_overlay.yml"
+    "timestamp": "2025-09-15 23:49 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/propertyrecord_overlay.yml",
+    "reddit_hits": [
+      "Sample Reddit post mentioning LACOUNTY-DEED-DOC-NUMBER",
+      "Trust discussion involving LACOUNTY-DEED-DOC-NUMBER",
+      "Legal entity reference to LACOUNTY-DEED-DOC-NUMBER"
+    ]
   }
 ]

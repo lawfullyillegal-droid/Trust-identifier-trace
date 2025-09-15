@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<GLEIFEcho><Timestamp>2025-09-15T23:48:00.846963</Timestamp><Entities><Entity><LegalName>Sample Trust Entity One</LegalName><Country>US</Country><LEI>254900SAMPLE1234567890</LEI></Entity><Entity><LegalName>Sample Trust Entity Two</LegalName><Country>CA</Country><LEI>254900SAMPLE1234567891</LEI></Entity><Entity><LegalName>The Travis Ryle Private Bank Sample</LegalName><Country>US</Country><LEI>254900SAMPLE1234567892</LEI></Entity></Entities></GLEIFEcho>

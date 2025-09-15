@@ -1,25 +1,11 @@
-name: Syndicate Scan Results
-
-on:
-  workflow_run:
-    workflows: ["Trust Scan Bot"]
-    types:
-      - completed
-
-jobs:
-  commit-results:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Configure Git
-        run: |
-          git config user.name "TrustBot"
-          git config user.email "trustbot@local"
-
-      - name: Commit scan_results.json
-        run: |
-          git add output/scan_results.json
-          git commit -m "Syndicate scan results"
-          git push
+- name: Commit scan_results.json if changed
+  run: |
+    git add output/scan_results.json
+    if git diff --cached --quiet; then
+      echo "✅ No changes to commit."
+    else
+      git config user.name "github-actions[bot]"
+      git config user.email "github-actions[bot]@users.noreply.github.com"
+      git commit -m "Update scan results"
+      git push
+    fi

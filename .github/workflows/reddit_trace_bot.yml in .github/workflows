@@ -22,3 +22,11 @@ jobs:
 
       - name: Run Reddit Profiler
         run: python bots/reddit_trace_bot.py
+
+      - name: Commit reddit profile results
+        run: |
+          git config user.name "RedditBot"
+          git config user.email "redditbot@local"
+          git add output/reddit_profile_results.json
+          git commit -m "Update Reddit profile results $(date -u +'%Y-%m-%d %H:%M:%S UTC')" || echo "No changes to commit"
+          git push

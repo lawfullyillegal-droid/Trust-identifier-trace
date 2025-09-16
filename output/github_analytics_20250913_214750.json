@@ -1,0 +1,72 @@
+{
+  "generated_at": "2025-09-13T21:47:49.329800+00:00",
+  "period": {
+    "current_month": {
+      "start": "2025-09-01T00:00:00+00:00",
+      "end": "2025-09-13T21:47:49.329719+00:00",
+      "name": "September 2025"
+    },
+    "previous_month": {
+      "start": "2025-08-01T00:00:00+00:00",
+      "end": "2025-08-31T23:59:59+00:00",
+      "name": "August 2025"
+    }
+  },
+  "repository": {
+    "error": "Could not fetch repository data"
+  },
+  "commits": {
+    "current_month": {
+      "total_commits": 0,
+      "unique_contributors": 0,
+      "daily_activity": {},
+      "contributor_activity": {},
+      "commit_times": {},
+      "average_commits_per_day": 0
+    },
+    "previous_month": {
+      "total_commits": 0,
+      "unique_contributors": 0,
+      "daily_activity": {},
+      "contributor_activity": {},
+      "commit_times": {},
+      "average_commits_per_day": 0
+    },
+    "month_over_month_change": 0
+  },
+  "pull_requests": {
+    "current_month": {
+      "total_prs": 0,
+      "open_prs": 0,
+      "closed_prs": 0,
+      "merged_prs": 0,
+      "draft_prs": 0,
+      "merge_rate": 0,
+      "average_time_to_close_hours": 0
+    },
+    "previous_month": {
+      "total_prs": 0,
+      "open_prs": 0,
+      "closed_prs": 0,
+      "merged_prs": 0,
+      "draft_prs": 0,
+      "merge_rate": 0,
+      "average_time_to_close_hours": 0
+    }
+  },
+  "issues": {
+    "current_month": {
+      "total_issues": 0,
+      "open_issues": 0,
+      "closed_issues": 0
+    }
+  },
+  "learning_metrics": {
+    "collaboration_score": 0,
+    "activity_consistency_days": 0,
+    "development_velocity": 0,
+    "pr_to_commit_ratio": 0,
+    "merge_success_rate": 0,
+    "learning_trend": "stable"
+  }
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "identifier": "EIN-92-6319308",
+    "source": "EIN",
+    "reddit_mentions": 0,
+    "reddit_threads": [],
+    "timestamp": "2025-09-16 00:15 UTC",
+    "risk_level": "low"
+  },
+  {
+    "identifier": "SSN-602-05-7209",
+    "source": "SSN",
+    "reddit_mentions": 0,
+    "reddit_threads": [],
+    "timestamp": "2025-09-16 00:15 UTC",
+    "risk_level": "low"
+  },
+  {
+    "identifier": "IRS-TRACK-108541264370",
+    "source": "IRSTrack",
+    "reddit_mentions": 0,
+    "reddit_threads": [],
+    "timestamp": "2025-09-16 00:15 UTC",
+    "risk_level": "low"
+  },
+  {
+    "identifier": "CSE-CASE-200000002519088",
+    "source": "CSECase",
+    "reddit_mentions": 0,
+    "reddit_threads": [],
+    "timestamp": "2025-09-16 00:15 UTC",
+    "risk_level": "low"
+  },
+  {
+    "identifier": "ADOT-CUST-16088582",
+    "source": "ADOTCust",
+    "reddit_mentions": 0,
+    "reddit_threads": [],
+    "timestamp": "2025-09-16 00:15 UTC",
+    "risk_level": "low"
+  },
+  {
+    "identifier": "ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413",
+    "source": "Address",
+    "reddit_mentions": 0,
+    "reddit_threads": [],
+    "timestamp": "2025-09-16 00:15 UTC",
+    "risk_level": "low"
+  },
+  {
+    "identifier": "ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK",
+    "source": "EntityName",
+    "reddit_mentions": 0,
+    "reddit_threads": [],
+    "timestamp": "2025-09-16 00:15 UTC",
+    "risk_level": "low"
+  },
+  {
+    "identifier": "LACOUNTY-BIRTH-REGISTRY-NUMBER",
+    "source": "BirthRegNum",
+    "reddit_mentions": 0,
+    "reddit_threads": [],
+    "timestamp": "2025-09-16 00:15 UTC",
+    "risk_level": "low"
+  },
+  {
+    "identifier": "LACOUNTY-DEED-DOC-NUMBER",
+    "source": "PropertyRecord",
+    "reddit_mentions": 0,
+    "reddit_threads": [],
+    "timestamp": "2025-09-16 00:15 UTC",
+    "risk_level": "low"
+  }
+]

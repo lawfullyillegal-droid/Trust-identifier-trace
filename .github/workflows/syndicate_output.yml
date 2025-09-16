@@ -1,11 +1,88 @@
-- name: Commit scan_results.json if changed
-  run: |
-    git add output/scan_results.json
-    if git diff --cached --quiet; then
-      echo "✅ No changes to commit."
-    else
-      git config user.name "github-actions[bot]"
-      git config user.email "github-actions[bot]@users.noreply.github.com"
-      git commit -m "Update scan results"
-      git push
-    fi
+name: Syndicate Output Dashboard
+
+on:
+  workflow_run:
+    workflows: ["Trust Scan Bot", "Reddit Thread Profiler"]
+    types:
+      - completed
+  workflow_dispatch:
+
+jobs:
+  generate-dashboard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Create syndicate dashboard
+        run: |
+          echo "Generating syndicate dashboard..."
+          
+          # Create a simple HTML dashboard combining all scan results
+          cat > syndicate_dashboard.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <title>Trust Identifier Syndicate Dashboard</title>
+              <style>
+                  body { font-family: Arial, sans-serif; margin: 20px; }
+                  .header { background: #2c3e50; color: white; padding: 20px; }
+                  .section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; }
+                  .timestamp { color: #666; font-size: 0.9em; }
+              </style>
+          </head>
+          <body>
+              <div class="header">
+                  <h1>🔍 Trust Identifier Syndicate Dashboard</h1>
+                  <p>Real-time monitoring of identifier traces and overlay deployments</p>
+              </div>
+              
+              <div class="section">
+                  <h2>📊 Scan Status</h2>
+                  <p>Last updated: $(date -u +'%Y-%m-%d %H:%M:%S UTC')</p>
+                  <p>Status: Dashboard generated successfully</p>
+              </div>
+              
+              <div class="section">
+                  <h2>🎯 Active Overlays</h2>
+                  <p>Overlay files deployed and monitored by the syndicate</p>
+                  <ul>
+          EOF
+          
+          # List overlay files
+          for overlay in overlays/*.yml; do
+              if [ -f "$overlay" ]; then
+                  echo "              <li>$(basename "$overlay")</li>" >> syndicate_dashboard.html
+              fi
+          done
+          
+          cat >> syndicate_dashboard.html << 'EOF'
+                  </ul>
+              </div>
+              
+              <div class="section">
+                  <h2>⚠️ Alerts</h2>
+                  <p>System operating normally</p>
+              </div>
+          </body>
+          </html>
+          EOF
+          
+          echo "✅ Dashboard generated"
+
+      - name: Commit scan_results.json if changed
+        run: |
+          git add syndicate_dashboard.html
+          if git diff --cached --quiet; then
+            echo "✅ No changes to commit."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git commit -m "Update syndicate dashboard $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+            git push
+          fi

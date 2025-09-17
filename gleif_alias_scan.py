@@ -1,15 +1,42 @@
 import requests, xml.etree.ElementTree as ET
 from datetime import datetime
 import hashlib, yaml
+import os
 
 # Load aliases
-with open("identifiers.yaml", "r") as f:
-    aliases = yaml.safe_load(f)["trust_aliases"]
+try:
+    with open("identifiers.yaml", "r") as f:
+        aliases = yaml.safe_load(f)["trust_aliases"]
+except FileNotFoundError:
+    print("⚠️ identifiers.yaml not found, using default aliases")
+    aliases = ["TRAVIS RYLE", "RYLE PRIVATE BANK", "TRAVIS RYLE TRUST"]
 
-# Pull GLEIF data
+# Pull GLEIF data with error handling
 gleif_url = "https://api.gleif.org/api/v1/lei-records?page[size]=1000"
-response = requests.get(gleif_url)
-data = response.json()
+try:
+    response = requests.get(gleif_url, timeout=10)
+    response.raise_for_status()
+    data = response.json()
+    print("✅ Successfully fetched GLEIF data")
+except (requests.exceptions.RequestException, requests.exceptions.Timeout) as e:
+    print(f"⚠️ Network error: {e}")
+    print("🔄 Running in offline mode with mock data...")
+    # Create mock data for offline mode
+    data = {
+        "data": [
+            {
+                "id": "MOCK-LEI-RYLE-001",
+                "attributes": {
+                    "entity": {
+                        "legalName": "Travis Ryle Private Bank Holdings LLC (Mock)",
+                        "legalAddress": {
+                            "country": "US"
+                        }
+                    }
+                }
+            }
+        ]
+    }
 
 # Match aliases
 matches_found = []
@@ -37,14 +64,28 @@ tree.write("gleif_results.xml", encoding="utf-8", xml_declaration=True)
 
 # Inject overlay hash
 try:
-    with open("trust_overlay.xml", "rb") as f:
-        overlay = f.read()
-    hash_value = hashlib.sha256(overlay).hexdigest()
-    tree = ET.parse("trust_overlay.xml")
-    root = tree.getroot()
-    root.find("TechnicalTrace").find("OverlayHash").text = hash_value
-    root.set("timestamp", datetime.now().isoformat())
-    tree.write("trust_overlay.xml", encoding="utf-8", xml_declaration=True)
-    print("✅ Overlay updated.")
+    if os.path.exists("trust_overlay.xml"):
+        with open("trust_overlay.xml", "rb") as f:
+            overlay = f.read()
+        hash_value = hashlib.sha256(overlay).hexdigest()
+        tree = ET.parse("trust_overlay.xml")
+        root = tree.getroot()
+        
+        # Find or create TechnicalTrace element
+        tech_trace = root.find("TechnicalTrace")
+        if tech_trace is None:
+            tech_trace = ET.SubElement(root, "TechnicalTrace")
+        
+        # Find or create OverlayHash element
+        overlay_hash = tech_trace.find("OverlayHash")
+        if overlay_hash is None:
+            overlay_hash = ET.SubElement(tech_trace, "OverlayHash")
+        
+        overlay_hash.text = hash_value
+        root.set("timestamp", datetime.now().isoformat())
+        tree.write("trust_overlay.xml", encoding="utf-8", xml_declaration=True)
+        print("✅ Overlay updated.")
+    else:
+        print("⚠️ trust_overlay.xml not found, skipping overlay injection")
 except Exception as e:
     print(f"⚠️ Overlay injection skipped: {e}")

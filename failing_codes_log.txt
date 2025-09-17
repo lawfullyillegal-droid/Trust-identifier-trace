@@ -1,33 +1,29 @@
-[2025-09-17 09:52:37] Found 5 Python files to test
-[2025-09-17 09:52:37] Testing gleif_echo.py...
-[2025-09-17 09:52:38]   ❌ IMPORT ERROR in gleif_echo.py
-[2025-09-17 09:52:38] Testing reddit_trace.py...
-[2025-09-17 09:52:38]   ✅ SUCCESS: reddit_trace.py
-[2025-09-17 09:52:38] Testing gleif_alias_scan.py...
-[2025-09-17 09:52:38]   ❌ IMPORT ERROR in gleif_alias_scan.py
-[2025-09-17 09:52:38] Testing trust_scan_bot.py...
-[2025-09-17 09:52:38]   ❌ RUNTIME ERROR in trust_scan_bot.py (exit code: 1)
-[2025-09-17 09:52:38] Testing gleif_trace.py...
-[2025-09-17 09:52:39]   ✅ SUCCESS: gleif_trace.py
-[2025-09-17 09:52:39] 
+[2025-09-17 09:57:23] Found 5 Python files to test
+[2025-09-17 09:57:23] Testing gleif_echo.py...
+[2025-09-17 09:57:23]   ✅ SUCCESS: gleif_echo.py
+[2025-09-17 09:57:23] Testing reddit_trace.py...
+[2025-09-17 09:57:24]   ✅ SUCCESS: reddit_trace.py
+[2025-09-17 09:57:24] Testing gleif_alias_scan.py...
+[2025-09-17 09:57:24]   ✅ SUCCESS: gleif_alias_scan.py
+[2025-09-17 09:57:24] Testing trust_scan_bot.py...
+[2025-09-17 09:57:24]   ✅ SUCCESS: trust_scan_bot.py
+[2025-09-17 09:57:24] Testing gleif_trace.py...
+[2025-09-17 09:57:25]   ✅ SUCCESS: gleif_trace.py
+[2025-09-17 09:57:25] 
 🔍 Analyzing specific failure patterns...
-[2025-09-17 09:52:39]   📡 Network connectivity failures: gleif_echo.py, gleif_alias_scan.py, trust_scan_bot.py
-[2025-09-17 09:52:39]   📦 Import failures: gleif_echo.py, gleif_alias_scan.py
-[2025-09-17 09:52:39] 
+[2025-09-17 09:57:25] 
 📊 ANALYSIS SUMMARY:
-[2025-09-17 09:52:39]   Total files tested: 5
-[2025-09-17 09:52:39]   Successful executions: 2
-[2025-09-17 09:52:39]   Failed executions: 3
-[2025-09-17 09:52:39]   Success rate: 40.0%
-[2025-09-17 09:52:39] 
-❌ FAILING CODES:
-[2025-09-17 09:52:39]   - gleif_echo.py: import_error
-[2025-09-17 09:52:39]   - gleif_alias_scan.py: import_error
-[2025-09-17 09:52:39]   - trust_scan_bot.py: runtime_error
-[2025-09-17 09:52:39] 
+[2025-09-17 09:57:25]   Total files tested: 5
+[2025-09-17 09:57:25]   Successful executions: 5
+[2025-09-17 09:57:25]   Failed executions: 0
+[2025-09-17 09:57:25]   Success rate: 100.0%
+[2025-09-17 09:57:25] 
 ✅ SUCCESSFUL CODES:
-[2025-09-17 09:52:39]   - reddit_trace.py
-[2025-09-17 09:52:39]   - gleif_trace.py
-[2025-09-17 09:52:39] 
+[2025-09-17 09:57:25]   - gleif_echo.py
+[2025-09-17 09:57:25]   - reddit_trace.py
+[2025-09-17 09:57:25]   - gleif_alias_scan.py
+[2025-09-17 09:57:25]   - trust_scan_bot.py
+[2025-09-17 09:57:25]   - gleif_trace.py
+[2025-09-17 09:57:25] 
 📄 Detailed report saved to: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/failing_codes_report.json
-[2025-09-17 09:52:39] 📄 Log file saved to: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/failing_codes_log.txt
+[2025-09-17 09:57:25] 📄 Log file saved to: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/failing_codes_log.txt

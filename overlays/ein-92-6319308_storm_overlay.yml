@@ -1,0 +1,19 @@
+# STORM-BREAKER Overlay for EIN-92-6319308
+identifier: EIN-92-6319308
+pattern_type: employer_identification
+format_valid: True
+confidence_score: 0.95
+risk_level: low
+timestamp: 2025-09-19T05:42:37.285895+00:00
+storm_breaker_version: "1.0"
+overlay_hash: fe628416a7bd99ee
+
+metadata:
+  type: Employer Identification Number
+  scan_method: "storm_breaker_analysis"
+  validation_status: "passed"
+
+technical_trace:
+  generator: "storm-breaker"
+  analysis_engine: "pattern_recognition_v1.0"
+  validation_rules: "format_compliance_check"

@@ -1,0 +1,19 @@
+# STORM-BREAKER Overlay for LACOUNTY-BIRTH-REGISTRY-NUMBER
+identifier: LACOUNTY-BIRTH-REGISTRY-NUMBER
+pattern_type: birth_registry
+format_valid: True
+confidence_score: 0.95
+risk_level: medium
+timestamp: 2025-09-19T05:42:37.287561+00:00
+storm_breaker_version: "1.0"
+overlay_hash: 8a5ae646acaf4bd6
+
+metadata:
+  type: Birth Registry Record
+  scan_method: "storm_breaker_analysis"
+  validation_status: "passed"
+
+technical_trace:
+  generator: "storm-breaker"
+  analysis_engine: "pattern_recognition_v1.0"
+  validation_rules: "format_compliance_check"

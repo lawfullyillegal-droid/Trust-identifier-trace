@@ -16,25 +16,30 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install requests pyyaml
+
+      - name: Create output directory  
+        run: mkdir -p output
 
       - name: Run Trust Scan Bot
         run: |
           echo "Running trust_scan_bot.py..."
-          ls -la
-          cat trust_scan_bot.py || echo "Script not found"
-          python trust_scan_bot.py || echo "Script failed"
+          python trust_scan_bot.py
           echo "Scan complete."
 
-      - name: Show log contents
+      - name: Show scan results
         run: |
-          echo "TrustScanLog.txt contents:"
-          cat TrustScanLog.txt || echo "Log file missing"
+          echo "Scan results (output/scan_results.json):"
+          cat output/scan_results.json || echo "Results file missing"
 
-      - name: Commit scan log
+      - name: Commit scan results
         run: |
           git config --global user.name "TrustBot"
-          git config --global user.email "trustbot@github.com"
-          git add TrustScanLog.txt || echo "Nothing to add"
-          git commit -m "Override scan: $(date -u +'%Y-%m-%d %H:%M:%S')" || echo "No commit needed"
-          git push || echo "No push needed"
+          git config --global user.email "trustbot@travisryle.org"
+          git add output/scan_results.json || echo "Nothing to add"
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Override scan: $(date -u +'%Y-%m-%d %H:%M:%S')"
+            git push
+          fi

@@ -1,0 +1,117 @@
+name: Deploy Trust Identifier Trace Website
+
+"on":
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+        
+      - name: Build site
+        run: |
+          # Create site structure
+          mkdir -p _site
+          
+          # Copy HTML files to site root
+          cp *.html _site/ 2>/dev/null || true
+          
+          # Copy output and archive directories
+          cp -r output _site/ 2>/dev/null || true
+          cp -r archive _site/ 2>/dev/null || true
+          cp -r overlays _site/ 2>/dev/null || true
+          
+          # Ensure index.html exists
+          if [ ! -f _site/index.html ]; then
+            echo "Creating default index.html"
+            cat > _site/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Trust Identifier Trace</title>
+              <style>
+                  body { font-family: Arial, sans-serif; background: #111; color: #eee; padding: 20px; }
+                  h1 { color: #0ff; }
+                  .container { max-width: 800px; margin: 0 auto; }
+                  .nav { margin: 20px 0; }
+                  .nav a { display: inline-block; margin-right: 20px; padding: 10px 15px; 
+                          background: #333; color: #0ff; text-decoration: none; border-radius: 5px; }
+                  .nav a:hover { background: #555; }
+                  .info { background: #222; padding: 15px; margin: 10px 0; border-radius: 5px; }
+              </style>
+          </head>
+          <body>
+              <div class="container">
+                  <h1>🔍 Trust Identifier Trace</h1>
+                  <p>Advanced trust identifier scanning and analysis system</p>
+                  
+                  <div class="nav">
+                      <a href="dashboard.html">Trust Dashboard</a>
+                      <a href="syndicate_dashboard.html">Syndicate Dashboard</a>
+                      <a href="output/scan_results.json">Latest Scan Results</a>
+                      <a href="output/">Output Directory</a>
+                      <a href="archive/">Archived Results</a>
+                      <a href="overlays/">Overlay Files</a>
+                  </div>
+                  
+                  <div class="info">
+                      <h2>📊 System Components</h2>
+                      <ul>
+                          <li><strong>Trust Scan Bot:</strong> Automated identifier scanning with Reddit analysis</li>
+                          <li><strong>GLEIF Integration:</strong> Legal entity identifier verification</li>
+                          <li><strong>Overlay System:</strong> Hash-verified overlay file management</li>
+                          <li><strong>Archive System:</strong> Timestamped scan result preservation</li>
+                          <li><strong>Dashboard Interface:</strong> Interactive data visualization</li>
+                      </ul>
+                  </div>
+                  
+                  <div class="info">
+                      <h2>🚀 Features</h2>
+                      <ul>
+                          <li>Real-time trust identifier monitoring</li>
+                          <li>Multi-source data aggregation (GLEIF, Reddit, custom sources)</li>
+                          <li>Automated GitHub Actions workflows</li>
+                          <li>Comprehensive dashboard analytics</li>
+                          <li>Cryptographic overlay verification</li>
+                      </ul>
+                  </div>
+              </div>
+          </body>
+          </html>
+          EOF
+          fi
+          
+          echo "Site built successfully"
+          ls -la _site/
+        
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

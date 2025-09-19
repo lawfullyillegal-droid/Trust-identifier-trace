@@ -29,7 +29,7 @@ jobs:
         run: |
           set -e
           if [ -f trust_scan_bot.py ]; then
-            python trust_scan_bot.py > output/scan_results.json
+            python trust_scan_bot.py
           else
             echo "ERROR: trust_scan_bot.py not found in repo root"
             exit 1

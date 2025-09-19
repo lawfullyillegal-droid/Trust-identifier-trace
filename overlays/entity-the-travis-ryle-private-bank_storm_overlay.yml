@@ -1,0 +1,19 @@
+# STORM-BREAKER Overlay for ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK
+identifier: ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK
+pattern_type: entity_name
+format_valid: True
+confidence_score: 0.95
+risk_level: low
+timestamp: 2025-09-19T05:42:37.287341+00:00
+storm_breaker_version: "1.0"
+overlay_hash: 0a022ef9bf8d7c37
+
+metadata:
+  type: Entity Name
+  scan_method: "storm_breaker_analysis"
+  validation_status: "passed"
+
+technical_trace:
+  generator: "storm-breaker"
+  analysis_engine: "pattern_recognition_v1.0"
+  validation_rules: "format_compliance_check"

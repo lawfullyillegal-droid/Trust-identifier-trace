@@ -1,35 +1,35 @@
-[2025-09-30 16:58:51] Found 7 Python files to test
-[2025-09-30 16:58:51] Testing storm_breaker.py...
-[2025-09-30 16:58:51]   ✅ SUCCESS: storm_breaker.py
-[2025-09-30 16:58:51] Testing generate_syndicate_dashboard.py...
-[2025-09-30 16:58:51]   ✅ SUCCESS: generate_syndicate_dashboard.py
-[2025-09-30 16:58:51] Testing gleif_trace.py...
-[2025-09-30 16:58:51]   ✅ SUCCESS: gleif_trace.py
-[2025-09-30 16:58:51] Testing trust_scan_bot.py...
-[2025-09-30 16:58:52]   ✅ SUCCESS: trust_scan_bot.py
-[2025-09-30 16:58:52] Testing gleif_alias_scan.py...
-[2025-09-30 16:58:52]   ✅ SUCCESS: gleif_alias_scan.py
-[2025-09-30 16:58:52] Testing gleif_echo.py...
-[2025-09-30 16:58:52]   ✅ SUCCESS: gleif_echo.py
-[2025-09-30 16:58:52] Testing reddit_trace.py...
-[2025-09-30 16:58:52]   ✅ SUCCESS: reddit_trace.py
-[2025-09-30 16:58:52] 
+[2025-09-30 17:06:29] Found 7 Python files to test
+[2025-09-30 17:06:29] Testing storm_breaker.py...
+[2025-09-30 17:06:29]   ✅ SUCCESS: storm_breaker.py
+[2025-09-30 17:06:29] Testing generate_syndicate_dashboard.py...
+[2025-09-30 17:06:29]   ✅ SUCCESS: generate_syndicate_dashboard.py
+[2025-09-30 17:06:29] Testing gleif_trace.py...
+[2025-09-30 17:06:29]   ✅ SUCCESS: gleif_trace.py
+[2025-09-30 17:06:29] Testing trust_scan_bot.py...
+[2025-09-30 17:06:30]   ✅ SUCCESS: trust_scan_bot.py
+[2025-09-30 17:06:30] Testing gleif_alias_scan.py...
+[2025-09-30 17:06:30]   ✅ SUCCESS: gleif_alias_scan.py
+[2025-09-30 17:06:30] Testing gleif_echo.py...
+[2025-09-30 17:06:30]   ✅ SUCCESS: gleif_echo.py
+[2025-09-30 17:06:30] Testing reddit_trace.py...
+[2025-09-30 17:06:30]   ✅ SUCCESS: reddit_trace.py
+[2025-09-30 17:06:30] 
 🔍 Analyzing specific failure patterns...
-[2025-09-30 16:58:52] 
+[2025-09-30 17:06:30] 
 📊 ANALYSIS SUMMARY:
-[2025-09-30 16:58:52]   Total files tested: 7
-[2025-09-30 16:58:52]   Successful executions: 7
-[2025-09-30 16:58:52]   Failed executions: 0
-[2025-09-30 16:58:52]   Success rate: 100.0%
-[2025-09-30 16:58:52] 
+[2025-09-30 17:06:30]   Total files tested: 7
+[2025-09-30 17:06:30]   Successful executions: 7
+[2025-09-30 17:06:30]   Failed executions: 0
+[2025-09-30 17:06:30]   Success rate: 100.0%
+[2025-09-30 17:06:30] 
 ✅ SUCCESSFUL CODES:
-[2025-09-30 16:58:52]   - storm_breaker.py
-[2025-09-30 16:58:52]   - generate_syndicate_dashboard.py
-[2025-09-30 16:58:52]   - gleif_trace.py
-[2025-09-30 16:58:52]   - trust_scan_bot.py
-[2025-09-30 16:58:52]   - gleif_alias_scan.py
-[2025-09-30 16:58:52]   - gleif_echo.py
-[2025-09-30 16:58:52]   - reddit_trace.py
-[2025-09-30 16:58:52] 
+[2025-09-30 17:06:30]   - storm_breaker.py
+[2025-09-30 17:06:30]   - generate_syndicate_dashboard.py
+[2025-09-30 17:06:30]   - gleif_trace.py
+[2025-09-30 17:06:30]   - trust_scan_bot.py
+[2025-09-30 17:06:30]   - gleif_alias_scan.py
+[2025-09-30 17:06:30]   - gleif_echo.py
+[2025-09-30 17:06:30]   - reddit_trace.py
+[2025-09-30 17:06:30] 
 📄 Detailed report saved to: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/failing_codes_report.json
-[2025-09-30 16:58:52] 📄 Log file saved to: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/failing_codes_log.txt
+[2025-09-30 17:06:30] 📄 Log file saved to: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/failing_codes_log.txt

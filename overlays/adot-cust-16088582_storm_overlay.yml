@@ -4,7 +4,7 @@ pattern_type: arizona_dot_customer
 format_valid: True
 confidence_score: 0.95
 risk_level: medium
-timestamp: 2025-09-30T16:58:51.277967+00:00
+timestamp: 2025-09-30T17:06:29.326405+00:00
 storm_breaker_version: "1.0"
 overlay_hash: 07aa753efb175927
 

@@ -61,3 +61,6 @@ Thumbs.db
 *.tmp
 *.temp
 /tmp/
+
+# Generated timestamped output files (keep static output files)
+output/storm_breaker_results_*.json

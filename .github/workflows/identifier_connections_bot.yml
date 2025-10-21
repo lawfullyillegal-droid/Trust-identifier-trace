@@ -1,0 +1,47 @@
+name: Identifier Connections Bot
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'  # Run every 6 hours
+
+permissions:
+  contents: write
+
+jobs:
+  scan-connections:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Ensure output folder exists
+        run: mkdir -p output
+
+      - name: Run Identifier Connections Bot
+        run: |
+          set -e
+          if [ -f identifier_connections_bot.py ]; then
+            python identifier_connections_bot.py
+          else
+            echo "ERROR: identifier_connections_bot.py not found in repo root"
+            exit 1
+          fi
+
+      - name: Commit connection results
+        run: |
+          git config user.name "Identifier Connections Bot"
+          git config user.email "connections-bot@trust.local"
+          git add output/identifier_connections.json
+          git commit -m "🔗 Auto-update identifier connections from bot scan" || echo "No changes to commit"
+          git pull --rebase origin main
+          git push

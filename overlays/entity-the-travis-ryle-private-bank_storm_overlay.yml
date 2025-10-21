@@ -4,7 +4,7 @@ pattern_type: entity_name
 format_valid: True
 confidence_score: 0.95
 risk_level: low
-timestamp: 2025-10-21T22:20:13.358257+00:00
+timestamp: 2025-10-21T22:24:36.041114+00:00
 storm_breaker_version: "1.0"
 overlay_hash: 0a022ef9bf8d7c37
 

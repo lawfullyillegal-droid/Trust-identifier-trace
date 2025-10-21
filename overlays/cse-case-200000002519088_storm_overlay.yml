@@ -4,7 +4,7 @@ pattern_type: child_support_enforcement
 format_valid: True
 confidence_score: 0.95
 risk_level: low
-timestamp: 2025-10-21T22:17:56.991412+00:00
+timestamp: 2025-10-21T22:20:13.357714+00:00
 storm_breaker_version: "1.0"
 overlay_hash: eea9e99c5ff446c9
 

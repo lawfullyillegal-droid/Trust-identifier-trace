@@ -1,0 +1,423 @@
+{
+  "scan_metadata": {
+    "bot_name": "Identifier Connections Bot",
+    "version": "1.0",
+    "scan_timestamp": "2025-10-21T22:20:13.680262+00:00",
+    "total_identifiers_scanned": 9,
+    "total_connections_found": 31
+  },
+  "identifiers": [
+    "EIN-92-6319308",
+    "SSN-602-05-7209",
+    "IRS-TRACK-108541264370",
+    "CSE-CASE-200000002519088",
+    "ADOT-CUST-16088582",
+    "ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413",
+    "ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK",
+    "LACOUNTY-BIRTH-REGISTRY-NUMBER",
+    "LACOUNTY-DEED-DOC-NUMBER"
+  ],
+  "aliases": [
+    "THE TRAVIS RYLE PRIVATE BANK",
+    "TRAVIS RYLE PRIVATE BANK",
+    "RYLE PRIVATE BANK",
+    "TRAVIS RYLE ESTATE",
+    "TRAVIS RYLE TRUST"
+  ],
+  "adot_numbers": [
+    "AZC-004921",
+    "ADOT-782134",
+    "TRUST-ADOT-001"
+  ],
+  "connections": [
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for EIN-92-6319308",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-10-21T22:20:13.622766+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for SSN-602-05-7209",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-10-21T22:20:13.624971+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for IRS-TRACK-108541264370",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-10-21T22:20:13.627065+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for CSE-CASE-200000002519088",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-10-21T22:20:13.629524+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for ADOT-CUST-16088582",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-10-21T22:20:13.634621+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-10-21T22:20:13.644016+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-10-21T22:20:13.649582+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for LACOUNTY-BIRTH-REGISTRY-NUMBER",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-10-21T22:20:13.652129+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for LACOUNTY-DEED-DOC-NUMBER",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-10-21T22:20:13.654332+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for EIN-92-6319308",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-10-21T22:20:13.656532+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for SSN-602-05-7209",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-10-21T22:20:13.658758+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for IRS-TRACK-108541264370",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-10-21T22:20:13.661977+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for CSE-CASE-200000002519088",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-10-21T22:20:13.664114+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for ADOT-CUST-16088582",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-10-21T22:20:13.666579+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-10-21T22:20:13.668641+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-10-21T22:20:13.670924+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for LACOUNTY-BIRTH-REGISTRY-NUMBER",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-10-21T22:20:13.673647+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for LACOUNTY-DEED-DOC-NUMBER",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-10-21T22:20:13.680036+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Cross-Identifier_Analysis",
+      "identifier_1": "EIN-92-6319308",
+      "identifier_2": "ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK",
+      "relationship_type": "Entity-Tax_ID_Relationship",
+      "confidence": "high",
+      "timestamp": "2025-10-21T22:20:13.680067+00:00"
+    },
+    {
+      "source": "Cross-Identifier_Analysis",
+      "identifier_1": "SSN-602-05-7209",
+      "identifier_2": "LACOUNTY-BIRTH-REGISTRY-NUMBER",
+      "relationship_type": "Person-Birth_Record_Relationship",
+      "confidence": "high",
+      "timestamp": "2025-10-21T22:20:13.680073+00:00"
+    },
+    {
+      "source": "Cross-Identifier_Analysis",
+      "identifier_1": "ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413",
+      "identifier_2": "LACOUNTY-DEED-DOC-NUMBER",
+      "relationship_type": "Location-Property_Relationship",
+      "confidence": "high",
+      "timestamp": "2025-10-21T22:20:13.680076+00:00"
+    },
+    {
+      "source": "Cross-Identifier_Analysis",
+      "identifier_1": "ADOT-CUST-16088582",
+      "identifier_2": "ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413",
+      "relationship_type": "Customer-Location_Relationship",
+      "confidence": "high",
+      "timestamp": "2025-10-21T22:20:13.680080+00:00"
+    },
+    {
+      "source": "Cross-Identifier_Analysis",
+      "identifier_1": "CSE-CASE-200000002519088",
+      "identifier_2": "SSN-602-05-7209",
+      "relationship_type": "Case-Person_Relationship",
+      "confidence": "high",
+      "timestamp": "2025-10-21T22:20:13.680082+00:00"
+    },
+    {
+      "source": "Cross-Identifier_Analysis",
+      "identifier_1": "IRS-TRACK-108541264370",
+      "identifier_2": "EIN-92-6319308",
+      "relationship_type": "Tax_Tracking-Entity_Relationship",
+      "confidence": "high",
+      "timestamp": "2025-10-21T22:20:13.680086+00:00"
+    },
+    {
+      "source": "ADOT_Reference",
+      "identifier": "ADOT-CUST-16088582",
+      "adot_number": "ADOT-782134",
+      "match_type": "reference_number",
+      "confidence": "medium",
+      "timestamp": "2025-10-21T22:20:13.680151+00:00"
+    },
+    {
+      "source": "ADOT_Reference",
+      "identifier": "ADOT-CUST-16088582",
+      "adot_number": "TRUST-ADOT-001",
+      "match_type": "reference_number",
+      "confidence": "medium",
+      "timestamp": "2025-10-21T22:20:13.680157+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK",
+      "alias": "THE TRAVIS RYLE PRIVATE BANK",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2025-10-21T22:20:13.680169+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK",
+      "alias": "TRAVIS RYLE PRIVATE BANK",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2025-10-21T22:20:13.680174+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK",
+      "alias": "RYLE PRIVATE BANK",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2025-10-21T22:20:13.680178+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK",
+      "alias": "TRAVIS RYLE ESTATE",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2025-10-21T22:20:13.680182+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK",
+      "alias": "TRAVIS RYLE TRUST",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2025-10-21T22:20:13.680185+00:00"
+    }
+  ],
+  "connection_graph": {
+    "EIN-92-6319308": [
+      "ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK",
+      "IRS-TRACK-108541264370"
+    ],
+    "ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK": [
+      "TRAVIS RYLE TRUST",
+      "TRAVIS RYLE ESTATE",
+      "THE TRAVIS RYLE PRIVATE BANK",
+      "TRAVIS RYLE PRIVATE BANK",
+      "EIN-92-6319308",
+      "RYLE PRIVATE BANK"
+    ],
+    "SSN-602-05-7209": [
+      "CSE-CASE-200000002519088",
+      "LACOUNTY-BIRTH-REGISTRY-NUMBER"
+    ],
+    "LACOUNTY-BIRTH-REGISTRY-NUMBER": [
+      "SSN-602-05-7209"
+    ],
+    "ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413": [
+      "LACOUNTY-DEED-DOC-NUMBER",
+      "ADOT-CUST-16088582"
+    ],
+    "LACOUNTY-DEED-DOC-NUMBER": [
+      "ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413"
+    ],
+    "ADOT-CUST-16088582": [
+      "ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413"
+    ],
+    "CSE-CASE-200000002519088": [
+      "SSN-602-05-7209"
+    ],
+    "IRS-TRACK-108541264370": [
+      "EIN-92-6319308"
+    ]
+  },
+  "metrics": {
+    "total_connections": 31,
+    "connection_types": {},
+    "most_connected_identifiers": [
+      {
+        "identifier": "ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK",
+        "connection_count": 6
+      },
+      {
+        "identifier": "EIN-92-6319308",
+        "connection_count": 2
+      },
+      {
+        "identifier": "SSN-602-05-7209",
+        "connection_count": 2
+      },
+      {
+        "identifier": "ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413",
+        "connection_count": 2
+      },
+      {
+        "identifier": "LACOUNTY-BIRTH-REGISTRY-NUMBER",
+        "connection_count": 1
+      }
+    ],
+    "connection_sources": {
+      "Reddit": 9,
+      "GLEIF": 9,
+      "Cross-Identifier_Analysis": 6,
+      "ADOT_Reference": 2,
+      "Alias_Match": 5
+    },
+    "relationship_types": {
+      "Entity-Tax_ID_Relationship": 1,
+      "Person-Birth_Record_Relationship": 1,
+      "Location-Property_Relationship": 1,
+      "Customer-Location_Relationship": 1,
+      "Case-Person_Relationship": 1,
+      "Tax_Tracking-Entity_Relationship": 1
+    }
+  }
+}

@@ -4,7 +4,7 @@ pattern_type: employer_identification
 format_valid: True
 confidence_score: 0.95
 risk_level: low
-timestamp: 2025-10-21T22:17:56.990632+00:00
+timestamp: 2025-10-21T22:20:13.356958+00:00
 storm_breaker_version: "1.0"
 overlay_hash: fe628416a7bd99ee
 

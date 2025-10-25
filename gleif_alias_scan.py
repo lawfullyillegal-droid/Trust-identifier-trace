@@ -2,25 +2,34 @@ import requests, xml.etree.ElementTree as ET
 from datetime import datetime
 import hashlib, yaml
 import os
+import sys
+
+# Configure UTF-8 encoding for Windows console output
+if sys.platform == 'win32':
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+        sys.stderr.reconfigure(encoding='utf-8')
+    except:
+        pass
 
 # Load aliases
 try:
     with open("identifiers.yaml", "r") as f:
         aliases = yaml.safe_load(f)["trust_aliases"]
 except FileNotFoundError:
-    print("⚠️ identifiers.yaml not found, using default aliases")
+    print("Warning: identifiers.yaml not found, using default aliases")
     aliases = ["TRAVIS RYLE", "RYLE PRIVATE BANK", "TRAVIS RYLE TRUST"]
 
 # Pull GLEIF data with error handling
-gleif_url = "https://api.gleif.org/api/v1/lei-records?page[size]=1000"
+gleif_url = "https://api.gleif.org/api/v1/lei-records?filter[entity.legalName]=*&page[size]=100"
 try:
     response = requests.get(gleif_url, timeout=10)
     response.raise_for_status()
     data = response.json()
-    print("✅ Successfully fetched GLEIF data")
+    print("Success: Successfully fetched GLEIF data")
 except (requests.exceptions.RequestException, requests.exceptions.Timeout) as e:
-    print(f"⚠️ Network error: {e}")
-    print("🔄 Running in offline mode with mock data...")
+    print(f"Warning: Network error: {e}")
+    print("Info: Running in offline mode with mock data...")
     # Create mock data for offline mode
     data = {
         "data": [
@@ -84,8 +93,8 @@ try:
         overlay_hash.text = hash_value
         root.set("timestamp", datetime.now().isoformat())
         tree.write("trust_overlay.xml", encoding="utf-8", xml_declaration=True)
-        print("✅ Overlay updated.")
+        print("Success: Overlay updated.")
     else:
-        print("⚠️ trust_overlay.xml not found, skipping overlay injection")
+        print("Warning: trust_overlay.xml not found, skipping overlay injection")
 except Exception as e:
-    print(f"⚠️ Overlay injection skipped: {e}")
+    print(f"Warning: Overlay injection skipped: {e}")

@@ -9,7 +9,7 @@ if sys.platform == 'win32':
     try:
         sys.stdout.reconfigure(encoding='utf-8')
         sys.stderr.reconfigure(encoding='utf-8')
-    except:
+    except Exception:
         pass
 
 # Load aliases
@@ -21,7 +21,7 @@ except FileNotFoundError:
     aliases = ["TRAVIS RYLE", "RYLE PRIVATE BANK", "TRAVIS RYLE TRUST"]
 
 # Pull GLEIF data with error handling
-gleif_url = "https://api.gleif.org/api/v1/lei-records?filter[entity.legalName]=*&page[size]=100"
+gleif_url = "https://api.gleif.org/api/v1/lei-records?page[size]=100"
 try:
     response = requests.get(gleif_url, timeout=10)
     response.raise_for_status()

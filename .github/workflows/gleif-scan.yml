@@ -28,5 +28,10 @@ jobs:
           git config user.name "TrustBot"
           git config user.email "trustbot@travisryle.org"
           git add gleif_results.xml trust_overlay.xml
-          git commit -m "Daily GLEIF scan + overlay update [$(Get-Date -Format 'yyyy-MM-dd_HH-mm-ss')]"
-          git push origin main
+          if (git diff --staged --quiet) {
+            Write-Host "No changes to commit"
+          } else {
+            $timestamp = Get-Date -Format 'yyyy-MM-dd_HH-mm-ss'
+            git commit -m "Daily GLEIF scan + overlay update [$timestamp]"
+            git push origin main
+          }

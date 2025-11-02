@@ -3,7 +3,7 @@
   "bot_role": "Security & Integrity Verification",
   "bot_department": "Trust Security Department",
   "bot_version": "1.0.0",
-  "scan_timestamp": "2025-11-02T07:24:17.910168+00:00",
+  "scan_timestamp": "2025-11-02T07:39:45.248139+00:00",
   "total_overlays": 93,
   "verified_overlays": 93,
   "failed_overlays": 0,
@@ -13,837 +13,837 @@
       "path": "overlays/irs-track-0509907367_storm_overlay.yml",
       "hash": "a147899de44221f71d9c2e88a8e40269323dfe05a352c93766563a40a10af071",
       "size_bytes": 518,
-      "last_modified": "2025-11-02T07:17:03.496761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.907520+00:00"
+      "timestamp": "2025-11-02T07:39:45.246132+00:00"
     },
     {
       "filename": "surveillance-creditkarma-preq-20250411_storm_overlay.yml",
       "path": "overlays/surveillance-creditkarma-preq-20250411_storm_overlay.yml",
       "hash": "d7ef14abdcd935d839866f20e9e066b2424ae88d7c8c018c121c51822584e7ff",
       "size_bytes": 542,
-      "last_modified": "2025-11-02T07:17:03.499761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.907562+00:00"
+      "timestamp": "2025-11-02T07:39:45.246163+00:00"
     },
     {
       "filename": "taxyear_overlay.yml",
       "path": "overlays/taxyear_overlay.yml",
       "hash": "e0701a9f1351c216c352da65bb41876d8cfb555fc1170408b64a75f4ef80627c",
       "size_bytes": 74,
-      "last_modified": "2025-11-02T07:16:09.493767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.907595+00:00"
+      "timestamp": "2025-11-02T07:39:45.246186+00:00"
     },
     {
       "filename": "ssn_overlay.yml",
       "path": "overlays/ssn_overlay.yml",
       "hash": "9c4f9ffea6734e62138ed1842dc5af258111d83f47b1bd7f55e56d0273924b9d",
       "size_bytes": 70,
-      "last_modified": "2025-11-02T07:16:09.493767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.907624+00:00"
+      "timestamp": "2025-11-02T07:39:45.246207+00:00"
     },
     {
       "filename": "taxpayer_overlay.yml",
       "path": "overlays/taxpayer_overlay.yml",
       "hash": "2a7ff6a7657814e584fcf0cf644af16ed95fe90a15fe50f7bf2bc9a5c918751d",
       "size_bytes": 75,
-      "last_modified": "2025-11-02T07:16:09.493767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.907653+00:00"
+      "timestamp": "2025-11-02T07:39:45.246227+00:00"
     },
     {
       "filename": "csecase_overlay.yml",
       "path": "overlays/csecase_overlay.yml",
       "hash": "d9f2b8351106c1c810a81b7e267486f331d9feeb11f20772e1a643cfa58cf41d",
       "size_bytes": 74,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.907680+00:00"
+      "timestamp": "2025-11-02T07:39:45.246248+00:00"
     },
     {
       "filename": "ln-case-31568224_storm_overlay.yml",
       "path": "overlays/ln-case-31568224_storm_overlay.yml",
       "hash": "06818a80e3b059511473d8322e15ae24d7c8c4209718e9db170d38e47a2db9b0",
       "size_bytes": 498,
-      "last_modified": "2025-11-02T07:17:03.496761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.907769+00:00"
+      "timestamp": "2025-11-02T07:39:45.246332+00:00"
     },
     {
       "filename": "irsform1040_overlay.yml",
       "path": "overlays/irsform1040_overlay.yml",
       "hash": "3e85df612a24b1ba98a6ed93fe0c54ebdb166641c221ee19d720f8ae56e940a8",
       "size_bytes": 78,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.907810+00:00"
+      "timestamp": "2025-11-02T07:39:45.246354+00:00"
     },
     {
       "filename": "addr-oxnard-ca-5034-nautilus_storm_overlay.yml",
       "path": "overlays/addr-oxnard-ca-5034-nautilus_storm_overlay.yml",
       "hash": "0c7b6fee37e33935f37415f340e74776ff6d8e9c75c9b3a3ca4568e440de6719",
       "size_bytes": 525,
-      "last_modified": "2025-11-02T07:17:03.497761+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.907837+00:00"
+      "timestamp": "2025-11-02T07:39:45.246375+00:00"
     },
     {
       "filename": "sentry insurance_overlay.yml",
       "path": "overlays/sentry insurance_overlay.yml",
       "hash": "fe160c699dfa08afd8bdf64780ad335dd8355af801dca727d5ef3b3077d110e4",
       "size_bytes": 138,
-      "last_modified": "2025-11-02T07:17:04.363761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.907864+00:00"
+      "timestamp": "2025-11-02T07:39:45.246394+00:00"
     },
     {
       "filename": "nameformat_overlay.yml",
       "path": "overlays/nameformat_overlay.yml",
       "hash": "a29bb8068a56fb6944fb1d943d678d1f9d603e808444e3f3b42c966b9c74b482",
       "size_bytes": 77,
-      "last_modified": "2025-11-02T07:16:09.493767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.907890+00:00"
+      "timestamp": "2025-11-02T07:39:45.246414+00:00"
     },
     {
       "filename": "entity-travis-steven-ryle_storm_overlay.yml",
       "path": "overlays/entity-travis-steven-ryle_storm_overlay.yml",
       "hash": "3ac75ee6ca579ecb7ad82afaf97e63e0a5805c932c32392c3a6c25a97fcbe7ca",
       "size_bytes": 520,
-      "last_modified": "2025-11-02T07:17:03.497761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.907918+00:00"
+      "timestamp": "2025-11-02T07:39:45.246434+00:00"
     },
     {
       "filename": "county_overlay.yml",
       "path": "overlays/county_overlay.yml",
       "hash": "9b350e3a095b2f904d11e02949baf67824fae77abf1d085540104bed07fab9f1",
       "size_bytes": 73,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.907945+00:00"
+      "timestamp": "2025-11-02T07:39:45.246454+00:00"
     },
     {
       "filename": "lacounty-deed-doc-number_storm_overlay.yml",
       "path": "overlays/lacounty-deed-doc-number_storm_overlay.yml",
       "hash": "e0497dc96d354e737b1f120372793a821ef46151ccf8ffc2ba26e816e49d4107",
       "size_bytes": 533,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.907972+00:00"
+      "timestamp": "2025-11-02T07:39:45.246473+00:00"
     },
     {
       "filename": "entity_overlay.yml",
       "path": "overlays/entity_overlay.yml",
       "hash": "0e53e5a0b3b81be406e72f61d91eeec1875cf4bd372fac07de866bbf9b4ff821",
       "size_bytes": 73,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.907997+00:00"
+      "timestamp": "2025-11-02T07:39:45.246491+00:00"
     },
     {
       "filename": "trust_overlay.yml",
       "path": "overlays/trust_overlay.yml",
       "hash": "71d205480222e2cc3189fc7ddc0fb1114b2828011a1cef8e7ec82cf1b344f5da",
       "size_bytes": 95,
-      "last_modified": "2025-11-02T07:16:09.493767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908025+00:00"
+      "timestamp": "2025-11-02T07:39:45.246510+00:00"
     },
     {
       "filename": "entity-the-travis-ryle-private-bank_storm_overlay.yml",
       "path": "overlays/entity-the-travis-ryle-private-bank_storm_overlay.yml",
       "hash": "1b9a9d9df0782b9bf6c3e7d219d565987270e458ee455560b0d896717613ade3",
       "size_bytes": 540,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908051+00:00"
+      "timestamp": "2025-11-02T07:39:45.246544+00:00"
     },
     {
       "filename": "propertyrecord_overlay.yml",
       "path": "overlays/propertyrecord_overlay.yml",
       "hash": "faa5a243eabeaf3e91f2e3ac2a79d0732aa6a6bd393c2199c26a134bb90f7c45",
       "size_bytes": 132,
-      "last_modified": "2025-11-02T07:16:09.493767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908082+00:00"
+      "timestamp": "2025-11-02T07:39:45.246568+00:00"
     },
     {
       "filename": "cse-case-200000002519088_storm_overlay.yml",
       "path": "overlays/cse-case-200000002519088_storm_overlay.yml",
       "hash": "320dc387a5ee10e1bf620ef9c60bb5af8d36fc2a160ce88682f3083ceb0f1e12",
       "size_bytes": 551,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908146+00:00"
+      "timestamp": "2025-11-02T07:39:45.246587+00:00"
     },
     {
       "filename": "acquireweb_overlay.yml",
       "path": "overlays/acquireweb_overlay.yml",
       "hash": "e90f7d336d1f150ad690ba8f88284dcc5ebb8c6971731d2a614a822a05d8308f",
       "size_bytes": 120,
-      "last_modified": "2025-11-02T07:17:04.363761+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908174+00:00"
+      "timestamp": "2025-11-02T07:39:45.246609+00:00"
     },
     {
       "filename": "vin-4t1b11ak1m_storm_overlay.yml",
       "path": "overlays/vin-4t1b11ak1m_storm_overlay.yml",
       "hash": "f5d3c782d3bcabcfa8d10ab3f1c532f3cc4f06300956c021981721119896b770",
       "size_bytes": 494,
-      "last_modified": "2025-11-02T07:17:03.498761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908201+00:00"
+      "timestamp": "2025-11-02T07:39:45.246628+00:00"
     },
     {
       "filename": "dob_overlay.yml",
       "path": "overlays/dob_overlay.yml",
       "hash": "cceab0049e99e3d1bf412f91c180a46596d79af37ea793464cbe8db3ec47b445",
       "size_bytes": 70,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908226+00:00"
+      "timestamp": "2025-11-02T07:39:45.246647+00:00"
     },
     {
       "filename": "lexisnexis_overlay.yml",
       "path": "overlays/lexisnexis_overlay.yml",
       "hash": "d066218ae949300eb255d78be603f56cfbf912f369e4e167e96d3cbed659208f",
       "size_bytes": 120,
-      "last_modified": "2025-11-02T07:17:04.362761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908253+00:00"
+      "timestamp": "2025-11-02T07:39:45.246667+00:00"
     },
     {
       "filename": "hiroad insurance_overlay.yml",
       "path": "overlays/hiroad insurance_overlay.yml",
       "hash": "00561f58f13b374aeac99c0002398140a8dcd978f3abe84e52ab7d8f1f389d7b",
       "size_bytes": 138,
-      "last_modified": "2025-11-02T07:17:04.363761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908279+00:00"
+      "timestamp": "2025-11-02T07:39:45.246686+00:00"
     },
     {
       "filename": "ein-92-6319308_storm_overlay.yml",
       "path": "overlays/ein-92-6319308_storm_overlay.yml",
       "hash": "deefc3c994c2031280aa7511611d0cfd136db82fbe65ef9490f62db22e185fff",
       "size_bytes": 529,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908304+00:00"
+      "timestamp": "2025-11-02T07:39:45.246706+00:00"
     },
     {
       "filename": "ein_overlay.yml",
       "path": "overlays/ein_overlay.yml",
       "hash": "453491de017ff3f53ab8a30a085e5a08930512ad82b7733eb7ead519e973736f",
       "size_bytes": 117,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908329+00:00"
+      "timestamp": "2025-11-02T07:39:45.246724+00:00"
     },
     {
       "filename": "ssn-602-05-7209_storm_overlay.yml",
       "path": "overlays/ssn-602-05-7209_storm_overlay.yml",
       "hash": "a6f153ac0918d5df7de9fb5734390fc5f51eaf28a6f4e64beb1cc75524b6ba41",
       "size_bytes": 518,
-      "last_modified": "2025-11-02T07:17:03.495761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908355+00:00"
+      "timestamp": "2025-11-02T07:39:45.246744+00:00"
     },
     {
       "filename": "irsform_overlay.yml",
       "path": "overlays/irsform_overlay.yml",
       "hash": "c35bacbedf128ff8e7e0dc6ffa32f4160a9da1de827f0da508426b6c751f5ac3",
       "size_bytes": 74,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908380+00:00"
+      "timestamp": "2025-11-02T07:39:45.246763+00:00"
     },
     {
       "filename": "adot-cust-16088582_storm_overlay.yml",
       "path": "overlays/adot-cust-16088582_storm_overlay.yml",
       "hash": "a4f5457822cfc07e154f5719fa3568316aac4c176f4b92e39eb85abb28568883",
       "size_bytes": 530,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908405+00:00"
+      "timestamp": "2025-11-02T07:39:45.246782+00:00"
     },
     {
       "filename": "birthregnum_overlay.yml",
       "path": "overlays/birthregnum_overlay.yml",
       "hash": "07fcd5b7cc4f0944b08eb2dbb585b1ba10aa5eaf2521e3f432c1017954e696b6",
       "size_bytes": 78,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908430+00:00"
+      "timestamp": "2025-11-02T07:39:45.246801+00:00"
     },
     {
       "filename": "surveillance-clue-vin-4t1b11ak1m-20250328_storm_overlay.yml",
       "path": "overlays/surveillance-clue-vin-4t1b11ak1m-20250328_storm_overlay.yml",
       "hash": "4cbece03cc9468abbafd812b10e38c486661d7a1784e054d28f6f812d7729a6a",
       "size_bytes": 548,
-      "last_modified": "2025-11-02T07:17:03.498761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908456+00:00"
+      "timestamp": "2025-11-02T07:39:45.246820+00:00"
     },
     {
       "filename": "vehicle-toyota-camry-2021_storm_overlay.yml",
       "path": "overlays/vehicle-toyota-camry-2021_storm_overlay.yml",
       "hash": "c878d1cef0bb4091ca57cd8bda55538d9ff24cb3a466cd728cb313939394bff0",
       "size_bytes": 516,
-      "last_modified": "2025-11-02T07:17:03.498761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908482+00:00"
+      "timestamp": "2025-11-02T07:39:45.246840+00:00"
     },
     {
       "filename": "ssnissued_overlay.yml",
       "path": "overlays/ssnissued_overlay.yml",
       "hash": "0a012d9c7afb0a6bf2f987b18812aa6323da3713e2c24e10b2b2c42d4ea0f08c",
       "size_bytes": 76,
-      "last_modified": "2025-11-02T07:16:09.493767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908511+00:00"
+      "timestamp": "2025-11-02T07:39:45.246858+00:00"
     },
     {
       "filename": "tradename_overlay.yml",
       "path": "overlays/tradename_overlay.yml",
       "hash": "380b410d5c17b7adc9cbedf581c532ba4a854736d82f82ca052562e9e4c51202",
       "size_bytes": 76,
-      "last_modified": "2025-11-02T07:16:09.493767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908537+00:00"
+      "timestamp": "2025-11-02T07:39:45.246878+00:00"
     },
     {
       "filename": "regaccepted_overlay.yml",
       "path": "overlays/regaccepted_overlay.yml",
       "hash": "b41a8de0b3fbff7a31139b372a24116b7f6adf4e756912bf870bbaae66336aad",
       "size_bytes": 78,
-      "last_modified": "2025-11-02T07:16:09.493767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908561+00:00"
+      "timestamp": "2025-11-02T07:39:45.246896+00:00"
     },
     {
       "filename": "entityformed_overlay.yml",
       "path": "overlays/entityformed_overlay.yml",
       "hash": "7c3d8fe1830dd0cf8e00da6bc1ac025a76955b9efe71be524e015b5c9b9af683",
       "size_bytes": 79,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908586+00:00"
+      "timestamp": "2025-11-02T07:39:45.246914+00:00"
     },
     {
       "filename": "credit karma_overlay.yml",
       "path": "overlays/credit karma_overlay.yml",
       "hash": "3c88f7d8acd4b9ae6f11c7c375ea2a45bcd6a175c8b3207b4682446b6d76a8b6",
       "size_bytes": 126,
-      "last_modified": "2025-11-02T07:17:04.363761+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908615+00:00"
+      "timestamp": "2025-11-02T07:39:45.246935+00:00"
     },
     {
       "filename": "violation-noreg-kingman-2024_storm_overlay.yml",
       "path": "overlays/violation-noreg-kingman-2024_storm_overlay.yml",
       "hash": "6f67b02922dbeddb162a1e94c6ee902471d54932687ddee156c4bf2650ac4a2d",
       "size_bytes": 522,
-      "last_modified": "2025-11-02T07:17:03.498761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908641+00:00"
+      "timestamp": "2025-11-02T07:39:45.246954+00:00"
     },
     {
       "filename": "class_overlay.yml",
       "path": "overlays/class_overlay.yml",
       "hash": "75e0ca0ba9b2572f411caaf934510922bcfe1ab19bb0d4f82f0564c753679cfc",
       "size_bytes": 72,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908666+00:00"
+      "timestamp": "2025-11-02T07:39:45.246973+00:00"
     },
     {
       "filename": "ein-33-3124290_storm_overlay.yml",
       "path": "overlays/ein-33-3124290_storm_overlay.yml",
       "hash": "1dc24c590946ba442c002603e99f65dc4f6787a538940c31d619c79558109ab4",
       "size_bytes": 529,
-      "last_modified": "2025-11-02T07:17:03.495761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908691+00:00"
+      "timestamp": "2025-11-02T07:39:45.246992+00:00"
     },
     {
       "filename": "property_overlay.yml",
       "path": "overlays/property_overlay.yml",
       "hash": "94436a3a964d3d35317ddbd10a0aa1ba9f1a068c52b1198c2befe9063fe5ba08",
       "size_bytes": 160,
-      "last_modified": "2025-11-02T07:16:09.493767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908716+00:00"
+      "timestamp": "2025-11-02T07:39:45.247011+00:00"
     },
     {
       "filename": "transunion_overlay.yml",
       "path": "overlays/transunion_overlay.yml",
       "hash": "f0589d8565cf6d4c4864a4b0f2c74f8f45dce9d3f1ca7b614013809957d5f4ba",
       "size_bytes": 120,
-      "last_modified": "2025-11-02T07:17:04.363761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908741+00:00"
+      "timestamp": "2025-11-02T07:39:45.247029+00:00"
     },
     {
       "filename": "kingman court_overlay.yml",
       "path": "overlays/kingman court_overlay.yml",
       "hash": "2e9f497334e1a4f22e69fa7a3a9f4ebd2fb71a6ccd21dbfce946d0f3063946fb",
       "size_bytes": 129,
-      "last_modified": "2025-11-02T07:17:04.363761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908766+00:00"
+      "timestamp": "2025-11-02T07:39:45.247048+00:00"
     },
     {
       "filename": "entityclass_overlay.yml",
       "path": "overlays/entityclass_overlay.yml",
       "hash": "d454544ad119affd2bf781762373af546aabd887adbb546a0a4923490a7dd161",
       "size_bytes": 78,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908792+00:00"
+      "timestamp": "2025-11-02T07:39:45.247067+00:00"
     },
     {
       "filename": "addr-goldenvalley-az-7090-rural-rd_storm_overlay.yml",
       "path": "overlays/addr-goldenvalley-az-7090-rural-rd_storm_overlay.yml",
       "hash": "1f38a37e365d8adda7993ba62f2a4aa145a718b214b6c09705bcbbcfa65789a5",
       "size_bytes": 537,
-      "last_modified": "2025-11-02T07:17:03.497761+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908818+00:00"
+      "timestamp": "2025-11-02T07:39:45.247086+00:00"
     },
     {
       "filename": "lienrefdoc_overlay.yml",
       "path": "overlays/lienrefdoc_overlay.yml",
       "hash": "8b5f1c06551b14fa61f3da80f350de09f0b922764a7b5ab8b555cc5877ca1a77",
       "size_bytes": 77,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908851+00:00"
+      "timestamp": "2025-11-02T07:39:45.247105+00:00"
     },
     {
       "filename": "surveillance-progressive-review-20250411_storm_overlay.yml",
       "path": "overlays/surveillance-progressive-review-20250411_storm_overlay.yml",
       "hash": "b1c5c89deeabdf20c39a0e0c4f90b22592d9d773497471278706e908a2534eb6",
       "size_bytes": 546,
-      "last_modified": "2025-11-02T07:17:03.499761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908877+00:00"
+      "timestamp": "2025-11-02T07:39:45.247124+00:00"
     },
     {
       "filename": "lexisnexis c.l.u.e._overlay.yml",
       "path": "overlays/lexisnexis c.l.u.e._overlay.yml",
       "hash": "7cc9bd2d6dc876938f1ece7784b9bcc9a77723c66baaa78bc010c6c64b9c1cda",
       "size_bytes": 147,
-      "last_modified": "2025-11-02T07:17:04.363761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908901+00:00"
+      "timestamp": "2025-11-02T07:39:45.247146+00:00"
     },
     {
       "filename": "entity-mr-travis-s-rylee_storm_overlay.yml",
       "path": "overlays/entity-mr-travis-s-rylee_storm_overlay.yml",
       "hash": "ab742687a04831a064506c037aef829213a0383d7e3cb732137f263f0140ece7",
       "size_bytes": 518,
-      "last_modified": "2025-11-02T07:17:03.497761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908927+00:00"
+      "timestamp": "2025-11-02T07:39:45.247166+00:00"
     },
     {
       "filename": "violation-speed-20plus-kingman-2024_storm_overlay.yml",
       "path": "overlays/violation-speed-20plus-kingman-2024_storm_overlay.yml",
       "hash": "a7b7bd54dfb1d1be0f6443253c0491eec35daa850b2694bb51b26cbbff072c1c",
       "size_bytes": 536,
-      "last_modified": "2025-11-02T07:17:03.498761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908952+00:00"
+      "timestamp": "2025-11-02T07:39:45.247186+00:00"
     },
     {
       "filename": "ln-consumer-11133734_storm_overlay.yml",
       "path": "overlays/ln-consumer-11133734_storm_overlay.yml",
       "hash": "986d868fa18e8345585483d400ba97bdc9e4403c07f2cdf4210581fdf7b27114",
       "size_bytes": 506,
-      "last_modified": "2025-11-02T07:17:03.496761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.908980+00:00"
+      "timestamp": "2025-11-02T07:39:45.247207+00:00"
     },
     {
       "filename": "certificate_overlay.yml",
       "path": "overlays/certificate_overlay.yml",
       "hash": "58026bb7c50f66778e92a5636059832188215542a7e2ecffe3822b5b3eb4bfbf",
       "size_bytes": 78,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909005+00:00"
+      "timestamp": "2025-11-02T07:39:45.247226+00:00"
     },
     {
       "filename": "email-travisrel_yahoo_com_storm_overlay.yml",
       "path": "overlays/email-travisrel_yahoo_com_storm_overlay.yml",
       "hash": "c180166a2e314cb9e2ed9f57e87b41987e91e59c45b986cb79041bf2f7809ece",
       "size_bytes": 516,
-      "last_modified": "2025-11-02T07:17:03.497761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909031+00:00"
+      "timestamp": "2025-11-02T07:39:45.247245+00:00"
     },
     {
       "filename": "surveillance-clue-vin-4t1b1r1akm-20250328_storm_overlay.yml",
       "path": "overlays/surveillance-clue-vin-4t1b1r1akm-20250328_storm_overlay.yml",
       "hash": "f6ace2c512e745c3ca866145e1799c045a6cbfad4530fbc87e90b3f1eece7492",
       "size_bytes": 548,
-      "last_modified": "2025-11-02T07:17:03.498761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909057+00:00"
+      "timestamp": "2025-11-02T07:39:45.247263+00:00"
     },
     {
       "filename": "addr-templecity-ca-4641-dacotah_storm_overlay.yml",
       "path": "overlays/addr-templecity-ca-4641-dacotah_storm_overlay.yml",
       "hash": "82129cc5e666648c5854aef416fab87f0dc50046eb97fd58917c11aa3b3f6f0e",
       "size_bytes": 531,
-      "last_modified": "2025-11-02T07:17:03.497761+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909082+00:00"
+      "timestamp": "2025-11-02T07:39:45.247283+00:00"
     },
     {
       "filename": "address_overlay.yml",
       "path": "overlays/address_overlay.yml",
       "hash": "8a668ff5d3c6281749952095079b50a07a43d5b21cc1e563d033a30c33642b27",
       "size_bytes": 74,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909127+00:00"
+      "timestamp": "2025-11-02T07:39:45.247301+00:00"
     },
     {
       "filename": "addr-5570-w-tonto-pl-golden-valley-az-86413_storm_overlay.yml",
       "path": "overlays/addr-5570-w-tonto-pl-golden-valley-az-86413_storm_overlay.yml",
       "hash": "ccb2cc11452e8656597113e208d25b9c1e36e8c9ca14994a4e8ae4119e9bb2e1",
       "size_bytes": 555,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909158+00:00"
+      "timestamp": "2025-11-02T07:39:45.247322+00:00"
     },
     {
       "filename": "irs-track-108541264370_storm_overlay.yml",
       "path": "overlays/irs-track-108541264370_storm_overlay.yml",
       "hash": "4a08f8ce463503d1e36dad0fd3621e1d839eacc9a64596db95a41bdbbedd21d5",
       "size_bytes": 523,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909185+00:00"
+      "timestamp": "2025-11-02T07:39:45.247342+00:00"
     },
     {
       "filename": "stateagency_overlay.yml",
       "path": "overlays/stateagency_overlay.yml",
       "hash": "152154a48b7da09ba8dfb95093c869f90aa1a5299d2999d8c0e2c909f947098e",
       "size_bytes": 78,
-      "last_modified": "2025-11-02T07:16:09.493767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909209+00:00"
+      "timestamp": "2025-11-02T07:39:45.247360+00:00"
     },
     {
       "filename": "entityname_overlay.yml",
       "path": "overlays/entityname_overlay.yml",
       "hash": "766ff29874167a591d280866d73e5ba9c63f780fe25a6cd18cab5c17bc3ebd97",
       "size_bytes": 77,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909235+00:00"
+      "timestamp": "2025-11-02T07:39:45.247379+00:00"
     },
     {
       "filename": "violation-finresp-fail-kingman-2004_storm_overlay.yml",
       "path": "overlays/violation-finresp-fail-kingman-2004_storm_overlay.yml",
       "hash": "68093563cdba13536093d4569c33b5ea8ab080c7a0d7b7b75f16ec66ac55fe3b",
       "size_bytes": 536,
-      "last_modified": "2025-11-02T07:17:03.498761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909267+00:00"
+      "timestamp": "2025-11-02T07:39:45.247400+00:00"
     },
     {
       "filename": "irs_overlay.yml",
       "path": "overlays/irs_overlay.yml",
       "hash": "6d8a3c7a41981c8f41c5ad15bd8b787ef641aab704a7fde91fc1f998489d61e3",
       "size_bytes": 133,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909295+00:00"
+      "timestamp": "2025-11-02T07:39:45.247418+00:00"
     },
     {
       "filename": "american express_overlay.yml",
       "path": "overlays/american express_overlay.yml",
       "hash": "091093b5e4ac0c78ae0a4e1fef39fd8524095f24344fe703ed8a490e6e9d4563",
       "size_bytes": 138,
-      "last_modified": "2025-11-02T07:17:04.363761+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909320+00:00"
+      "timestamp": "2025-11-02T07:39:45.247439+00:00"
     },
     {
       "filename": "issuer_overlay.yml",
       "path": "overlays/issuer_overlay.yml",
       "hash": "b73205746bfe076cae740995aa71596517f1e3ec25acc8ef5580c2a35810e9d0",
       "size_bytes": 73,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909344+00:00"
+      "timestamp": "2025-11-02T07:39:45.247457+00:00"
     },
     {
       "filename": "phone-9431463078_storm_overlay.yml",
       "path": "overlays/phone-9431463078_storm_overlay.yml",
       "hash": "3767e12bc00fde3447dcd178192128e50bfa78816c3619b2e66f113d7ba85c45",
       "size_bytes": 498,
-      "last_modified": "2025-11-02T07:17:03.497761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909370+00:00"
+      "timestamp": "2025-11-02T07:39:45.247477+00:00"
     },
     {
       "filename": "role_overlay.yml",
       "path": "overlays/role_overlay.yml",
       "hash": "62122aa176ee6c492c89a40ae1f82bd5aff3cd6e59ed1ccb2158a40d1da47dc1",
       "size_bytes": 71,
-      "last_modified": "2025-11-02T07:16:09.493767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909395+00:00"
+      "timestamp": "2025-11-02T07:39:45.247496+00:00"
     },
     {
       "filename": "irstrack_overlay.yml",
       "path": "overlays/irstrack_overlay.yml",
       "hash": "87f6370be4f7fbe3f81f6ded164b987fd6cad2c4d35d86817f9e23f7f0480133",
       "size_bytes": 75,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909419+00:00"
+      "timestamp": "2025-11-02T07:39:45.247515+00:00"
     },
     {
       "filename": "lexid-xxxxxx7079_storm_overlay.yml",
       "path": "overlays/lexid-xxxxxx7079_storm_overlay.yml",
       "hash": "cdb56f8091ddb55aadc873e17b4ff199316890d05d3c36142f5515cf1027b337",
       "size_bytes": 498,
-      "last_modified": "2025-11-02T07:17:03.496761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909443+00:00"
+      "timestamp": "2025-11-02T07:39:45.247543+00:00"
     },
     {
       "filename": "addr-huntsville-al-2704-pacific_storm_overlay.yml",
       "path": "overlays/addr-huntsville-al-2704-pacific_storm_overlay.yml",
       "hash": "6994d74d569136a1bbba3388e6c1a68f5af0e933bd8e9c15aef5573c1226a519",
       "size_bytes": 531,
-      "last_modified": "2025-11-02T07:17:03.497761+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909469+00:00"
+      "timestamp": "2025-11-02T07:39:45.247564+00:00"
     },
     {
       "filename": "ein-33-2015110_storm_overlay.yml",
       "path": "overlays/ein-33-2015110_storm_overlay.yml",
       "hash": "704b859ed59c5d2221710400c7f90a50dded7f8746fc15cce3ef72829a9a9606",
       "size_bytes": 529,
-      "last_modified": "2025-11-02T07:17:03.495761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909493+00:00"
+      "timestamp": "2025-11-02T07:39:45.247583+00:00"
     },
     {
       "filename": "datasys group_overlay.yml",
       "path": "overlays/datasys group_overlay.yml",
       "hash": "7ef63a4609da14b036caeb6cf14519605f97de6a4e4b8c628324ec7a2826ce2d",
       "size_bytes": 129,
-      "last_modified": "2025-11-02T07:17:04.362761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909518+00:00"
+      "timestamp": "2025-11-02T07:39:45.247655+00:00"
     },
     {
       "filename": "lacounty-birth-registry-number_storm_overlay.yml",
       "path": "overlays/lacounty-birth-registry-number_storm_overlay.yml",
       "hash": "f8a250e6017db2ef4c61ffc31ae934230d44468b3186a141692efc14a3e537c5",
       "size_bytes": 546,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909542+00:00"
+      "timestamp": "2025-11-02T07:39:45.247680+00:00"
     },
     {
       "filename": "cseparticipant_overlay.yml",
       "path": "overlays/cseparticipant_overlay.yml",
       "hash": "be106b2fc2b18c959e61e34cd0441ea10efe6e265b2ba3e307bd51e10fbfe85d",
       "size_bytes": 81,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909567+00:00"
+      "timestamp": "2025-11-02T07:39:45.247700+00:00"
     },
     {
       "filename": "county vital records_overlay.yml",
       "path": "overlays/county vital records_overlay.yml",
       "hash": "7b1e297dbe11df56851ec46094478160716d3d7080fd15e3922b2bfa4607d0c4",
       "size_bytes": 150,
-      "last_modified": "2025-11-02T07:17:04.362761+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909592+00:00"
+      "timestamp": "2025-11-02T07:39:45.247722+00:00"
     },
     {
       "filename": "csejurisdiction_overlay.yml",
       "path": "overlays/csejurisdiction_overlay.yml",
       "hash": "8af70b9f6d4764bff30ba79f0c4b13a59e34352a6c1256f45a108d2430f58242",
       "size_bytes": 82,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909620+00:00"
+      "timestamp": "2025-11-02T07:39:45.247742+00:00"
     },
     {
       "filename": "adotcust_overlay.yml",
       "path": "overlays/adotcust_overlay.yml",
       "hash": "105230f0269bf1d1b8c08e0b5fa46e3a5f0dff4545485298328ec6f0ad45967d",
       "size_bytes": 75,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909648+00:00"
+      "timestamp": "2025-11-02T07:39:45.247763+00:00"
     },
     {
       "filename": "email-travislite_gmail_com_storm_overlay.yml",
       "path": "overlays/email-travislite_gmail_com_storm_overlay.yml",
       "hash": "ac499839c1a4658ab828bf42cbf3277721d36400632b51707b27b32fefbabeef",
       "size_bytes": 518,
-      "last_modified": "2025-11-02T07:17:03.496761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909676+00:00"
+      "timestamp": "2025-11-02T07:39:45.247786+00:00"
     },
     {
       "filename": "medlicense_overlay.yml",
       "path": "overlays/medlicense_overlay.yml",
       "hash": "af96edf6e38b114ae3d4610b876b9b3354e125921f4bed45d99720d9b66ccc09",
       "size_bytes": 77,
-      "last_modified": "2025-11-02T07:16:09.493767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909702+00:00"
+      "timestamp": "2025-11-02T07:39:45.247805+00:00"
     },
     {
       "filename": "registry_overlay.yml",
       "path": "overlays/registry_overlay.yml",
       "hash": "f08473b48160ce03c63c889f7f6d3df76fce6701a56bfdf0c22cf7959f0ae948",
       "size_bytes": 128,
-      "last_modified": "2025-11-02T07:16:09.493767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909725+00:00"
+      "timestamp": "2025-11-02T07:39:45.247823+00:00"
     },
     {
       "filename": "warrant-quashed-kingman-2004_storm_overlay.yml",
       "path": "overlays/warrant-quashed-kingman-2004_storm_overlay.yml",
       "hash": "a52b78a0205097a56500f1e699d12070f7ee95ce05ab56d371276c24a5bd1663",
       "size_bytes": 522,
-      "last_modified": "2025-11-02T07:17:03.498761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909750+00:00"
+      "timestamp": "2025-11-02T07:39:45.247842+00:00"
     },
     {
       "filename": "email-travisrel_gmail_com_storm_overlay.yml",
       "path": "overlays/email-travisrel_gmail_com_storm_overlay.yml",
       "hash": "c57f95e81033ac142c8f7073bb49562f22501a75a8831a804e8971e193479d99",
       "size_bytes": 516,
-      "last_modified": "2025-11-02T07:17:03.496761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909774+00:00"
+      "timestamp": "2025-11-02T07:39:45.247861+00:00"
     },
     {
       "filename": "facility_overlay.yml",
       "path": "overlays/facility_overlay.yml",
       "hash": "ff532753e31ef3301a892061b5f3a4cee980c3de5d657cfdecee673a3d9ca0a9",
       "size_bytes": 75,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909798+00:00"
+      "timestamp": "2025-11-02T07:39:45.247879+00:00"
     },
     {
       "filename": "issuecode_overlay.yml",
       "path": "overlays/issuecode_overlay.yml",
       "hash": "62533a189bd71d2b19776c2d8a9727dfd8ac3f75f0a0ee30dc2cf785e0affa94",
       "size_bytes": 76,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909822+00:00"
+      "timestamp": "2025-11-02T07:39:45.247897+00:00"
     },
     {
       "filename": "mothername_overlay.yml",
       "path": "overlays/mothername_overlay.yml",
       "hash": "73710b4dc38f45f0f1ba8c1b0b9d8de0bf815d3f0d928b4483d1f1ec2bf58bea",
       "size_bytes": 77,
-      "last_modified": "2025-11-02T07:16:09.493767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909846+00:00"
+      "timestamp": "2025-11-02T07:39:45.247916+00:00"
     },
     {
       "filename": "surveillance-amex-riskview-20250411_storm_overlay.yml",
       "path": "overlays/surveillance-amex-riskview-20250411_storm_overlay.yml",
       "hash": "122e7ce050eebdb87d64f5c970d3f625cc7fbd1fe17090585cdc2eb9de90302c",
       "size_bytes": 536,
-      "last_modified": "2025-11-02T07:17:03.499761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909871+00:00"
+      "timestamp": "2025-11-02T07:39:45.247935+00:00"
     },
     {
       "filename": "entity-eightylee-marketing-grp_storm_overlay.yml",
       "path": "overlays/entity-eightylee-marketing-grp_storm_overlay.yml",
       "hash": "b1eebd78ed0eb8cb4fbdd39a2306059c1b7cb580987a150f183cd253cd01bd2d",
       "size_bytes": 530,
-      "last_modified": "2025-11-02T07:17:03.498761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909899+00:00"
+      "timestamp": "2025-11-02T07:39:45.247956+00:00"
     },
     {
       "filename": "accurint_overlay.yml",
       "path": "overlays/accurint_overlay.yml",
       "hash": "7b9ade91789676020d785f74e828351128b27315cb62acfa38f33efe391e1038",
       "size_bytes": 114,
-      "last_modified": "2025-11-02T07:17:04.363761+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909926+00:00"
+      "timestamp": "2025-11-02T07:39:45.247976+00:00"
     },
     {
       "filename": "fathername_overlay.yml",
       "path": "overlays/fathername_overlay.yml",
       "hash": "dcf53e1a94ed8e472947b3d233e3a94140ec61e4c15d1471e0dc48cae994a1fd",
       "size_bytes": 77,
-      "last_modified": "2025-11-02T07:16:09.492767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909950+00:00"
+      "timestamp": "2025-11-02T07:39:45.247994+00:00"
     },
     {
       "filename": "ssnback_overlay.yml",
       "path": "overlays/ssnback_overlay.yml",
       "hash": "7302a9ab9f2ff60f163eb640d53a805851f434a5f515c88df5eae6d46f592d1e",
       "size_bytes": 74,
-      "last_modified": "2025-11-02T07:16:09.493767+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909975+00:00"
+      "timestamp": "2025-11-02T07:39:45.248013+00:00"
     },
     {
       "filename": "birth-registry-104-0190-003558_storm_overlay.yml",
       "path": "overlays/birth-registry-104-0190-003558_storm_overlay.yml",
       "hash": "21f4d5eae8078aa5fb49603fe666bad5696c89be035b84f9d1c4a6f1f24d3c7a",
       "size_bytes": 540,
-      "last_modified": "2025-11-02T07:17:03.496761+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.909999+00:00"
+      "timestamp": "2025-11-02T07:39:45.248031+00:00"
     },
     {
       "filename": "addr-goldenvalley-az-5570-tonto_storm_overlay.yml",
       "path": "overlays/addr-goldenvalley-az-5570-tonto_storm_overlay.yml",
       "hash": "1e7d529202c0a62ccc9006c4e41716a1b84b34cff369b468f7d7c558720c4036",
       "size_bytes": 531,
-      "last_modified": "2025-11-02T07:17:03.497761+00:00",
+      "last_modified": "2025-11-02T07:39:10.187111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.910024+00:00"
+      "timestamp": "2025-11-02T07:39:45.248052+00:00"
     },
     {
       "filename": "progressive insurance_overlay.yml",
       "path": "overlays/progressive insurance_overlay.yml",
       "hash": "8586439f9a0c5f1bf2d720719fbc38a41bc3f1d069ae09f35f308a8cec795c69",
       "size_bytes": 153,
-      "last_modified": "2025-11-02T07:17:04.363761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.910052+00:00"
+      "timestamp": "2025-11-02T07:39:45.248070+00:00"
     },
     {
       "filename": "violation-fta-criminal-kingman-2004_storm_overlay.yml",
       "path": "overlays/violation-fta-criminal-kingman-2004_storm_overlay.yml",
       "hash": "aff4bc3d5fd01bc8f59a494d66dde5378602ef860bc0b8abb21cc9fe51f018f5",
       "size_bytes": 536,
-      "last_modified": "2025-11-02T07:17:03.498761+00:00",
+      "last_modified": "2025-11-02T07:39:10.188111+00:00",
       "status": "verified",
-      "timestamp": "2025-11-02T07:24:17.910137+00:00"
+      "timestamp": "2025-11-02T07:39:45.248111+00:00"
     }
   ],
   "hash_registry": {

@@ -1,0 +1,19 @@
+# STORM-BREAKER Overlay for LEXID-XXXXXX7079
+identifier: LEXID-XXXXXX7079
+pattern_type: unknown
+format_valid: False
+confidence_score: 0.0
+risk_level: unknown
+timestamp: 2025-11-02T09:56:39.997276+00:00
+storm_breaker_version: "1.0"
+overlay_hash: 6b150744df62bf81
+
+metadata:
+  type: Unknown
+  scan_method: "storm_breaker_analysis"
+  validation_status: "failed"
+
+technical_trace:
+  generator: "storm-breaker"
+  analysis_engine: "pattern_recognition_v1.0"
+  validation_rules: "format_compliance_check"

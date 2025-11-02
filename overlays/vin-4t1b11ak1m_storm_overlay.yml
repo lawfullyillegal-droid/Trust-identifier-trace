@@ -1,0 +1,19 @@
+# STORM-BREAKER Overlay for VIN-4T1B11AK1M
+identifier: VIN-4T1B11AK1M
+pattern_type: unknown
+format_valid: False
+confidence_score: 0.0
+risk_level: unknown
+timestamp: 2025-11-02T09:56:40.000321+00:00
+storm_breaker_version: "1.0"
+overlay_hash: 4c4796ef3eb117d9
+
+metadata:
+  type: Unknown
+  scan_method: "storm_breaker_analysis"
+  validation_status: "failed"
+
+technical_trace:
+  generator: "storm-breaker"
+  analysis_engine: "pattern_recognition_v1.0"
+  validation_rules: "format_compliance_check"

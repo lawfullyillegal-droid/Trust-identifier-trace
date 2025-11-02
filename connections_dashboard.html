@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Identifier Connections Dashboard</title>
+  <style>
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1e3f 100%); 
+      color: #eee; 
+      padding: 20px; 
+      margin: 0;
+    }
+    
+    .header {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    h1 {
+      margin: 0;
+      font-size: 2.5em;
+      background: linear-gradient(90deg, #00d4ff, #00ff88);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .subtitle {
+      color: #aaa;
+      margin-top: 10px;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+    
+    .stat-card {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 2.5em;
+      font-weight: bold;
+      background: linear-gradient(90deg, #00d4ff, #00ff88);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .stat-label {
+      color: #aaa;
+      margin-top: 5px;
+      text-transform: uppercase;
+      font-size: 0.9em;
+    }
+    
+    .section {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .section-title {
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      color: #00d4ff;
+    }
+    
+    #networkGraph {
+      width: 100%;
+      height: 600px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    
+    th, td {
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 12px;
+      text-align: left;
+    }
+    
+    th {
+      background: rgba(255,255,255,0.1);
+      font-weight: 600;
+      color: #00d4ff;
+    }
+    
+    tr:hover {
+      background: rgba(255,255,255,0.05);
+    }
+    
+    .connection-type {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      font-weight: 600;
+    }
+    
+    .type-reddit { background: #ff4500; color: white; }
+    .type-gleif { background: #007acc; color: white; }
+    .type-cross { background: #00ff88; color: #0a0e27; }
+    .type-alias { background: #ffd700; color: #0a0e27; }
+    .type-adot { background: #ff6b9d; color: white; }
+    
+    .search-box {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 2px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.05);
+      color: #eee;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    
+    .search-box:focus {
+      outline: none;
+      border-color: #00d4ff;
+    }
+    
+    .node {
+      cursor: pointer;
+    }
+    
+    .link {
+      stroke: rgba(0, 212, 255, 0.5);
+      stroke-width: 2px;
+    }
+    
+    .node-label {
+      font-size: 12px;
+      fill: #eee;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🔗 Identifier Connections Dashboard</h1>
+    <div class="subtitle">Comprehensive connection discovery across all trust identifiers</div>
+  </div>
+
+  <div id="statsContainer" class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-value" id="totalIdentifiers">-</div>
+      <div class="stat-label">Identifiers</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="totalConnections">-</div>
+      <div class="stat-label">Connections</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="connectionSources">-</div>
+      <div class="stat-label">Data Sources</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="mostConnected">-</div>
+      <div class="stat-label">Most Connected</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">🌐 Connection Network Graph</div>
+    <div id="networkGraph"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📊 Connection Details</div>
+    <input type="text" class="search-box" id="searchBox" placeholder="🔍 Search connections by identifier, type, or source...">
+    <table id="connectionsTable">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Source</th>
+          <th>Connection Details</th>
+          <th>Timestamp</th>
+        </tr>
+      </thead>
+      <tbody id="connectionsBody">
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">🎯 Connection Sources Breakdown</div>
+    <div id="sourcesBreakdown"></div>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script>
+    let allConnections = [];
+    let connectionData = null;
+
+    // Load connection data
+    fetch('output/identifier_connections.json')
+      .then(res => res.json())
+      .then(data => {
+        connectionData = data;
+        allConnections = data.connections;
+        
+        // Update statistics
+        updateStats(data);
+        
+        // Render network graph
+        renderNetworkGraph(data);
+        
+        // Render connections table
+        renderConnectionsTable(allConnections);
+        
+        // Render sources breakdown
+        renderSourcesBreakdown(data.metrics);
+      })
+      .catch(err => {
+        console.error('Error loading connections:', err);
+        document.getElementById('statsContainer').innerHTML = 
+          '<div style="color:red">Failed to load connection data. Please run identifier_connections_bot.py first.</div>';
+      });
+
+    function updateStats(data) {
+      document.getElementById('totalIdentifiers').textContent = data.scan_metadata.total_identifiers_scanned;
+      document.getElementById('totalConnections').textContent = data.scan_metadata.total_connections_found;
+      document.getElementById('connectionSources').textContent = Object.keys(data.metrics.connection_sources).length;
+      
+      if (data.metrics.most_connected_identifiers.length > 0) {
+        const top = data.metrics.most_connected_identifiers[0];
+        document.getElementById('mostConnected').textContent = top.connection_count;
+      }
+    }
+
+    function renderNetworkGraph(data) {
+      const width = document.getElementById('networkGraph').clientWidth;
+      const height = 600;
+
+      const svg = d3.select('#networkGraph')
+        .append('svg')
+        .attr('width', width)
+        .attr('height', height);
+
+      // Create nodes and links from connection graph
+      const nodes = [];
+      const links = [];
+      const nodeMap = new Map();
+
+      // Add identifier nodes
+      data.identifiers.forEach((id, index) => {
+        const node = { id, group: 'identifier', index };
+        nodes.push(node);
+        nodeMap.set(id, node);
+      });
+
+      // Add alias nodes
+      data.aliases.forEach((alias, index) => {
+        const node = { id: alias, group: 'alias', index };
+        nodes.push(node);
+        nodeMap.set(alias, node);
+      });
+
+      // Create links from connection graph
+      Object.entries(data.connection_graph).forEach(([source, targets]) => {
+        targets.forEach(target => {
+          if (nodeMap.has(source) && nodeMap.has(target)) {
+            links.push({ 
+              source: nodeMap.get(source), 
+              target: nodeMap.get(target) 
+            });
+          }
+        });
+      });
+
+      // Create force simulation
+      const simulation = d3.forceSimulation(nodes)
+        .force('link', d3.forceLink(links).distance(100))
+        .force('charge', d3.forceManyBody().strength(-300))
+        .force('center', d3.forceCenter(width / 2, height / 2))
+        .force('collision', d3.forceCollide().radius(30));
+
+      // Draw links
+      const link = svg.append('g')
+        .selectAll('line')
+        .data(links)
+        .join('line')
+        .attr('class', 'link');
+
+      // Draw nodes
+      const node = svg.append('g')
+        .selectAll('circle')
+        .data(nodes)
+        .join('circle')
+        .attr('class', 'node')
+        .attr('r', d => d.group === 'identifier' ? 8 : 6)
+        .attr('fill', d => d.group === 'identifier' ? '#00d4ff' : '#ffd700')
+        .call(d3.drag()
+          .on('start', dragstarted)
+          .on('drag', dragged)
+          .on('end', dragended));
+
+      // Add labels
+      const labels = svg.append('g')
+        .selectAll('text')
+        .data(nodes)
+        .join('text')
+        .attr('class', 'node-label')
+        .text(d => d.id.length > 20 ? d.id.substring(0, 20) + '...' : d.id)
+        .attr('dx', 12)
+        .attr('dy', 4);
+
+      // Update positions on each tick
+      simulation.on('tick', () => {
+        link
+          .attr('x1', d => d.source.x)
+          .attr('y1', d => d.source.y)
+          .attr('x2', d => d.target.x)
+          .attr('y2', d => d.target.y);
+
+        node
+          .attr('cx', d => d.x)
+          .attr('cy', d => d.y);
+
+        labels
+          .attr('x', d => d.x)
+          .attr('y', d => d.y);
+      });
+
+      function dragstarted(event, d) {
+        if (!event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+      }
+
+      function dragged(event, d) {
+        d.fx = event.x;
+        d.fy = event.y;
+      }
+
+      function dragended(event, d) {
+        if (!event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+      }
+
+      // Add tooltip
+      node.append('title')
+        .text(d => `${d.id} (${d.group})`);
+    }
+
+    function getConnectionType(conn) {
+      const source = conn.source.toLowerCase();
+      if (source.includes('reddit')) return 'type-reddit';
+      if (source.includes('gleif')) return 'type-gleif';
+      if (source.includes('cross')) return 'type-cross';
+      if (source.includes('alias')) return 'type-alias';
+      if (source.includes('adot')) return 'type-adot';
+      return '';
+    }
+
+    function formatConnectionDetails(conn) {
+      if (conn.identifier_1 && conn.identifier_2) {
+        return `${conn.identifier_1} ↔ ${conn.identifier_2} (${conn.relationship_type || 'related'})`;
+      } else if (conn.identifier && conn.alias) {
+        return `${conn.identifier} ↔ ${conn.alias}`;
+      } else if (conn.post_title) {
+        return conn.post_title;
+      } else if (conn.legal_name) {
+        return `${conn.lei}: ${conn.legal_name}`;
+      }
+      return 'Connection details';
+    }
+
+    function renderConnectionsTable(connections) {
+      const tbody = document.getElementById('connectionsBody');
+      tbody.innerHTML = '';
+
+      connections.forEach(conn => {
+        const row = document.createElement('tr');
+        
+        const typeCell = document.createElement('td');
+        typeCell.innerHTML = `<span class="connection-type ${getConnectionType(conn)}">${conn.source}</span>`;
+        
+        const sourceCell = document.createElement('td');
+        sourceCell.textContent = conn.subreddit || conn.country || conn.confidence || '-';
+        
+        const detailsCell = document.createElement('td');
+        detailsCell.textContent = formatConnectionDetails(conn);
+        
+        const timestampCell = document.createElement('td');
+        timestampCell.textContent = new Date(conn.timestamp).toLocaleString();
+        
+        row.appendChild(typeCell);
+        row.appendChild(sourceCell);
+        row.appendChild(detailsCell);
+        row.appendChild(timestampCell);
+        
+        tbody.appendChild(row);
+      });
+    }
+
+    function renderSourcesBreakdown(metrics) {
+      const container = document.getElementById('sourcesBreakdown');
+      let html = '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">';
+      
+      Object.entries(metrics.connection_sources).forEach(([source, count]) => {
+        html += `
+          <div class="stat-card">
+            <div style="font-size: 1.8em; font-weight: bold; color: #00d4ff;">${count}</div>
+            <div class="stat-label">${source}</div>
+          </div>
+        `;
+      });
+      
+      html += '</div>';
+      container.innerHTML = html;
+    }
+
+    // Search functionality
+    document.getElementById('searchBox').addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      const filtered = allConnections.filter(conn => {
+        return JSON.stringify(conn).toLowerCase().includes(query);
+      });
+      renderConnectionsTable(filtered);
+    });
+  </script>
+</body>
+</html>

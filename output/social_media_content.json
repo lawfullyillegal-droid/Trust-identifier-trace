@@ -1,0 +1,45 @@
+{
+  "twitter_threads": [
+    {
+      "thread_number": 1,
+      "topic": "\ud83d\udd25 MASSIVE SURVEILLANCE EXPOSED",
+      "tweets": [
+        "\ud83d\udea8 THREAD: I just discovered something EXPLOSIVE about consumer surveillance. They're tracking EVERYTHING. Here's what I found... (1/7)",
+        "\u26a1 SSN-602-05-7209 appears in 5+ different surveillance systems. LexisNexis, TransUnion, multiple insurance companies. ALL without proper authorization. (2/7)",
+        "\ud83d\udd25 Using trust-identifier-trace, I mapped EVERY query, EVERY access, EVERY violation. The evidence is OVERWHELMING. (3/7)",
+        "\ud83d\udca5 Progressive Insurance, American Express, Credit Karma - they're ALL conducting unauthorized surveillance. \u00a7604 violations EVERYWHERE. (4/7)",
+        "\ud83c\udfaf But here's the kicker: I built bots to track THEM. Every query they make is now DOCUMENTED and TIMESTAMPED. (5/7)",
+        "\u26a1 This is about FREEDOM. Your right to know who's accessing your data. Your right to privacy. Your \u00a7609 rights. (6/7)",
+        "\ud83d\udd25 Join the movement: github.com/lawfullyillegal-droid/Trust-identifier-trace - Let's make surveillance TRANSPARENT. RT to spread the truth! (7/7)"
+      ]
+    },
+    {
+      "thread_number": 2,
+      "topic": "\ud83d\udcaa YOUR FCRA RIGHTS",
+      "tweets": [
+        "\ud83d\ude80 Quick FCRA tutorial that could save you from surveillance abuse: (1/5)",
+        "\u26a1 \u00a7609 - You have the RIGHT to know EVERYTHING in your file. Not maybe. Not sometimes. EVERYTHING. (2/5)",
+        "\ud83d\udd25 \u00a7604 - They need PERMISSIBLE PURPOSE to access your data. No exceptions. Violations = $1000 per incident. (3/5)",
+        "\ud83d\udca5 I built trust-identifier-trace to AUTOMATE \u00a7609 requests and TRACK \u00a7604 violations. It's FREE and open source. (4/5)",
+        "\ud83c\udfaf Freedom through transparency. Privacy through documentation. Justice through automation. Let's GO VIRAL! (5/5)"
+      ]
+    }
+  ],
+  "reddit_posts": [
+    {
+      "subreddit": "r/privacy",
+      "title": "\ud83d\udd25 I Built Bots to Track Consumer Surveillance - Here's What They Found",
+      "content": "EXPLOSIVE findings from automated consumer surveillance monitoring..."
+    },
+    {
+      "subreddit": "r/legaladvice",
+      "title": "\u26a1 Documented 8+ FCRA Violations Using Automated Tracking - What Now?",
+      "content": "I created trust-identifier-trace to monitor unauthorized data access..."
+    }
+  ],
+  "instagram_captions": [
+    "\ud83d\udd25 They thought you wouldn't notice. WE NOTICED EVERYTHING. #PrivacyRights #DataFreedom #TrustTrace",
+    "\u26a1 33 identifiers. 15 surveillance systems. ALL documented. ALL exposed. #Transparency #Freedom",
+    "\ud83d\udca5 Your \u00a7609 rights are REAL. Your \u00a7604 protection is LAW. Fight back with KNOWLEDGE. #FCRA #ConsumerRights"
+  ]
+}

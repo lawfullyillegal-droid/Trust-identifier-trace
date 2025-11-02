@@ -1,0 +1,46 @@
+{
+  "api_base": "https://lawfully-illegal.com/api/trust-trace",
+  "version": "1.0",
+  "endpoints": {
+    "/live-stats": {
+      "method": "GET",
+      "description": "Get live surveillance tracking statistics",
+      "response": {
+        "identifiers_tracked": 33,
+        "violations_detected": 8,
+        "systems_monitored": 15,
+        "last_updated": "ISO 8601 timestamp"
+      }
+    },
+    "/violations": {
+      "method": "GET",
+      "description": "Get latest FCRA violations",
+      "response": "Array of violation objects"
+    },
+    "/scan-results": {
+      "method": "GET",
+      "description": "Get latest scan results",
+      "source": "https://lawfullyillegal-droid.github.io/Trust-identifier-trace/output/scan_results.json"
+    },
+    "/compliance-report": {
+      "method": "GET",
+      "description": "Get compliance freedom report",
+      "source": "https://lawfullyillegal-droid.github.io/Trust-identifier-trace/output/compliance_freedom_report.json"
+    },
+    "/viral-content": {
+      "method": "GET",
+      "description": "Get viral campaign content",
+      "source": "https://lawfullyillegal-droid.github.io/Trust-identifier-trace/output/viral_campaign_report.json"
+    }
+  },
+  "webhooks": {
+    "/webhook/new-violation": {
+      "description": "Webhook triggered when new FCRA violation detected",
+      "payload": "Violation object with details"
+    },
+    "/webhook/scan-complete": {
+      "description": "Webhook triggered when trust scan completes",
+      "payload": "Scan results summary"
+    }
+  }
+}

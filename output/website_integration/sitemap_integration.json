@@ -1,0 +1,25 @@
+{
+  "lawfully-illegal.com": {
+    "trust_trace_section": "/trust-identifier-trace",
+    "pages": {
+      "main_hub": "https://lawfully-illegal.com/trust-identifier-trace",
+      "blog_posts": [
+        "https://lawfully-illegal.com/blog/trust-identifier-trace-surveillance-exposed",
+        "https://lawfully-illegal.com/blog/fcra-rights-complete-guide",
+        "https://lawfully-illegal.com/blog/surveillance-systems-exposed"
+      ],
+      "dashboards": {
+        "trust_scan": "https://lawfullyillegal-droid.github.io/Trust-identifier-trace/dashboard.html",
+        "syndicate": "https://lawfullyillegal-droid.github.io/Trust-identifier-trace/syndicate_dashboard.html",
+        "analytics": "https://lawfullyillegal-droid.github.io/Trust-identifier-trace/learning_analytics.html"
+      },
+      "legal_resources": "https://lawfully-illegal.com/fcra-resources",
+      "downloads": "https://lawfully-illegal.com/downloads/trust-trace-templates",
+      "api": "https://lawfully-illegal.com/api/trust-trace"
+    },
+    "external_links": {
+      "github_repo": "https://github.com/lawfullyillegal-droid/Trust-identifier-trace",
+      "github_pages": "https://lawfullyillegal-droid.github.io/Trust-identifier-trace"
+    }
+  }
+}

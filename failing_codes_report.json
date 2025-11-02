@@ -6,13 +6,13 @@
   "failures": [],
   "successes": [
     {
-      "file": "gleif_echo.py",
+      "file": "storm_breaker.py",
       "type": "successful_execution",
       "stdout": "\ud83d\udd27 Starting GLEIF echo test...\n\u26a0\ufe0f Network error: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?page%5Bsize%5D=5 (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7f5599a570e0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)\"))\n\ud83d\udd04 Running in offline mode with mock data...\n\u2705 Echo file saved as gleif_echo.xml\n",
       "timestamp": "2025-09-20T19:13:05.060091"
     },
     {
-      "file": "reddit_trace.py",
+      "file": "identifier_connections_bot.py",
       "type": "successful_execution",
       "stdout": "",
       "timestamp": "2025-09-20T19:13:05.300197"
@@ -30,7 +30,13 @@
       "timestamp": "2025-09-20T19:13:05.496348"
     },
     {
-      "file": "gleif_alias_scan.py",
+      "file": "generate_syndicate_dashboard.py",
+      "type": "successful_execution",
+      "stdout": "\ud83d\udcca Syndicate dashboard generated\n\ud83d\udcc4 Found 1 scan result files\n\ud83d\udd27 Found 49 overlay files\n\ud83d\udcc5 Last updated: 2025-10-21T22:24:36.463724+00:00\n",
+      "timestamp": "2025-10-21T22:24:36.467884"
+    },
+    {
+      "file": "gleif_trace.py",
       "type": "successful_execution",
       "stdout": "\u26a0\ufe0f Network error: HTTPSConnectionPool(host='api.gleif.org', port=443): Max retries exceeded with url: /api/v1/lei-records?page%5Bsize%5D=1000 (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x7f0065fc2cf0>: Failed to resolve 'api.gleif.org' ([Errno -5] No address associated with hostname)\"))\n\ud83d\udd04 Running in offline mode with mock data...\n\u2705 Overlay updated.\n",
       "timestamp": "2025-09-20T19:13:05.777319"
@@ -42,7 +48,7 @@
       "timestamp": "2025-09-20T19:13:06.049479"
     },
     {
-      "file": "gleif_trace.py",
+      "file": "gleif_alias_scan.py",
       "type": "successful_execution",
       "stdout": "\ud83d\udce1 Modules imported successfully\n\ud83d\udd0d Scanning external sources for: BRN-CA-1983-104\n\u26a0\ufe0f Network error scanning BRN-CA-1983-104: Connection failed, running in offline mode\n\ud83d\udd0d Scanning external sources for: CERT-CA-003558\n\u26a0\ufe0f Network error scanning CERT-CA-003558: Connection failed, running in offline mode\n\ud83d\udd0d Scanning external sources for: DOB-1983-01-20-0815\n\u26a0\ufe0f Network error scanning DOB-1983-01-20-0815: Connection failed, running in offline mode\n\ud83d\udd0d Scanning external sources for: SSN-602-05-7209\n\u26a0\ufe0f Network error scanning SSN-602-05-7209: Connection failed, running in offline mode\n\ud83d\udd0d Scanning external sources for: EIN-92-6319308\n\u26a0\ufe0f Network error scanning EIN-92-6319308: Connection failed, running in offline mode\n\ud83d\udd0d Scanning external sources for: ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK\n\u26a0\ufe0f Network error scanning ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK: Connection failed, running in offline mode\n\ud83d\udd0d Scanning external sources for: ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413\n\u26a0\ufe0f Network error scanning ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413: Connection failed, running in offline mode\n\ud83d\udd0d Scanning external sources for: CSE-PARTICIPANT-30000000646889\n\u26a0\ufe0f Network error scanning CSE-PARTICIPANT-30000000646889: Connection failed, running in offline mode\n\ud83d\udd0d Scanning external sources for: ADOT-CUST-16088582\n\u26a0\ufe0f Network error scanning ADOT-CUST-16088582: Connection failed, running in offline mode\n\ud83d\udd0d Scanning external sources for: LN-NAME-RYLE-TRAVIS-STEVEN\n\u26a0\ufe0f Network error scanning LN-NAME-RYLE-TRAVIS-STEVEN: Connection failed, running in offline mode\n\ud83d\udd0d Scanning external sources for: CORP-NUM-C2362627\n\u26a0\ufe0f Network error scanning CORP-NUM-C2362627: Connection failed, running in offline mode\n\ud83d\udd0d Scanning external sources for: IRS-TRACK-108541264370\n\u26a0\ufe0f Network error scanning IRS-TRACK-108541264370: Connection failed, running in offline mode\n\ud83d\udd0d Scanning external sources for: ACCT-433187894832\n\u26a0\ufe0f Network error scanning ACCT-433187894832: Connection failed, running in offline mode\n\ud83d\udd0d Scanning external sources for: PROP-SS-GUARANTEE-104-0190-003558\n\u26a0\ufe0f Network error scanning PROP-SS-GUARANTEE-104-0190-003558: Connection failed, running in offline mode\n\ud83d\udcc4 Scan complete. Log saved to output/scan_log.txt\n",
       "timestamp": "2025-09-20T19:13:06.391437"

@@ -4,7 +4,7 @@ pattern_type: property_record
 format_valid: True
 confidence_score: 0.95
 risk_level: low
-timestamp: 2025-10-21T22:24:36.041490+00:00
+timestamp: 2025-09-20T19:13:14.869981+00:00
 storm_breaker_version: "1.0"
 overlay_hash: 7f46e1fb5e4ffdd2
 

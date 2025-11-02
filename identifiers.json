@@ -1,5 +1,6 @@
 [
   { "identifier": "SSN-602-05-7209", "source": "LexisNexis" },
+  { "identifier": "EIN-39-2383430", "source": "IRS", "entity": "LAWFULLY ILLEGAL" },
   { "identifier": "EIN-33-3124290", "source": "IRS" },
   { "identifier": "EIN-33-2015110", "source": "IRS" },
   { "identifier": "IRS-TRACK-0509907367", "source": "IRS" },

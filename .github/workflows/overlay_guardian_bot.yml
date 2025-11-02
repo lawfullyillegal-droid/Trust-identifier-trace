@@ -1,0 +1,48 @@
+name: 🛡️ OVERLAY GUARDIAN BOT - Integrity Verification
+
+on:
+  schedule:
+    - cron: '0 */8 * * *'  # Every 8 hours - Constant vigilance
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  overlay-guardian:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests pyyaml
+
+      - name: Create output directory
+        run: mkdir -p output
+
+      - name: 🛡️ Run Overlay Guardian Bot
+        run: |
+          echo "🛡️🛡️🛡️ LAUNCHING OVERLAY GUARDIAN BOT 🛡️🛡️🛡️"
+          python bots/overlay_guardian_bot.py
+          echo "✅ Overlay integrity verification complete"
+
+      - name: Configure Git
+        run: |
+          git config user.name "Overlay Guardian Bot"
+          git config user.email "security@trust.local"
+
+      - name: Commit verification report
+        run: |
+          git add output/overlay_verification_report.json
+          if git diff --cached --quiet; then
+            echo "✅ No changes to commit"
+          else
+            git commit -m "🛡️ SECURITY: Overlay verification update - $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+            git push
+          fi

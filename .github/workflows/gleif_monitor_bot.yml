@@ -1,0 +1,50 @@
+name: 🏢 GLEIF MONITOR BOT - Corporate Surveillance Tracking
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Daily - Track the trackers
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  gleif-monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pyyaml
+
+      - name: Create output directory
+        run: mkdir -p output
+
+      - name: 🏢 Run GLEIF Monitor Bot
+        run: |
+          echo "🏢🏢🏢 LAUNCHING GLEIF MONITOR BOT 🏢🏢🏢"
+          python bots/gleif_monitor_bot.py
+          echo "✅ Corporate surveillance tracking complete"
+
+      - name: Configure Git
+        run: |
+          git config user.name "GLEIF Monitor Bot"
+          git config user.email "gleif@trust.local"
+
+      - name: Commit GLEIF monitoring report
+        run: |
+          git add output/gleif_monitoring_report.json
+          if git diff --cached --quiet; then
+            echo "✅ No changes to commit"
+          else
+            git commit -m "🏢 GLEIF: Corporate surveillance update - $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+            git push
+          fi

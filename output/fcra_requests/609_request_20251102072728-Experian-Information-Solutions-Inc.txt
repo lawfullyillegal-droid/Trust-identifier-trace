@@ -1,0 +1,25 @@
+
+FCRA §609 DISCLOSURE REQUEST
+
+To: Experian Information Solutions Inc
+Re: Consumer File Disclosure Request - FCRA §609
+
+Dear Sir/Madam,
+
+Pursuant to 15 U.S.C. §1681g (FCRA §609), I hereby request complete disclosure of:
+
+1. ALL information in my consumer file
+2. Sources of ALL information
+3. Names and addresses of ALL entities that received consumer reports about me
+4. ALL credit scores and key factors affecting those scores
+
+Consumer Information:
+Name: Travis Steven Ryle
+SSN: 602-05-7209
+Associated Identifiers: SSN-602-05-7209, EIN-39-2383430, EIN-33-3124290, EIN-33-2015110, IRS-TRACK-0509907367, BIRTH-REGISTRY-104-0190-003558, LEXID-XXXXXX7079, LN-CONSUMER-11133734, LN-CASE-31568224, EMAIL-TRAVISLITE@GMAIL.COM
+
+This request is made under federal law. You have a legal obligation to respond within a reasonable timeframe with COMPLETE disclosure.
+
+Automated by: Trust-identifier-trace System
+Generated: 2025-11-02 07:27:28 UTC
+Reference: FCRA-609-20251102072728-Experian-Information-Solutions-Inc

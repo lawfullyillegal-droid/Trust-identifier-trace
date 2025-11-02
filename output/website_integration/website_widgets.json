@@ -1,0 +1,24 @@
+{
+  "live_surveillance_counter": {
+    "type": "counter",
+    "title": "\ud83d\udd25 LIVE SURVEILLANCE TRACKING",
+    "data_source": "https://lawfullyillegal-droid.github.io/Trust-identifier-trace/output/scan_results.json",
+    "metrics": {
+      "identifiers_tracked": 33,
+      "violations_detected": 8,
+      "systems_monitored": 15
+    },
+    "embed_code": "\n<div class=\"trust-trace-widget\" data-widget=\"surveillance-counter\">\n    <h3>\ud83d\udd25 LIVE SURVEILLANCE TRACKING</h3>\n    <div class=\"metric\"><span class=\"number\">33+</span> Identifiers Tracked</div>\n    <div class=\"metric\"><span class=\"number\">8+</span> FCRA Violations Detected</div>\n    <div class=\"metric\"><span class=\"number\">15+</span> Systems Monitored</div>\n    <a href=\"https://lawfullyillegal-droid.github.io/Trust-identifier-trace/dashboard.html\" class=\"cta-button\">View Live Dashboard</a>\n</div>\n<script src=\"https://lawfullyillegal-droid.github.io/Trust-identifier-trace/widgets/trust-trace-widget.js\"></script>\n            "
+  },
+  "latest_violations_feed": {
+    "type": "feed",
+    "title": "\u26a0\ufe0f LATEST FCRA VIOLATIONS",
+    "data_source": "https://lawfullyillegal-droid.github.io/Trust-identifier-trace/output/compliance_freedom_report.json",
+    "embed_code": "\n<div class=\"trust-trace-widget\" data-widget=\"violations-feed\">\n    <h3>\u26a0\ufe0f LATEST FCRA VIOLATIONS</h3>\n    <div id=\"violations-list\"></div>\n    <a href=\"https://lawfullyillegal-droid.github.io/Trust-identifier-trace/output/compliance_freedom_report.json\" class=\"cta-button\">View Full Report</a>\n</div>\n<script src=\"https://lawfullyillegal-droid.github.io/Trust-identifier-trace/widgets/violations-feed.js\"></script>\n            "
+  },
+  "viral_campaign_banner": {
+    "type": "banner",
+    "title": "\ud83d\udd25 JOIN THE FREEDOM MOVEMENT",
+    "embed_code": "\n<div class=\"trust-trace-banner\">\n    <div class=\"banner-content\">\n        <h2>\ud83d\udd25 THEY'RE TRACKING YOU. NOW TRACK THEM BACK. \ud83d\udd25</h2>\n        <p>33+ surveillance identifiers EXPOSED. 8+ FCRA violations DOCUMENTED. Join the movement for privacy freedom.</p>\n        <a href=\"https://lawfullyillegal-droid.github.io/Trust-identifier-trace\" class=\"banner-cta\">EXPLORE THE EVIDENCE</a>\n        <a href=\"https://github.com/lawfullyillegal-droid/Trust-identifier-trace\" class=\"banner-cta-secondary\">FORK THE REPO</a>\n    </div>\n</div>\n<link rel=\"stylesheet\" href=\"https://lawfullyillegal-droid.github.io/Trust-identifier-trace/widgets/trust-trace-banner.css\">\n            "
+  }
+}

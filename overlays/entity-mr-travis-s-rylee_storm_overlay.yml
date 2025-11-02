@@ -1,0 +1,19 @@
+# STORM-BREAKER Overlay for ENTITY-MR-TRAVIS-S-RYLEE
+identifier: ENTITY-MR-TRAVIS-S-RYLEE
+pattern_type: entity_name
+format_valid: True
+confidence_score: 0.95
+risk_level: low
+timestamp: 2025-11-02T07:17:03.498914+00:00
+storm_breaker_version: "1.0"
+overlay_hash: fc3c4d2428dc0770
+
+metadata:
+  type: Entity Name
+  scan_method: "storm_breaker_analysis"
+  validation_status: "passed"
+
+technical_trace:
+  generator: "storm-breaker"
+  analysis_engine: "pattern_recognition_v1.0"
+  validation_rules: "format_compliance_check"

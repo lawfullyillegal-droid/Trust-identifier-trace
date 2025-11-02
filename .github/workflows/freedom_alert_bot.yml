@@ -1,0 +1,50 @@
+name: 🔥 FREEDOM ALERT BOT - Viral Campaign Generator
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours - GO VIRAL
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  freedom-alert:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pyyaml
+
+      - name: Create output directory
+        run: mkdir -p output
+
+      - name: 🔥 Run Freedom Alert Bot
+        run: |
+          echo "🔥🔥🔥 LAUNCHING FREEDOM ALERT BOT 🔥🔥🔥"
+          python bots/freedom_alert_bot.py
+          echo "✅ Viral content generation complete"
+
+      - name: Configure Git
+        run: |
+          git config user.name "Freedom Alert Bot"
+          git config user.email "freedom@trust.local"
+
+      - name: Commit viral campaign content
+        run: |
+          git add output/viral_campaign_report.json output/freedom_dashboard_data.json output/social_media_content.json
+          if git diff --cached --quiet; then
+            echo "✅ No changes to commit"
+          else
+            git commit -m "🔥 FREEDOM ALERT: Viral campaign update - $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+            git push
+          fi

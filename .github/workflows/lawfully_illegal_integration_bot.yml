@@ -1,0 +1,54 @@
+name: 🌐 LAWFULLY-ILLEGAL INTEGRATION BOT - Website Synergy
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'  # Every 12 hours - Keep website fresh
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["🔥 FREEDOM ALERT BOT - Viral Campaign Generator", "Trust Scan Bot"]
+    types:
+      - completed
+
+permissions:
+  contents: write
+
+jobs:
+  lawfully-illegal-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pyyaml
+
+      - name: Create output directories
+        run: mkdir -p output/website_integration/widgets
+
+      - name: 🌐 Run Lawfully-Illegal Integration Bot
+        run: |
+          echo "🌐🌐🌐 LAUNCHING LAWFULLY-ILLEGAL INTEGRATION BOT 🌐🌐🌐"
+          python bots/lawfully_illegal_integration_bot.py
+          echo "✅ Cross-platform integration complete"
+
+      - name: Configure Git
+        run: |
+          git config user.name "Lawfully-Illegal Integration Bot"
+          git config user.email "integration@lawfully-illegal.com"
+
+      - name: Commit website integration content
+        run: |
+          git add output/website_integration/
+          if git diff --cached --quiet; then
+            echo "✅ No changes to commit"
+          else
+            git commit -m "🌐 INTEGRATION: lawfully-illegal.com content update - $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+            git push
+          fi

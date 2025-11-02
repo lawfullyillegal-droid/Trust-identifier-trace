@@ -1,10 +1,10 @@
 {
-  "timestamp": "2025-11-02T03:10:47.344205+00:00",
+  "timestamp": "2025-11-02T07:17:03.591512+00:00",
   "system_status": "operational",
   "scan_files": [
     "output/scan_results.json"
   ],
-  "overlay_count": 49,
+  "overlay_count": 80,
   "active_workflows": [
     "Trust Scan Bot",
     "Reddit Trace Bot",
@@ -13,7 +13,7 @@
   ],
   "summary": {
     "total_scan_runs": 1,
-    "last_scan": "2025-11-02 03:10 UTC",
+    "last_scan": "2025-11-02 07:17 UTC",
     "syndicate_status": "active"
   }
 }

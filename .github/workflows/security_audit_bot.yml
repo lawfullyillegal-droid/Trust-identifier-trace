@@ -1,0 +1,48 @@
+name: 🔒 SECURITY AUDIT BOT - Evidence Preservation
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly on Sundays - Full security audit
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  security-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests pyyaml
+
+      - name: Create output directory
+        run: mkdir -p output
+
+      - name: 🔒 Run Security Audit Bot
+        run: |
+          echo "🔒🔒🔒 LAUNCHING SECURITY AUDIT BOT 🔒🔒🔒"
+          python bots/security_audit_bot.py
+          echo "✅ Security audit complete"
+
+      - name: Configure Git
+        run: |
+          git config user.name "Security Audit Bot"
+          git config user.email "audit@trust.local"
+
+      - name: Commit security audit report
+        run: |
+          git add output/security_audit_report.json output/evidence_manifest.json
+          if git diff --cached --quiet; then
+            echo "✅ No changes to commit"
+          else
+            git commit -m "🔒 SECURITY: Audit and evidence preservation - $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+            git push
+          fi

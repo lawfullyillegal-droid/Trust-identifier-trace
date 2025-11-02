@@ -1,0 +1,252 @@
+{
+  "bot_name": "Identity Profile Manager Bot \ud83c\udd94",
+  "bot_role": "Identity Management & Protection",
+  "bot_department": "Trust Identity Department",
+  "bot_version": "1.0.0",
+  "mission": "PROTECT IDENTITY | VERIFY DATA | ENSURE ACCURACY",
+  "profile_timestamp": "2025-11-02T07:39:37.127401+00:00",
+  "primary_identity": {
+    "full_name": "TRAVIS STEVEN RYLE",
+    "name_variants": [
+      "Travis Steven Ryle",
+      "Travis S. Ryle",
+      "Travis Ryle",
+      "Mr. Travis S. Rylee",
+      "Travis S Rylee"
+    ],
+    "date_of_birth": "1983-01-20",
+    "birth_location": {
+      "registry_id": "BIRTH-REGISTRY-104-0190-003558",
+      "certificate_number": "104-0190-003558",
+      "source": "County Vital Records",
+      "note": "Birth certificate number verified"
+    },
+    "ssn": "602-05-7209",
+    "ssn_full": "SSN-602-05-7209",
+    "age": 42,
+    "identity_verification": {
+      "status": "VERIFIED",
+      "verified_by": "Trust Identity Department",
+      "verified_at": "2025-11-02T07:39:37.127369+00:00"
+    }
+  },
+  "associated_identifiers": {
+    "lexisnexis_ids": [
+      {
+        "identifier": "LN-CONSUMER-11133734",
+        "type": "Consumer Profile Number",
+        "source": "LexisNexis",
+        "status": "ACTIVE - UNDER SURVEILLANCE"
+      },
+      {
+        "identifier": "LN-CASE-31568224",
+        "type": "Case Number",
+        "source": "LexisNexis"
+      },
+      {
+        "identifier": "LEXID-XXXXXX7079",
+        "type": "LexID",
+        "source": "LexisNexis"
+      }
+    ],
+    "tax_ids": [
+      {
+        "identifier": "EIN-39-2383430",
+        "type": "EIN",
+        "entity": "LAWFULLY ILLEGAL",
+        "source": "IRS",
+        "website": "lawfully-illegal.com"
+      },
+      {
+        "identifier": "EIN-33-3124290",
+        "type": "EIN",
+        "source": "IRS"
+      },
+      {
+        "identifier": "EIN-33-2015110",
+        "type": "EIN",
+        "source": "IRS"
+      },
+      {
+        "identifier": "IRS-TRACK-0509907367",
+        "type": "IRS Tracking Number",
+        "source": "IRS"
+      }
+    ],
+    "contact_info": [
+      {
+        "identifier": "EMAIL-TRAVISLITE@GMAIL.COM",
+        "type": "Email",
+        "source": "LexisNexis"
+      },
+      {
+        "identifier": "EMAIL-TRAVISREL@GMAIL.COM",
+        "type": "Email",
+        "source": "DATASYS GROUP"
+      },
+      {
+        "identifier": "EMAIL-TRAVISREL@YAHOO.COM",
+        "type": "Email",
+        "source": "ACQUIREWEB"
+      },
+      {
+        "identifier": "PHONE-9431463078",
+        "type": "Phone",
+        "source": "TransUnion"
+      }
+    ],
+    "addresses": [
+      {
+        "identifier": "ADDR-GOLDENVALLEY-AZ-5570-TONTO",
+        "type": "Address",
+        "source": "LexisNexis"
+      },
+      {
+        "identifier": "ADDR-GOLDENVALLEY-AZ-7090-RURAL-RD",
+        "type": "Address",
+        "source": "Kingman Court"
+      },
+      {
+        "identifier": "ADDR-OXNARD-CA-5034-NAUTILUS",
+        "type": "Address",
+        "source": "LexisNexis"
+      },
+      {
+        "identifier": "ADDR-TEMPLECITY-CA-4641-DACOTAH",
+        "type": "Address",
+        "source": "LexisNexis"
+      },
+      {
+        "identifier": "ADDR-HUNTSVILLE-AL-2704-PACIFIC",
+        "type": "Address",
+        "source": "LexisNexis"
+      }
+    ],
+    "legal_entities": [
+      {
+        "identifier": "ENTITY-TRAVIS-STEVEN-RYLE",
+        "type": "Legal Entity",
+        "source": "LexisNexis"
+      },
+      {
+        "identifier": "ENTITY-MR-TRAVIS-S-RYLEE",
+        "type": "Legal Entity (variant)",
+        "source": "LexisNexis"
+      },
+      {
+        "identifier": "ENTITY-EIGHTYLEE-MARKETING-GRP",
+        "type": "Business Entity",
+        "source": "Accurint"
+      }
+    ],
+    "vehicles": [
+      {
+        "identifier": "VIN-4T1B11AK1M",
+        "type": "VIN",
+        "source": "LexisNexis C.L.U.E."
+      },
+      {
+        "identifier": "VEHICLE-TOYOTA-CAMRY-2021",
+        "type": "Vehicle",
+        "source": "LexisNexis C.L.U.E."
+      }
+    ],
+    "surveillance_records": [
+      {
+        "identifier": "SURVEILLANCE-CLUE-VIN-4T1B11AK1M-20250328",
+        "type": "Insurance Surveillance",
+        "source": "HiRoad Insurance",
+        "date": "2025-03-28"
+      },
+      {
+        "identifier": "SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328",
+        "type": "Insurance Surveillance",
+        "source": "Sentry Insurance",
+        "date": "2025-03-28"
+      },
+      {
+        "identifier": "SURVEILLANCE-AMEX-RISKVIEW-20250411",
+        "type": "Financial Surveillance",
+        "source": "American Express",
+        "date": "2025-04-11"
+      },
+      {
+        "identifier": "SURVEILLANCE-PROGRESSIVE-REVIEW-20250411",
+        "type": "Insurance Surveillance",
+        "source": "Progressive Insurance",
+        "date": "2025-04-11"
+      },
+      {
+        "identifier": "SURVEILLANCE-CREDITKARMA-PREQ-20250411",
+        "type": "Credit Surveillance",
+        "source": "Credit Karma",
+        "date": "2025-04-11"
+      }
+    ],
+    "court_records": [
+      {
+        "identifier": "VIOLATION-FTA-CRIMINAL-KINGMAN-2004",
+        "type": "Court Record",
+        "source": "Kingman Court",
+        "year": "2004"
+      },
+      {
+        "identifier": "VIOLATION-FINRESP-FAIL-KINGMAN-2004",
+        "type": "Court Record",
+        "source": "Kingman Court",
+        "year": "2004"
+      },
+      {
+        "identifier": "VIOLATION-NOREG-KINGMAN-2024",
+        "type": "Court Record",
+        "source": "Kingman Court",
+        "year": "2024"
+      },
+      {
+        "identifier": "VIOLATION-SPEED-20PLUS-KINGMAN-2024",
+        "type": "Court Record",
+        "source": "Kingman Court",
+        "year": "2024"
+      },
+      {
+        "identifier": "WARRANT-QUASHED-KINGMAN-2004",
+        "type": "Court Record",
+        "source": "Kingman Court",
+        "year": "2004"
+      }
+    ]
+  },
+  "statistics": {
+    "total_identifiers": 31,
+    "lexisnexis_ids": 3,
+    "tax_ids": 4,
+    "contact_info": 4,
+    "addresses": 5,
+    "legal_entities": 3,
+    "vehicles": 2,
+    "surveillance_records": 5,
+    "court_records": 5
+  },
+  "trust_entities": {
+    "primary": "THE TRAVIS RYLE PRIVATE BANK-ESTATE & TRUST",
+    "lei_status": "Pending GLEIF Registration",
+    "legal_structure": "Private Bank Estate & Trust",
+    "jurisdiction": "United States",
+    "related_entities": [
+      {
+        "name": "LAWFULLY ILLEGAL",
+        "ein": "39-2383430",
+        "website": "lawfully-illegal.com",
+        "type": "Digital Media & Freedom Platform",
+        "relationship": "Primary digital presence and content platform"
+      }
+    ]
+  },
+  "privacy_rights": {
+    "fcra_section_609": "RIGHT TO FULL DISCLOSURE",
+    "fcra_section_604": "PERMISSIBLE PURPOSE REQUIRED",
+    "fcra_section_611": "RIGHT TO DISPUTE",
+    "fcra_section_616": "CIVIL LIABILITY FOR VIOLATIONS",
+    "rights_status": "FULLY ASSERTED"
+  }
+}

@@ -1,0 +1,48 @@
+name: 🆔 IDENTITY PROFILE MANAGER BOT - Identity Protection
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'  # Monthly - Update identity profile
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  identity-profile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests pyyaml
+
+      - name: Create output directory
+        run: mkdir -p output
+
+      - name: 🆔 Run Identity Profile Manager Bot
+        run: |
+          echo "🆔🆔🆔 LAUNCHING IDENTITY PROFILE MANAGER BOT 🆔🆔🆔"
+          python bots/identity_profile_manager_bot.py
+          echo "✅ Identity profile management complete"
+
+      - name: Configure Git
+        run: |
+          git config user.name "Identity Profile Manager Bot"
+          git config user.email "identity@trust.local"
+
+      - name: Commit identity profile
+        run: |
+          git add output/identity_profile.json output/identity_protection_notice.txt identity_profile_complete.json
+          if git diff --cached --quiet; then
+            echo "✅ No changes to commit"
+          else
+            git commit -m "🆔 IDENTITY: Profile update - $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+            git push
+          fi

@@ -1,0 +1,19 @@
+# STORM-BREAKER Overlay for VIOLATION-NOREG-KINGMAN-2024
+identifier: VIOLATION-NOREG-KINGMAN-2024
+pattern_type: unknown
+format_valid: False
+confidence_score: 0.0
+risk_level: unknown
+timestamp: 2025-11-02T07:17:03.499355+00:00
+storm_breaker_version: "1.0"
+overlay_hash: d04822dd7e863d2d
+
+metadata:
+  type: Unknown
+  scan_method: "storm_breaker_analysis"
+  validation_status: "failed"
+
+technical_trace:
+  generator: "storm-breaker"
+  analysis_engine: "pattern_recognition_v1.0"
+  validation_rules: "format_compliance_check"

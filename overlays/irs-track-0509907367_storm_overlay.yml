@@ -1,0 +1,19 @@
+# STORM-BREAKER Overlay for IRS-TRACK-0509907367
+identifier: IRS-TRACK-0509907367
+pattern_type: unknown
+format_valid: False
+confidence_score: 0.0
+risk_level: unknown
+timestamp: 2025-11-02T07:17:03.496977+00:00
+storm_breaker_version: "1.0"
+overlay_hash: 46ee7846740c340e
+
+metadata:
+  type: IRS Tracking Number
+  scan_method: "storm_breaker_analysis"
+  validation_status: "failed"
+
+technical_trace:
+  generator: "storm-breaker"
+  analysis_engine: "pattern_recognition_v1.0"
+  validation_rules: "format_compliance_check"

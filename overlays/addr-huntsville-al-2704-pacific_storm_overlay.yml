@@ -1,15 +1,15 @@
-# STORM-BREAKER Overlay for SSN-602-05-7209
-identifier: SSN-602-05-7209
-pattern_type: social_security
+# STORM-BREAKER Overlay for ADDR-HUNTSVILLE-AL-2704-PACIFIC
+identifier: ADDR-HUNTSVILLE-AL-2704-PACIFIC
+pattern_type: address
 format_valid: True
 confidence_score: 0.95
-risk_level: medium
-timestamp: 2025-11-02T07:17:03.496275+00:00
+risk_level: low
+timestamp: 2025-11-02T07:17:03.498690+00:00
 storm_breaker_version: "1.0"
-overlay_hash: 040faed158542a9c
+overlay_hash: 45fe1040f962bdd9
 
 metadata:
-  type: Social Security Number
+  type: Address Record
   scan_method: "storm_breaker_analysis"
   validation_status: "passed"
 

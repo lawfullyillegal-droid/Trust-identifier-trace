@@ -15,9 +15,16 @@ jobs:
 
       - name: Timestamp scan_results.json
         run: |
-          ts=$(date -u +'%Y-%m-%d_%H-%M-%S')
-          mkdir -p archive
-          cp output/scan_results.json archive/scan_results_${ts}.json
+          if [ -f output/scan_results.json ]; then
+            ts=$(date -u +'%Y-%m-%d_%H-%M-%S')
+            mkdir -p archive
+            cp output/scan_results.json archive/scan_results_${ts}.json
+            echo "Archived scan_results.json to archive/scan_results_${ts}.json"
+          else
+            echo "Warning: output/scan_results.json not found, skipping archive"
+            mkdir -p archive
+            touch archive/.gitkeep
+          fi
 
       - name: Configure Git
         run: |
@@ -27,5 +34,9 @@ jobs:
       - name: Commit archive file
         run: |
           git add archive/
-          git commit -m "Archive scan results at $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
-          git push
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Archive scan results at $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+            git push
+          fi

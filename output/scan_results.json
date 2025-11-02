@@ -1,92 +1,322 @@
 [
   {
-    "identifier": "EIN-92-6319308",
-    "status": "matched",
-    "source": "EIN",
-    "timestamp": "2025-09-23 18:39 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/ein_overlay.yml",
-    "reddit_hits": [
-      "Mock Reddit post mentioning EIN-92-6319308 (offline mode)"
-    ]
-  },
-  {
     "identifier": "SSN-602-05-7209",
     "status": "matched",
-    "source": "SSN",
-    "timestamp": "2025-09-23 18:39 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/ssn_overlay.yml",
+    "source": "LexisNexis",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/lexisnexis_overlay.yml",
     "reddit_hits": [
       "Mock Reddit post mentioning SSN-602-05-7209 (offline mode)"
     ]
   },
   {
-    "identifier": "IRS-TRACK-108541264370",
+    "identifier": "EIN-33-3124290",
     "status": "matched",
-    "source": "IRSTrack",
-    "timestamp": "2025-09-23 18:39 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/irstrack_overlay.yml",
+    "source": "IRS",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/irs_overlay.yml",
     "reddit_hits": [
-      "Mock Reddit post mentioning IRS-TRACK-108541264370 (offline mode)"
+      "Mock Reddit post mentioning EIN-33-3124290 (offline mode)"
     ]
   },
   {
-    "identifier": "CSE-CASE-200000002519088",
+    "identifier": "EIN-33-2015110",
     "status": "matched",
-    "source": "CSECase",
-    "timestamp": "2025-09-23 18:39 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/csecase_overlay.yml",
+    "source": "IRS",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/irs_overlay.yml",
     "reddit_hits": [
-      "Mock Reddit post mentioning CSE-CASE-200000002519088 (offline mode)"
+      "Mock Reddit post mentioning EIN-33-2015110 (offline mode)"
     ]
   },
   {
-    "identifier": "ADOT-CUST-16088582",
+    "identifier": "IRS-TRACK-0509907367",
     "status": "matched",
-    "source": "ADOTCust",
-    "timestamp": "2025-09-23 18:39 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/adotcust_overlay.yml",
+    "source": "IRS",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/irs_overlay.yml",
     "reddit_hits": [
-      "Mock Reddit post mentioning ADOT-CUST-16088582 (offline mode)"
+      "Mock Reddit post mentioning IRS-TRACK-0509907367 (offline mode)"
     ]
   },
   {
-    "identifier": "ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413",
+    "identifier": "BIRTH-REGISTRY-104-0190-003558",
     "status": "matched",
-    "source": "Address",
-    "timestamp": "2025-09-23 18:39 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/address_overlay.yml",
+    "source": "County Vital Records",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/county vital records_overlay.yml",
     "reddit_hits": [
-      "Mock Reddit post mentioning ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413 (offline mode)"
+      "Mock Reddit post mentioning BIRTH-REGISTRY-104-0190-003558 (offline mode)"
     ]
   },
   {
-    "identifier": "ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK",
+    "identifier": "LEXID-XXXXXX7079",
     "status": "matched",
-    "source": "EntityName",
-    "timestamp": "2025-09-23 18:39 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/entityname_overlay.yml",
+    "source": "LexisNexis",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/lexisnexis_overlay.yml",
     "reddit_hits": [
-      "Mock Reddit post mentioning ENTITY-THE-TRAVIS-RYLE-PRIVATE-BANK (offline mode)"
+      "Mock Reddit post mentioning LEXID-XXXXXX7079 (offline mode)"
     ]
   },
   {
-    "identifier": "LACOUNTY-BIRTH-REGISTRY-NUMBER",
+    "identifier": "LN-CONSUMER-11133734",
     "status": "matched",
-    "source": "BirthRegNum",
-    "timestamp": "2025-09-23 18:39 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/birthregnum_overlay.yml",
+    "source": "LexisNexis",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/lexisnexis_overlay.yml",
     "reddit_hits": [
-      "Mock Reddit post mentioning LACOUNTY-BIRTH-REGISTRY-NUMBER (offline mode)"
+      "Mock Reddit post mentioning LN-CONSUMER-11133734 (offline mode)"
     ]
   },
   {
-    "identifier": "LACOUNTY-DEED-DOC-NUMBER",
+    "identifier": "LN-CASE-31568224",
     "status": "matched",
-    "source": "PropertyRecord",
-    "timestamp": "2025-09-23 18:39 UTC",
-    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/propertyrecord_overlay.yml",
+    "source": "LexisNexis",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/lexisnexis_overlay.yml",
     "reddit_hits": [
-      "Mock Reddit post mentioning LACOUNTY-DEED-DOC-NUMBER (offline mode)"
+      "Mock Reddit post mentioning LN-CASE-31568224 (offline mode)"
+    ]
+  },
+  {
+    "identifier": "EMAIL-TRAVISLITE@GMAIL.COM",
+    "status": "matched",
+    "source": "LexisNexis",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/lexisnexis_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning EMAIL-TRAVISLITE@GMAIL.COM (offline mode)"
+    ]
+  },
+  {
+    "identifier": "EMAIL-TRAVISREL@GMAIL.COM",
+    "status": "matched",
+    "source": "DATASYS GROUP",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/datasys group_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning EMAIL-TRAVISREL@GMAIL.COM (offline mode)"
+    ]
+  },
+  {
+    "identifier": "EMAIL-TRAVISREL@YAHOO.COM",
+    "status": "matched",
+    "source": "ACQUIREWEB",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/acquireweb_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning EMAIL-TRAVISREL@YAHOO.COM (offline mode)"
+    ]
+  },
+  {
+    "identifier": "PHONE-9431463078",
+    "status": "matched",
+    "source": "TransUnion",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/transunion_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning PHONE-9431463078 (offline mode)"
+    ]
+  },
+  {
+    "identifier": "ADDR-GOLDENVALLEY-AZ-5570-TONTO",
+    "status": "matched",
+    "source": "LexisNexis",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/lexisnexis_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning ADDR-GOLDENVALLEY-AZ-5570-TONTO (offline mode)"
+    ]
+  },
+  {
+    "identifier": "ADDR-GOLDENVALLEY-AZ-7090-RURAL-RD",
+    "status": "matched",
+    "source": "Kingman Court",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/kingman court_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning ADDR-GOLDENVALLEY-AZ-7090-RURAL-RD (offline mode)"
+    ]
+  },
+  {
+    "identifier": "ADDR-OXNARD-CA-5034-NAUTILUS",
+    "status": "matched",
+    "source": "LexisNexis",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/lexisnexis_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning ADDR-OXNARD-CA-5034-NAUTILUS (offline mode)"
+    ]
+  },
+  {
+    "identifier": "ADDR-TEMPLECITY-CA-4641-DACOTAH",
+    "status": "matched",
+    "source": "LexisNexis",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/lexisnexis_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning ADDR-TEMPLECITY-CA-4641-DACOTAH (offline mode)"
+    ]
+  },
+  {
+    "identifier": "ADDR-HUNTSVILLE-AL-2704-PACIFIC",
+    "status": "matched",
+    "source": "LexisNexis",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/lexisnexis_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning ADDR-HUNTSVILLE-AL-2704-PACIFIC (offline mode)"
+    ]
+  },
+  {
+    "identifier": "ENTITY-TRAVIS-STEVEN-RYLE",
+    "status": "matched",
+    "source": "LexisNexis",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/lexisnexis_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning ENTITY-TRAVIS-STEVEN-RYLE (offline mode)"
+    ]
+  },
+  {
+    "identifier": "ENTITY-MR-TRAVIS-S-RYLEE",
+    "status": "matched",
+    "source": "LexisNexis",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/lexisnexis_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning ENTITY-MR-TRAVIS-S-RYLEE (offline mode)"
+    ]
+  },
+  {
+    "identifier": "ENTITY-EIGHTYLEE-MARKETING-GRP",
+    "status": "matched",
+    "source": "Accurint",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/accurint_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning ENTITY-EIGHTYLEE-MARKETING-GRP (offline mode)"
+    ]
+  },
+  {
+    "identifier": "VIOLATION-FTA-CRIMINAL-KINGMAN-2004",
+    "status": "matched",
+    "source": "Kingman Court",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/kingman court_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning VIOLATION-FTA-CRIMINAL-KINGMAN-2004 (offline mode)"
+    ]
+  },
+  {
+    "identifier": "VIOLATION-FINRESP-FAIL-KINGMAN-2004",
+    "status": "matched",
+    "source": "Kingman Court",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/kingman court_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning VIOLATION-FINRESP-FAIL-KINGMAN-2004 (offline mode)"
+    ]
+  },
+  {
+    "identifier": "VIOLATION-NOREG-KINGMAN-2024",
+    "status": "matched",
+    "source": "Kingman Court",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/kingman court_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning VIOLATION-NOREG-KINGMAN-2024 (offline mode)"
+    ]
+  },
+  {
+    "identifier": "VIOLATION-SPEED-20PLUS-KINGMAN-2024",
+    "status": "matched",
+    "source": "Kingman Court",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/kingman court_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning VIOLATION-SPEED-20PLUS-KINGMAN-2024 (offline mode)"
+    ]
+  },
+  {
+    "identifier": "WARRANT-QUASHED-KINGMAN-2004",
+    "status": "matched",
+    "source": "Kingman Court",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/kingman court_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning WARRANT-QUASHED-KINGMAN-2004 (offline mode)"
+    ]
+  },
+  {
+    "identifier": "SURVEILLANCE-CLUE-VIN-4T1B11AK1M-20250328",
+    "status": "matched",
+    "source": "HiRoad Insurance",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/hiroad insurance_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning SURVEILLANCE-CLUE-VIN-4T1B11AK1M-20250328 (offline mode)"
+    ]
+  },
+  {
+    "identifier": "SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328",
+    "status": "matched",
+    "source": "Sentry Insurance",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/sentry insurance_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328 (offline mode)"
+    ]
+  },
+  {
+    "identifier": "VIN-4T1B11AK1M",
+    "status": "matched",
+    "source": "LexisNexis C.L.U.E.",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/lexisnexis c.l.u.e._overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning VIN-4T1B11AK1M (offline mode)"
+    ]
+  },
+  {
+    "identifier": "VEHICLE-TOYOTA-CAMRY-2021",
+    "status": "matched",
+    "source": "LexisNexis C.L.U.E.",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/lexisnexis c.l.u.e._overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning VEHICLE-TOYOTA-CAMRY-2021 (offline mode)"
+    ]
+  },
+  {
+    "identifier": "SURVEILLANCE-AMEX-RISKVIEW-20250411",
+    "status": "matched",
+    "source": "American Express",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/american express_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning SURVEILLANCE-AMEX-RISKVIEW-20250411 (offline mode)"
+    ]
+  },
+  {
+    "identifier": "SURVEILLANCE-PROGRESSIVE-REVIEW-20250411",
+    "status": "matched",
+    "source": "Progressive Insurance",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/progressive insurance_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning SURVEILLANCE-PROGRESSIVE-REVIEW-20250411 (offline mode)"
+    ]
+  },
+  {
+    "identifier": "SURVEILLANCE-CREDITKARMA-PREQ-20250411",
+    "status": "matched",
+    "source": "Credit Karma",
+    "timestamp": "2025-11-02 09:15 UTC",
+    "overlay": "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/credit karma_overlay.yml",
+    "reddit_hits": [
+      "Mock Reddit post mentioning SURVEILLANCE-CREDITKARMA-PREQ-20250411 (offline mode)"
     ]
   }
 ]

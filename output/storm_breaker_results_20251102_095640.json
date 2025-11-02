@@ -1,0 +1,369 @@
+{
+  "scan_timestamp": "2025-11-02T09:56:39.995638+00:00",
+  "storm_breaker_version": "1.0",
+  "total_identifiers": 32,
+  "identifiers_analyzed": [
+    {
+      "identifier": "SSN-602-05-7209",
+      "pattern_type": "social_security",
+      "format_valid": true,
+      "confidence_score": 0.95,
+      "risk_level": "medium",
+      "metadata": {
+        "type": "Social Security Number"
+      },
+      "timestamp": "2025-11-02T09:56:39.995660+00:00",
+      "source": "LexisNexis"
+    },
+    {
+      "identifier": "EIN-33-3124290",
+      "pattern_type": "employer_identification",
+      "format_valid": true,
+      "confidence_score": 0.95,
+      "risk_level": "low",
+      "metadata": {
+        "type": "Employer Identification Number"
+      },
+      "timestamp": "2025-11-02T09:56:39.996222+00:00",
+      "source": "IRS"
+    },
+    {
+      "identifier": "EIN-33-2015110",
+      "pattern_type": "employer_identification",
+      "format_valid": true,
+      "confidence_score": 0.95,
+      "risk_level": "low",
+      "metadata": {
+        "type": "Employer Identification Number"
+      },
+      "timestamp": "2025-11-02T09:56:39.996427+00:00",
+      "source": "IRS"
+    },
+    {
+      "identifier": "IRS-TRACK-0509907367",
+      "pattern_type": "unknown",
+      "format_valid": false,
+      "confidence_score": 0.0,
+      "risk_level": "unknown",
+      "metadata": {
+        "type": "IRS Tracking Number"
+      },
+      "timestamp": "2025-11-02T09:56:39.996577+00:00",
+      "source": "IRS"
+    },
+    {
+      "identifier": "BIRTH-REGISTRY-104-0190-003558",
+      "pattern_type": "unknown",
+      "format_valid": false,
+      "confidence_score": 0.0,
+      "risk_level": "unknown",
+      "metadata": {
+        "type": "Birth Registry Record"
+      },
+      "timestamp": "2025-11-02T09:56:39.997115+00:00",
+      "source": "County Vital Records"
+    },
+    {
+      "identifier": "LEXID-XXXXXX7079",
+      "pattern_type": "unknown",
+      "format_valid": false,
+      "confidence_score": 0.0,
+      "risk_level": "unknown",
+      "metadata": {},
+      "timestamp": "2025-11-02T09:56:39.997276+00:00",
+      "source": "LexisNexis"
+    },
+    {
+      "identifier": "LN-CONSUMER-11133734",
+      "pattern_type": "unknown",
+      "format_valid": false,
+      "confidence_score": 0.0,
+      "risk_level": "unknown",
+      "metadata": {},
+      "timestamp": "2025-11-02T09:56:39.997459+00:00",
+      "source": "LexisNexis"
+    },
+    {
+      "identifier": "LN-CASE-31568224",
+      "pattern_type": "unknown",
+      "format_valid": false,
+      "confidence_score": 0.0,
+      "risk_level": "unknown",
+      "metadata": {},
+      "timestamp": "2025-11-02T09:56:39.997604+00:00",
+      "source": "LexisNexis"
+    },
+    {
+      "identifier": "EMAIL-TRAVISLITE@GMAIL.COM",
+      "pattern_type": "unknown",
+      "format_valid": false,
+      "confidence_score": 0.0,
+      "risk_level": "unknown",
+      "metadata": {},
+      "timestamp": "2025-11-02T09:56:39.997762+00:00",
+      "source": "LexisNexis"
+    },
+    {
+      "identifier": "EMAIL-TRAVISREL@GMAIL.COM",
+      "pattern_type": "unknown",
+      "format_valid": false,
+      "confidence_score": 0.0,
+      "risk_level": "unknown",
+      "metadata": {},
+      "timestamp": "2025-11-02T09:56:39.997907+00:00",
+      "source": "DATASYS GROUP"
+    },
+    {
+      "identifier": "EMAIL-TRAVISREL@YAHOO.COM",
+      "pattern_type": "unknown",
+      "format_valid": false,
+      "confidence_score": 0.0,
+      "risk_level": "unknown",
+      "metadata": {},
+      "timestamp": "2025-11-02T09:56:39.998037+00:00",
+      "source": "ACQUIREWEB"
+    },
+    {
+      "identifier": "PHONE-9431463078",
+      "pattern_type": "unknown",
+      "format_valid": false,
+      "confidence_score": 0.0,
+      "risk_level": "unknown",
+      "metadata": {},
+      "timestamp": "2025-11-02T09:56:39.998171+00:00",
+      "source": "TransUnion"
+    },
+    {
+      "identifier": "ADDR-GOLDENVALLEY-AZ-5570-TONTO",
+      "pattern_type": "address",
+      "format_valid": true,
+      "confidence_score": 0.95,
+      "risk_level": "low",
+      "metadata": {
+        "type": "Address Record"
+      },
+      "timestamp": "2025-11-02T09:56:39.998298+00:00",
+      "source": "LexisNexis"
+    },
+    {
+      "identifier": "ADDR-GOLDENVALLEY-AZ-7090-RURAL-RD",
+      "pattern_type": "address",
+      "format_valid": true,
+      "confidence_score": 0.95,
+      "risk_level": "low",
+      "metadata": {
+        "type": "Address Record"
+      },
+      "timestamp": "2025-11-02T09:56:39.998452+00:00",
+      "source": "Kingman Court"
+    },
+    {
+      "identifier": "ADDR-OXNARD-CA-5034-NAUTILUS",
+      "pattern_type": "address",
+      "format_valid": true,
+      "confidence_score": 0.95,
+      "risk_level": "low",
+      "metadata": {
+        "type": "Address Record"
+      },
+      "timestamp": "2025-11-02T09:56:39.998585+00:00",
+      "source": "LexisNexis"
+    },
+    {
+      "identifier": "ADDR-TEMPLECITY-CA-4641-DACOTAH",
+      "pattern_type": "address",
+      "format_valid": true,
+      "confidence_score": 0.95,
+      "risk_level": "low",
+      "metadata": {
+        "type": "Address Record"
+      },
+      "timestamp": "2025-11-02T09:56:39.998707+00:00",
+      "source": "LexisNexis"
+    },
+    {
+      "identifier": "ADDR-HUNTSVILLE-AL-2704-PACIFIC",
+      "pattern_type": "address",
+      "format_valid": true,
+      "confidence_score": 0.95,
+      "risk_level": "low",
+      "metadata": {
+        "type": "Address Record"
+      },
+      "timestamp": "2025-11-02T09:56:39.998835+00:00",
+      "source": "LexisNexis"
+    },
+    {
+      "identifier": "ENTITY-TRAVIS-STEVEN-RYLE",
+      "pattern_type": "entity_name",
+      "format_valid": true,
+      "confidence_score": 0.95,
+      "risk_level": "low",
+      "metadata": {
+        "type": "Entity Name"
+      },
+      "timestamp": "2025-11-02T09:56:39.998971+00:00",
+      "source": "LexisNexis"
+    },
+    {
+      "identifier": "ENTITY-MR-TRAVIS-S-RYLEE",
+      "pattern_type": "entity_name",
+      "format_valid": true,
+      "confidence_score": 0.95,
+      "risk_level": "low",
+      "metadata": {
+        "type": "Entity Name"
+      },
+      "timestamp": "2025-11-02T09:56:39.999097+00:00",
+      "source": "LexisNexis"
+    },
+    {
+      "identifier": "ENTITY-EIGHTYLEE-MARKETING-GRP",
+      "pattern_type": "entity_name",
+      "format_valid": true,
+      "confidence_score": 0.95,
+      "risk_level": "low",
+      "metadata": {
+        "type": "Entity Name"
+      },
+      "timestamp": "2025-11-02T09:56:39.999223+00:00",
+      "source": "Accurint"
+    },
+    {
+      "identifier": "VIOLATION-FTA-CRIMINAL-KINGMAN-2004",
+      "pattern_type": "unknown",
+      "format_valid": false,
+      "confidence_score": 0.0,
+      "risk_level": "unknown",
+      "metadata": {},
+      "timestamp": "2025-11-02T09:56:39.999359+00:00",
+      "source": "Kingman Court"
+    },
+    {
+      "identifier": "VIOLATION-FINRESP-FAIL-KINGMAN-2004",
+      "pattern_type": "unknown",
+      "format_valid": false,
+      "confidence_score": 0.0,
+      "risk_level": "unknown",
+      "metadata": {},
+      "timestamp": "2025-11-02T09:56:39.999511+00:00",
+      "source": "Kingman Court"
+    },
+    {
+      "identifier": "VIOLATION-NOREG-KINGMAN-2024",
+      "pattern_type": "unknown",
+      "format_valid": false,
+      "confidence_score": 0.0,
+      "risk_level": "unknown",
+      "metadata": {},
+      "timestamp": "2025-11-02T09:56:39.999644+00:00",
+      "source": "Kingman Court"
+    },
+    {
+      "identifier": "VIOLATION-SPEED-20PLUS-KINGMAN-2024",
+      "pattern_type": "unknown",
+      "format_valid": false,
+      "confidence_score": 0.0,
+      "risk_level": "unknown",
+      "metadata": {},
+      "timestamp": "2025-11-02T09:56:39.999762+00:00",
+      "source": "Kingman Court"
+    },
+    {
+      "identifier": "WARRANT-QUASHED-KINGMAN-2004",
+      "pattern_type": "unknown",
+      "format_valid": false,
+      "confidence_score": 0.0,
+      "risk_level": "unknown",
+      "metadata": {},
+      "timestamp": "2025-11-02T09:56:39.999902+00:00",
+      "source": "Kingman Court"
+    },
+    {
+      "identifier": "SURVEILLANCE-CLUE-VIN-4T1B11AK1M-20250328",
+      "pattern_type": "unknown",
+      "format_valid": false,
+      "confidence_score": 0.0,
+      "risk_level": "unknown",
+      "metadata": {},
+      "timestamp": "2025-11-02T09:56:40.000026+00:00",
+      "source": "HiRoad Insurance"
+    },
+    {
+      "identifier": "SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328",
+      "pattern_type": "unknown",
+      "format_valid": false,
+      "confidence_score": 0.0,
+      "risk_level": "unknown",
+      "metadata": {},
+      "timestamp": "2025-11-02T09:56:40.000175+00:00",
+      "source": "Sentry Insurance"
+    },
+    {
+      "identifier": "VIN-4T1B11AK1M",
+      "pattern_type": "unknown",
+      "format_valid": false,
+      "confidence_score": 0.0,
+      "risk_level": "unknown",
+      "metadata": {},
+      "timestamp": "2025-11-02T09:56:40.000321+00:00",
+      "source": "LexisNexis C.L.U.E."
+    },
+    {
+      "identifier": "VEHICLE-TOYOTA-CAMRY-2021",
+      "pattern_type": "unknown",
+      "format_valid": false,
+      "confidence_score": 0.0,
+      "risk_level": "unknown",
+      "metadata": {},
+      "timestamp": "2025-11-02T09:56:40.000482+00:00",
+      "source": "LexisNexis C.L.U.E."
+    },
+    {
+      "identifier": "SURVEILLANCE-AMEX-RISKVIEW-20250411",
+      "pattern_type": "unknown",
+      "format_valid": false,
+      "confidence_score": 0.0,
+      "risk_level": "unknown",
+      "metadata": {},
+      "timestamp": "2025-11-02T09:56:40.000619+00:00",
+      "source": "American Express"
+    },
+    {
+      "identifier": "SURVEILLANCE-PROGRESSIVE-REVIEW-20250411",
+      "pattern_type": "unknown",
+      "format_valid": false,
+      "confidence_score": 0.0,
+      "risk_level": "unknown",
+      "metadata": {},
+      "timestamp": "2025-11-02T09:56:40.000755+00:00",
+      "source": "Progressive Insurance"
+    },
+    {
+      "identifier": "SURVEILLANCE-CREDITKARMA-PREQ-20250411",
+      "pattern_type": "unknown",
+      "format_valid": false,
+      "confidence_score": 0.0,
+      "risk_level": "unknown",
+      "metadata": {},
+      "timestamp": "2025-11-02T09:56:40.000880+00:00",
+      "source": "Credit Karma"
+    }
+  ],
+  "summary": {
+    "valid_format": 11,
+    "invalid_format": 21,
+    "pattern_distribution": {
+      "social_security": 1,
+      "employer_identification": 2,
+      "unknown": 21,
+      "address": 5,
+      "entity_name": 3
+    },
+    "risk_levels": {
+      "medium": 1,
+      "low": 10,
+      "unknown": 21
+    }
+  }
+}

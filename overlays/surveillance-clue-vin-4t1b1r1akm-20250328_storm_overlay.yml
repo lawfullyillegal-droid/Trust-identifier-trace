@@ -1,0 +1,19 @@
+# STORM-BREAKER Overlay for SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328
+identifier: SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328
+pattern_type: unknown
+format_valid: False
+confidence_score: 0.0
+risk_level: unknown
+timestamp: 2025-11-02T10:02:11.353130+00:00
+storm_breaker_version: "1.0"
+overlay_hash: 4917a9534c4b2a4d
+
+metadata:
+  type: Unknown
+  scan_method: "storm_breaker_analysis"
+  validation_status: "failed"
+
+technical_trace:
+  generator: "storm-breaker"
+  analysis_engine: "pattern_recognition_v1.0"
+  validation_rules: "format_compliance_check"

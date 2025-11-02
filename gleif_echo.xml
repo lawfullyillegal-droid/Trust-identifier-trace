@@ -1,2 +1,2 @@
 <?xml version='1.0' encoding='utf-8'?>
-<GLEIFEcho><Timestamp>2025-11-02T10:01:01.602430</Timestamp><Entities><Entity><LegalName>Mock Entity 1 (Offline Mode)</LegalName><Country>US</Country><LEI>MOCK-LEI-001</LEI></Entity><Entity><LegalName>Mock Entity 2 (Offline Mode)</LegalName><Country>CA</Country><LEI>MOCK-LEI-002</LEI></Entity></Entities></GLEIFEcho>
+<GLEIFEcho><Timestamp>2025-11-02T10:02:13.227932</Timestamp><Entities><Entity><LegalName>Mock Entity 1 (Offline Mode)</LegalName><Country>US</Country><LEI>MOCK-LEI-001</LEI></Entity><Entity><LegalName>Mock Entity 2 (Offline Mode)</LegalName><Country>CA</Country><LEI>MOCK-LEI-002</LEI></Entity></Entities></GLEIFEcho>

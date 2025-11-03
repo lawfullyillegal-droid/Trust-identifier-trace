@@ -13,6 +13,9 @@ Add this step **before** running the bots in your workflow:
     if ! nslookup api.gleif.org > /dev/null 2>&1; then
       echo "⚠️ DNS resolution failing, attempting to configure alternative DNS..."
       
+      # Backup original resolv.conf
+      sudo cp /etc/resolv.conf /etc/resolv.conf.backup
+      
       # Try to configure Google DNS
       echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null
       echo "nameserver 8.8.4.4" | sudo tee -a /etc/resolv.conf > /dev/null
@@ -24,6 +27,8 @@ Add this step **before** running the bots in your workflow:
       else
         echo "⚠️ DNS still failing - network may be restricted"
         echo "Bots will run in offline mode with mock data"
+        # Restore original configuration since it didn't help
+        sudo cp /etc/resolv.conf.backup /etc/resolv.conf
       fi
     else
       echo "✅ DNS resolution working correctly"
@@ -64,6 +69,9 @@ jobs:
           if ! nslookup api.gleif.org > /dev/null 2>&1; then
             echo "⚠️ DNS resolution failing, attempting to configure alternative DNS..."
             
+            # Backup original resolv.conf
+            sudo cp /etc/resolv.conf /etc/resolv.conf.backup
+            
             # Try to configure Google DNS
             echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null
             echo "nameserver 8.8.4.4" | sudo tee -a /etc/resolv.conf > /dev/null
@@ -75,6 +83,8 @@ jobs:
             else
               echo "⚠️ DNS still failing - network may be restricted"
               echo "Bots will run in offline mode with mock data"
+              # Restore original configuration since it didn't help
+              sudo cp /etc/resolv.conf.backup /etc/resolv.conf
             fi
           else
             echo "✅ DNS resolution working correctly"

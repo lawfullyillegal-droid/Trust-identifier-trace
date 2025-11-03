@@ -18,6 +18,20 @@ python network_utils.py
 
 ## Common Issues and Solutions
 
+### Understanding Network Environments
+
+**Important**: The Trust-identifier-trace bots are designed to run in GitHub Actions with normal internet access. If you're testing in a sandboxed/restricted environment, you'll see DNS failures - this is expected and normal for that environment.
+
+**GitHub Actions Standard Runners** (`runs-on: ubuntu-latest`):
+- ✅ Have full internet access by default
+- ✅ Can reach api.gleif.org, www.reddit.com, and other public APIs
+- ✅ Should work without any special configuration
+
+**Restricted Environments** (sandboxed testing, some self-hosted runners):
+- ❌ May block all external DNS queries
+- ❌ May block outbound HTTPS connections  
+- ⚠️ Bots will run in offline mode with mock data
+
 ### 1. DNS Resolution Failures
 
 **Symptoms:**
@@ -39,7 +53,13 @@ cat /etc/resolv.conf
 # Test DNS lookup
 nslookup api.gleif.org
 dig www.reddit.com
+
+# Use DNS configuration helper
+python dns_config_helper.py
 ```
+
+**If all DNS servers fail** (as shown by dns_config_helper.py):
+This indicates a network-level restriction, not a DNS server issue. See "Network Firewall Blocking" section below.
 
 #### B. Alternative DNS Servers
 If the default DNS is failing, configure alternative DNS:

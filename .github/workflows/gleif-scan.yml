@@ -20,6 +20,23 @@ jobs:
       - name: Install dependencies
         run: pip install requests pyyaml
 
+      - name: Configure DNS (if needed)
+        run: |
+          echo "Testing DNS resolution..."
+          if ! nslookup api.gleif.org > /dev/null 2>&1; then
+            echo "⚠️ DNS resolution failing, attempting to configure alternative DNS..."
+            echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null
+            echo "nameserver 8.8.4.4" | sudo tee -a /etc/resolv.conf > /dev/null
+            echo "nameserver 1.1.1.1" | sudo tee -a /etc/resolv.conf > /dev/null
+            if nslookup api.gleif.org > /dev/null 2>&1; then
+              echo "✅ DNS resolution fixed with alternative DNS servers"
+            else
+              echo "⚠️ DNS still failing - bots will run in offline mode"
+            fi
+          else
+            echo "✅ DNS resolution working correctly"
+          fi
+
       - name: Test network connectivity
         run: |
           echo "Testing network connectivity to key services..."

@@ -3,6 +3,9 @@ name: Network Diagnostics
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   network-diagnostics:
     runs-on: ubuntu-latest

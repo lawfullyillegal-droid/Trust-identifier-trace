@@ -1,17 +1,23 @@
 import requests, xml.etree.ElementTree as ET
 from datetime import datetime
 import sys
+from network_utils import make_request_with_retry, NetworkError
 
 print("🔧 Starting GLEIF echo test...")
 
-# Pull GLEIF data with error handling
+# Pull GLEIF data with enhanced error handling and retry logic
 gleif_url = "https://api.gleif.org/api/v1/lei-records?page[size]=5"
 try:
-    response = requests.get(gleif_url, timeout=10)
-    response.raise_for_status()
+    # Use network_utils for robust request with retry logic
+    response = make_request_with_retry(
+        url=gleif_url,
+        max_retries=3,
+        timeout=15,
+        backoff_factor=1.5
+    )
     data = response.json()
     print("✅ Successfully fetched GLEIF data")
-except (requests.exceptions.RequestException, requests.exceptions.Timeout) as e:
+except NetworkError as e:
     print(f"⚠️ Network error: {e}")
     print("🔄 Running in offline mode with mock data...")
     # Create mock data for offline mode

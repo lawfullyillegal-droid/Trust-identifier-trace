@@ -34,12 +34,17 @@ jobs:
           #!/usr/bin/env python3
           """
           Reddit Trace Bot - Comprehensive Reddit profiler for trust identifiers
+          Enhanced with robust network connectivity and retry logic
           """
           import os
+          import sys
           import json
-          import requests
           from datetime import datetime, timezone
           from pathlib import Path
+          
+          # Add parent directory to path to import network_utils
+          sys.path.insert(0, str(Path(__file__).parent.parent))
+          from network_utils import get_reddit_search, NetworkError
 
           # Load identifiers
           try:
@@ -54,37 +59,34 @@ jobs:
               ]
 
           def query_reddit_with_risk_profile(identifier):
-              """Query Reddit and generate risk profile"""
+              """Query Reddit and generate risk profile with enhanced error handling"""
               try:
-                  headers = {"User-Agent": "RedditTraceBot/1.0"}
-                  url = f"https://www.reddit.com/search.json?q={identifier}&limit=10"
+                  # Use network_utils for robust request with retry logic
+                  data = get_reddit_search(query=identifier, limit=10, max_retries=3, timeout=10)
                   
-                  response = requests.get(url, headers=headers, timeout=10)
-                  if response.status_code == 200:
-                      data = response.json()
-                      posts = [post["data"]["title"] for post in data["data"]["children"]]
-                      
-                      # Generate risk profile
-                      mention_count = len(posts)
-                      if mention_count > 5:
-                          risk_level = "HIGH"
-                      elif mention_count > 2:
-                          risk_level = "MEDIUM"
-                      else:
-                          risk_level = "LOW"
-                      
-                      return {
-                          "mentions": posts,
-                          "mention_count": mention_count,
-                          "risk_level": risk_level,
-                          "scan_timestamp": datetime.now(timezone.utc).isoformat()
-                      }
+                  # Extract posts
+                  posts = [post["data"]["title"] for post in data.get("data", {}).get("children", [])]
+                  
+                  # Generate risk profile
+                  mention_count = len(posts)
+                  if mention_count > 5:
+                      risk_level = "HIGH"
+                  elif mention_count > 2:
+                      risk_level = "MEDIUM"
                   else:
-                      print(f"⚠️ Reddit API returned status code: {response.status_code}")
-                      return None
+                      risk_level = "LOW"
+                  
+                  return {
+                      "mentions": posts,
+                      "mention_count": mention_count,
+                      "risk_level": risk_level,
+                      "scan_timestamp": datetime.now(timezone.utc).isoformat(),
+                      "offline_mode": False
+                  }
               
-              except requests.exceptions.ConnectionError:
-                  print(f"⚠️ Network connection failed for Reddit query of {identifier}")
+              except NetworkError as e:
+                  print(f"⚠️ Network error querying Reddit for {identifier}: {e}")
+                  print("🔄 Falling back to offline mode with mock data")
                   # Return mock data for offline mode
                   return {
                       "mentions": [f"Mock Reddit mention of {identifier} (offline mode)"],
@@ -94,8 +96,15 @@ jobs:
                       "offline_mode": True
                   }
               except Exception as e:
-                  print(f"⚠️ Error querying Reddit for {identifier}: {e}")
-                  return None
+                  print(f"⚠️ Unexpected error querying Reddit for {identifier}: {e}")
+                  return {
+                      "mentions": [f"Error retrieving Reddit data for {identifier}"],
+                      "mention_count": 0,
+                      "risk_level": "UNKNOWN",
+                      "scan_timestamp": datetime.now(timezone.utc).isoformat(),
+                      "offline_mode": True,
+                      "error": str(e)
+                  }
 
           # Create output directory
           os.makedirs("output", exist_ok=True)
@@ -107,12 +116,11 @@ jobs:
               print(f"🔍 Profiling Reddit mentions for: {identifier}")
               
               profile = query_reddit_with_risk_profile(identifier)
-              if profile:
-                  reddit_profiles.append({
-                      "identifier": identifier,
-                      "source": item.get("source", "Unknown"),
-                      "reddit_profile": profile
-                  })
+              reddit_profiles.append({
+                  "identifier": identifier,
+                  "source": item.get("source", "Unknown"),
+                  "reddit_profile": profile
+              })
 
           # Save results
           output_file = "output/reddit_trace_results.json"
@@ -126,8 +134,11 @@ jobs:
           high_risk = sum(1 for p in reddit_profiles if p["reddit_profile"]["risk_level"] == "HIGH")
           medium_risk = sum(1 for p in reddit_profiles if p["reddit_profile"]["risk_level"] == "MEDIUM")
           low_risk = sum(1 for p in reddit_profiles if p["reddit_profile"]["risk_level"] == "LOW")
+          offline_count = sum(1 for p in reddit_profiles if p["reddit_profile"].get("offline_mode", False))
 
           print(f"🎯 Risk Summary: {high_risk} HIGH, {medium_risk} MEDIUM, {low_risk} LOW")
+          if offline_count > 0:
+              print(f"⚠️ Warning: {offline_count} identifiers processed in offline mode")
           EOF
 
       - name: Run Reddit trace bot

@@ -20,6 +20,11 @@ jobs:
       - name: Install dependencies
         run: pip install requests pyyaml
 
+      - name: Test network connectivity
+        run: |
+          echo "Testing network connectivity to key services..."
+          python network_utils.py || echo "Network tests completed with some failures"
+
       - name: Run GLEIF alias scan
         run: python gleif_alias_scan.py
 

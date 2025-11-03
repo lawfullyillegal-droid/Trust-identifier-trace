@@ -1,0 +1,78 @@
+name: Network Diagnostics
+
+on:
+  workflow_dispatch:
+
+jobs:
+  network-diagnostics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pyyaml
+
+      - name: DNS Resolution Test
+        run: |
+          echo "Testing DNS resolution..."
+          nslookup api.gleif.org || echo "GLEIF DNS lookup failed"
+          nslookup www.reddit.com || echo "Reddit DNS lookup failed"
+          nslookup google.com || echo "Google DNS lookup failed"
+
+      - name: Basic Network Connectivity Test
+        run: |
+          echo "Testing basic network connectivity..."
+          ping -c 3 8.8.8.8 || echo "Ping to Google DNS failed"
+          ping -c 3 1.1.1.1 || echo "Ping to Cloudflare DNS failed"
+
+      - name: HTTP Connectivity Test
+        run: |
+          echo "Testing HTTP/HTTPS connectivity..."
+          curl -v https://www.google.com || echo "Google HTTPS failed"
+          curl -v https://api.gleif.org/api/v1/lei-records?page[size]=1 || echo "GLEIF API failed"
+          curl -v https://www.reddit.com/robots.txt || echo "Reddit failed"
+
+      - name: Python Requests Test
+        run: |
+          python3 << 'PYTHON'
+          import requests
+          import sys
+          
+          targets = [
+              ("Google", "https://www.google.com"),
+              ("GLEIF API", "https://api.gleif.org/api/v1/lei-records?page[size]=1"),
+              ("Reddit", "https://www.reddit.com/robots.txt")
+          ]
+          
+          for name, url in targets:
+              try:
+                  print(f"\nTesting {name}: {url}")
+                  response = requests.get(url, timeout=10)
+                  print(f"✅ {name}: Status {response.status_code}")
+              except Exception as e:
+                  print(f"❌ {name}: {type(e).__name__} - {e}")
+                  
+          sys.exit(0)
+          PYTHON
+
+      - name: Network Environment Info
+        run: |
+          echo "Network interfaces:"
+          ip addr show || ifconfig
+          echo ""
+          echo "DNS configuration:"
+          cat /etc/resolv.conf
+          echo ""
+          echo "Hosts file:"
+          cat /etc/hosts
+          echo ""
+          echo "Default route:"
+          ip route || route -n

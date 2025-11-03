@@ -4,6 +4,7 @@ from datetime import datetime
 import hashlib
 import os
 import traceback
+from network_utils import make_request_with_retry, NetworkError
 
 print("📡 Modules imported successfully")
 
@@ -40,8 +41,15 @@ with open(log_path, "w") as log:
 
         try:
             query_url = f"https://api.gleif.org/api/v1/lei-records?filter[entity.legalName]={identifier}"
-            response = requests.get(query_url, timeout=10)
-            response.raise_for_status()
+            
+            # Use network_utils for robust request with retry logic
+            response = make_request_with_retry(
+                url=query_url,
+                max_retries=3,
+                timeout=15,
+                backoff_factor=1.5
+            )
+            
             data = response.json()
 
             if data.get("data"):
@@ -51,9 +59,9 @@ with open(log_path, "w") as log:
                 print(f"❌ No match for {identifier}")
                 log.write(f"[NO MATCH] {identifier}\n")
 
-        except (requests.exceptions.RequestException, requests.exceptions.Timeout) as e:
-            print(f"⚠️ Network error scanning {identifier}: Connection failed, running in offline mode")
-            log.write(f"[OFFLINE] {identifier}: Network unavailable - {type(e).__name__}\n")
+        except NetworkError as e:
+            print(f"⚠️ Network error scanning {identifier}: {e}")
+            log.write(f"[OFFLINE] {identifier}: Network unavailable - NetworkError\n")
         except Exception as e:
             print(f"⚠️ Error scanning {identifier}: {e}")
             log.write(f"[ERROR] {identifier}: {str(e)}\n")

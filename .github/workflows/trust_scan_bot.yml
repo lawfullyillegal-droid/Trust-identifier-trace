@@ -25,6 +25,11 @@ jobs:
       - name: Ensure output folder exists
         run: mkdir -p output
 
+      - name: Test network connectivity
+        run: |
+          echo "Testing network connectivity to key services..."
+          python network_utils.py || echo "Network tests completed with some failures"
+
       - name: Run Trust Scan Bot
         run: |
           set -e

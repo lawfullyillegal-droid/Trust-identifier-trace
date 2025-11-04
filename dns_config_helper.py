@@ -10,8 +10,13 @@ import os
 
 
 def is_root():
-    """Check if script is running with root privileges"""
-    return os.geteuid() == 0
+    """Check if script is running with root privileges (Unix only)"""
+    # os.geteuid() is not available on Windows; handle gracefully
+    if hasattr(os, "geteuid"):
+        return os.geteuid() == 0
+    else:
+        print("⚠️ Root check is not supported on this platform. This script is intended for Unix-like systems.")
+        return False
 
 
 def test_dns(hostname, nameserver=None):

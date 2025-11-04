@@ -64,7 +64,7 @@ def make_request_with_retry(
     
     # Parse hostname for DNS check
     parsed = urlparse(url)
-    hostname = parsed.netloc
+    hostname = parsed.hostname
     
     # Check DNS resolution first
     print(f"🔍 Checking DNS resolution for {hostname}...")

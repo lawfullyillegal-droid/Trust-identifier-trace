@@ -1,4 +1,3 @@
-import requests
 from network_utils import get_reddit_search, NetworkError
 
 def query_reddit_threads(identifier):

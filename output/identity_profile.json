@@ -4,7 +4,7 @@
   "bot_department": "Trust Identity Department",
   "bot_version": "1.0.0",
   "mission": "PROTECT IDENTITY | VERIFY DATA | ENSURE ACCURACY",
-  "profile_timestamp": "2025-11-02T07:39:37.127401+00:00",
+  "profile_timestamp": "2025-11-05T08:54:17.668631+00:00",
   "primary_identity": {
     "full_name": "TRAVIS STEVEN RYLE",
     "name_variants": [
@@ -27,7 +27,7 @@
     "identity_verification": {
       "status": "VERIFIED",
       "verified_by": "Trust Identity Department",
-      "verified_at": "2025-11-02T07:39:37.127369+00:00"
+      "verified_at": "2025-11-05T08:54:17.668598+00:00"
     }
   },
   "associated_identifiers": {
@@ -214,10 +214,27 @@
         "source": "Kingman Court",
         "year": "2004"
       }
+    ],
+    "problematic_entities": [
+      {
+        "identifier": "ENTITY-KINGMAN-CERBAT-JUSTICE-COURT",
+        "type": "Court Jurisdiction",
+        "entity": "Cerbat Justice Court",
+        "source": "Kingman Court",
+        "status": "PROBLEMATIC",
+        "issue": "Jurisdiction concerns and procedural irregularities"
+      },
+      {
+        "identifier": "COURT-KINGMAN-CERBAT-JURISDICTION",
+        "type": "Court Entity",
+        "source": "Cerbat Justice Court",
+        "status": "FLAGGED FOR REVIEW",
+        "concern": "Potential jurisdictional overreach"
+      }
     ]
   },
   "statistics": {
-    "total_identifiers": 31,
+    "total_identifiers": 33,
     "lexisnexis_ids": 3,
     "tax_ids": 4,
     "contact_info": 4,
@@ -225,7 +242,8 @@
     "legal_entities": 3,
     "vehicles": 2,
     "surveillance_records": 5,
-    "court_records": 5
+    "court_records": 5,
+    "problematic_entities": 2
   },
   "trust_entities": {
     "primary": "THE TRAVIS RYLE PRIVATE BANK-ESTATE & TRUST",

@@ -92,6 +92,10 @@ ASSOCIATED_IDENTIFIERS = {
         {"identifier": "VIOLATION-NOREG-KINGMAN-2024", "type": "Court Record", "source": "Kingman Court", "year": "2024"},
         {"identifier": "VIOLATION-SPEED-20PLUS-KINGMAN-2024", "type": "Court Record", "source": "Kingman Court", "year": "2024"},
         {"identifier": "WARRANT-QUASHED-KINGMAN-2004", "type": "Court Record", "source": "Kingman Court", "year": "2004"}
+    ],
+    "problematic_entities": [
+        {"identifier": "ENTITY-KINGMAN-CERBAT-JUSTICE-COURT", "type": "Court Jurisdiction", "entity": "Cerbat Justice Court", "source": "Kingman Court", "status": "PROBLEMATIC", "issue": "Jurisdiction concerns and procedural irregularities"},
+        {"identifier": "COURT-KINGMAN-CERBAT-JURISDICTION", "type": "Court Entity", "source": "Cerbat Justice Court", "status": "FLAGGED FOR REVIEW", "concern": "Potential jurisdictional overreach"}
     ]
 }
 
@@ -121,7 +125,8 @@ def create_comprehensive_identity_profile():
             "legal_entities": len(ASSOCIATED_IDENTIFIERS["legal_entities"]),
             "vehicles": len(ASSOCIATED_IDENTIFIERS["vehicles"]),
             "surveillance_records": len(ASSOCIATED_IDENTIFIERS["surveillance_records"]),
-            "court_records": len(ASSOCIATED_IDENTIFIERS["court_records"])
+            "court_records": len(ASSOCIATED_IDENTIFIERS["court_records"]),
+            "problematic_entities": len(ASSOCIATED_IDENTIFIERS["problematic_entities"])
         },
         "trust_entities": {
             "primary": "THE TRAVIS RYLE PRIVATE BANK-ESTATE & TRUST",

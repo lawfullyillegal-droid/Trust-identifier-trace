@@ -25,6 +25,8 @@
   { "identifier": "VIOLATION-NOREG-KINGMAN-2024", "source": "Kingman Court" },
   { "identifier": "VIOLATION-SPEED-20PLUS-KINGMAN-2024", "source": "Kingman Court" },
   { "identifier": "WARRANT-QUASHED-KINGMAN-2004", "source": "Kingman Court" },
+  { "identifier": "ENTITY-KINGMAN-CERBAT-JUSTICE-COURT", "source": "Kingman Court", "entity": "Cerbat Justice Court" },
+  { "identifier": "COURT-KINGMAN-CERBAT-JURISDICTION", "source": "Cerbat Justice Court", "status": "PROBLEMATIC" },
   { "identifier": "SURVEILLANCE-CLUE-VIN-4T1B11AK1M-20250328", "source": "HiRoad Insurance" },
   { "identifier": "SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328", "source": "Sentry Insurance" },
   { "identifier": "VIN-4T1B11AK1M", "source": "LexisNexis C.L.U.E." },

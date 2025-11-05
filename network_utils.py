@@ -1,6 +1,11 @@
 """
 Network utilities for Trust-identifier-trace bots
 Provides robust HTTP request handling with retry logic, DNS fallback, and comprehensive error handling
+
+Version: 2.0 (Network-Enhanced)
+- All bots using network_utils will automatically use version 2.0 User-Agent
+- User-Agent: "TrustScanBot/2.0 (Network-Enhanced)" for Reddit API
+- This ensures consistent identification across all bot implementations
 """
 
 import requests

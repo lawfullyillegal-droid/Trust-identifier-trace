@@ -7,7 +7,7 @@ Always follow these instructions first and fallback to additional search and con
 ### Environment Setup
 - Bootstrap the repository:
   - `pip install -r requirements.txt` -- takes 1-2 seconds in most environments
-  - Dependencies: Python 3.11+ with `pyyaml` and `requests` packages
+  - Dependencies: Python 3.x with `pyyaml` and `requests` packages
 - Most Python scripts import successfully, but `gleif_echo.py` and `gleif_alias_scan.py` fail immediately on import due to GLEIF API network dependency
 
 ### Core Scripts and Execution Times

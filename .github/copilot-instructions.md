@@ -8,7 +8,7 @@ Always follow these instructions first and fallback to additional search and con
 - Bootstrap the repository:
   - `pip install -r requirements.txt` -- takes 1-2 seconds in most environments
   - Dependencies: Python 3.11+ with `pyyaml` and `requests` packages
-- All Python scripts import successfully but most fail during execution due to network dependencies
+- Most Python scripts import successfully, but `gleif_echo.py` and `gleif_alias_scan.py` fail immediately on import due to GLEIF API network dependency
 
 ### Core Scripts and Execution Times
 - `python3 find_failing_codes.py` -- takes 1-2 seconds. NEVER CANCEL. Always runs successfully and provides comprehensive analysis of script functionality

@@ -1,0 +1,13 @@
+name: Sync with Tracking Bots
+on:
+  push:
+  workflow_run:
+  page_build:
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send update to bot
+        run: curl -X POST https://your-bot-endpoint/api/sync \
+          -H "Content-Type: application/json" \
+          -d '{"repo":"${{ github.repository }}","commit":"${{ github.sha }}"}'

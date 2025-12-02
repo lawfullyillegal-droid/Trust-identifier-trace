@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TrustOverlay timestamp="2025-12-01T12:57:26.657319">
+<TrustOverlay timestamp="2025-12-02T12:58:37.090419">
     <Reference>TRUST-0001</Reference>
     <Author>Lawfully</Author>
     <Timestamp>2025-08-29T12:23:00Z</Timestamp>
-<TechnicalTrace><OverlayHash>4a8e6da0bbfddcfb0162d093b22bd589ccc761e71e402cc9ce3ee2972f5d6bbb</OverlayHash></TechnicalTrace></TrustOverlay>
+<TechnicalTrace><OverlayHash>fe5ff85296a898e1c7fe2cbc6617d307c184707098e950c4015f0288fee76071</OverlayHash></TechnicalTrace></TrustOverlay>

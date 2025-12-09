@@ -1,0 +1,82 @@
+name: Incrimination Nation - Public Record Scraper
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Daily at midnight UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  public-record-scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pyyaml
+
+      - name: Create output directory
+        run: mkdir -p public_records
+
+      - name: Scrape public records
+        run: |
+          cat > scrape_public_records.py << 'EOF'
+          #!/usr/bin/env python3
+          """
+          Public Record Scraper - Automated public record collection
+          """
+          import os
+          import json
+          from datetime import datetime, timezone
+          
+          def scrape_records():
+              """Scrape and record public information"""
+              records = {
+                  "timestamp": datetime.now(timezone.utc).isoformat(),
+                  "source": "public_records",
+                  "records": [
+                      {"type": "example", "data": "sample_data"}
+                  ]
+              }
+              
+              # Save records
+              with open("public_records/records.json", "w") as f:
+                  json.dump(records, f, indent=2)
+              
+              print(f"📄 Records scraped: {len(records['records'])} entries")
+          
+          if __name__ == "__main__":
+              scrape_records()
+          EOF
+          
+          python scrape_public_records.py
+
+      - name: Configure Git
+        run: |
+          git config user.name "PublicRecordBot"
+          git config user.email "bot@lawfully-illegal.com"
+
+      - name: Commit public records
+        run: |
+          TIMESTAMP=$(date -u +'%Y-%m-%d_%H-%M-%S')
+          git add public_records/ scrape_public_records.py
+          if git diff --cached --quiet; then
+            echo "✅ No changes to commit."
+          else
+            git commit -m "📜 Incrimination Nation: Record snapshot ${TIMESTAMP} - Automated public record scrape committed to immutable Git history. Website: https://www.lawfully-illegal.com/public-ledge - This record cannot be destroyed - it is part of Git history."
+            git push
+          fi
+
+      - name: Record completion
+        run: |
+          echo "✅ Public record scrape complete and committed to Git history"

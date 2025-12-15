@@ -4,7 +4,7 @@ pattern_type: address
 format_valid: True
 confidence_score: 0.95
 risk_level: low
-timestamp: 2025-12-15T17:17:52.004461+00:00
+timestamp: 2025-12-15T17:24:25.353391+00:00
 storm_breaker_version: "1.0"
 overlay_hash: 45fe1040f962bdd9
 

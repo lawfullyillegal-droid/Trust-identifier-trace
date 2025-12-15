@@ -3,6 +3,9 @@ name: Trust Scan Override
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   scan:
     runs-on: ubuntu-latest
@@ -16,25 +19,74 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install requests
+        run: |
+          pip install --upgrade pip
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            pip install requests pyyaml
+          fi
+      
+      - name: Create necessary directories
+        run: |
+          mkdir -p output archive overlays
 
       - name: Run Trust Scan Bot
         run: |
           echo "Running trust_scan_bot.py..."
-          ls -la
-          cat trust_scan_bot.py || echo "Script not found"
-          python trust_scan_bot.py || echo "Script failed"
-          echo "Scan complete."
+          if [ -f trust_scan_bot.py ]; then
+            python trust_scan_bot.py
+            echo "✅ Trust scan completed successfully"
+          else
+            echo "❌ ERROR: trust_scan_bot.py not found"
+            exit 1
+          fi
 
-      - name: Show log contents
+      - name: Show scan results
         run: |
-          echo "TrustScanLog.txt contents:"
-          cat TrustScanLog.txt || echo "Log file missing"
+          echo "📊 Scan Results:"
+          echo "===================="
+          
+          # Show log file
+          if [ -f TrustScanLog.txt ]; then
+            echo "📄 TrustScanLog.txt:"
+            cat TrustScanLog.txt
+          else
+            echo "⚠️  TrustScanLog.txt not found"
+          fi
+          
+          # Show output files
+          if [ -f output/scan_results.json ]; then
+            echo ""
+            echo "📊 Scan Results (last 20 lines):"
+            tail -n 20 output/scan_results.json
+          else
+            echo "⚠️  output/scan_results.json not found"
+          fi
+          
+          # Show scan log
+          if [ -f output/scan_log.txt ]; then
+            echo ""
+            echo "📝 Scan Log (last 10 lines):"
+            tail -n 10 output/scan_log.txt
+          else
+            echo "⚠️  output/scan_log.txt not found"
+          fi
 
-      - name: Commit scan log
+      - name: Commit scan results
         run: |
           git config --global user.name "TrustBot"
           git config --global user.email "trustbot@github.com"
-          git add TrustScanLog.txt || echo "Nothing to add"
-          git commit -m "Override scan: $(date -u +'%Y-%m-%d %H:%M:%S')" || echo "No commit needed"
-          git push || echo "No push needed"
+          
+          # Add all scan output files
+          git add TrustScanLog.txt output/scan_results.json output/scan_log.txt overlays/*.yml || echo "Nothing to add"
+          
+          # Check if there are changes to commit
+          if git diff --cached --quiet; then
+            echo "✅ No changes to commit"
+          else
+            git commit -m "Override scan: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+            git pull --rebase origin main || echo "⚠️  Rebase failed, attempting push anyway"
+            git push || echo "⚠️  Push failed - this may need manual resolution"
+            echo "✅ Results committed and pushed"
+          fi

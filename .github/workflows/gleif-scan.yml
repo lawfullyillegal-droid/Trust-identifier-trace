@@ -5,6 +5,9 @@ on:
     - cron: '0 12 * * *'  # Runs daily at 12:00 UTC
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   gleif-scan:
     runs-on: windows-latest
@@ -27,6 +30,16 @@ jobs:
         run: |
           git config user.name "TrustBot"
           git config user.email "trustbot@travisryle.org"
-          git add gleif_results.xml trust_overlay.xml
-          git commit -m "Daily GLEIF scan + overlay update [$(Get-Date -Format 'yyyy-MM-dd_HH-mm-ss')]"
-          git push origin main
+          git add gleif_results.xml trust_overlay.xml overlays/*.yml
+          
+          $changes = git diff --cached --quiet
+          if ($LASTEXITCODE -ne 0) {
+            $timestamp = Get-Date -Format 'yyyy-MM-dd_HH-mm-ss'
+            git commit -m "Daily GLEIF scan + overlay update [$timestamp]"
+            git pull --rebase origin main
+            git push origin main
+            Write-Host "✅ Results committed and pushed"
+          } else {
+            Write-Host "✅ No changes to commit"
+          }
+        shell: pwsh

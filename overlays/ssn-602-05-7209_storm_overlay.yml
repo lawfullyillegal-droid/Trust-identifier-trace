@@ -4,7 +4,7 @@ pattern_type: social_security
 format_valid: True
 confidence_score: 0.95
 risk_level: medium
-timestamp: 2025-12-20T07:04:54.181200+00:00
+timestamp: 2025-12-20T10:20:18.824176+00:00
 storm_breaker_version: "1.0"
 overlay_hash: 040faed158542a9c
 

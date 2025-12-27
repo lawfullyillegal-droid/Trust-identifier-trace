@@ -2,7 +2,7 @@
   "scan_metadata": {
     "bot_name": "Identifier Connections Bot",
     "version": "1.0",
-    "scan_timestamp": "2025-12-26T18:11:59.846492+00:00",
+    "scan_timestamp": "2025-12-27T00:36:05.818213+00:00",
     "total_identifiers_scanned": 32,
     "total_connections_found": 22
   },
@@ -59,7 +59,7 @@
       "alias": "THE TRAVIS RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846214+00:00"
+      "timestamp": "2025-12-27T00:36:05.817951+00:00"
     },
     {
       "source": "Alias_Match",
@@ -67,7 +67,7 @@
       "alias": "TRAVIS RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846226+00:00"
+      "timestamp": "2025-12-27T00:36:05.817962+00:00"
     },
     {
       "source": "Alias_Match",
@@ -75,7 +75,7 @@
       "alias": "TRAVIS RYLE ESTATE",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846232+00:00"
+      "timestamp": "2025-12-27T00:36:05.817989+00:00"
     },
     {
       "source": "Alias_Match",
@@ -83,7 +83,7 @@
       "alias": "TRAVIS RYLE TRUST",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846235+00:00"
+      "timestamp": "2025-12-27T00:36:05.817993+00:00"
     },
     {
       "source": "Alias_Match",
@@ -91,7 +91,7 @@
       "alias": "THE TRAVIS RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846239+00:00"
+      "timestamp": "2025-12-27T00:36:05.817997+00:00"
     },
     {
       "source": "Alias_Match",
@@ -99,7 +99,7 @@
       "alias": "TRAVIS RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846241+00:00"
+      "timestamp": "2025-12-27T00:36:05.818000+00:00"
     },
     {
       "source": "Alias_Match",
@@ -107,7 +107,7 @@
       "alias": "TRAVIS RYLE ESTATE",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846245+00:00"
+      "timestamp": "2025-12-27T00:36:05.818004+00:00"
     },
     {
       "source": "Alias_Match",
@@ -115,7 +115,7 @@
       "alias": "TRAVIS RYLE TRUST",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846248+00:00"
+      "timestamp": "2025-12-27T00:36:05.818007+00:00"
     },
     {
       "source": "Alias_Match",
@@ -123,7 +123,7 @@
       "alias": "THE TRAVIS RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846252+00:00"
+      "timestamp": "2025-12-27T00:36:05.818010+00:00"
     },
     {
       "source": "Alias_Match",
@@ -131,7 +131,7 @@
       "alias": "TRAVIS RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846254+00:00"
+      "timestamp": "2025-12-27T00:36:05.818013+00:00"
     },
     {
       "source": "Alias_Match",
@@ -139,7 +139,7 @@
       "alias": "TRAVIS RYLE ESTATE",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846258+00:00"
+      "timestamp": "2025-12-27T00:36:05.818016+00:00"
     },
     {
       "source": "Alias_Match",
@@ -147,7 +147,7 @@
       "alias": "TRAVIS RYLE TRUST",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846261+00:00"
+      "timestamp": "2025-12-27T00:36:05.818019+00:00"
     },
     {
       "source": "Alias_Match",
@@ -155,7 +155,7 @@
       "alias": "THE TRAVIS RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846310+00:00"
+      "timestamp": "2025-12-27T00:36:05.818055+00:00"
     },
     {
       "source": "Alias_Match",
@@ -163,7 +163,7 @@
       "alias": "TRAVIS RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846324+00:00"
+      "timestamp": "2025-12-27T00:36:05.818065+00:00"
     },
     {
       "source": "Alias_Match",
@@ -171,7 +171,7 @@
       "alias": "RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846327+00:00"
+      "timestamp": "2025-12-27T00:36:05.818068+00:00"
     },
     {
       "source": "Alias_Match",
@@ -179,7 +179,7 @@
       "alias": "TRAVIS RYLE ESTATE",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846330+00:00"
+      "timestamp": "2025-12-27T00:36:05.818072+00:00"
     },
     {
       "source": "Alias_Match",
@@ -187,7 +187,7 @@
       "alias": "TRAVIS RYLE TRUST",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846333+00:00"
+      "timestamp": "2025-12-27T00:36:05.818075+00:00"
     },
     {
       "source": "Alias_Match",
@@ -195,7 +195,7 @@
       "alias": "THE TRAVIS RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846336+00:00"
+      "timestamp": "2025-12-27T00:36:05.818078+00:00"
     },
     {
       "source": "Alias_Match",
@@ -203,7 +203,7 @@
       "alias": "TRAVIS RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846339+00:00"
+      "timestamp": "2025-12-27T00:36:05.818081+00:00"
     },
     {
       "source": "Alias_Match",
@@ -211,7 +211,7 @@
       "alias": "RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846342+00:00"
+      "timestamp": "2025-12-27T00:36:05.818083+00:00"
     },
     {
       "source": "Alias_Match",
@@ -219,7 +219,7 @@
       "alias": "TRAVIS RYLE ESTATE",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846345+00:00"
+      "timestamp": "2025-12-27T00:36:05.818086+00:00"
     },
     {
       "source": "Alias_Match",
@@ -227,41 +227,41 @@
       "alias": "TRAVIS RYLE TRUST",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-26T18:11:59.846347+00:00"
+      "timestamp": "2025-12-27T00:36:05.818088+00:00"
     }
   ],
   "connection_graph": {
     "EMAIL-TRAVISLITE@GMAIL.COM": [
-      "TRAVIS RYLE PRIVATE BANK",
-      "TRAVIS RYLE TRUST",
+      "TRAVIS RYLE ESTATE",
       "THE TRAVIS RYLE PRIVATE BANK",
-      "TRAVIS RYLE ESTATE"
+      "TRAVIS RYLE PRIVATE BANK",
+      "TRAVIS RYLE TRUST"
     ],
     "EMAIL-TRAVISREL@GMAIL.COM": [
-      "TRAVIS RYLE PRIVATE BANK",
-      "TRAVIS RYLE TRUST",
+      "TRAVIS RYLE ESTATE",
       "THE TRAVIS RYLE PRIVATE BANK",
-      "TRAVIS RYLE ESTATE"
+      "TRAVIS RYLE PRIVATE BANK",
+      "TRAVIS RYLE TRUST"
     ],
     "EMAIL-TRAVISREL@YAHOO.COM": [
-      "TRAVIS RYLE PRIVATE BANK",
-      "TRAVIS RYLE TRUST",
+      "TRAVIS RYLE ESTATE",
       "THE TRAVIS RYLE PRIVATE BANK",
-      "TRAVIS RYLE ESTATE"
+      "TRAVIS RYLE PRIVATE BANK",
+      "TRAVIS RYLE TRUST"
     ],
     "ENTITY-TRAVIS-STEVEN-RYLE": [
-      "TRAVIS RYLE PRIVATE BANK",
-      "TRAVIS RYLE TRUST",
-      "THE TRAVIS RYLE PRIVATE BANK",
       "RYLE PRIVATE BANK",
-      "TRAVIS RYLE ESTATE"
+      "TRAVIS RYLE ESTATE",
+      "THE TRAVIS RYLE PRIVATE BANK",
+      "TRAVIS RYLE PRIVATE BANK",
+      "TRAVIS RYLE TRUST"
     ],
     "ENTITY-MR-TRAVIS-S-RYLEE": [
-      "TRAVIS RYLE PRIVATE BANK",
-      "TRAVIS RYLE TRUST",
-      "THE TRAVIS RYLE PRIVATE BANK",
       "RYLE PRIVATE BANK",
-      "TRAVIS RYLE ESTATE"
+      "TRAVIS RYLE ESTATE",
+      "THE TRAVIS RYLE PRIVATE BANK",
+      "TRAVIS RYLE PRIVATE BANK",
+      "TRAVIS RYLE TRUST"
     ]
   },
   "metrics": {

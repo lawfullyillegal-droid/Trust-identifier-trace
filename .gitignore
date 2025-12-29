@@ -61,3 +61,25 @@ Thumbs.db
 *.tmp
 *.temp
 /tmp/
+
+# Generated output files
+output/*.json
+output/*.txt
+output/*.xml
+
+# Generated overlay files (runtime artifacts)
+overlays/*.yml
+
+# Generated XML files (specific patterns for clarity)
+gleif_*.xml
+trust_overlay.xml
+
+# Log and report files
+*_log.txt
+*_report.json
+
+# Archive files (historical data)
+archive/
+
+# Public records cache
+public_records/*.json

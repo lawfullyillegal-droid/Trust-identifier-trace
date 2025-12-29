@@ -225,6 +225,22 @@ Expected workflow behavior:
 - Results are automatically committed and archived
 - Dashboards are updated with latest data
 
+## Pre-Commit Validation
+
+**CRITICAL:** Before committing any changes, you MUST follow the pre-commit validation process:
+
+📋 **See [PRE_COMMIT_INSTRUCTIONS.md](.github/PRE_COMMIT_INSTRUCTIONS.md) for complete validation steps**
+
+### Quick Pre-Commit Checklist:
+1. Run `python3 find_failing_codes.py` - Must show 100% success rate ✅
+2. Review `git status` and `git diff` - Ensure only intended files are staged
+3. Verify no generated artifacts are being committed (check .gitignore)
+4. Test any modified scripts execute successfully
+5. Check for hardcoded secrets or credentials
+6. Prepare meaningful commit message
+
+**Never skip validation** - it takes less than 30 seconds and ensures code quality.
+
 ## Important Notes
 
 - **NEVER CANCEL** operations that complete within expected timeframes
@@ -232,5 +248,6 @@ Expected workflow behavior:
 - Dashboard functionality is fully operational with existing data
 - Network connectivity issues are expected and handled gracefully
 - All output files are generated consistently regardless of network status
+- **Always validate before committing** - see PRE_COMMIT_INSTRUCTIONS.md
 
 This repository is designed to be robust and functional in any environment, including sandboxed or network-restricted scenarios.

@@ -1,6 +1,6 @@
 name: Archive Scan Results
 
-on:
+"on":
   workflow_run:
     workflows: ["Trust Scan Bot"]
     types:
@@ -18,9 +18,15 @@ jobs:
 
       - name: Timestamp scan_results.json
         run: |
-          ts=$(date -u +'%Y-%m-%d_%H-%M-%S')
-          mkdir -p archive
-          cp output/scan_results.json archive/scan_results_${ts}.json
+          if [ -f output/scan_results.json ]; then
+            ts=$(date -u +'%Y-%m-%d_%H-%M-%S')
+            mkdir -p archive
+            cp output/scan_results.json archive/scan_results_${ts}.json
+            echo "✅ Archived scan_results.json as scan_results_${ts}.json"
+          else
+            echo "⚠️ output/scan_results.json not found, skipping archive"
+            exit 0
+          fi
 
       - name: Configure Git
         run: |
@@ -30,5 +36,12 @@ jobs:
       - name: Commit archive file
         run: |
           git add archive/
-          git commit -m "Archive scan results at $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
-          git push
+          if git diff --cached --quiet; then
+            echo "✅ No changes to commit."
+          else
+            timestamp=$(date -u +'%Y-%m-%d %H:%M:%S UTC')
+            git commit -m "Archive scan results at ${timestamp}"
+            git pull --rebase origin main
+            git push
+            echo "✅ Archive committed and pushed successfully"
+          fi

@@ -2,9 +2,9 @@
   "scan_metadata": {
     "bot_name": "Identifier Connections Bot",
     "version": "1.0",
-    "scan_timestamp": "2025-12-29T12:15:59.392007+00:00",
+    "scan_timestamp": "2025-12-29T16:47:32.052019+00:00",
     "total_identifiers_scanned": 32,
-    "total_connections_found": 22
+    "total_connections_found": 86
   },
   "identifiers": [
     "SSN-602-05-7209",
@@ -54,12 +54,748 @@
   ],
   "connections": [
     {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for SSN-602-05-7209",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:31.976465+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for EIN-33-3124290",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:31.977741+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for EIN-33-2015110",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:31.978903+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for IRS-TRACK-0509907367",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:31.980072+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for BIRTH-REGISTRY-104-0190-003558",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:31.981241+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for LEXID-XXXXXX7079",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:31.982597+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for LN-CONSUMER-11133734",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:31.983725+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for LN-CASE-31568224",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:31.984895+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for EMAIL-TRAVISLITE@GMAIL.COM",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:31.986026+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for EMAIL-TRAVISREL@GMAIL.COM",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:31.987159+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for EMAIL-TRAVISREL@YAHOO.COM",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:31.988283+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for PHONE-9431463078",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:31.990377+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for ADDR-GOLDENVALLEY-AZ-5570-TONTO",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:31.991499+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for ADDR-GOLDENVALLEY-AZ-7090-RURAL-RD",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:31.992620+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for ADDR-OXNARD-CA-5034-NAUTILUS",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:31.993790+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for ADDR-TEMPLECITY-CA-4641-DACOTAH",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:31.995032+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for ADDR-HUNTSVILLE-AL-2704-PACIFIC",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:31.996167+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for ENTITY-TRAVIS-STEVEN-RYLE",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:31.997538+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for ENTITY-MR-TRAVIS-S-RYLEE",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:31.998698+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for ENTITY-EIGHTYLEE-MARKETING-GRP",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:31.999790+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for VIOLATION-FTA-CRIMINAL-KINGMAN-2004",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.000918+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for VIOLATION-FINRESP-FAIL-KINGMAN-2004",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.002041+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for VIOLATION-NOREG-KINGMAN-2024",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.003196+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for VIOLATION-SPEED-20PLUS-KINGMAN-2024",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.004612+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for WARRANT-QUASHED-KINGMAN-2004",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.005698+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for SURVEILLANCE-CLUE-VIN-4T1B11AK1M-20250328",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.006808+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.007934+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for VIN-4T1B11AK1M",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.009080+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for VEHICLE-TOYOTA-CAMRY-2021",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.010222+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for SURVEILLANCE-AMEX-RISKVIEW-20250411",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.011574+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for SURVEILLANCE-PROGRESSIVE-REVIEW-20250411",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.012691+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "Reddit",
+      "post_title": "Mock connection analysis for SURVEILLANCE-CREDITKARMA-PREQ-20250411",
+      "subreddit": "offline_mode",
+      "url": "N/A",
+      "connected_identifiers": [],
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.013840+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for SSN-602-05-7209",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.014961+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for EIN-33-3124290",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.016069+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for EIN-33-2015110",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.017203+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for IRS-TRACK-0509907367",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.018563+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for BIRTH-REGISTRY-104-0190-003558",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.019679+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for LEXID-XXXXXX7079",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.020782+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for LN-CONSUMER-11133734",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.021871+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for LN-CASE-31568224",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.023027+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for EMAIL-TRAVISLITE@GMAIL.COM",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.024237+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for EMAIL-TRAVISREL@GMAIL.COM",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.025635+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for EMAIL-TRAVISREL@YAHOO.COM",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.026840+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for PHONE-9431463078",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.027965+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for ADDR-GOLDENVALLEY-AZ-5570-TONTO",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.029100+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for ADDR-GOLDENVALLEY-AZ-7090-RURAL-RD",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.030251+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for ADDR-OXNARD-CA-5034-NAUTILUS",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.031429+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for ADDR-TEMPLECITY-CA-4641-DACOTAH",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.032784+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for ADDR-HUNTSVILLE-AL-2704-PACIFIC",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.033915+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for ENTITY-TRAVIS-STEVEN-RYLE",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.035050+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for ENTITY-MR-TRAVIS-S-RYLEE",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.036395+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for ENTITY-EIGHTYLEE-MARKETING-GRP",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.037651+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for VIOLATION-FTA-CRIMINAL-KINGMAN-2004",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.038772+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for VIOLATION-FINRESP-FAIL-KINGMAN-2004",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.040118+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for VIOLATION-NOREG-KINGMAN-2024",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.041253+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for VIOLATION-SPEED-20PLUS-KINGMAN-2024",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.042400+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for WARRANT-QUASHED-KINGMAN-2004",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.043552+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for SURVEILLANCE-CLUE-VIN-4T1B11AK1M-20250328",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.044702+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.045831+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for VIN-4T1B11AK1M",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.047155+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for VEHICLE-TOYOTA-CAMRY-2021",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.048312+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for SURVEILLANCE-AMEX-RISKVIEW-20250411",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.049461+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for SURVEILLANCE-PROGRESSIVE-REVIEW-20250411",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.050601+00:00",
+      "offline_mode": true
+    },
+    {
+      "source": "GLEIF",
+      "lei": "MOCK-LEI-001",
+      "legal_name": "Mock GLEIF entity for SURVEILLANCE-CREDITKARMA-PREQ-20250411",
+      "country": "US",
+      "connected_aliases": [
+        "THE TRAVIS RYLE PRIVATE BANK"
+      ],
+      "timestamp": "2025-12-29T16:47:32.051739+00:00",
+      "offline_mode": true
+    },
+    {
       "source": "Alias_Match",
       "identifier": "EMAIL-TRAVISLITE@GMAIL.COM",
       "alias": "THE TRAVIS RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391764+00:00"
+      "timestamp": "2025-12-29T16:47:32.051826+00:00"
     },
     {
       "source": "Alias_Match",
@@ -67,7 +803,7 @@
       "alias": "TRAVIS RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391776+00:00"
+      "timestamp": "2025-12-29T16:47:32.051830+00:00"
     },
     {
       "source": "Alias_Match",
@@ -75,7 +811,7 @@
       "alias": "TRAVIS RYLE ESTATE",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391782+00:00"
+      "timestamp": "2025-12-29T16:47:32.051839+00:00"
     },
     {
       "source": "Alias_Match",
@@ -83,7 +819,7 @@
       "alias": "TRAVIS RYLE TRUST",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391784+00:00"
+      "timestamp": "2025-12-29T16:47:32.051841+00:00"
     },
     {
       "source": "Alias_Match",
@@ -91,7 +827,7 @@
       "alias": "THE TRAVIS RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391788+00:00"
+      "timestamp": "2025-12-29T16:47:32.051844+00:00"
     },
     {
       "source": "Alias_Match",
@@ -99,7 +835,7 @@
       "alias": "TRAVIS RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391791+00:00"
+      "timestamp": "2025-12-29T16:47:32.051846+00:00"
     },
     {
       "source": "Alias_Match",
@@ -107,7 +843,7 @@
       "alias": "TRAVIS RYLE ESTATE",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391794+00:00"
+      "timestamp": "2025-12-29T16:47:32.051849+00:00"
     },
     {
       "source": "Alias_Match",
@@ -115,7 +851,7 @@
       "alias": "TRAVIS RYLE TRUST",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391796+00:00"
+      "timestamp": "2025-12-29T16:47:32.051851+00:00"
     },
     {
       "source": "Alias_Match",
@@ -123,7 +859,7 @@
       "alias": "THE TRAVIS RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391799+00:00"
+      "timestamp": "2025-12-29T16:47:32.051854+00:00"
     },
     {
       "source": "Alias_Match",
@@ -131,7 +867,7 @@
       "alias": "TRAVIS RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391802+00:00"
+      "timestamp": "2025-12-29T16:47:32.051856+00:00"
     },
     {
       "source": "Alias_Match",
@@ -139,7 +875,7 @@
       "alias": "TRAVIS RYLE ESTATE",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391806+00:00"
+      "timestamp": "2025-12-29T16:47:32.051859+00:00"
     },
     {
       "source": "Alias_Match",
@@ -147,7 +883,7 @@
       "alias": "TRAVIS RYLE TRUST",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391808+00:00"
+      "timestamp": "2025-12-29T16:47:32.051861+00:00"
     },
     {
       "source": "Alias_Match",
@@ -155,7 +891,7 @@
       "alias": "THE TRAVIS RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391845+00:00"
+      "timestamp": "2025-12-29T16:47:32.051889+00:00"
     },
     {
       "source": "Alias_Match",
@@ -163,7 +899,7 @@
       "alias": "TRAVIS RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391863+00:00"
+      "timestamp": "2025-12-29T16:47:32.051891+00:00"
     },
     {
       "source": "Alias_Match",
@@ -171,7 +907,7 @@
       "alias": "RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391866+00:00"
+      "timestamp": "2025-12-29T16:47:32.051893+00:00"
     },
     {
       "source": "Alias_Match",
@@ -179,7 +915,7 @@
       "alias": "TRAVIS RYLE ESTATE",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391869+00:00"
+      "timestamp": "2025-12-29T16:47:32.051895+00:00"
     },
     {
       "source": "Alias_Match",
@@ -187,7 +923,7 @@
       "alias": "TRAVIS RYLE TRUST",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391872+00:00"
+      "timestamp": "2025-12-29T16:47:32.051897+00:00"
     },
     {
       "source": "Alias_Match",
@@ -195,7 +931,7 @@
       "alias": "THE TRAVIS RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391875+00:00"
+      "timestamp": "2025-12-29T16:47:32.051900+00:00"
     },
     {
       "source": "Alias_Match",
@@ -203,7 +939,7 @@
       "alias": "TRAVIS RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391878+00:00"
+      "timestamp": "2025-12-29T16:47:32.051902+00:00"
     },
     {
       "source": "Alias_Match",
@@ -211,7 +947,7 @@
       "alias": "RYLE PRIVATE BANK",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391880+00:00"
+      "timestamp": "2025-12-29T16:47:32.051905+00:00"
     },
     {
       "source": "Alias_Match",
@@ -219,7 +955,7 @@
       "alias": "TRAVIS RYLE ESTATE",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391883+00:00"
+      "timestamp": "2025-12-29T16:47:32.051907+00:00"
     },
     {
       "source": "Alias_Match",
@@ -227,45 +963,45 @@
       "alias": "TRAVIS RYLE TRUST",
       "match_type": "name_component",
       "confidence": "high",
-      "timestamp": "2025-12-29T12:15:59.391885+00:00"
+      "timestamp": "2025-12-29T16:47:32.051909+00:00"
     }
   ],
   "connection_graph": {
     "EMAIL-TRAVISLITE@GMAIL.COM": [
-      "TRAVIS RYLE PRIVATE BANK",
-      "TRAVIS RYLE ESTATE",
       "THE TRAVIS RYLE PRIVATE BANK",
-      "TRAVIS RYLE TRUST"
+      "TRAVIS RYLE TRUST",
+      "TRAVIS RYLE PRIVATE BANK",
+      "TRAVIS RYLE ESTATE"
     ],
     "EMAIL-TRAVISREL@GMAIL.COM": [
-      "TRAVIS RYLE PRIVATE BANK",
-      "TRAVIS RYLE ESTATE",
       "THE TRAVIS RYLE PRIVATE BANK",
-      "TRAVIS RYLE TRUST"
+      "TRAVIS RYLE TRUST",
+      "TRAVIS RYLE PRIVATE BANK",
+      "TRAVIS RYLE ESTATE"
     ],
     "EMAIL-TRAVISREL@YAHOO.COM": [
-      "TRAVIS RYLE PRIVATE BANK",
-      "TRAVIS RYLE ESTATE",
       "THE TRAVIS RYLE PRIVATE BANK",
-      "TRAVIS RYLE TRUST"
+      "TRAVIS RYLE TRUST",
+      "TRAVIS RYLE PRIVATE BANK",
+      "TRAVIS RYLE ESTATE"
     ],
     "ENTITY-TRAVIS-STEVEN-RYLE": [
-      "TRAVIS RYLE PRIVATE BANK",
       "TRAVIS RYLE ESTATE",
-      "TRAVIS RYLE TRUST",
       "THE TRAVIS RYLE PRIVATE BANK",
-      "RYLE PRIVATE BANK"
+      "TRAVIS RYLE TRUST",
+      "RYLE PRIVATE BANK",
+      "TRAVIS RYLE PRIVATE BANK"
     ],
     "ENTITY-MR-TRAVIS-S-RYLEE": [
-      "TRAVIS RYLE PRIVATE BANK",
       "TRAVIS RYLE ESTATE",
-      "TRAVIS RYLE TRUST",
       "THE TRAVIS RYLE PRIVATE BANK",
-      "RYLE PRIVATE BANK"
+      "TRAVIS RYLE TRUST",
+      "RYLE PRIVATE BANK",
+      "TRAVIS RYLE PRIVATE BANK"
     ]
   },
   "metrics": {
-    "total_connections": 22,
+    "total_connections": 86,
     "connection_types": {},
     "most_connected_identifiers": [
       {
@@ -290,6 +1026,8 @@
       }
     ],
     "connection_sources": {
+      "Reddit": 32,
+      "GLEIF": 32,
       "Alias_Match": 22
     },
     "relationship_types": {}

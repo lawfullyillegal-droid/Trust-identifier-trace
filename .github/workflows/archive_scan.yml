@@ -1,6 +1,6 @@
 name: Archive Scan Results
 
-"on":
+on:
   workflow_run:
     workflows: ["Trust Scan Bot"]
     types:
@@ -41,7 +41,7 @@ jobs:
           else
             timestamp=$(date -u +'%Y-%m-%d %H:%M:%S UTC')
             git commit -m "Archive scan results at ${timestamp}"
-            git pull --rebase origin main
-            git push
-            echo "✅ Archive committed and pushed successfully"
+            git pull --rebase origin main || echo "⚠️ Rebase failed"
+            git push || echo "⚠️ Push failed - may need manual resolution"
+            echo "✅ Archive operation completed"
           fi

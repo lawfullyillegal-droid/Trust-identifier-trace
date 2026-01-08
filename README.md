@@ -68,6 +68,26 @@ python gleif_echo.py
 
 ---
 
+## 🎓 Virtual Classroom
+
+**NEW**: Interactive learning environment for trust identifier analysis!
+
+```bash
+# Start the learning environment
+python3 -m http.server 8000
+# Visit: http://localhost:8000/virtual_classroom.html
+```
+
+**Learning Paths Available:**
+- 🚀 **Beginner**: Trust Fundamentals & GLEIF Basics
+- 🔍 **Intermediate**: Advanced Analysis & Storm-Breaker Mastery  
+- ⚡ **Expert**: Syndicate Operations & Professional Workflows
+- 🛠️ **Hands-On**: Live Lab with Real Tools
+
+See `VIRTUAL_CLASSROOM_GUIDE.md` for complete access instructions.
+
+---
+
 ## 🖥️ Dashboards
 
 Access interactive dashboards and analytics:

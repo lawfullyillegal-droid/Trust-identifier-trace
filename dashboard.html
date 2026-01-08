@@ -99,6 +99,13 @@
       { source: "EIN-92-6319308", target: "EIN Registry" }
     ];
 
+    // Check if d3 is available
+    if (typeof d3 === 'undefined') {
+      document.getElementById("traceMap").innerHTML = 
+        '<div style="padding: 20px; text-align: center; color: #888;">Visual trace map requires external libraries. Map functionality disabled in offline mode.</div>';
+      return;
+    }
+
     const svg = d3.select("#traceMap").append("svg")
       .attr("width", "100%")
       .attr("height", 500);

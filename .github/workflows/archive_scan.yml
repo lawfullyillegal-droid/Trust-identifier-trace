@@ -15,17 +15,17 @@ jobs:
 
       - name: Timestamp scan_results.json
         run: |
-          ts=\
+          ts=$(date -u +'%Y-%m-%d_%H-%M-%S')
           mkdir -p archive
-          cp output/scan_results.json archive/scan_results_\.json
+          cp output/scan_results.json archive/scan_results_${ts}.json
 
       - name: Configure Git
         run: |
           git config user.name "TrustBot"
-          git config user.email "trustbot@local"
+          git config user.email "trustbot@travisryle.org"
 
       - name: Commit archive file
         run: |
           git add archive/
-          git commit -m "Archive scan results at \"
+          git commit -m "Archive scan results at $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
           git push

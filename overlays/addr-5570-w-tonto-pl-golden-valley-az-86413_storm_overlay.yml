@@ -1,0 +1,19 @@
+# STORM-BREAKER Overlay for ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413
+identifier: ADDR-5570-W-TONTO-PL-GOLDEN-VALLEY-AZ-86413
+pattern_type: address
+format_valid: True
+confidence_score: 0.95
+risk_level: low
+timestamp: 2025-09-20T19:13:14.869413+00:00
+storm_breaker_version: "1.0"
+overlay_hash: 017ac2c3829d73f7
+
+metadata:
+  type: Address Record
+  scan_method: "storm_breaker_analysis"
+  validation_status: "passed"
+
+technical_trace:
+  generator: "storm-breaker"
+  analysis_engine: "pattern_recognition_v1.0"
+  validation_rules: "format_compliance_check"

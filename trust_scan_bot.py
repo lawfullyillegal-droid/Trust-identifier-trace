@@ -1,7 +1,7 @@
 import os
 import json
 import requests
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from reddit_trace import query_reddit_threads
 
@@ -24,7 +24,7 @@ def ensure_overlays(overlay_files):
         overlay_path = OVERLAYS_DIR / filename
         if not overlay_path.exists():
             with open(overlay_path, "w") as f:
-                f.write(f"# Overlay for {desc}\nidentifier: {filename.replace('_overlay.yml', '')}\ndescription: {desc}\nstatus: verified\ntimestamp: {datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC')}")
+                f.write(f"# Overlay for {desc}\nidentifier: {filename.replace('_overlay.yml', '')}\ndescription: {desc}\nstatus: verified\ntimestamp: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
 
 def scan_identifier(identifier):
     value = identifier["identifier"]
@@ -48,7 +48,7 @@ def run_scan():
             "identifier": ident["identifier"],
             "status": status,
             "source": ident["source"],
-            "timestamp": datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC"),
+            "timestamp": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
             "overlay": BASE_URL + overlay_name
         }
         if "reddit_hits" in ident:

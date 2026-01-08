@@ -1,0 +1,297 @@
+{
+  "scan_metadata": {
+    "bot_name": "Identifier Connections Bot",
+    "version": "1.0",
+    "scan_timestamp": "2026-01-08T06:45:48.414444+00:00",
+    "total_identifiers_scanned": 32,
+    "total_connections_found": 22
+  },
+  "identifiers": [
+    "SSN-602-05-7209",
+    "EIN-33-3124290",
+    "EIN-33-2015110",
+    "IRS-TRACK-0509907367",
+    "BIRTH-REGISTRY-104-0190-003558",
+    "LEXID-XXXXXX7079",
+    "LN-CONSUMER-11133734",
+    "LN-CASE-31568224",
+    "EMAIL-TRAVISLITE@GMAIL.COM",
+    "EMAIL-TRAVISREL@GMAIL.COM",
+    "EMAIL-TRAVISREL@YAHOO.COM",
+    "PHONE-9431463078",
+    "ADDR-GOLDENVALLEY-AZ-5570-TONTO",
+    "ADDR-GOLDENVALLEY-AZ-7090-RURAL-RD",
+    "ADDR-OXNARD-CA-5034-NAUTILUS",
+    "ADDR-TEMPLECITY-CA-4641-DACOTAH",
+    "ADDR-HUNTSVILLE-AL-2704-PACIFIC",
+    "ENTITY-TRAVIS-STEVEN-RYLE",
+    "ENTITY-MR-TRAVIS-S-RYLEE",
+    "ENTITY-EIGHTYLEE-MARKETING-GRP",
+    "VIOLATION-FTA-CRIMINAL-KINGMAN-2004",
+    "VIOLATION-FINRESP-FAIL-KINGMAN-2004",
+    "VIOLATION-NOREG-KINGMAN-2024",
+    "VIOLATION-SPEED-20PLUS-KINGMAN-2024",
+    "WARRANT-QUASHED-KINGMAN-2004",
+    "SURVEILLANCE-CLUE-VIN-4T1B11AK1M-20250328",
+    "SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328",
+    "VIN-4T1B11AK1M",
+    "VEHICLE-TOYOTA-CAMRY-2021",
+    "SURVEILLANCE-AMEX-RISKVIEW-20250411",
+    "SURVEILLANCE-PROGRESSIVE-REVIEW-20250411",
+    "SURVEILLANCE-CREDITKARMA-PREQ-20250411"
+  ],
+  "aliases": [
+    "THE TRAVIS RYLE PRIVATE BANK",
+    "TRAVIS RYLE PRIVATE BANK",
+    "RYLE PRIVATE BANK",
+    "TRAVIS RYLE ESTATE",
+    "TRAVIS RYLE TRUST"
+  ],
+  "adot_numbers": [
+    "AZC-004921",
+    "ADOT-782134",
+    "TRUST-ADOT-001"
+  ],
+  "connections": [
+    {
+      "source": "Alias_Match",
+      "identifier": "EMAIL-TRAVISLITE@GMAIL.COM",
+      "alias": "THE TRAVIS RYLE PRIVATE BANK",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414220+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "EMAIL-TRAVISLITE@GMAIL.COM",
+      "alias": "TRAVIS RYLE PRIVATE BANK",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414232+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "EMAIL-TRAVISLITE@GMAIL.COM",
+      "alias": "TRAVIS RYLE ESTATE",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414237+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "EMAIL-TRAVISLITE@GMAIL.COM",
+      "alias": "TRAVIS RYLE TRUST",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414240+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "EMAIL-TRAVISREL@GMAIL.COM",
+      "alias": "THE TRAVIS RYLE PRIVATE BANK",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414244+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "EMAIL-TRAVISREL@GMAIL.COM",
+      "alias": "TRAVIS RYLE PRIVATE BANK",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414247+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "EMAIL-TRAVISREL@GMAIL.COM",
+      "alias": "TRAVIS RYLE ESTATE",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414250+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "EMAIL-TRAVISREL@GMAIL.COM",
+      "alias": "TRAVIS RYLE TRUST",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414253+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "EMAIL-TRAVISREL@YAHOO.COM",
+      "alias": "THE TRAVIS RYLE PRIVATE BANK",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414256+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "EMAIL-TRAVISREL@YAHOO.COM",
+      "alias": "TRAVIS RYLE PRIVATE BANK",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414258+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "EMAIL-TRAVISREL@YAHOO.COM",
+      "alias": "TRAVIS RYLE ESTATE",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414262+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "EMAIL-TRAVISREL@YAHOO.COM",
+      "alias": "TRAVIS RYLE TRUST",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414264+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "ENTITY-TRAVIS-STEVEN-RYLE",
+      "alias": "THE TRAVIS RYLE PRIVATE BANK",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414302+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "ENTITY-TRAVIS-STEVEN-RYLE",
+      "alias": "TRAVIS RYLE PRIVATE BANK",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414305+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "ENTITY-TRAVIS-STEVEN-RYLE",
+      "alias": "RYLE PRIVATE BANK",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414307+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "ENTITY-TRAVIS-STEVEN-RYLE",
+      "alias": "TRAVIS RYLE ESTATE",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414310+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "ENTITY-TRAVIS-STEVEN-RYLE",
+      "alias": "TRAVIS RYLE TRUST",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414312+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "ENTITY-MR-TRAVIS-S-RYLEE",
+      "alias": "THE TRAVIS RYLE PRIVATE BANK",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414316+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "ENTITY-MR-TRAVIS-S-RYLEE",
+      "alias": "TRAVIS RYLE PRIVATE BANK",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414318+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "ENTITY-MR-TRAVIS-S-RYLEE",
+      "alias": "RYLE PRIVATE BANK",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414321+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "ENTITY-MR-TRAVIS-S-RYLEE",
+      "alias": "TRAVIS RYLE ESTATE",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414323+00:00"
+    },
+    {
+      "source": "Alias_Match",
+      "identifier": "ENTITY-MR-TRAVIS-S-RYLEE",
+      "alias": "TRAVIS RYLE TRUST",
+      "match_type": "name_component",
+      "confidence": "high",
+      "timestamp": "2026-01-08T06:45:48.414326+00:00"
+    }
+  ],
+  "connection_graph": {
+    "EMAIL-TRAVISLITE@GMAIL.COM": [
+      "THE TRAVIS RYLE PRIVATE BANK",
+      "TRAVIS RYLE ESTATE",
+      "TRAVIS RYLE TRUST",
+      "TRAVIS RYLE PRIVATE BANK"
+    ],
+    "EMAIL-TRAVISREL@GMAIL.COM": [
+      "THE TRAVIS RYLE PRIVATE BANK",
+      "TRAVIS RYLE ESTATE",
+      "TRAVIS RYLE TRUST",
+      "TRAVIS RYLE PRIVATE BANK"
+    ],
+    "EMAIL-TRAVISREL@YAHOO.COM": [
+      "THE TRAVIS RYLE PRIVATE BANK",
+      "TRAVIS RYLE ESTATE",
+      "TRAVIS RYLE TRUST",
+      "TRAVIS RYLE PRIVATE BANK"
+    ],
+    "ENTITY-TRAVIS-STEVEN-RYLE": [
+      "TRAVIS RYLE TRUST",
+      "TRAVIS RYLE ESTATE",
+      "TRAVIS RYLE PRIVATE BANK",
+      "THE TRAVIS RYLE PRIVATE BANK",
+      "RYLE PRIVATE BANK"
+    ],
+    "ENTITY-MR-TRAVIS-S-RYLEE": [
+      "TRAVIS RYLE TRUST",
+      "TRAVIS RYLE ESTATE",
+      "TRAVIS RYLE PRIVATE BANK",
+      "THE TRAVIS RYLE PRIVATE BANK",
+      "RYLE PRIVATE BANK"
+    ]
+  },
+  "metrics": {
+    "total_connections": 22,
+    "connection_types": {},
+    "most_connected_identifiers": [
+      {
+        "identifier": "ENTITY-TRAVIS-STEVEN-RYLE",
+        "connection_count": 5
+      },
+      {
+        "identifier": "ENTITY-MR-TRAVIS-S-RYLEE",
+        "connection_count": 5
+      },
+      {
+        "identifier": "EMAIL-TRAVISLITE@GMAIL.COM",
+        "connection_count": 4
+      },
+      {
+        "identifier": "EMAIL-TRAVISREL@GMAIL.COM",
+        "connection_count": 4
+      },
+      {
+        "identifier": "EMAIL-TRAVISREL@YAHOO.COM",
+        "connection_count": 4
+      }
+    ],
+    "connection_sources": {
+      "Alias_Match": 22
+    },
+    "relationship_types": {}
+  }
+}

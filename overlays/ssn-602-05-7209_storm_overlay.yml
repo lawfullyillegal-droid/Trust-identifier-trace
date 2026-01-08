@@ -1,0 +1,19 @@
+# STORM-BREAKER Overlay for SSN-602-05-7209
+identifier: SSN-602-05-7209
+pattern_type: social_security
+format_valid: True
+confidence_score: 0.95
+risk_level: medium
+timestamp: 2025-11-16T09:47:24.081101+00:00
+storm_breaker_version: "1.0"
+overlay_hash: 040faed158542a9c
+
+metadata:
+  type: Social Security Number
+  scan_method: "storm_breaker_analysis"
+  validation_status: "passed"
+
+technical_trace:
+  generator: "storm-breaker"
+  analysis_engine: "pattern_recognition_v1.0"
+  validation_rules: "format_compliance_check"

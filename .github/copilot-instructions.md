@@ -1,236 +1,131 @@
-# GitHub Copilot Instructions for Trust-identifier-trace Repository
+# Trust Identifier Trace Copilot Instructions
 
-This file provides comprehensive instructions for GitHub Copilot coding agents working in the Trust-identifier-trace repository.
+Always follow these instructions first and fallback to additional search and context gathering only if the information here is incomplete or found to be in error.
 
-## Repository Overview
+## Working Effectively
 
-Trust-identifier-trace is a comprehensive trust identifier scanning and analysis system that:
-- Monitors trust-related identifiers across multiple platforms (GLEIF, Reddit, etc.)
-- Provides automated workflows for scanning and archiving results
-- Features interactive dashboards for data visualization
-- Handles network connectivity issues gracefully with offline modes
+### Environment Setup
+- Bootstrap the repository:
+  - `pip install -r requirements.txt` -- takes 1-2 seconds in most environments
+  - Dependencies: Python 3.x with `pyyaml` and `requests` packages
+- Most Python scripts import successfully, but `gleif_echo.py` and `gleif_alias_scan.py` fail immediately on import due to GLEIF API network dependency
 
-## Environment Setup
+### Core Scripts and Execution Times
+- `python3 find_failing_codes.py` -- takes 1-2 seconds. NEVER CANCEL. Always runs successfully and provides comprehensive analysis of script functionality
+- `python3 gleif_trace.py` -- takes <1 second. NEVER CANCEL. Runs successfully but network calls fail gracefully with error logging
+- `python3 trust_scan_bot.py` -- FAILS due to Reddit API network dependency. Will fail with NameResolutionError
+- `python3 gleif_echo.py` -- FAILS immediately on import due to GLEIF API network dependency  
+- `python3 gleif_alias_scan.py` -- FAILS immediately on import due to GLEIF API network dependency
 
-### Dependencies Installation
+### Network Dependency Status
+**CRITICAL**: Most scripts require external network access and will FAIL in sandboxed environments:
+- Scripts that FAIL: `gleif_echo.py`, `gleif_alias_scan.py`, `trust_scan_bot.py` 
+- Scripts that work offline: `find_failing_codes.py`, `gleif_trace.py` (with graceful error handling), `reddit_trace.py` (import only)
+- All network failures manifest as `NameResolutionError: Failed to resolve [hostname]`
+
+### Testing and Validation
+- Run the analysis script to verify environment: `python3 find_failing_codes.py`
+- Start local server for dashboard testing: `python3 -m http.server 8000 --bind 127.0.0.1`
+- Access dashboards at: `http://127.0.0.1:8000/dashboard.html` and `http://127.0.0.1:8000/syndicate_dashboard.html`
+- **VALIDATION SCENARIOS**: 
+  - Verify `find_failing_codes.py` completes successfully and reports analysis
+  - Test dashboard loads and displays scan results table with 9 verified identifiers
+  - Verify overlay files generation in `overlays/` directory
+  - Check `output/scan_results.json` contains properly formatted identifier data
+
+### Dashboard Functionality
+- **Trust Scan Dashboard**: Fully functional with search, data table, and overlay links. Uses D3.js (may fail to load in restricted environments)
+- **Syndicate Dashboard**: Shows title only; requires archive files that may not exist in fresh clones
+- Dashboards read from `output/scan_results.json` and display identifier status, sources, and overlay links
+
+## Key Repository Structure
+
+### Core Python Scripts
+- `trust_scan_bot.py`: Main scan bot for identifier processing (network-dependent)
+- `gleif_trace.py`: GLEIF API scanner with graceful error handling
+- `reddit_trace.py`: Reddit API query functions
+- `find_failing_codes.py`: Repository health analysis tool (always works)
+- `gleif_echo.py`, `gleif_alias_scan.py`: GLEIF challenge scans (network-dependent)
+
+### Data and Configuration
+- `identifiers.json`: Core identifier definitions (9 identifiers)
+- `requirements.txt`: Python dependencies (pyyaml, requests)
+- `output/`: Scan results and log files
+- `overlays/`: Generated YAML overlay files for identifiers
+- `.github/workflows/`: GitHub Actions for automated scanning
+
+### Dashboards and UI
+- `dashboard.html`: Interactive trust scan results viewer
+- `syndicate_dashboard.html`: Multi-run aggregation dashboard
+- `index.html`: Repository landing page
+
+## Common Tasks
+
+### Running Analysis
 ```bash
-# Install required Python packages
-pip install requests pyyaml
-
-# Expected completion time: 1-2 seconds
-# NEVER CANCEL - this is a quick operation
-```
-
-### Repository Analysis
-```bash
-# Analyze repository status and failing codes
+# Always start with this - it works in all environments
 python3 find_failing_codes.py
 
-# Expected output: Success rate: 100.0% ✅
-# Expected completion time: 1-2 seconds
-# This validates all Python scripts are working correctly
+# Expected output: Analysis of 5 Python files with ~40% success rate
+# Runtime: 1-2 seconds
 ```
 
-## Script Execution Guide
-
-### Working Scripts (Offline Compatible)
-1. **find_failing_codes.py** - Repository analysis tool
-   - Always works: ✅ Fully functional
-   - Expected result: 100% success rate report
-
-2. **gleif_trace.py** - GLEIF identifier scanning
-   - Works offline: ✅ Graceful error handling
-   - Expected result: Creates output/scan_log.txt with scan results
-
-3. **trust_scan_bot.py** - Trust identifier scanning bot
-   - Works offline: ✅ Uses mock Reddit data when network unavailable
-   - Expected result: Creates output/scan_results.json with identifier analysis
-
-4. **reddit_trace.py** - Reddit content analysis
-   - Works offline: ✅ Returns mock data when Reddit API unavailable
-   - Expected result: Returns analysis results or fallback data
-
-5. **gleif_echo.py** - GLEIF API test tool
-   - Works offline: ✅ Creates gleif_echo.xml with sample data
-   - Expected result: XML file with GLEIF entity data (real or mock)
-
-6. **gleif_alias_scan.py** - GLEIF alias scanning
-   - Works offline: ✅ Processes with sample data when API unavailable
-   - Expected result: Creates gleif_results.xml with alias matching results
-
-### Network-Dependent Behavior
-Most scripts require external network access to function fully but will not fail when network is unavailable:
-
-- **Expected Failure Pattern**: `NameResolutionError: Failed to resolve [hostname]`
-- **Graceful Degradation**: Scripts continue with mock/sample data
-- **No Script Crashes**: All scripts complete successfully even when APIs are unreachable
-
-## Dashboard Access
-
-### Trust Scan Dashboard
+### Testing Dashboards
 ```bash
-# Start local HTTP server for dashboard access
-python3 -m http.server 8000
+# Start local server (NEVER CANCEL - runs indefinitely)
+python3 -m http.server 8000 --bind 127.0.0.1 &
 
-# Access at: http://localhost:8000/dashboard.html
-# Features: Interactive identifier search, visual trace mapping, real-time data
-# Expected data: 9 verified identifiers with Reddit analysis
+# Test dashboard access
+curl -I http://127.0.0.1:8000/dashboard.html
+# Expected: HTTP 200 OK response
+
+# Stop server when done
+pkill -f "python3 -m http.server"
 ```
 
-### Syndicate Dashboard
-```bash
-# Access at: http://localhost:8000/syndicate_dashboard.html
-# Features: Multi-run aggregation, status summaries, error tracking
-# Expected data: Combined results from multiple scan runs
+### Understanding Network Failures
+All network-dependent scripts will fail with connection errors like:
 ```
-
-### Learning Analytics Dashboard
-```bash
-# Access at: http://localhost:8000/learning_analytics.html
-# Features: GitHub repository metrics, development analytics, contributor stats
-# Expected data: September 2025 development metrics and insights
+NameResolutionError: Failed to resolve 'api.gleif.org'
+HTTPSConnectionPool(...): Max retries exceeded
 ```
-
-## Validation Scenarios
-
-### Complete System Test
-```bash
-# 1. Run repository analysis (expected: 100% success rate)
-python3 find_failing_codes.py
-
-# 2. Execute main scanning workflow (expected: creates JSON output)
-python3 trust_scan_bot.py
-
-# 3. Verify output files exist
-ls -la output/scan_results.json output/scan_log.txt
-
-# 4. Test dashboard functionality
-python3 -m http.server 8000 &
-# Navigate to http://localhost:8000/dashboard.html
-# Expected: Interactive dashboard with 9 identifiers displayed
-```
-
-### Offline Mode Validation
-```bash
-# All scripts should complete successfully even without network access
-python3 gleif_echo.py        # Creates gleif_echo.xml
-python3 gleif_alias_scan.py  # Creates gleif_results.xml
-python3 trust_scan_bot.py    # Creates scan_results.json
-```
-
-## File Structure Guide
-
-### Core Scripts
-- `find_failing_codes.py` - Repository health analysis
-- `trust_scan_bot.py` - Main trust scanning workflow
-- `gleif_*.py` - GLEIF API integration scripts
-- `reddit_trace.py` - Reddit content analysis
-- `storm_breaker.py` - Advanced identifier analysis tool
-
-### Configuration Files
-- `identifiers.json` - Main identifier list (JSON format)
-- `identifiers.yaml` - Trust aliases and ADOT numbers (YAML format)
-- `requirements.txt` - Python dependencies
-
-### Output Directories
-- `output/` - Current scan results and logs
-- `archive/` - Timestamped historical results
-- `overlays/` - Cryptographic overlay files
-
-### Web Interface
-- `dashboard.html` - Main trust scan dashboard
-- `syndicate_dashboard.html` - Multi-run aggregation dashboard
-- `learning_analytics.html` - GitHub analytics dashboard
-- `index.html` - Landing page with navigation
-
-### Automation
-- `.github/workflows/` - GitHub Actions automation workflows
-- `bots/` - Automated bot scripts
-
-## Troubleshooting
-
-### Common Issues and Solutions
-
-1. **Network Connectivity Errors**
-   - Expected: Scripts handle gracefully with mock data
-   - Action: No action needed - this is expected behavior in sandboxed environments
-
-2. **Missing Dependencies**
-   ```bash
-   pip install requests pyyaml
-   ```
-
-3. **Output Directory Missing**
-   ```bash
-   mkdir -p output archive overlays
-   ```
-
-4. **Permission Issues**
-   ```bash
-   chmod +x *.py
-   ```
-
-### Expected Error Patterns
-- `NameResolutionError: Failed to resolve 'api.gleif.org'` - Normal in restricted environments
-- `NameResolutionError: Failed to resolve 'www.reddit.com'` - Normal in restricted environments
-- These errors are handled gracefully and should not cause script failures
-
-## Performance Expectations
-
-### Measured Execution Times
-- Repository analysis: 1-2 seconds
-- Trust scan execution: 2-3 seconds
-- GLEIF operations: 1-2 seconds
-- Dashboard server startup: Immediate
-
-### Success Metrics
-- Repository analysis should show 100% success rate
-- All scripts should complete without exceptions
-- Output files should be generated consistently
-- Dashboards should load with interactive features
-
-## Development Guidelines
-
-### Code Style
-- Use proper error handling for all network operations
-- Implement graceful degradation for offline scenarios
-- Include informative log messages and user feedback
-- Maintain consistent timestamp formatting (UTC)
-
-### Testing Approach
-- Always test offline functionality
-- Verify output file generation
-- Validate dashboard interactions
-- Check workflow automation
-
-### Data Handling
-- Use `datetime.now(timezone.utc)` instead of deprecated `datetime.utcnow()`
-- Handle missing files gracefully with try-catch blocks
-- Provide meaningful fallback data for offline modes
-- Ensure all JSON output is valid and well-structured
+This is expected behavior in sandboxed environments. Do not attempt to fix network connectivity.
 
 ## GitHub Actions Integration
+- Workflows exist in `.github/workflows/` for automated scanning
+- `trust_scan_bot.yml`: Runs trust scan bot with results commit
+- `gleif-scan.yml`: Daily GLEIF scanning with overlay injection
+- Workflows assume network connectivity and will fail in restricted environments
 
-The repository includes automated workflows for:
-- Daily trust scanning (`trust_scan_bot.yml`)
-- GLEIF data synchronization (`gleif-scan.yml`)
-- Result archiving (`archive_scan.yml`)
-- Reddit trace analysis (`reddit_trace_bot.yml`)
-- Syndicate output generation (`syndicate_output.yml`)
-- GitHub Pages deployment (`deploy-pages.yml`)
+## Output and Artifacts
+- `output/scan_results.json`: Formatted scan results for dashboard consumption
+- `output/scan_log.txt`: Detailed execution logs with timestamps
+- `failing_codes_report.json`: Comprehensive analysis of script functionality
+- Generated overlay files in `overlays/` directory
 
-Expected workflow behavior:
-- All workflows should complete successfully
-- Network failures are handled gracefully
-- Results are automatically committed and archived
-- Dashboards are updated with latest data
+## Working with Identifiers
+The repository tracks 9 core identifiers:
+- EIN-92-6319308, SSN-602-05-7209, IRS-TRACK-108541264370
+- CSE-CASE-200000002519088, ADOT-CUST-16088582
+- Address, Entity Name, Birth Registry, Property Record numbers
+All identifiers have corresponding overlay files and dashboard entries.
 
-## Important Notes
+## Timeout and Performance Expectations
+- **Dependency installation**: 1-2 seconds
+- **Analysis scripts**: 1-2 seconds  
+- **Dashboard server startup**: Immediate
+- **Network-dependent scripts**: Fail immediately with connection errors
+- **NEVER CANCEL** any long-running processes - if something appears to hang, wait at least 60 seconds
 
-- **NEVER CANCEL** operations that complete within expected timeframes
-- Most scripts are designed to work offline with mock data
-- Dashboard functionality is fully operational with existing data
-- Network connectivity issues are expected and handled gracefully
-- All output files are generated consistently regardless of network status
+## Troubleshooting
+- If scripts fail with network errors: This is expected in sandboxed environments
+- If dashboards don't load: Check that HTTP server is running on port 8000
+- If analysis shows low success rate: This is normal due to network dependencies
+- For any unexpected behavior: Run `python3 find_failing_codes.py` for current status
 
-This repository is designed to be robust and functional in any environment, including sandboxed or network-restricted scenarios.
+## When Making Changes
+- Always run `python3 find_failing_codes.py` after modifications to verify functionality
+- Test dashboard functionality via local HTTP server
+- Verify overlay file generation in the `overlays/` directory
+- Check that `output/scan_results.json` remains properly formatted
+- Understand that network-dependent features cannot be fully tested in restricted environments

@@ -1,4 +1,6 @@
 name: Daily GLEIF Scan + Overlay Injection
+permissions:
+  contents: write
 
 on:
   schedule:

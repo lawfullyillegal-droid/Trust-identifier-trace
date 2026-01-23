@@ -1,4 +1,6 @@
 name: Sync with Tracking Bots
+permissions:
+  contents: write
 on:
   push:
   workflow_run:

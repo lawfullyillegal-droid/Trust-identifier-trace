@@ -212,7 +212,7 @@
     let connectionData = null;
 
     // Load connection data
-    fetch('output/identifier_connections.json')
+    fetch('https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/output/identifier_connections.json')
       .then(res => res.json())
       .then(data => {
         connectionData = data;

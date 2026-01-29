@@ -27,7 +27,7 @@
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script>
-    fetch('output/scan_results.json')
+    fetch('https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/output/scan_results.json')
       .then(res => res.json())
       .then(data => {
         const table = document.getElementById('results');

@@ -340,8 +340,8 @@
 
         async function loadGitHubStats() {
             try {
-                // Try to load local repository data
-                const response = await fetch('output/scan_results.json');
+                // Try to load repository data from GitHub
+                const response = await fetch('https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/output/scan_results.json');
                 if (response.ok) {
                     const data = await response.json();
                     document.getElementById('dataProcessed').textContent = data.length;

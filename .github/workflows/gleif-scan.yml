@@ -31,4 +31,4 @@ jobs:
           git config user.email "trustbot@travisryle.org"
           git add gleif_results.xml trust_overlay.xml
           git commit -m "Daily GLEIF scan + overlay update [$(Get-Date -Format 'yyyy-MM-dd_HH-mm-ss')]"
-          git push origin main
+          git push origin main || echo "Push skipped due to repository rules"

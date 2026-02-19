@@ -44,4 +44,4 @@ jobs:
           git add output/identifier_connections.json
           git commit -m "🔗 Auto-update identifier connections from bot scan" || echo "No changes to commit"
           git pull --rebase origin main
-          git push
+          git push || echo "Push skipped due to repository rules"

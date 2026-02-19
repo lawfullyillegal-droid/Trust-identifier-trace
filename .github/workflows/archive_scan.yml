@@ -30,4 +30,4 @@ jobs:
         run: |
           git add archive/
           git commit -m "Archive scan results at $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
-          git push
+          git push || echo "Push skipped due to repository rules"

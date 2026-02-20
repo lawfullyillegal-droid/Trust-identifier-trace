@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medium of Exchange – Legal Document Analyzer</title>
+
+  <!-- Bootstrap 5 CDN -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    crossorigin="anonymous"
+  />
+
+  <style>
+    :root {
+      --primary:   #1a3a5c;
+      --accent:    #c8a84b;
+      --surface:   #f4f6fa;
+      --text-dark: #1c2b3a;
+    }
+
+    body {
+      background: var(--surface);
+      color: var(--text-dark);
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    /* ── Header ─────────────────────────────────────────── */
+    .site-header {
+      background: var(--primary);
+      color: #fff;
+      padding: 1.5rem 0 1rem;
+      border-bottom: 4px solid var(--accent);
+    }
+    .site-header h1 { font-size: 1.8rem; font-weight: 700; margin: 0; }
+    .site-header p  { font-size: 0.9rem; opacity: 0.8; margin: 0.25rem 0 0; }
+
+    /* ── Card chrome ──────────────────────────────────────*/
+    .card { border: none; box-shadow: 0 2px 8px rgba(0,0,0,.10); }
+    .card-header {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: .02em;
+    }
+
+    /* ── Upload zone ──────────────────────────────────────*/
+    #drop-zone {
+      border: 2.5px dashed var(--accent);
+      border-radius: 10px;
+      padding: 3rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    #drop-zone.drag-over { background: #fff3cd; }
+    #drop-zone .icon { font-size: 3rem; }
+
+    /* ── Progress bar label ───────────────────────────────*/
+    #ocr-status { font-size: 0.85rem; min-height: 1.2em; }
+
+    /* ── Keyword badges ───────────────────────────────────*/
+    .kw-badge {
+      display: inline-block;
+      padding: 0.25em 0.7em;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin: 2px;
+    }
+    .kw-badge.found    { background: #dc3545; color: #fff; }
+    .kw-badge.notfound { background: #d1e7dd; color: #0a5c36; }
+
+    /* ── Extracted text box ───────────────────────────────*/
+    #ocr-output {
+      background: #fff;
+      border: 1px solid #cfd8e3;
+      border-radius: 6px;
+      padding: 1rem;
+      max-height: 280px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      font-size: 0.83rem;
+      font-family: "Courier New", monospace;
+    }
+
+    /* ── Generated doc preview ────────────────────────────*/
+    #doc-preview {
+      background: #fff;
+      border: 1px solid #cfd8e3;
+      border-radius: 6px;
+      padding: 1.5rem;
+      min-height: 200px;
+      font-size: 0.875rem;
+      white-space: pre-wrap;
+    }
+
+    /* ── Action buttons ───────────────────────────────────*/
+    .btn-gold {
+      background: var(--accent);
+      color: var(--primary);
+      font-weight: 700;
+      border: none;
+    }
+    .btn-gold:hover { background: #b8963e; color: #fff; }
+
+    footer {
+      border-top: 1px solid #dce3eb;
+      font-size: 0.8rem;
+      color: #6c757d;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════ HEADER ════════════════ -->
+<header class="site-header mb-4">
+  <div class="container">
+    <h1>⚖️ Medium of Exchange – Legal Document Analyzer</h1>
+    <p>
+      OCR &amp; automated template generation for Arizona Rule 33 relief, UCC § 3-501
+      refusals, and coercion analysis.
+    </p>
+  </div>
+</header>
+
+<div class="container pb-5">
+
+  <!-- ─── ROW 1 : Upload + User Info ─────────────────────── -->
+  <div class="row g-4 mb-4">
+
+    <!-- Upload card -->
+    <div class="col-lg-6">
+      <div class="card h-100">
+        <div class="card-header">📄 Upload Legal Document</div>
+        <div class="card-body">
+
+          <!-- Drop zone -->
+          <div
+            id="drop-zone"
+            role="button"
+            aria-label="Click or drag a file to upload"
+            tabindex="0"
+          >
+            <div class="icon mb-2">📂</div>
+            <p class="mb-1 fw-semibold">Click or drag &amp; drop a file here</p>
+            <p class="text-muted small">Accepted: JPEG, PNG, PDF (max 20 MB)</p>
+            <input
+              type="file"
+              id="file-input"
+              accept="image/jpeg,image/png,application/pdf"
+              class="d-none"
+            />
+          </div>
+
+          <!-- Validation feedback -->
+          <div id="file-error" class="text-danger small mt-2 d-none"></div>
+
+          <!-- Selected file name -->
+          <div id="file-name" class="small text-muted mt-2"></div>
+
+          <!-- OCR progress -->
+          <div class="mt-3">
+            <div class="progress" style="height:8px">
+              <div
+                id="ocr-progress-bar"
+                class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
+                role="progressbar"
+                style="width:0%"
+                aria-valuenow="0"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+            <div id="ocr-status" class="text-muted mt-1">Awaiting upload…</div>
+          </div>
+
+          <!-- Run OCR button -->
+          <button
+            id="btn-run-ocr"
+            class="btn btn-primary mt-3 w-100"
+            disabled
+          >
+            🔍 Extract Text (OCR)
+          </button>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Personal details form -->
+    <div class="col-lg-6">
+      <div class="card h-100">
+        <div class="card-header">🧾 Your Information</div>
+        <div class="card-body">
+          <form id="user-form" novalidate>
+
+            <div class="mb-3">
+              <label for="f-name" class="form-label fw-semibold">Full Legal Name *</label>
+              <input
+                type="text"
+                class="form-control"
+                id="f-name"
+                placeholder="Travis Ryle"
+                required
+              />
+              <div class="invalid-feedback">Please enter your full legal name.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="f-address" class="form-label fw-semibold">Mailing Address *</label>
+              <input
+                type="text"
+                class="form-control"
+                id="f-address"
+                placeholder="Rural Route HO49-70, Golden Valley, AZ"
+                required
+              />
+              <div class="invalid-feedback">Please enter your mailing address.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="f-case" class="form-label fw-semibold">Case Number</label>
+              <input
+                type="text"
+                class="form-control"
+                id="f-case"
+                placeholder="TR2024-0143"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="f-date-original" class="form-label fw-semibold">
+                Original Conviction / Order Date
+              </label>
+              <input
+                type="date"
+                class="form-control"
+                id="f-date-original"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="f-date-filing" class="form-label fw-semibold">
+                Intended Filing Date
+              </label>
+              <input
+                type="date"
+                class="form-control"
+                id="f-date-filing"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="f-court" class="form-label fw-semibold">Court Name / Division</label>
+              <input
+                type="text"
+                class="form-control"
+                id="f-court"
+                placeholder="Mohave County Justice Court"
+              />
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div><!-- /row 1 -->
+
+  <!-- ─── ROW 2 : OCR output + Keyword analysis ──────────── -->
+  <div class="row g-4 mb-4">
+
+    <!-- OCR extracted text -->
+    <div class="col-lg-6">
+      <div class="card h-100">
+        <div class="card-header">📝 Extracted Text</div>
+        <div class="card-body">
+          <div id="ocr-output" class="text-muted fst-italic">
+            No text extracted yet. Upload a document and click "Extract Text".
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Keyword analysis -->
+    <div class="col-lg-6">
+      <div class="card h-100">
+        <div class="card-header">🔎 Legal Keyword Analysis</div>
+        <div class="card-body">
+
+          <p class="small text-muted mb-3">
+            Keywords detected in the extracted text are highlighted below. Red
+            badges indicate terms found; green badges indicate terms not found.
+          </p>
+
+          <div id="kw-container" class="mb-3">
+            <!-- populated by JS -->
+          </div>
+
+          <!-- Analyze Duress button -->
+          <button
+            id="btn-duress"
+            class="btn btn-danger me-2 mb-2"
+            disabled
+          >
+            ⚠️ Analyze Duress
+          </button>
+
+          <!-- Duress analysis output -->
+          <div
+            id="duress-result"
+            class="alert alert-warning d-none mt-3"
+            role="alert"
+          ></div>
+
+        </div>
+      </div>
+    </div>
+  </div><!-- /row 2 -->
+
+  <!-- ─── ROW 3 : Template selection + Generate ──────────── -->
+  <div class="row g-4 mb-4">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">⚙️ Document Generation</div>
+        <div class="card-body">
+
+          <div class="row g-3 align-items-end">
+            <div class="col-md-4">
+              <label for="template-select" class="form-label fw-semibold">
+                Select Template
+              </label>
+              <select class="form-select" id="template-select">
+                <option value="rule33-notice">
+                  Arizona Rule 33 Notice – Form 24(b)
+                </option>
+                <option value="rule33-petition">
+                  Arizona Rule 33 Petition – Form 25
+                </option>
+                <option value="ucc-refusal">
+                  UCC § 3-501 Refusal for Cause Notice
+                </option>
+              </select>
+            </div>
+
+            <div class="col-md-4 d-grid">
+              <button id="btn-generate" class="btn btn-gold">
+                📃 Generate Document
+              </button>
+            </div>
+
+            <div class="col-md-4 d-grid">
+              <button
+                id="btn-ucc"
+                class="btn btn-outline-primary"
+              >
+                🏦 Generate UCC Refusal
+              </button>
+            </div>
+          </div>
+
+          <!-- Document preview -->
+          <div class="mt-4">
+            <label class="form-label fw-semibold">Document Preview</label>
+            <div id="doc-preview" class="text-muted fst-italic">
+              Fill in your information and click "Generate Document".
+            </div>
+          </div>
+
+          <!-- Download button -->
+          <div class="mt-3 text-end">
+            <button
+              id="btn-download"
+              class="btn btn-success"
+              disabled
+            >
+              ⬇️ Download as .txt
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div><!-- /row 3 -->
+
+</div><!-- /container -->
+
+<footer class="py-3 text-center">
+  <div class="container">
+    Medium of Exchange · Trust Identifier Trace ·
+    <a href="index.html">← Back to Index</a>
+  </div>
+</footer>
+
+<!-- Bootstrap JS (bundle) -->
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  crossorigin="anonymous"
+></script>
+
+<!-- Tesseract.js v4 CDN -->
+<script
+  src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"
+  crossorigin="anonymous"
+></script>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   Medium of Exchange – Legal Document Analyzer
+   Core JavaScript
+   ═══════════════════════════════════════════════════════════ */
+
+"use strict";
+
+/* ── Legal keywords to search for ─────────────────────────*/
+const LEGAL_KEYWORDS = [
+  { label: "duress",                  pattern: /\bduress\b/i },
+  { label: "refusal for cause",       pattern: /refusal\s+for\s+cause/i },
+  { label: "Rule 60(b)",              pattern: /rule\s+60\s*\(b\)/i },
+  { label: "post-conviction relief",  pattern: /post[-\s]conviction\s+relief/i },
+  { label: "Rule 33",                 pattern: /rule\s+33\b/i },
+  { label: "coercion",                pattern: /\bcoercion\b/i },
+  { label: "void judgment",           pattern: /void\s+judgment/i },
+  { label: "UCC § 3-501",             pattern: /ucc\s*[§s]\s*3[-–]501/i },
+  { label: "presentment",             pattern: /\bpresentment\b/i },
+  { label: "without prejudice",       pattern: /without\s+prejudice/i },
+];
+
+/* ── Duress coercion phrases ────────────────────────────── */
+const DURESS_PHRASES = [
+  /\bduress\b/i,
+  /\bcoercion\b/i,
+  /\bcoerced\b/i,
+  /under\s+threat/i,
+  /threat\s+of\s+force/i,
+  /without\s+consent/i,
+  /involuntary\b/i,
+  /compelled\b/i,
+  /under\s+duress/i,
+];
+
+/* ── File size limit (20 MB) ────────────────────────────── */
+const MAX_FILE_BYTES = 20 * 1024 * 1024;
+
+/* ── State ──────────────────────────────────────────────── */
+let currentFile   = null;
+let extractedText = "";
+let generatedDoc  = "";
+
+/* ── DOM refs ───────────────────────────────────────────── */
+const dropZone      = document.getElementById("drop-zone");
+const fileInput     = document.getElementById("file-input");
+const fileError     = document.getElementById("file-error");
+const fileNameEl    = document.getElementById("file-name");
+const progressBar   = document.getElementById("ocr-progress-bar");
+const ocrStatus     = document.getElementById("ocr-status");
+const btnRunOcr     = document.getElementById("btn-run-ocr");
+const ocrOutput     = document.getElementById("ocr-output");
+const kwContainer   = document.getElementById("kw-container");
+const btnDuress     = document.getElementById("btn-duress");
+const duressResult  = document.getElementById("duress-result");
+const docPreview    = document.getElementById("doc-preview");
+const btnGenerate   = document.getElementById("btn-generate");
+const btnUcc        = document.getElementById("btn-ucc");
+const btnDownload   = document.getElementById("btn-download");
+const templateSel   = document.getElementById("template-select");
+
+/* ═══════════════ FILE UPLOAD ═══════════════════════════════ */
+
+function acceptedMimeTypes() {
+  return ["image/jpeg", "image/png", "application/pdf"];
+}
+
+function validateFile(file) {
+  if (!file) return "No file selected.";
+  if (!acceptedMimeTypes().includes(file.type)) {
+    return "Unsupported file type. Please upload a JPEG, PNG, or PDF.";
+  }
+  if (file.size > MAX_FILE_BYTES) {
+    return "File exceeds the 20 MB limit.";
+  }
+  return null; // valid
+}
+
+function setFile(file) {
+  const err = validateFile(file);
+  if (err) {
+    showFileError(err);
+    return;
+  }
+  hideFileError();
+  currentFile      = file;
+  fileNameEl.textContent = `Selected: ${file.name} (${(file.size / 1024).toFixed(1)} KB)`;
+  btnRunOcr.disabled = false;
+  ocrStatus.textContent = "File ready – click Extract Text to begin OCR.";
+}
+
+function showFileError(msg) {
+  fileError.textContent = msg;
+  fileError.classList.remove("d-none");
+}
+function hideFileError() {
+  fileError.textContent = "";
+  fileError.classList.add("d-none");
+}
+
+/* Click on drop zone → open file picker */
+dropZone.addEventListener("click", () => fileInput.click());
+dropZone.addEventListener("keydown", e => {
+  if (e.key === "Enter" || e.key === " ") fileInput.click();
+});
+
+fileInput.addEventListener("change", () => {
+  if (fileInput.files.length > 0) setFile(fileInput.files[0]);
+});
+
+/* Drag-and-drop */
+dropZone.addEventListener("dragover", e => {
+  e.preventDefault();
+  dropZone.classList.add("drag-over");
+});
+dropZone.addEventListener("dragleave", () => dropZone.classList.remove("drag-over"));
+dropZone.addEventListener("drop", e => {
+  e.preventDefault();
+  dropZone.classList.remove("drag-over");
+  if (e.dataTransfer.files.length > 0) setFile(e.dataTransfer.files[0]);
+});
+
+/* ═══════════════ OCR (Tesseract.js) ════════════════════════ */
+
+btnRunOcr.addEventListener("click", async () => {
+  if (!currentFile) return;
+
+  btnRunOcr.disabled = true;
+  ocrStatus.textContent = "Initializing OCR engine…";
+  progressBar.style.width = "0%";
+  progressBar.setAttribute("aria-valuenow", 0);
+
+  try {
+    /* For PDF pages convert to images first via canvas (first page only). */
+    let imageSource;
+    if (currentFile.type === "application/pdf") {
+      imageSource = await pdfFirstPageAsDataURL(currentFile);
+    } else {
+      imageSource = URL.createObjectURL(currentFile);
+    }
+
+    const result = await Tesseract.recognize(imageSource, "eng", {
+      logger: m => {
+        if (m.status === "recognizing text") {
+          const pct = Math.round(m.progress * 100);
+          progressBar.style.width = pct + "%";
+          progressBar.setAttribute("aria-valuenow", pct);
+          ocrStatus.textContent = `OCR in progress… ${pct}%`;
+        } else {
+          ocrStatus.textContent = m.status;
+        }
+      },
+    });
+
+    extractedText = result.data.text || "";
+
+    progressBar.style.width = "100%";
+    progressBar.setAttribute("aria-valuenow", 100);
+    ocrStatus.textContent = "✅ OCR complete!";
+
+    if (extractedText.trim().length === 0) {
+      ocrOutput.textContent = "(No readable text found in this document.)";
+    } else {
+      ocrOutput.textContent = extractedText;
+    }
+
+    renderKeywords();
+    btnDuress.disabled = false;
+
+  } catch (err) {
+    ocrStatus.textContent = `❌ OCR failed: ${err.message}`;
+    console.error("OCR error:", err);
+  } finally {
+    btnRunOcr.disabled = false;
+  }
+});
+
+/**
+ * Render a PDF's first page onto a canvas and return a data URL.
+ * Falls back to a plain object URL if pdf.js is not available.
+ */
+async function pdfFirstPageAsDataURL(file) {
+  /* We attempt to use pdf.js if it happens to be loaded, otherwise we pass
+     the raw file blob URL to Tesseract which may handle it natively. */
+  if (typeof window.pdfjsLib !== "undefined") {
+    const url   = URL.createObjectURL(file);
+    const pdf   = await window.pdfjsLib.getDocument(url).promise;
+    const page  = await pdf.getPage(1);
+    const vp    = page.getViewport({ scale: 2 });
+    const canvas = document.createElement("canvas");
+    canvas.width  = vp.width;
+    canvas.height = vp.height;
+    await page.render({ canvasContext: canvas.getContext("2d"), viewport: vp }).promise;
+    URL.revokeObjectURL(url);
+    return canvas.toDataURL("image/png");
+  }
+  /* Fallback: let Tesseract try the raw blob URL */
+  return URL.createObjectURL(file);
+}
+
+/* ═══════════════ KEYWORD ANALYSIS ══════════════════════════ */
+
+function renderKeywords() {
+  kwContainer.innerHTML = "";
+  LEGAL_KEYWORDS.forEach(kw => {
+    const found = kw.pattern.test(extractedText);
+    const badge = document.createElement("span");
+    badge.className = `kw-badge ${found ? "found" : "notfound"}`;
+    badge.textContent = `${found ? "✔" : "✗"} ${kw.label}`;
+    kwContainer.appendChild(badge);
+  });
+}
+
+/* ─── Analyze Duress ─────────────────────────────────────── */
+btnDuress.addEventListener("click", () => {
+  if (!extractedText) return;
+
+  const hits = [];
+  DURESS_PHRASES.forEach(re => {
+    const match = extractedText.match(re);
+    if (match) hits.push(`"${match[0]}"`);
+  });
+
+  duressResult.classList.remove("d-none", "alert-success", "alert-danger", "alert-warning");
+
+  if (hits.length === 0) {
+    duressResult.classList.add("alert-success");
+    duressResult.innerHTML =
+      "✅ <strong>No obvious coercion language detected.</strong> " +
+      "This does not rule out duress — review the extracted text manually.";
+  } else {
+    duressResult.classList.add("alert-danger");
+    duressResult.innerHTML =
+      `⚠️ <strong>Potential coercion language detected (${hits.length} instance(s)):</strong><br/>` +
+      hits.map(h => `&nbsp;&nbsp;• ${escapeHtml(h)}`).join("<br/>") +
+      "<br/><br/>Consider citing these occurrences in your Rule 33 or Rule 60(b) petition " +
+      "as evidence of involuntary plea or coerced proceeding.";
+  }
+});
+
+/* ═══════════════ DOCUMENT GENERATION ══════════════════════ */
+
+/* Pull form values with safe fallback */
+function formVal(id, fallback) {
+  const el = document.getElementById(id);
+  return (el && el.value.trim()) ? el.value.trim() : (fallback || "[NOT PROVIDED]");
+}
+
+function buildContext() {
+  return {
+    name:          formVal("f-name",          "Travis Ryle"),
+    address:       formVal("f-address",       "Rural Route HO49-70, Golden Valley, AZ"),
+    caseNo:        formVal("f-case",          "TR2024-0143"),
+    dateOriginal:  formVal("f-date-original", "September 11, 2025"),
+    dateFiling:    formVal("f-date-filing",   "June 11, 2024"),
+    court:         formVal("f-court",         "Mohave County Justice Court"),
+    ocrExcerpt:    extractedText.slice(0, 600).replace(/\s+/g, " ").trim() || "[No OCR text extracted]",
+  };
+}
+
+/* ── Validate user form ──────────────────────────────────── */
+function validateUserForm() {
+  const form = document.getElementById("user-form");
+  form.classList.add("was-validated");
+  return form.checkValidity();
+}
+
+/* ── Template builders ───────────────────────────────────── */
+
+function buildRule33Notice(ctx) {
+  return `\
+================================================================================
+         ARIZONA RULE 33 – NOTICE OF POST-CONVICTION RELIEF
+                          Form 24(b)
+================================================================================
+
+IN THE ${ctx.court.toUpperCase()}
+STATE OF ARIZONA
+
+Case No.: ${ctx.caseNo}
+
+NOTICE OF POST-CONVICTION RELIEF
+
+Petitioner: ${ctx.name}
+Address:    ${ctx.address}
+
+NOTICE IS HEREBY GIVEN pursuant to Arizona Rules of Criminal Procedure, Rule 33
+that the above-named Petitioner intends to file a Petition for Post-Conviction
+Relief.
+
+Date of Conviction / Sentence or Order: ${ctx.dateOriginal}
+
+Grounds to be raised (based on document analysis):
+${buildGroundsFromOCR()}
+
+Petitioner requests appointment of counsel pursuant to Rule 33.9 if indigent.
+
+Respectfully submitted,
+
+${ctx.name}
+${ctx.address}
+Date: ${ctx.dateFiling}
+
+--------------------------------------------------------------------------------
+OCR EXCERPT FROM UPLOADED DOCUMENT:
+${ctx.ocrExcerpt}
+================================================================================
+`;
+}
+
+function buildRule33Petition(ctx) {
+  return `\
+================================================================================
+         ARIZONA RULE 33 – PETITION FOR POST-CONVICTION RELIEF
+                            Form 25
+================================================================================
+
+IN THE ${ctx.court.toUpperCase()}
+STATE OF ARIZONA
+
+Case No.: ${ctx.caseNo}
+
+PETITION FOR POST-CONVICTION RELIEF
+
+Petitioner: ${ctx.name}
+Address:    ${ctx.address}
+
+──────────────────────────────────────────────────────────────────────────────
+I. GROUNDS FOR RELIEF
+──────────────────────────────────────────────────────────────────────────────
+${buildGroundsFromOCR()}
+
+──────────────────────────────────────────────────────────────────────────────
+II. STATEMENT OF FACTS
+──────────────────────────────────────────────────────────────────────────────
+On or about ${ctx.dateOriginal}, Petitioner was subjected to proceedings in
+${ctx.court} under Case No. ${ctx.caseNo}.
+
+The attached / uploaded document contains the following relevant excerpt:
+"${ctx.ocrExcerpt}"
+
+Petitioner asserts that the foregoing demonstrates grounds for relief under
+Arizona Rule 33, including but not limited to: coercion, duress, ineffective
+assistance of counsel, and/or newly discovered evidence.
+
+──────────────────────────────────────────────────────────────────────────────
+III. RELIEF REQUESTED
+──────────────────────────────────────────────────────────────────────────────
+Petitioner respectfully requests that this Court:
+  1. Vacate the conviction and/or sentence entered in the above-captioned matter;
+  2. Grant an evidentiary hearing pursuant to Rule 33.11;
+  3. Grant such other relief as this Court deems just and proper.
+
+──────────────────────────────────────────────────────────────────────────────
+VERIFICATION
+──────────────────────────────────────────────────────────────────────────────
+I, ${ctx.name}, declare under penalty of perjury that the foregoing is true
+and correct to the best of my knowledge.
+
+Signed: ___________________________
+Name:   ${ctx.name}
+Date:   ${ctx.dateFiling}
+Address:${ctx.address}
+================================================================================
+`;
+}
+
+function buildUCCRefusal(ctx) {
+  return `\
+================================================================================
+      NOTICE OF REFUSAL FOR CAUSE – UCC § 3-501
+      (Uniform Commercial Code – Dishonor / Presentment)
+================================================================================
+
+Date: ${ctx.dateFiling}
+
+FROM:
+  ${ctx.name}
+  ${ctx.address}
+
+RE:   Case / Instrument No.: ${ctx.caseNo}
+      Court / Issuer:        ${ctx.court}
+
+──────────────────────────────────────────────────────────────────────────────
+NOTICE
+──────────────────────────────────────────────────────────────────────────────
+Pursuant to the Uniform Commercial Code § 3-501 (Presentment), the
+undersigned, acting in the capacity of Authorized Representative / Holder in
+Due Course, hereby REFUSES FOR CAUSE any and all presentments, demands, and/or
+instruments in the above-referenced matter.
+
+This refusal is made:
+  1. Without dishonor of any lawful obligation;
+  2. Without waiver of any rights or remedies, express or implied;
+  3. Under Reservation of All Rights – Without Prejudice – U.C.C. § 1-308 (formerly § 1-207);
+  4. Due to evidence of duress, coercion, and/or procedural defect identified
+     in the underlying instrument(s), per the OCR excerpt below.
+
+──────────────────────────────────────────────────────────────────────────────
+SUPPORTING OCR EXCERPT FROM UPLOADED DOCUMENT:
+──────────────────────────────────────────────────────────────────────────────
+"${ctx.ocrExcerpt}"
+
+──────────────────────────────────────────────────────────────────────────────
+ALL RIGHTS RESERVED.  Without Prejudice.  U.C.C. § 1-308 (formerly § 1-207).
+──────────────────────────────────────────────────────────────────────────────
+
+Authorized Representative:
+
+  Signature: ___________________________
+  Name:      ${ctx.name}
+  Date:      ${ctx.dateFiling}
+  Address:   ${ctx.address}
+
+================================================================================
+`;
+}
+
+/** Build grounds list based on keywords found in extracted text */
+function buildGroundsFromOCR() {
+  const grounds = [];
+
+  if (/\bduress\b/i.test(extractedText) || /\bcoercion\b/i.test(extractedText)) {
+    grounds.push("1. Involuntary plea or proceeding under duress/coercion (Rule 33.1(b)).");
+  }
+  if (/ineffective\s+assistance/i.test(extractedText)) {
+    grounds.push("2. Ineffective assistance of counsel (Rule 33.1(a) / Strickland v. Washington).");
+  }
+  if (/rule\s+60\s*\(b\)/i.test(extractedText)) {
+    grounds.push("3. Relief from final judgment pursuant to Rule 60(b).");
+  }
+  if (/newly\s+discovered/i.test(extractedText)) {
+    grounds.push("4. Newly discovered material evidence (Rule 33.1(e)).");
+  }
+  if (/post[-\s]conviction\s+relief/i.test(extractedText)) {
+    grounds.push("5. Grounds identified in uploaded document referencing post-conviction relief.");
+  }
+  if (/refusal\s+for\s+cause/i.test(extractedText)) {
+    grounds.push("6. Instrument(s) previously refused for cause – supporting voidability of judgment.");
+  }
+
+  if (grounds.length === 0) {
+    grounds.push(
+      "1. [Grounds to be specified — no specific legal trigger terms detected in OCR output.]",
+      "   Review the extracted text above and add applicable grounds manually."
+    );
+  }
+
+  return grounds.join("\n");
+}
+
+/* ── Generate button ─────────────────────────────────────── */
+btnGenerate.addEventListener("click", () => {
+  if (!validateUserForm()) {
+    docPreview.textContent = "⚠️ Please fill in all required fields (Name and Address).";
+    return;
+  }
+
+  const ctx = buildContext();
+  const tpl = templateSel.value;
+
+  if (tpl === "rule33-notice")   generatedDoc = buildRule33Notice(ctx);
+  else if (tpl === "rule33-petition") generatedDoc = buildRule33Petition(ctx);
+  else if (tpl === "ucc-refusal")     generatedDoc = buildUCCRefusal(ctx);
+  else generatedDoc = "";
+
+  docPreview.textContent    = generatedDoc;
+  docPreview.classList.remove("text-muted", "fst-italic");
+  btnDownload.disabled = false;
+});
+
+/* ── UCC shortcut button ─────────────────────────────────── */
+btnUcc.addEventListener("click", () => {
+  templateSel.value = "ucc-refusal";
+  btnGenerate.click();
+});
+
+/* ── Download button ─────────────────────────────────────── */
+btnDownload.addEventListener("click", () => {
+  if (!generatedDoc) return;
+
+  const tpl      = templateSel.value;
+  const filename = {
+    "rule33-notice":   "Rule33_Notice_Form24b.txt",
+    "rule33-petition": "Rule33_Petition_Form25.txt",
+    "ucc-refusal":     "UCC_Refusal_Notice.txt",
+  }[tpl] || "document.txt";
+
+  const blob = new Blob([generatedDoc], { type: "text/plain;charset=utf-8" });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement("a");
+  a.href     = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+
+/* ═══════════════ HELPERS ════════════════════════════════════ */
+
+function escapeHtml(str) {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+/* Initialize keyword badges on page load */
+renderKeywords();
+</script>
+
+</body>
+</html>

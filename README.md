@@ -1,3 +1,18 @@
+<p>
+  <img src="https://via.placeholder.com/1200x300/0a0a1f/00ff9f?text=The+Travis+Ryle+Private+Bank+Estate+%26+Trust">
+  <br>
+  <h1>The Travis Ryle Private Bank Estate &amp; Trust</h1>
+  <h3>Sovereign Asset Architecture • Intergenerational Wealth Codex • Lawful Private Structure</h3>
+</p>
+
+<p>
+  <a href="https://github.com/LawfullyIllegal-droid"><img src="https://img.shields.io/badge/Organization-LawfullyIllegal--droid-0a0a1f?style=for-the-badge&logo=github&logoColor=00ff9f"></a>
+  <a><img src="https://img.shields.io/badge/Status-Private%20%26%20Active-00ff9f?style=for-the-badge" alt="Status: Private and Active"></a>
+  <a><img src="https://img.shields.io/badge/Security-Airgapped%20%26%20Encrypted-00ff9f?style=for-the-badge" alt="Security: Airgapped and Encrypted"></a>
+</p>
+
+---
+
 # Trust Identifier Trace
 
 A robust toolkit for identifier normalization, challenge logic, and artifact creation related to trust records (LexisNexis, GLEIF, and more) specifically tied to Travis Steven Ryle and related estate/trust entities.

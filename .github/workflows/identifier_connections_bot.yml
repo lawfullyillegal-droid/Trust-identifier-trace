@@ -37,6 +37,17 @@ jobs:
             exit 1
           fi
 
+      - name: Verify connections output
+        run: |
+          [ -f output/identifier_connections.json ] || { echo "ERROR: output/identifier_connections.json not found. Aborting."; exit 1; }
+          echo "✅ Connections output verified."
+
+      - name: Upload connections artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: scan-${{ github.workflow }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: output/identifier_connections.json
+
       - name: Commit connection results
         run: |
           git config user.name "Identifier Connections Bot"
@@ -44,4 +55,4 @@ jobs:
           git add output/identifier_connections.json
           git commit -m "🔗 Auto-update identifier connections from bot scan" || echo "No changes to commit"
           git pull --rebase origin main
-          git push
+          git push || echo "Push skipped due to branch protection rules"

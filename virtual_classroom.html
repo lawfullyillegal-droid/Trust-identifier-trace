@@ -499,7 +499,7 @@ Need more help? Check the README.md file!`);
 
         function checkSystemStatus() {
             // Verify system components are available
-            fetch('output/scan_results.json')
+            fetch('https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/output/scan_results.json')
                 .then(response => {
                     if (response.ok) {
                         console.log('✅ Classroom system fully operational');

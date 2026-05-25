@@ -1,0 +1,19 @@
+# STORM-BREAKER Overlay for ADDR-TEMPLECITY-CA-4641-DACOTAH
+identifier: ADDR-TEMPLECITY-CA-4641-DACOTAH
+pattern_type: address
+format_valid: True
+confidence_score: 0.95
+risk_level: low
+timestamp: 2025-11-16T09:47:24.082723+00:00
+storm_breaker_version: "1.0"
+overlay_hash: 80ff627e4936b757
+
+metadata:
+  type: Address Record
+  scan_method: "storm_breaker_analysis"
+  validation_status: "passed"
+
+technical_trace:
+  generator: "storm-breaker"
+  analysis_engine: "pattern_recognition_v1.0"
+  validation_rules: "format_compliance_check"

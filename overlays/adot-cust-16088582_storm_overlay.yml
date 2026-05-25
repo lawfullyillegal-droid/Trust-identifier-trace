@@ -1,0 +1,19 @@
+# STORM-BREAKER Overlay for ADOT-CUST-16088582
+identifier: ADOT-CUST-16088582
+pattern_type: arizona_dot_customer
+format_valid: True
+confidence_score: 0.95
+risk_level: medium
+timestamp: 2025-09-20T19:13:14.869203+00:00
+storm_breaker_version: "1.0"
+overlay_hash: 07aa753efb175927
+
+metadata:
+  type: Arizona DOT Customer ID
+  scan_method: "storm_breaker_analysis"
+  validation_status: "passed"
+
+technical_trace:
+  generator: "storm-breaker"
+  analysis_engine: "pattern_recognition_v1.0"
+  validation_rules: "format_compliance_check"

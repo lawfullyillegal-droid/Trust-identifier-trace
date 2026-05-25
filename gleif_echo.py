@@ -1,12 +1,46 @@
 import requests, xml.etree.ElementTree as ET
 from datetime import datetime
+import sys
 
 print("🔧 Starting GLEIF echo test...")
 
-# Pull GLEIF data
+# Pull GLEIF data with error handling
 gleif_url = "https://api.gleif.org/api/v1/lei-records?page[size]=5"
-response = requests.get(gleif_url)
-data = response.json()
+try:
+    response = requests.get(gleif_url, timeout=10)
+    response.raise_for_status()
+    data = response.json()
+    print("✅ Successfully fetched GLEIF data")
+except (requests.exceptions.RequestException, requests.exceptions.Timeout) as e:
+    print(f"⚠️ Network error: {e}")
+    print("🔄 Running in offline mode with mock data...")
+    # Create mock data for offline mode
+    data = {
+        "data": [
+            {
+                "id": "MOCK-LEI-001",
+                "attributes": {
+                    "entity": {
+                        "legalName": "Mock Entity 1 (Offline Mode)",
+                        "legalAddress": {
+                            "country": "US"
+                        }
+                    }
+                }
+            },
+            {
+                "id": "MOCK-LEI-002", 
+                "attributes": {
+                    "entity": {
+                        "legalName": "Mock Entity 2 (Offline Mode)",
+                        "legalAddress": {
+                            "country": "CA"
+                        }
+                    }
+                }
+            }
+        ]
+    }
 
 # Log to XML
 root = ET.Element("GLEIFEcho")

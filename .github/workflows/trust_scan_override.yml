@@ -1,5 +1,8 @@
 name: Trust Scan Override
 
+permissions:
+  contents: write
+
 on:
   workflow_dispatch:
 

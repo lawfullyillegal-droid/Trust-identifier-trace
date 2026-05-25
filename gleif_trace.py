@@ -40,7 +40,8 @@ with open(log_path, "w") as log:
 
         try:
             query_url = f"https://api.gleif.org/api/v1/lei-records?filter[entity.legalName]={identifier}"
-            response = requests.get(query_url)
+            response = requests.get(query_url, timeout=10)
+            response.raise_for_status()
             data = response.json()
 
             if data.get("data"):
@@ -50,8 +51,11 @@ with open(log_path, "w") as log:
                 print(f"❌ No match for {identifier}")
                 log.write(f"[NO MATCH] {identifier}\n")
 
+        except (requests.exceptions.RequestException, requests.exceptions.Timeout) as e:
+            print(f"⚠️ Network error scanning {identifier}: Connection failed, running in offline mode")
+            log.write(f"[OFFLINE] {identifier}: Network unavailable - {type(e).__name__}\n")
         except Exception as e:
             print(f"⚠️ Error scanning {identifier}: {e}")
-            log.write(f"[ERROR] {identifier}: {traceback.format_exc()}\n")
+            log.write(f"[ERROR] {identifier}: {str(e)}\n")
 
 print(f"📄 Scan complete. Log saved to {log_path}")

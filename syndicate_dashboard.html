@@ -45,6 +45,9 @@
                           <td>${item.identifier}</td>
                           <td class="${item.status}">${item.status}</td>
                           <td>${item.reason || 'N/A'}</td>
+                          <td>${item.identifier || 'N/A'}</td>
+                          <td class="${item.status}">${item.status || 'unknown'}</td>
+                          <td>${item.reason || item.source || 'N/A'}</td>
                         </tr>`;
           });
           runHTML += "</table>";

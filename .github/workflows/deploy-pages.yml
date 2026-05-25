@@ -1,8 +1,8 @@
 name: Deploy Trust Identifier Trace Website
 
-"on":
+on:
   push:
-    branches: [ "main" ]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: false
 
 jobs:
@@ -20,27 +20,27 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        
-      - name: Build site
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build site directory
         run: |
-          # Create site structure
+          set -e
           mkdir -p _site
           
-          # Copy HTML files to site root
+          # Copy all HTML files to site root
           cp *.html _site/ 2>/dev/null || true
           
-          # Copy output and archive directories
+          # Copy data and archive directories
           cp -r output _site/ 2>/dev/null || true
           cp -r archive _site/ 2>/dev/null || true
           cp -r overlays _site/ 2>/dev/null || true
+          cp -r identifiers.json _site/ 2>/dev/null || true
           
-          # Ensure index.html exists
+          # Create default index.html if missing
           if [ ! -f _site/index.html ]; then
-            echo "Creating default index.html"
-            cat > _site/index.html << 'EOF'
+            cat > _site/index.html << 'EOFHTML'
           <!DOCTYPE html>
           <html lang="en">
           <head>
@@ -96,14 +96,31 @@ jobs:
               </div>
           </body>
           </html>
-          EOF
+          EOFHTML
           fi
           
-          echo "Site built successfully"
-          ls -la _site/
-        
+          echo "✓ Site build complete"
+          ls -lh _site/ | head -20
+
+      - name: Log site structure for audit
+        run: |
+          echo "=== DEPLOYMENT AUDIT LOG ===" > deploy-audit.txt
+          echo "Timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> deploy-audit.txt
+          echo "Commit: ${{ github.sha }}" >> deploy-audit.txt
+          echo "Branch: ${{ github.ref }}" >> deploy-audit.txt
+          echo "" >> deploy-audit.txt
+          echo "Files deployed to _site/:" >> deploy-audit.txt
+          find _site -type f -exec ls -lh {} \; >> deploy-audit.txt
+          echo "" >> deploy-audit.txt
+          echo "Directory tree:" >> deploy-audit.txt
+          tree _site -L 3 >> deploy-audit.txt 2>/dev/null || find _site -type d | sort >> deploy-audit.txt
+          cat deploy-audit.txt
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+          retention-days: 30
 
   deploy:
     environment:
@@ -115,3 +132,9 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Log deployment success
+        run: |
+          echo "✓ Deployed to: ${{ steps.deployment.outputs.page_url }}"
+          echo "  Deployment timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          echo "  Commit: ${{ github.sha }}"

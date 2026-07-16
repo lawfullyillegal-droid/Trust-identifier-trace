@@ -1,10 +1,134 @@
 {
-  "timestamp": "2026-07-16T05:45:18.692952+00:00",
+  "timestamp": "2026-07-16T05:46:35.751795+00:00",
   "source": "public_records",
   "records": [
     {
-      "type": "example",
-      "data": "sample_data"
+      "type": "LexisNexis",
+      "data": "SSN-602-05-7209"
+    },
+    {
+      "type": "IRS",
+      "data": "EIN-33-3124290"
+    },
+    {
+      "type": "IRS",
+      "data": "EIN-33-2015110"
+    },
+    {
+      "type": "IRS",
+      "data": "IRS-TRACK-0509907367"
+    },
+    {
+      "type": "County Vital Records",
+      "data": "BIRTH-REGISTRY-104-0190-003558"
+    },
+    {
+      "type": "LexisNexis",
+      "data": "LEXID-XXXXXX7079"
+    },
+    {
+      "type": "LexisNexis",
+      "data": "LN-CONSUMER-11133734"
+    },
+    {
+      "type": "LexisNexis",
+      "data": "LN-CASE-31568224"
+    },
+    {
+      "type": "LexisNexis",
+      "data": "EMAIL-TRAVISLITE@GMAIL.COM"
+    },
+    {
+      "type": "DATASYS GROUP",
+      "data": "EMAIL-TRAVISREL@GMAIL.COM"
+    },
+    {
+      "type": "ACQUIREWEB",
+      "data": "EMAIL-TRAVISREL@YAHOO.COM"
+    },
+    {
+      "type": "TransUnion",
+      "data": "PHONE-9431463078"
+    },
+    {
+      "type": "LexisNexis",
+      "data": "ADDR-GOLDENVALLEY-AZ-5570-TONTO"
+    },
+    {
+      "type": "Kingman Court",
+      "data": "ADDR-GOLDENVALLEY-AZ-7090-RURAL-RD"
+    },
+    {
+      "type": "LexisNexis",
+      "data": "ADDR-OXNARD-CA-5034-NAUTILUS"
+    },
+    {
+      "type": "LexisNexis",
+      "data": "ADDR-TEMPLECITY-CA-4641-DACOTAH"
+    },
+    {
+      "type": "LexisNexis",
+      "data": "ADDR-HUNTSVILLE-AL-2704-PACIFIC"
+    },
+    {
+      "type": "LexisNexis",
+      "data": "ENTITY-TRAVIS-STEVEN-RYLE"
+    },
+    {
+      "type": "LexisNexis",
+      "data": "ENTITY-MR-TRAVIS-S-RYLEE"
+    },
+    {
+      "type": "Accurint",
+      "data": "ENTITY-EIGHTYLEE-MARKETING-GRP"
+    },
+    {
+      "type": "Kingman Court",
+      "data": "VIOLATION-FTA-CRIMINAL-KINGMAN-2004"
+    },
+    {
+      "type": "Kingman Court",
+      "data": "VIOLATION-FINRESP-FAIL-KINGMAN-2004"
+    },
+    {
+      "type": "Kingman Court",
+      "data": "VIOLATION-NOREG-KINGMAN-2024"
+    },
+    {
+      "type": "Kingman Court",
+      "data": "VIOLATION-SPEED-20PLUS-KINGMAN-2024"
+    },
+    {
+      "type": "Kingman Court",
+      "data": "WARRANT-QUASHED-KINGMAN-2004"
+    },
+    {
+      "type": "HiRoad Insurance",
+      "data": "SURVEILLANCE-CLUE-VIN-4T1B11AK1M-20250328"
+    },
+    {
+      "type": "Sentry Insurance",
+      "data": "SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328"
+    },
+    {
+      "type": "LexisNexis C.L.U.E.",
+      "data": "VIN-4T1B11AK1M"
+    },
+    {
+      "type": "LexisNexis C.L.U.E.",
+      "data": "VEHICLE-TOYOTA-CAMRY-2021"
+    },
+    {
+      "type": "American Express",
+      "data": "SURVEILLANCE-AMEX-RISKVIEW-20250411"
+    },
+    {
+      "type": "Progressive Insurance",
+      "data": "SURVEILLANCE-PROGRESSIVE-REVIEW-20250411"
+    },
+    {
+      "type": "Credit Karma",
+      "data": "SURVEILLANCE-CREDITKARMA-PREQ-20250411"
     }
   ]
 }

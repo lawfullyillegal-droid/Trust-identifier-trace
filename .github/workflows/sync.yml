@@ -21,6 +21,7 @@ jobs:
         run: |
           python - <<'PY'
           import json
+          import os
           from datetime import datetime, timezone
           from pathlib import Path
 
@@ -36,7 +37,7 @@ jobs:
           }
 
           print(json.dumps(summary, indent=2))
-          Path("${{ github.step_summary }}").write_text(
+          Path(os.environ["GITHUB_STEP_SUMMARY"]).write_text(
               "## Tracking sync summary\n\n"
               f"- identifiers loaded: {summary['identifier_count']}\n"
               f"- commit: `{summary['commit']}`\n"

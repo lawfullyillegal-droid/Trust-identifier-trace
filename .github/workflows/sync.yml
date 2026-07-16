@@ -1,6 +1,6 @@
 name: Sync with Tracking Bots
 permissions:
-  contents: write
+  contents: read
 on:
   push:
   workflow_run:
@@ -9,7 +9,38 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
-      - name: Send update to bot
-        run: curl -X POST https://your-bot-endpoint/api/sync \
-          -H "Content-Type: application/json" \
-          -d '{"repo":"${{ github.repository }}","commit":"${{ github.sha }}"}'
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Build identifier sync summary
+        run: |
+          python - <<'PY'
+          import json
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          identifiers_path = Path("identifiers.json")
+          identifiers = json.loads(identifiers_path.read_text(encoding="utf-8")) if identifiers_path.exists() else []
+          summary = {
+              "repository": "${{ github.repository }}",
+              "ref": "${{ github.ref }}",
+              "commit": "${{ github.sha }}",
+              "timestamp": datetime.now(timezone.utc).isoformat(),
+              "identifier_count": len(identifiers),
+              "identifiers": [item.get("identifier") for item in identifiers if item.get("identifier")]
+          }
+
+          print(json.dumps(summary, indent=2))
+          Path("${{ github.step_summary }}").write_text(
+              "## Tracking sync summary\n\n"
+              f"- identifiers loaded: {summary['identifier_count']}\n"
+              f"- commit: `{summary['commit']}`\n"
+              f"- ref: `{summary['ref']}`\n",
+              encoding="utf-8"
+          )
+          PY

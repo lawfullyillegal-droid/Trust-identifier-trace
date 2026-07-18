@@ -40,4 +40,4 @@ jobs:
           git config --global user.email "trustbot@github.com"
           git add TrustScanLog.txt || echo "Nothing to add"
           git commit -m "Override scan: $(date -u +'%Y-%m-%d %H:%M:%S')" || echo "No commit needed"
-          git push || echo "No push needed"
+          git push || echo "Push skipped due to branch protection rules"

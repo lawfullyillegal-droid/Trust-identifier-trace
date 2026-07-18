@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trust Identifier Trace — Interactive Viewer</title>
+  <style>
+    :root {
+      --bg:       #0d0d0d;
+      --surface:  #161616;
+      --border:   #2a2a2a;
+      --accent:   #00e5ff;
+      --green:    #00e676;
+      --yellow:   #ffea00;
+      --red:      #ff1744;
+      --orange:   #ff9100;
+      --purple:   #e040fb;
+      --text:     #e0e0e0;
+      --muted:    #888;
+      --radius:   6px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Courier New', monospace;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    header .logo { font-size: 1.5rem; color: var(--accent); font-weight: bold; letter-spacing: 2px; }
+    header .sub  { color: var(--muted); font-size: 0.8rem; margin-top: 2px; }
+    header .pill {
+      margin-left: auto;
+      background: rgba(0,229,255,0.1);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+    }
+
+    /* ── Tabs ── */
+    nav.tabs {
+      display: flex;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      gap: 0;
+      overflow-x: auto;
+    }
+    nav.tabs button {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      padding: 14px 22px;
+      text-transform: uppercase;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+    nav.tabs button:hover  { color: var(--text); }
+    nav.tabs button.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+    /* ── Content panes ── */
+    .pane { display: none; padding: 28px; }
+    .pane.active { display: block; }
+
+    /* ── Summary cards ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 16px;
+      text-align: center;
+    }
+    .card .val { font-size: 2rem; font-weight: bold; }
+    .card .lbl { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+    .card.green .val { color: var(--green); }
+    .card.yellow .val { color: var(--yellow); }
+    .card.red .val { color: var(--red); }
+    .card.cyan .val { color: var(--accent); }
+    .card.purple .val { color: var(--purple); }
+
+    /* ── Search bar ── */
+    .search-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .search-row input, .search-row select {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.85rem;
+      padding: 8px 14px;
+    }
+    .search-row input { flex: 1; min-width: 200px; }
+    .search-row input:focus, .search-row select:focus {
+      border-color: var(--accent);
+      outline: none;
+    }
+
+    /* ── Table ── */
+    .tbl-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    th, td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; vertical-align: top; }
+    th { background: #1e1e1e; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; font-size: 0.72rem; }
+    tr:hover td { background: rgba(0,229,255,0.04); }
+    td.mono { font-family: 'Courier New', monospace; }
+
+    /* ── Badges ── */
+    .badge {
+      display: inline-block;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      padding: 2px 7px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .badge-verified  { background: rgba(0,230,118,0.15); color: var(--green);  border: 1px solid var(--green); }
+    .badge-matched   { background: rgba(0,229,255,0.12); color: var(--accent); border: 1px solid var(--accent); }
+    .badge-flagged   { background: rgba(255,234,0,0.12); color: var(--yellow); border: 1px solid var(--yellow); }
+    .badge-unmatched { background: rgba(255,23,68,0.12);  color: var(--red);    border: 1px solid var(--red); }
+    .badge-pending   { background: rgba(255,145,0,0.12);  color: var(--orange); border: 1px solid var(--orange); }
+
+    /* type badges */
+    .type-ssn        { background: rgba(224,64,251,0.12); color: var(--purple); border: 1px solid var(--purple); }
+    .type-ein        { background: rgba(0,229,255,0.1);   color: var(--accent); border: 1px solid #006070; }
+    .type-irs        { background: rgba(255,234,0,0.1);   color: var(--yellow); border: 1px solid #706000; }
+    .type-addr       { background: rgba(0,230,118,0.1);   color: var(--green);  border: 1px solid #006030; }
+    .type-entity     { background: rgba(255,145,0,0.1);   color: var(--orange); border: 1px solid #703000; }
+    .type-surveillance { background: rgba(255,23,68,0.1); color: var(--red);    border: 1px solid #700010; }
+    .type-violation  { background: rgba(255,23,68,0.15);  color: #ff6090;       border: 1px solid #900030; }
+    .type-warrant    { background: rgba(255,23,68,0.2);   color: #ff80a0;       border: 1px solid #a00040; }
+    .type-vin        { background: rgba(0,229,255,0.08);  color: #60c0ff;       border: 1px solid #003050; }
+    .type-vehicle    { background: rgba(0,229,255,0.08);  color: #60c0ff;       border: 1px solid #003050; }
+    .type-other      { background: rgba(136,136,136,0.1); color: var(--muted);  border: 1px solid #333; }
+
+    /* ── Links ── */
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Reddit hits ── */
+    .hits { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+
+    /* ── Network map ── */
+    #network-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      position: relative;
+      height: 580px;
+      overflow: hidden;
+    }
+    #network-container svg { width: 100%; height: 100%; }
+    #net-controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    #net-controls label { font-size: 0.8rem; color: var(--muted); }
+    #net-controls select, #net-controls input {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.8rem;
+      padding: 5px 10px;
+    }
+    #net-controls select:focus, #net-controls input:focus { border-color: var(--accent); outline: none; }
+    .tooltip {
+      position: absolute;
+      background: #111;
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-size: 0.78rem;
+      max-width: 260px;
+      padding: 8px 12px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s;
+      z-index: 10;
+    }
+
+    /* ── Legend ── */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .legend-dot {
+      border-radius: 50%;
+      height: 10px;
+      width: 10px;
+    }
+
+    /* ── Legal pane ── */
+    #legal-content {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      max-height: 620px;
+      overflow-y: auto;
+      padding: 24px 28px;
+      white-space: pre-wrap;
+      font-size: 0.83rem;
+      line-height: 1.7;
+    }
+    #legal-content h1, #legal-content h2, #legal-content h3 {
+      color: var(--accent);
+      margin: 18px 0 8px;
+    }
+    #legal-content strong { color: var(--yellow); }
+    #legal-content hr { border-color: var(--border); margin: 16px 0; }
+    #legal-content ul, #legal-content ol { margin-left: 22px; }
+
+    /* ── Empty state ── */
+    .empty { color: var(--muted); font-size: 0.85rem; padding: 30px; text-align: center; }
+
+    /* ── Loading spinner ── */
+    .loading { color: var(--accent); font-size: 0.85rem; padding: 20px; text-align: center; animation: pulse 1.2s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #555; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .pane { padding: 16px; }
+      header { padding: 14px 16px; }
+      .cards { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">⬡ TRUST IDENTIFIER TRACE</div>
+    <div class="sub">Ryle Family Nation · Evidence &amp; Remedy System</div>
+  </div>
+  <div class="pill" id="last-updated">Loading…</div>
+</header>
+
+<nav class="tabs" id="tab-nav">
+  <button class="active" data-tab="overview">Overview</button>
+  <button data-tab="identifiers">Identifiers</button>
+  <button data-tab="scan">Scan Results</button>
+  <button data-tab="network">Network Map</button>
+  <button data-tab="legal">Legal Notice</button>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- TAB: OVERVIEW                                                  -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="pane active" id="pane-overview">
+  <div class="cards" id="overview-cards">
+    <div class="loading">Loading data…</div>
+  </div>
+
+  <h3 style="color:var(--accent);margin-bottom:14px;letter-spacing:1px;font-size:0.85rem;text-transform:uppercase;">Identifiers by Category</h3>
+  <div id="category-breakdown" class="cards"></div>
+
+  <h3 style="color:var(--accent);margin:22px 0 14px;letter-spacing:1px;font-size:0.85rem;text-transform:uppercase;">Identifiers by Source</h3>
+  <div id="source-breakdown" style="display:flex;flex-wrap:wrap;gap:10px;"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- TAB: IDENTIFIERS                                               -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="pane" id="pane-identifiers">
+  <div class="search-row">
+    <input type="text" id="id-search" placeholder="🔍  Search identifier or source…" autocomplete="off" />
+    <select id="id-type-filter">
+      <option value="">All Categories</option>
+      <option value="SSN">SSN</option>
+      <option value="EIN">EIN</option>
+      <option value="IRS">IRS</option>
+      <option value="ADDR">Address</option>
+      <option value="ENTITY">Entity</option>
+      <option value="SURVEILLANCE">Surveillance</option>
+      <option value="VIOLATION">Violation</option>
+      <option value="WARRANT">Warrant</option>
+      <option value="VIN">VIN</option>
+      <option value="VEHICLE">Vehicle</option>
+    </select>
+  </div>
+  <div class="tbl-wrap">
+    <table id="id-table">
+      <thead><tr>
+        <th>#</th><th>Category</th><th>Identifier</th><th>Source</th>
+      </tr></thead>
+      <tbody id="id-tbody"><tr><td colspan="4" class="loading">Loading…</td></tr></tbody>
+    </table>
+  </div>
+  <div id="id-count" style="font-size:0.78rem;color:var(--muted);margin-top:10px;"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- TAB: SCAN RESULTS                                              -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="pane" id="pane-scan">
+  <div class="search-row">
+    <input type="text" id="scan-search" placeholder="🔍  Search identifier, source, or status…" autocomplete="off" />
+    <select id="scan-status-filter">
+      <option value="">All Statuses</option>
+      <option value="verified">Verified</option>
+      <option value="matched">Matched</option>
+      <option value="flagged">Flagged</option>
+      <option value="unmatched">Unmatched</option>
+    </select>
+    <select id="scan-src-filter">
+      <option value="">All Sources</option>
+    </select>
+  </div>
+  <div class="tbl-wrap">
+    <table id="scan-table">
+      <thead><tr>
+        <th>Identifier</th><th>Status</th><th>Source</th><th>Timestamp</th><th>Overlay</th><th>Reddit Hits</th>
+      </tr></thead>
+      <tbody id="scan-tbody"><tr><td colspan="6" class="loading">Loading…</td></tr></tbody>
+    </table>
+  </div>
+  <div id="scan-count" style="font-size:0.78rem;color:var(--muted);margin-top:10px;"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- TAB: NETWORK MAP                                               -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="pane" id="pane-network">
+  <div id="net-controls">
+    <label>Filter category:</label>
+    <select id="net-cat-filter">
+      <option value="">All</option>
+      <option value="SSN">SSN</option>
+      <option value="EIN">EIN</option>
+      <option value="IRS">IRS</option>
+      <option value="ADDR">Address</option>
+      <option value="ENTITY">Entity</option>
+      <option value="SURVEILLANCE">Surveillance</option>
+      <option value="VIOLATION">Violation</option>
+      <option value="WARRANT">Warrant</option>
+      <option value="VIN">VIN</option>
+      <option value="VEHICLE">Vehicle</option>
+    </select>
+    <label>Search node:</label>
+    <input type="text" id="net-search" placeholder="identifier or source…" style="width:200px;" />
+    <label style="margin-left:10px;">
+      <input type="checkbox" id="net-labels" checked /> Labels
+    </label>
+  </div>
+  <div class="legend" id="net-legend"></div>
+  <div id="network-container">
+    <div class="tooltip" id="tooltip"></div>
+    <svg id="net-svg"></svg>
+  </div>
+  <p style="font-size:0.75rem;color:var(--muted);margin-top:8px;">
+    Drag nodes · Scroll to zoom · Click a node to highlight connections
+  </p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- TAB: LEGAL NOTICE                                              -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="pane" id="pane-legal">
+  <div style="margin-bottom:14px;display:flex;align-items:center;gap:14px;">
+    <span style="color:var(--accent);font-size:0.85rem;text-transform:uppercase;letter-spacing:1px;">
+      📄 INCRIMINATION NATION — Notice of Claims
+    </span>
+    <a href="legal-documents/INCRIMINATION-NATION-Intent-to-Sue.md" target="_blank" style="font-size:0.78rem;">
+      Open raw ↗
+    </a>
+  </div>
+  <div id="legal-content"><span class="loading">Loading legal document…</span></div>
+</div>
+
+<!-- ── D3.js ── -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<script>
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║  DATA LAYER                                                  ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+
+const DATA = { identifiers: [], scanResults: [], legalMd: '' };
+
+function categoryOf(id) {
+  const u = id.toUpperCase();
+  if (u.startsWith('SSN'))          return 'SSN';
+  if (u.startsWith('EIN'))          return 'EIN';
+  if (u.startsWith('IRS'))          return 'IRS';
+  if (u.startsWith('ADDR'))         return 'ADDR';
+  if (u.startsWith('ENTITY'))       return 'ENTITY';
+  if (u.startsWith('SURVEILLANCE')) return 'SURVEILLANCE';
+  if (u.startsWith('VIOLATION'))    return 'VIOLATION';
+  if (u.startsWith('WARRANT'))      return 'WARRANT';
+  if (u.startsWith('VIN'))          return 'VIN';
+  if (u.startsWith('VEHICLE'))      return 'VEHICLE';
+  if (u.startsWith('BIRTH') || u.startsWith('LACOUNTY')) return 'REGISTRY';
+  if (u.startsWith('LN-') || u.startsWith('LEXID') || u.startsWith('LN_')) return 'LEXISNEXIS';
+  if (u.startsWith('PHONE'))        return 'PHONE';
+  if (u.startsWith('EMAIL'))        return 'EMAIL';
+  return 'OTHER';
+}
+
+function typeBadge(id) {
+  const cat = categoryOf(id);
+  const map = {
+    SSN:'ssn', EIN:'ein', IRS:'irs', ADDR:'addr', ENTITY:'entity',
+    SURVEILLANCE:'surveillance', VIOLATION:'violation', WARRANT:'warrant',
+    VIN:'vin', VEHICLE:'vehicle'
+  };
+  const cls = map[cat] || 'other';
+  return `<span class="badge type-${cls}">${cat}</span>`;
+}
+
+function statusBadge(s) {
+  const cls = ['verified','matched','flagged','unmatched'].includes(s) ? s : 'pending';
+  return `<span class="badge badge-${cls}">${s || '—'}</span>`;
+}
+
+function escHtml(s) {
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+// Merge both scan_results files, deduplicate by identifier
+async function loadAll() {
+  const [idRes, sr1Res, sr2Res, legalRes] = await Promise.allSettled([
+    fetch('identifiers.json').then(r => r.json()),
+    fetch('scan_results.json').then(r => r.json()),
+    fetch('output/scan_results.json').then(r => r.json()),
+    fetch('legal-documents/INCRIMINATION-NATION-Intent-to-Sue.md').then(r => r.text())
+  ]);
+
+  if (idRes.status === 'fulfilled')    DATA.identifiers  = idRes.value;
+  if (legalRes.status === 'fulfilled') DATA.legalMd      = legalRes.value;
+
+  const seen = new Set();
+  const merge = arr => {
+    if (!Array.isArray(arr)) return;
+    arr.forEach(item => {
+      if (!seen.has(item.identifier)) {
+        seen.add(item.identifier);
+        DATA.scanResults.push(item);
+      }
+    });
+  };
+  if (sr1Res.status === 'fulfilled') merge(sr1Res.value);
+  if (sr2Res.status === 'fulfilled') merge(sr2Res.value);
+
+  // Update header timestamp
+  const now = new Date().toISOString().replace('T',' ').slice(0,19) + ' UTC';
+  document.getElementById('last-updated').textContent = 'Loaded ' + now;
+}
+
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║  TAB SWITCHING                                               ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+
+let networkBuilt = false;
+
+document.querySelectorAll('#tab-nav button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#tab-nav button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    const id = 'pane-' + btn.dataset.tab;
+    document.getElementById(id).classList.add('active');
+    if (btn.dataset.tab === 'network' && !networkBuilt) {
+      buildNetwork();
+      networkBuilt = true;
+    }
+  });
+});
+
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║  OVERVIEW TAB                                                ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+
+function buildOverview() {
+  const ids  = DATA.identifiers;
+  const scan = DATA.scanResults;
+
+  // Status counts from scan
+  let verified=0, matched=0, flagged=0, unmatched=0;
+  scan.forEach(s => {
+    if (s.status==='verified')  verified++;
+    else if (s.status==='matched') matched++;
+    else if (s.status==='flagged') flagged++;
+    else unmatched++;
+  });
+
+  document.getElementById('overview-cards').innerHTML = `
+    <div class="card cyan"><div class="val">${ids.length}</div><div class="lbl">Total Identifiers</div></div>
+    <div class="card cyan"><div class="val">${scan.length}</div><div class="lbl">Scan Records</div></div>
+    <div class="card green"><div class="val">${verified}</div><div class="lbl">Verified</div></div>
+    <div class="card cyan"><div class="val">${matched}</div><div class="lbl">Matched</div></div>
+    <div class="card yellow"><div class="val">${flagged}</div><div class="lbl">Flagged</div></div>
+    <div class="card red"><div class="val">${unmatched}</div><div class="lbl">Unmatched</div></div>
+  `;
+
+  // Category breakdown
+  const catMap = {};
+  ids.forEach(i => {
+    const c = categoryOf(i.identifier);
+    catMap[c] = (catMap[c]||0) + 1;
+  });
+  const catColors = { SSN:'purple', EIN:'cyan', IRS:'yellow', ADDR:'green', ENTITY:'', SURVEILLANCE:'red' };
+  document.getElementById('category-breakdown').innerHTML =
+    Object.entries(catMap).sort((a,b) => b[1]-a[1]).map(([c,n]) =>
+      `<div class="card ${catColors[c]||''}"><div class="val">${n}</div><div class="lbl">${c}</div></div>`
+    ).join('');
+
+  // Source breakdown
+  const srcMap = {};
+  ids.forEach(i => { srcMap[i.source] = (srcMap[i.source]||0) + 1; });
+  document.getElementById('source-breakdown').innerHTML =
+    Object.entries(srcMap).sort((a,b) => b[1]-a[1]).map(([s,n]) =>
+      `<span class="badge type-other" style="font-size:0.8rem;padding:5px 12px;">${escHtml(s)} <strong style="color:var(--accent)">${n}</strong></span>`
+    ).join('');
+}
+
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║  IDENTIFIERS TAB                                             ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+
+function renderIdTable(data) {
+  const tbody = document.getElementById('id-tbody');
+  if (!data.length) {
+    tbody.innerHTML = '<tr><td colspan="4" class="empty">No identifiers match the filter.</td></tr>';
+    document.getElementById('id-count').textContent = '';
+    return;
+  }
+  tbody.innerHTML = data.map((item, i) => `
+    <tr>
+      <td style="color:var(--muted);width:40px;">${i+1}</td>
+      <td>${typeBadge(item.identifier)}</td>
+      <td class="mono">${escHtml(item.identifier)}</td>
+      <td style="color:var(--muted)">${escHtml(item.source)}</td>
+    </tr>
+  `).join('');
+  document.getElementById('id-count').textContent =
+    `Showing ${data.length} of ${DATA.identifiers.length} identifiers`;
+}
+
+function filterIds() {
+  const q    = document.getElementById('id-search').value.toLowerCase();
+  const type = document.getElementById('id-type-filter').value.toUpperCase();
+  let data = DATA.identifiers;
+  if (q)    data = data.filter(i => i.identifier.toLowerCase().includes(q) || i.source.toLowerCase().includes(q));
+  if (type) data = data.filter(i => categoryOf(i.identifier) === type);
+  renderIdTable(data);
+}
+
+function buildIdentifiers() {
+  renderIdTable(DATA.identifiers);
+  document.getElementById('id-search').addEventListener('input', filterIds);
+  document.getElementById('id-type-filter').addEventListener('change', filterIds);
+}
+
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║  SCAN RESULTS TAB                                            ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+
+function renderScanTable(data) {
+  const tbody = document.getElementById('scan-tbody');
+  if (!data.length) {
+    tbody.innerHTML = '<tr><td colspan="6" class="empty">No results match the filter.</td></tr>';
+    document.getElementById('scan-count').textContent = '';
+    return;
+  }
+  tbody.innerHTML = data.map(item => {
+    const hits = Array.isArray(item.reddit_hits) && item.reddit_hits.length
+      ? item.reddit_hits.map(h => `<div class="hits">• ${escHtml(h)}</div>`).join('')
+      : '<span style="color:var(--muted);font-size:0.75rem;">—</span>';
+    const overlay = item.overlay
+      ? `<a href="${escHtml(item.overlay)}" target="_blank">View ↗</a>`
+      : '—';
+    return `<tr>
+      <td class="mono">${escHtml(item.identifier)}</td>
+      <td>${statusBadge(item.status)}</td>
+      <td style="color:var(--muted)">${escHtml(item.source||'—')}</td>
+      <td style="color:var(--muted);white-space:nowrap">${escHtml(item.timestamp||'—')}</td>
+      <td>${overlay}</td>
+      <td>${hits}</td>
+    </tr>`;
+  }).join('');
+  document.getElementById('scan-count').textContent =
+    `Showing ${data.length} of ${DATA.scanResults.length} records`;
+}
+
+function filterScan() {
+  const q      = document.getElementById('scan-search').value.toLowerCase();
+  const status = document.getElementById('scan-status-filter').value;
+  const src    = document.getElementById('scan-src-filter').value;
+  let data = DATA.scanResults;
+  if (q)      data = data.filter(i =>
+    i.identifier.toLowerCase().includes(q) ||
+    (i.source||'').toLowerCase().includes(q) ||
+    (i.status||'').toLowerCase().includes(q));
+  if (status) data = data.filter(i => i.status === status);
+  if (src)    data = data.filter(i => i.source === src);
+  renderScanTable(data);
+}
+
+function buildScan() {
+  // Populate source filter
+  const sources = [...new Set(DATA.scanResults.map(i => i.source).filter(Boolean))].sort();
+  const sel = document.getElementById('scan-src-filter');
+  sources.forEach(s => {
+    const o = document.createElement('option');
+    o.value = s; o.textContent = s;
+    sel.appendChild(o);
+  });
+  renderScanTable(DATA.scanResults);
+  document.getElementById('scan-search').addEventListener('input', filterScan);
+  document.getElementById('scan-status-filter').addEventListener('change', filterScan);
+  document.getElementById('scan-src-filter').addEventListener('change', filterScan);
+}
+
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║  NETWORK MAP                                                 ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+
+const NODE_COLORS = {
+  SSN:'#e040fb', EIN:'#00e5ff', IRS:'#ffea00', ADDR:'#00e676',
+  ENTITY:'#ff9100', SURVEILLANCE:'#ff1744', VIOLATION:'#ff6090',
+  WARRANT:'#ff80a0', VIN:'#60c0ff', VEHICLE:'#60c0ff',
+  REGISTRY:'#aaaaff', LEXISNEXIS:'#ff6666', PHONE:'#66ffaa',
+  EMAIL:'#ffbb44', OTHER:'#888888',
+  SOURCE:'#444444'
+};
+
+let simRef = null;
+
+function buildNetwork() {
+  if (typeof d3 === 'undefined') {
+    document.getElementById('network-container').innerHTML =
+      '<div class="empty" style="padding-top:80px;">D3.js unavailable — network map requires internet access.</div>';
+    return;
+  }
+
+  const container = document.getElementById('network-container');
+  const W = container.clientWidth  || 900;
+  const H = container.clientHeight || 580;
+
+  // Build nodes + links from identifiers
+  const sourceNodes = {};
+  const identifierNodes = DATA.identifiers.map(i => ({
+    id: i.identifier,
+    kind: 'identifier',
+    cat: categoryOf(i.identifier),
+    source: i.source
+  }));
+
+  DATA.identifiers.forEach(i => {
+    if (!sourceNodes[i.source]) {
+      sourceNodes[i.source] = { id: i.source, kind: 'source', cat: 'SOURCE' };
+    }
+  });
+
+  const nodes = [...identifierNodes, ...Object.values(sourceNodes)];
+  const links = DATA.identifiers.map(i => ({
+    source: i.identifier,
+    target: i.source
+  }));
+
+  function applyFilter(catFilter) {
+    let filteredIds = identifierNodes;
+    if (catFilter) filteredIds = identifierNodes.filter(n => n.cat === catFilter);
+    const usedSources = new Set(
+      DATA.identifiers.filter(i => !catFilter || categoryOf(i.identifier) === catFilter).map(i => i.source)
+    );
+    const filteredSrcs = Object.values(sourceNodes).filter(n => usedSources.has(n.id));
+    const filteredLinks = DATA.identifiers
+      .filter(i => !catFilter || categoryOf(i.identifier) === catFilter)
+      .map(i => ({ source: i.identifier, target: i.source }));
+    return { nodes: [...filteredIds, ...filteredSrcs], links: filteredLinks };
+  }
+
+  function render(catFilter, searchTerm) {
+    const svg = d3.select('#net-svg');
+    svg.selectAll('*').remove();
+    if (simRef) simRef.stop();
+
+    const { nodes: fNodes, links: fLinks } = applyFilter(catFilter);
+
+    // highlight set
+    const hlSet = searchTerm
+      ? new Set(fNodes.filter(n => n.id.toLowerCase().includes(searchTerm)).map(n => n.id))
+      : null;
+
+    const g = svg.append('g');
+
+    const zoom = d3.zoom()
+      .scaleExtent([0.15, 4])
+      .on('zoom', e => g.attr('transform', e.transform));
+    svg.call(zoom);
+
+    const showLabels = document.getElementById('net-labels').checked;
+
+    simRef = d3.forceSimulation(fNodes)
+      .force('link',   d3.forceLink(fLinks).id(d => d.id).distance(d =>
+        d.target.kind === 'source' ? 110 : 80
+      ))
+      .force('charge', d3.forceManyBody().strength(d => d.kind === 'source' ? -400 : -200))
+      .force('center', d3.forceCenter(W/2, H/2))
+      .force('collision', d3.forceCollide(22));
+
+    const link = g.append('g').selectAll('line')
+      .data(fLinks).join('line')
+      .attr('stroke', d => {
+        const src = fNodes.find(n => n.id === (d.source.id||d.source));
+        if (!src) return '#333';
+        return hlSet && hlSet.has(src.id) ? NODE_COLORS[src.cat] : '#2a2a2a';
+      })
+      .attr('stroke-opacity', 0.7)
+      .attr('stroke-width', 1.2);
+
+    const node = g.append('g').selectAll('circle')
+      .data(fNodes).join('circle')
+      .attr('r', d => d.kind === 'source' ? 14 : 8)
+      .attr('fill', d => NODE_COLORS[d.cat] || '#888')
+      .attr('opacity', d => hlSet ? (hlSet.has(d.id) ? 1 : 0.25) : 0.85)
+      .attr('stroke', d => hlSet && hlSet.has(d.id) ? '#fff' : 'none')
+      .attr('stroke-width', 2)
+      .call(d3.drag()
+        .on('start', (event, d) => { if (!event.active) simRef.alphaTarget(0.3).restart(); d.fx=d.x; d.fy=d.y; })
+        .on('drag',  (event, d) => { d.fx=event.x; d.fy=event.y; })
+        .on('end',   (event, d) => { if (!event.active) simRef.alphaTarget(0); d.fx=null; d.fy=null; })
+      )
+      .on('mouseover', (event, d) => {
+        const tip = document.getElementById('tooltip');
+        const rect = container.getBoundingClientRect();
+        tip.innerHTML = `<strong>${escHtml(d.id)}</strong><br/>
+          Type: ${d.kind === 'source' ? 'Data Source' : escHtml(d.cat)}<br/>
+          ${d.kind==='identifier' ? 'Source: ' + escHtml(d.source) : ''}`;
+        tip.style.left = (event.clientX - rect.left + 12) + 'px';
+        tip.style.top  = (event.clientY - rect.top  - 10) + 'px';
+        tip.style.opacity = '1';
+      })
+      .on('mousemove', (event) => {
+        const tip = document.getElementById('tooltip');
+        const rect = container.getBoundingClientRect();
+        tip.style.left = (event.clientX - rect.left + 12) + 'px';
+        tip.style.top  = (event.clientY - rect.top  - 10) + 'px';
+      })
+      .on('mouseout', () => {
+        document.getElementById('tooltip').style.opacity = '0';
+      })
+      .on('click', (event, d) => {
+        // highlight connected nodes
+        const connected = new Set([d.id]);
+        fLinks.forEach(l => {
+          const s = l.source.id||l.source, t = l.target.id||l.target;
+          if (s === d.id) connected.add(t);
+          if (t === d.id) connected.add(s);
+        });
+        node.attr('opacity', n => connected.has(n.id) ? 1 : 0.15);
+        link.attr('stroke-opacity', l => {
+          const s = l.source.id||l.source, t = l.target.id||l.target;
+          return connected.has(s) && connected.has(t) ? 0.9 : 0.05;
+        });
+      });
+
+    // Labels
+    const label = g.append('g').selectAll('text')
+      .data(fNodes).join('text')
+      .text(d => d.kind === 'source' ? d.id : (d.id.length > 20 ? d.id.slice(0,20)+'…' : d.id))
+      .attr('fill', d => d.kind === 'source' ? '#aaa' : '#666')
+      .attr('font-size', d => d.kind === 'source' ? '11px' : '9px')
+      .attr('display', showLabels ? null : 'none')
+      .style('pointer-events', 'none');
+
+    simRef.on('tick', () => {
+      link.attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+          .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+      node.attr('cx', d => d.x).attr('cy', d => d.y);
+      label.attr('x', d => d.x + (d.kind==='source'?15:9)).attr('y', d => d.y + 4);
+    });
+  }
+
+  // Build legend
+  const cats = [...new Set(DATA.identifiers.map(i => categoryOf(i.identifier)))];
+  document.getElementById('net-legend').innerHTML =
+    cats.map(c => `<div class="legend-item">
+      <div class="legend-dot" style="background:${NODE_COLORS[c]||'#888'}"></div>${c}
+    </div>`).join('') +
+    `<div class="legend-item"><div class="legend-dot" style="background:#444"></div>Data Source</div>`;
+
+  // Initial render
+  render('', '');
+
+  // Controls
+  document.getElementById('net-cat-filter').addEventListener('change', e =>
+    render(e.target.value.toUpperCase(), document.getElementById('net-search').value.toLowerCase()));
+  document.getElementById('net-search').addEventListener('input', e =>
+    render(document.getElementById('net-cat-filter').value.toUpperCase(), e.target.value.toLowerCase()));
+  document.getElementById('net-labels').addEventListener('change', () =>
+    render(document.getElementById('net-cat-filter').value.toUpperCase(), document.getElementById('net-search').value.toLowerCase()));
+}
+
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║  LEGAL TAB                                                   ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+
+function buildLegal() {
+  const el = document.getElementById('legal-content');
+  if (!DATA.legalMd) {
+    el.innerHTML = `<span class="empty">Legal document unavailable. <a href="legal-documents/INCRIMINATION-NATION-Intent-to-Sue.md">Open directly ↗</a></span>`;
+    return;
+  }
+  // Simple markdown → HTML renderer (headings, bold, lists, hr)
+  let html = escHtml(DATA.legalMd)
+    .replace(/^###### (.+)$/gm, '<h6>$1</h6>')
+    .replace(/^##### (.+)$/gm,  '<h5>$1</h5>')
+    .replace(/^#### (.+)$/gm,   '<h4>$1</h4>')
+    .replace(/^### (.+)$/gm,    '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm,     '<h2>$1</h2>')
+    .replace(/^# (.+)$/gm,      '<h1>$1</h1>')
+    .replace(/\*\*(.+?)\*\*/g,  '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g,      '<em>$1</em>')
+    .replace(/^---+$/gm,        '<hr />')
+    .replace(/^- (.+)$/gm,      '<li>$1</li>')
+    .replace(/(<li>[\s\S]*?<\/li>)/g, '<ul>$1</ul>')
+    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank">$1 ↗</a>');
+  el.innerHTML = html;
+}
+
+/* ╔══════════════════════════════════════════════════════════════╗
+   ║  BOOTSTRAP                                                   ║
+   ╚══════════════════════════════════════════════════════════════╝ */
+
+(async () => {
+  try {
+    await loadAll();
+  } catch (e) {
+    console.warn('Data load error', e);
+  }
+  buildOverview();
+  buildIdentifiers();
+  buildScan();
+  buildLegal();
+})();
+</script>
+</body>
+</html>

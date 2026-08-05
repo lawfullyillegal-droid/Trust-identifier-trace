@@ -1,179 +1,310 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Trust Scan Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trust Scan Dashboard — Travis Ryle</title>
   <style>
-    body { font-family: Arial; background: #111; color: #eee; padding: 20px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-    th, td { border: 1px solid #444; padding: 8px; text-align: left; }
-    th { background: #222; }
-    .verified { color: #0f0; }
-    .flagged { color: #ff0; }
-    .unmatched { color: #f00; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:      #08090d;
+      --surface: #10141c;
+      --s2:      #171d2a;
+      --border:  #1f2a3a;
+      --text:    #e2e8f0;
+      --muted:   #64748b;
+      --cyan:    #00d4ff;
+      --green:   #00ff88;
+      --red:     #ff3b6b;
+      --yellow:  #f5c518;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    /* TOP NAV */
+    .topnav {
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      padding: .75rem 1.5rem; display: flex; align-items: center; gap: 1rem;
+      position: sticky; top: 0; z-index: 50;
+    }
+    .topnav .logo { font-weight: 800; font-size: .95rem; color: var(--cyan); text-decoration: none; }
+    .topnav nav { margin-left: auto; display: flex; gap: 1rem; }
+    .topnav nav a { font-size: .8rem; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .topnav nav a:hover { color: var(--text); }
+
+    /* HEADER */
+    .page-header {
+      background: linear-gradient(160deg, #0d0f1a 0%, #091520 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem 1.5rem 1.5rem;
+    }
+    .page-header h1 { font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: .3rem; }
+    .page-header p { font-size: .85rem; color: var(--muted); }
+
+    /* CONTAINER */
+    .container { max-width: 1280px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* SUMMARY PILLS */
+    .summary-row { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 2rem; }
+    .s-pill {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; padding: .6rem 1.1rem; font-size: .85rem;
+    }
+    .s-pill .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .dot-green  { background: var(--green);  box-shadow: 0 0 6px var(--green); }
+    .dot-yellow { background: var(--yellow); box-shadow: 0 0 6px var(--yellow); }
+    .dot-red    { background: var(--red);    box-shadow: 0 0 6px var(--red); }
+    .s-pill .count { font-weight: 800; font-size: 1.1rem; color: var(--text); }
+    .s-pill .label { color: var(--muted); }
+
+    /* SEARCH */
+    .search-wrap { position: relative; margin-bottom: 1.25rem; }
+    .search-wrap .icon { position: absolute; left: .9rem; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: .9rem; pointer-events: none; }
+    #searchBar {
+      width: 100%; padding: .7rem 1rem .7rem 2.4rem;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+      color: var(--text); font-size: .9rem; outline: none;
+      transition: border-color .2s;
+    }
+    #searchBar:focus { border-color: var(--cyan); }
+    #searchBar::placeholder { color: var(--muted); }
+
+    /* TABLE */
+    .table-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; }
+    thead th {
+      background: var(--s2); padding: .75rem 1rem;
+      text-align: left; font-size: .7rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+      white-space: nowrap;
+    }
+    tbody tr { border-top: 1px solid var(--border); transition: background .15s; }
+    tbody tr:hover { background: var(--surface); }
+    tbody td { padding: .75rem 1rem; font-size: .85rem; }
+    .id-cell { font-family: monospace; font-size: .78rem; color: var(--cyan); }
+    .status-badge {
+      display: inline-flex; align-items: center; gap: .35rem;
+      font-size: .72rem; font-weight: 700; letter-spacing: .06em;
+      padding: .2rem .6rem; border-radius: 999px; text-transform: uppercase;
+    }
+    .status-verified { background: rgba(0,255,136,.12); color: var(--green); border: 1px solid rgba(0,255,136,.3); }
+    .status-flagged  { background: rgba(245,197,24,.12); color: var(--yellow); border: 1px solid rgba(245,197,24,.3); }
+    .status-unmatched{ background: rgba(255,59,107,.12); color: var(--red);  border: 1px solid rgba(255,59,107,.3); }
+    .overlay-link { color: var(--cyan); font-size: .8rem; text-decoration: none; }
+    .overlay-link:hover { text-decoration: underline; }
+    .ts-cell { color: var(--muted); font-size: .78rem; white-space: nowrap; }
+
+    /* TRACE MAP */
+    .trace-section { margin-top: 2.5rem; }
+    .section-head {
+      font-size: .68rem; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .section-head::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    #traceMap {
+      width: 100%; height: 520px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden;
+    }
+    .map-legend { display: flex; gap: 1.5rem; margin-top: .75rem; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: .4rem; font-size: .78rem; color: var(--muted); }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+    /* BACK LINK */
+    .back-link { display: inline-flex; align-items: center; gap: .4rem; color: var(--muted); font-size: .82rem; text-decoration: none; margin-bottom: 1.5rem; transition: color .2s; }
+    .back-link:hover { color: var(--cyan); }
+
+    /* NO DATA */
+    .no-data { padding: 2rem; text-align: center; color: var(--muted); font-size: .9rem; }
   </style>
 </head>
 <body>
-  <h1>Trust Scan Dashboard</h1>
 
-  <input type="text" id="searchBar" placeholder="🔍 Search identifiers, sources, overlays..." style="width:100%; padding:10px; font-size:16px; margin-bottom:20px;">
-  <div id="summary"></div>
+<nav class="topnav">
+  <a class="logo" href="index.html">&#9646; Ryle Trust</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="investigation_dashboard.html">Investigation</a>
+    <a href="connections_dashboard.html">Connections</a>
+    <a href="campaign_hub.html">Campaign</a>
+  </nav>
+</nav>
 
-  <table id="results">
-    <tr><th>Identifier</th><th>Status</th><th>Source</th><th>Timestamp</th><th>Overlay</th></tr>
-  </table>
+<div class="page-header">
+  <h1>&#128204; Trust Scan Dashboard</h1>
+  <p>Live identifier verification status, source registry links, and evidentiary overlay files.</p>
+</div>
 
-  <h2 style="margin-top:40px;">🧠 Visual Trace Map</h2>
-  <div id="traceMap" style="width:100%; height:500px; background:#222; border:1px solid #444;"></div>
+<div class="container">
+  <a class="back-link" href="index.html">&#8592; Back to Command Center</a>
 
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script>
-    fetch('output/scan_results.json')
-      .then(res => res.json())
-      .then(data => {
-        const table = document.getElementById('results');
-        const summary = document.getElementById('summary');
-        const searchBar = document.getElementById('searchBar');
+  <!-- SUMMARY -->
+  <div class="summary-row" id="summary">
+    <div class="s-pill"><div class="dot dot-green"></div><div class="count" id="cnt-v">0</div><div class="label">Verified</div></div>
+    <div class="s-pill"><div class="dot dot-yellow"></div><div class="count" id="cnt-f">0</div><div class="label">Flagged</div></div>
+    <div class="s-pill"><div class="dot dot-red"></div><div class="count" id="cnt-u">0</div><div class="label">Unmatched</div></div>
+  </div>
 
-        let verified = 0, flagged = 0, unmatched = 0;
+  <!-- SEARCH -->
+  <div class="search-wrap">
+    <span class="icon">&#128269;</span>
+    <input type="text" id="searchBar" placeholder="Search identifiers, sources, overlays...">
+  </div>
 
-        function renderTable(filteredData) {
-          table.innerHTML = '<tr><th>Identifier</th><th>Status</th><th>Source</th><th>Timestamp</th><th>Overlay</th></tr>';
-          filteredData.forEach(item => {
-            if (item.status === "verified") verified++;
-            else if (item.status === "flagged") flagged++;
-            else unmatched++;
+  <!-- TABLE -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Identifier</th>
+          <th>Status</th>
+          <th>Source</th>
+          <th>Timestamp</th>
+          <th>Overlay</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <tr><td colspan="5" class="no-data">Loading scan results&hellip;</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-            const row = document.createElement('tr');
-            row.innerHTML = `
-              <td>${item.identifier}</td>
-              <td class="${item.status}">${item.status}</td>
-              <td>${item.source}</td>
-              <td>${item.timestamp}</td>
-              <td><a href="${item.overlay}" style="color:#0ff">View Overlay</a></td>
-            `;
-            table.appendChild(row);
-          });
+  <!-- TRACE MAP -->
+  <div class="trace-section">
+    <div class="section-head">&#129504; Visual Identifier Trace Map</div>
+    <div id="traceMap"></div>
+    <div class="map-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#00ff88"></div>Identifier</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#00d4ff"></div>Registry</div>
+    </div>
+  </div>
+</div>
 
-          summary.innerHTML = `
-            <p>✅ Verified: ${verified}</p>
-            <p>⚠️ Flagged: ${flagged}</p>
-            <p>❌ Unmatched: ${unmatched}</p>
-          `;
-        }
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+  // ── TABLE ─────────────────────────────────────────
+  let allData = [];
 
-        renderTable(data);
+  function statusBadge(s) {
+    const cls = s === 'verified' ? 'status-verified' : s === 'flagged' ? 'status-flagged' : 'status-unmatched';
+    const dot = s === 'verified' ? '●' : s === 'flagged' ? '◆' : '✕';
+    return `<span class="status-badge ${cls}">${dot} ${s}</span>`;
+  }
 
-        searchBar.addEventListener('input', () => {
-          const query = searchBar.value.toLowerCase();
-          const filtered = data.filter(item =>
-            item.identifier.toLowerCase().includes(query) ||
-            item.source.toLowerCase().includes(query) ||
-            item.overlay.toLowerCase().includes(query)
-          );
-          verified = flagged = unmatched = 0;
-          renderTable(filtered);
-        });
-      })
-      .catch(err => {
-        document.getElementById('summary').innerHTML = "<p style='color:red'>Failed to load scan results.</p>";
-      });
-
-    const nodes = [
-      { id: "CORP-NUM-C2362627", group: "Identifier" },
-      { id: "OpenCorporates", group: "Registry" },
-      { id: "LN-NAME-RYLE-TRAVIS-STEVEN", group: "Identifier" },
-      { id: "LexisNexis", group: "Registry" },
-      { id: "PROP-SS-GUARANTEE-104-0190-003558", group: "Identifier" },
-      { id: "IRS Form 1099-A", group: "Registry" },
-      { id: "IRS-TRACK-108541264370", group: "Identifier" },
-      { id: "IRS Non-Filing", group: "Registry" },
-      { id: "EIN-92-6319308", group: "Identifier" },
-      { id: "EIN Registry", group: "Registry" }
-    ];
-
-    const links = [
-      { source: "CORP-NUM-C2362627", target: "OpenCorporates" },
-      { source: "LN-NAME-RYLE-TRAVIS-STEVEN", target: "LexisNexis" },
-      { source: "PROP-SS-GUARANTEE-104-0190-003558", target: "IRS Form 1099-A" },
-      { source: "IRS-TRACK-108541264370", target: "IRS Non-Filing" },
-      { source: "EIN-92-6319308", target: "EIN Registry" }
-    ];
-
-    // Check if d3 is available
-    if (typeof d3 === 'undefined') {
-      document.getElementById("traceMap").innerHTML = 
-        '<div style="padding: 20px; text-align: center; color: #888;">Visual trace map requires external libraries. Map functionality disabled in offline mode.</div>';
+  function renderTable(data) {
+    const tbody = document.getElementById('tableBody');
+    let v = 0, f = 0, u = 0;
+    if (!data.length) {
+      tbody.innerHTML = '<tr><td colspan="5" class="no-data">No results match your search.</td></tr>';
       return;
     }
+    tbody.innerHTML = data.map(item => {
+      if (item.status === 'verified') v++;
+      else if (item.status === 'flagged') f++;
+      else u++;
+      return `<tr>
+        <td class="id-cell">${item.identifier}</td>
+        <td>${statusBadge(item.status)}</td>
+        <td>${item.source}</td>
+        <td class="ts-cell">${item.timestamp}</td>
+        <td><a class="overlay-link" href="${item.overlay}">&#128196; View Overlay</a></td>
+      </tr>`;
+    }).join('');
+    document.getElementById('cnt-v').textContent = v;
+    document.getElementById('cnt-f').textContent = f;
+    document.getElementById('cnt-u').textContent = u;
+  }
 
-    const svg = d3.select("#traceMap").append("svg")
-      .attr("width", "100%")
-      .attr("height", 500);
-
-    const width = document.getElementById("traceMap").clientWidth;
-    const height = 500;
-
-    const simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links).id(d => d.id).distance(120))
-      .force("charge", d3.forceManyBody().strength(-300))
-      .force("center", d3.forceCenter(width / 2, height / 2));
-
-    const link = svg.append("g")
-      .selectAll("line")
-      .data(links)
-      .join("line")
-      .attr("stroke", "#888")
-      .attr("stroke-width", 2);
-
-    const node = svg.append("g")
-      .selectAll("circle")
-      .data(nodes)
-      .join("circle")
-      .attr("r", 10)
-      .attr("fill", d => d.group === "Registry" ? "#0ff" : "#0f0")
-      .call(drag(simulation));
-
-    const label = svg.append("g")
-      .selectAll("text")
-      .data(nodes)
-      .join("text")
-      .text(d => d.id)
-      .attr("fill", "#eee")
-      .attr("font-size", "12px");
-
-    function drag(simulation) {
-      function dragstarted(event) {
-        if (!event.active) simulation.alphaTarget(0.3).restart();
-        event.subject.fx = event.subject.x;
-        event.subject.fy = event.subject.y;
-      }
-      function dragged(event) {
-        event.subject.fx = event.x;
-        event.subject.fy = event.y;
-      }
-      function dragended(event) {
-        if (!event.active) simulation.alphaTarget(0);
-        event.subject.fx = null;
-        event.subject.fy = null;
-      }
-      return d3.drag().on("start", dragstarted).on("drag", dragged).on("end", dragended);
-    }
-
-    simulation.on("tick", () => {
-      link
-        .attr("x1", d => d.source.x)
-        .attr("y1", d => d.source.y)
-        .attr("x2", d => d.target.x)
-        .attr("y2", d => d.target.y);
-
-      node
-        .attr("cx", d => d.x)
-        .attr("cy", d => d.y);
-
-      label
-        .attr("x", d => d.x + 12)
-        .attr("y", d => d.y + 4);
+  fetch('output/scan_results.json')
+    .then(r => r.json())
+    .then(data => {
+      allData = data;
+      renderTable(data);
+      document.getElementById('searchBar').addEventListener('input', function() {
+        const q = this.value.toLowerCase();
+        renderTable(q ? data.filter(i =>
+          i.identifier.toLowerCase().includes(q) ||
+          i.source.toLowerCase().includes(q) ||
+          (i.overlay || '').toLowerCase().includes(q)
+        ) : data);
+      });
+    })
+    .catch(() => {
+      document.getElementById('tableBody').innerHTML =
+        '<tr><td colspan="5" class="no-data" style="color:#ff3b6b">Failed to load scan results. Ensure output/scan_results.json exists.</td></tr>';
     });
-  </script>
+
+  // ── D3 TRACE MAP ──────────────────────────────────
+  const nodes = [
+    { id: "CORP-NUM-C2362627",            group: "Identifier" },
+    { id: "OpenCorporates",               group: "Registry"   },
+    { id: "LN-NAME-RYLE-TRAVIS-STEVEN",   group: "Identifier" },
+    { id: "LexisNexis",                   group: "Registry"   },
+    { id: "PROP-SS-GUARANTEE",            group: "Identifier" },
+    { id: "IRS Form 1099-A",              group: "Registry"   },
+    { id: "IRS-TRACK-108541264370",       group: "Identifier" },
+    { id: "IRS Non-Filing",               group: "Registry"   },
+    { id: "EIN-92-6319308",               group: "Identifier" },
+    { id: "EIN Registry",                 group: "Registry"   }
+  ];
+  const links = [
+    { source: "CORP-NUM-C2362627",          target: "OpenCorporates"  },
+    { source: "LN-NAME-RYLE-TRAVIS-STEVEN", target: "LexisNexis"      },
+    { source: "PROP-SS-GUARANTEE",          target: "IRS Form 1099-A" },
+    { source: "IRS-TRACK-108541264370",     target: "IRS Non-Filing"  },
+    { source: "EIN-92-6319308",             target: "EIN Registry"    }
+  ];
+
+  const mapEl = document.getElementById('traceMap');
+
+  if (typeof d3 === 'undefined') {
+    mapEl.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:#64748b;font-size:.85rem;">D3.js unavailable — visual map disabled in offline mode.</div>';
+  } else {
+    const W = mapEl.clientWidth || 900, H = 520;
+    const svg = d3.select('#traceMap').append('svg').attr('width', '100%').attr('height', H);
+
+    // gradient defs
+    const defs = svg.append('defs');
+    const lg = defs.append('linearGradient').attr('id', 'linkGrad').attr('gradientUnits', 'userSpaceOnUse');
+    lg.append('stop').attr('offset', '0%').attr('stop-color', '#00d4ff').attr('stop-opacity', .4);
+    lg.append('stop').attr('offset', '100%').attr('stop-color', '#00ff88').attr('stop-opacity', .4);
+
+    const sim = d3.forceSimulation(nodes)
+      .force('link', d3.forceLink(links).id(d => d.id).distance(140))
+      .force('charge', d3.forceManyBody().strength(-350))
+      .force('center', d3.forceCenter(W / 2, H / 2))
+      .force('collision', d3.forceCollide(40));
+
+    const link = svg.append('g').selectAll('line').data(links).join('line')
+      .attr('stroke', '#1f2a3a').attr('stroke-width', 2);
+
+    const nodeG = svg.append('g').selectAll('g').data(nodes).join('g')
+      .call(d3.drag()
+        .on('start', (e, d) => { if (!e.active) sim.alphaTarget(.3).restart(); d.fx = d.x; d.fy = d.y; })
+        .on('drag',  (e, d) => { d.fx = e.x; d.fy = e.y; })
+        .on('end',   (e, d) => { if (!e.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }));
+
+    nodeG.append('circle')
+      .attr('r', 14)
+      .attr('fill', d => d.group === 'Registry' ? '#00d4ff' : '#00ff88')
+      .attr('fill-opacity', .18)
+      .attr('stroke', d => d.group === 'Registry' ? '#00d4ff' : '#00ff88')
+      .attr('stroke-width', 1.5);
+
+    nodeG.append('text')
+      .text(d => d.id.length > 22 ? d.id.slice(0, 20) + '…' : d.id)
+      .attr('fill', '#e2e8f0').attr('font-size', '11px')
+      .attr('text-anchor', 'middle').attr('dy', '2.8em');
+
+    sim.on('tick', () => {
+      link
+        .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+        .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+      nodeG.attr('transform', d => `translate(${d.x},${d.y})`);
+    });
+  }
+</script>
 </body>
 </html>

@@ -1,78 +1,288 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>THE TRAVIS RYLE PRIVATE BANK � Trust Syndicate</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travis Ryle — Trust Identifier Command Center</title>
   <style>
-    body { font-family: Arial; background: #111; color: #eee; padding: 40px; }
-    h1 { color: #0ff; font-size: 2em; }
-    h2 { color: #ccc; margin-top: 40px; }
-    a { color: #0ff; text-decoration: none; font-weight: bold; }
-    .section { margin-bottom: 30px; }
-    .banner { background: #222; padding: 20px; border: 1px solid #444; margin-bottom: 40px; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:        #08090d;
+      --surface:   #10141c;
+      --surface2:  #171d2a;
+      --border:    #1f2a3a;
+      --text:      #e2e8f0;
+      --muted:     #64748b;
+      --cyan:      #00d4ff;
+      --green:     #00ff88;
+      --red:       #ff3b6b;
+      --yellow:    #f5c518;
+      --purple:    #a78bfa;
+      --orange:    #fb923c;
+      --glow-cyan: 0 0 18px rgba(0,212,255,.35);
+      --glow-red:  0 0 18px rgba(255,59,107,.35);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+
+    /* HEADER */
+    .site-header {
+      position: relative;
+      background: linear-gradient(160deg, #0d0f1a 0%, #0a1520 60%, #06080f 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 2rem 2rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    .site-header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,212,255,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .eyebrow { font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; color: var(--cyan); margin-bottom: .75rem; }
+    .site-header h1 {
+      font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight: 800;
+      background: linear-gradient(90deg, var(--cyan) 0%, var(--green) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      line-height: 1.2; margin-bottom: .75rem;
+    }
+    .tagline { color: var(--muted); font-size: .9rem; max-width: 600px; margin: 0 auto 1.5rem; }
+    .timestamp {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: var(--surface2); border: 1px solid var(--border); border-radius: 999px;
+      padding: .3rem .9rem; font-size: .75rem; color: var(--muted);
+    }
+    .timestamp span { color: var(--cyan); }
+
+    /* TICKER */
+    .ticker-wrap { background: var(--surface); border-bottom: 1px solid var(--border); padding: .55rem 0; overflow: hidden; white-space: nowrap; }
+    .ticker-inner { display: inline-block; animation: ticker 44s linear infinite; font-size: .75rem; color: var(--muted); }
+    .ticker-inner .item { margin-right: 4rem; }
+    .ticker-inner .item .lbl { color: var(--cyan); font-weight: 600; margin-right: .4rem; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* LAYOUT */
+    .container { max-width: 1280px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+
+    /* STAT STRIP */
+    .stat-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+    .stat-pill {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+      padding: 1.2rem 1rem; text-align: center;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .stat-pill:hover { transform: translateY(-3px); }
+    .stat-pill .num { font-size: 2rem; font-weight: 800; line-height: 1; }
+    .stat-pill .lbl { font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-top: .4rem; }
+    .c-cyan   .num { color: var(--cyan); }
+    .c-green  .num { color: var(--green); }
+    .c-red    .num { color: var(--red); }
+    .c-yellow .num { color: var(--yellow); }
+    .c-purple .num { color: var(--purple); }
+    .c-orange .num { color: var(--orange); }
+
+    /* FEATURED CARD */
+    .featured-card {
+      position: relative;
+      background: linear-gradient(135deg, #1a0a12 0%, #200d18 100%);
+      border: 1px solid rgba(255,59,107,.4); border-radius: 14px;
+      padding: 2.5rem; margin-bottom: 2.5rem; overflow: hidden;
+      box-shadow: 0 0 28px rgba(255,59,107,.2);
+    }
+    .featured-card::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 240px; height: 240px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,59,107,.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .fc-label { font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--red); margin-bottom: .75rem; }
+    .featured-card h2 { font-size: clamp(1.3rem, 3vw, 1.9rem); font-weight: 800; color: #fff; margin-bottom: .5rem; }
+    .featured-card p { color: #c0c8d8; font-size: .9rem; margin-bottom: 1.5rem; max-width: 580px; }
+    .fc-stats { display: flex; flex-wrap: wrap; gap: 2rem; margin: 1rem 0 1.5rem; }
+    .fc-stat .n { font-size: 2rem; font-weight: 800; color: #fff; }
+    .fc-stat .l { font-size: .75rem; color: rgba(255,255,255,.6); }
+    .btn-row { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--red); color: #fff; font-weight: 700; font-size: .95rem;
+      padding: .75rem 1.75rem; border-radius: 8px; text-decoration: none;
+      transition: background .2s, box-shadow .2s;
+    }
+    .btn-primary:hover { background: #e0294e; box-shadow: 0 0 22px rgba(255,59,107,.5); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: transparent; color: var(--cyan); font-weight: 600; font-size: .88rem;
+      padding: .65rem 1.4rem; border-radius: 8px; text-decoration: none;
+      border: 1px solid var(--cyan); transition: background .2s, box-shadow .2s;
+    }
+    .btn-outline:hover { background: rgba(0,212,255,.08); box-shadow: var(--glow-cyan); }
+
+    /* SECTION HEAD */
+    .section-head {
+      font-size: .68rem; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .section-head::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* NAV GRID */
+    .nav-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+    .nav-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.5rem; text-decoration: none; color: var(--text);
+      display: flex; flex-direction: column; gap: .5rem;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .nav-card:hover { transform: translateY(-4px); border-color: var(--cyan); box-shadow: var(--glow-cyan); }
+    .nc-icon { font-size: 1.6rem; }
+    .nc-title { font-size: 1rem; font-weight: 700; }
+    .nc-desc { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+    .nc-badge {
+      align-self: flex-start; font-size: .65rem; font-weight: 700;
+      letter-spacing: .08em; padding: .2rem .55rem; border-radius: 999px; text-transform: uppercase;
+    }
+    .badge-live   { background: rgba(0,255,136,.15); color: var(--green);  border: 1px solid rgba(0,255,136,.3); }
+    .badge-hot    { background: rgba(255,59,107,.15); color: var(--red);    border: 1px solid rgba(255,59,107,.3); }
+    .badge-info   { background: rgba(0,212,255,.12);  color: var(--cyan);   border: 1px solid rgba(0,212,255,.25); }
+    .badge-yellow { background: rgba(245,197,24,.12); color: var(--yellow); border: 1px solid rgba(245,197,24,.25); }
+
+    /* ARTIFACT CHIPS */
+    .artifact-row { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 2.5rem; }
+    .artifact-chip {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: var(--surface2); border: 1px solid var(--border); border-radius: 999px;
+      padding: .4rem 1rem; font-size: .8rem; color: var(--muted); text-decoration: none;
+      transition: border-color .2s, color .2s;
+    }
+    .artifact-chip:hover { border-color: var(--cyan); color: var(--cyan); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border); padding: 1.5rem;
+      text-align: center; font-size: .75rem; color: var(--muted);
+    }
+    footer a { color: var(--cyan); text-decoration: none; }
   </style>
 </head>
 <body>
-  <div class="banner">
-    <h1>THE TRAVIS RYLE PRIVATE BANK � Trust Syndicate</h1>
-    <p>Symbolic assertion of verified identifiers, overlays, and systemic trace.</p>
-    <p><strong>Timestamp:</strong> 2025-08-30T10:44:00Z</p>
+
+<header class="site-header">
+  <div class="eyebrow">&#9646; Ryle Family Nation &nbsp;&#183;&nbsp; Evidence &amp; Remedy System &#9646;</div>
+  <h1>Travis Ryle Private Trust<br>Identifier Command Center</h1>
+  <p class="tagline">Verified identifiers, systemic trace, evidentiary overlays, and legal remedy &mdash; all in one place.</p>
+  <div class="timestamp">&#128336;&nbsp; Last updated &nbsp;<span>2025-08-30T10:44:00Z</span></div>
+</header>
+
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-inner">
+    <span class="item"><span class="lbl">EIN-92-6319308</span>verified &middot; EIN Registry</span>
+    <span class="item"><span class="lbl">SSN-602-05-7209</span>verified &middot; LexisNexis</span>
+    <span class="item"><span class="lbl">IRS-TRACK-108541264370</span>unmatched &middot; IRS Non-Filing</span>
+    <span class="item"><span class="lbl">CORP-NUM-C2362627</span>verified &middot; OpenCorporates</span>
+    <span class="item"><span class="lbl">PROP-SS-GUARANTEE-104-0190-003558</span>flagged &middot; IRS Form 1099-A</span>
+    <span class="item"><span class="lbl">SURVEILLANCE-AMEX-RISKVIEW</span>flagged &middot; American Express</span>
+    <span class="item"><span class="lbl">VIN-4T1B11AK1M</span>flagged &middot; LexisNexis C.L.U.E.</span>
+    <span class="item"><span class="lbl">EIN-92-6319308</span>verified &middot; EIN Registry</span>
+    <span class="item"><span class="lbl">SSN-602-05-7209</span>verified &middot; LexisNexis</span>
+    <span class="item"><span class="lbl">IRS-TRACK-108541264370</span>unmatched &middot; IRS Non-Filing</span>
+    <span class="item"><span class="lbl">CORP-NUM-C2362627</span>verified &middot; OpenCorporates</span>
+    <span class="item"><span class="lbl">PROP-SS-GUARANTEE-104-0190-003558</span>flagged &middot; IRS Form 1099-A</span>
+    <span class="item"><span class="lbl">SURVEILLANCE-AMEX-RISKVIEW</span>flagged &middot; American Express</span>
+    <span class="item"><span class="lbl">VIN-4T1B11AK1M</span>flagged &middot; LexisNexis C.L.U.E.</span>
+  </div>
+</div>
+
+<main class="container">
+
+  <!-- STAT STRIP -->
+  <div class="stat-strip">
+    <div class="stat-pill c-cyan"><div class="num">32</div><div class="lbl">Identifiers</div></div>
+    <div class="stat-pill c-green"><div class="num">3</div><div class="lbl">Verified</div></div>
+    <div class="stat-pill c-yellow"><div class="num">1</div><div class="lbl">Flagged</div></div>
+    <div class="stat-pill c-red"><div class="num">8</div><div class="lbl">Active Cases</div></div>
+    <div class="stat-pill c-orange"><div class="num">23</div><div class="lbl">Filed Complaints</div></div>
+    <div class="stat-pill c-purple"><div class="num">147</div><div class="lbl">Evidence Items</div></div>
   </div>
 
-
-      <!-- CAMPAIGN HUB - FEATURED SECTION -->
-    <div class="section" style="background: linear-gradient(135deg, #dc143c 0%, #8b0000 100%); padding: 3rem; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 8px 24px rgba(220, 20, 60, 0.4);">
-        <h2 style="color: #fff; font-size: 2.2rem; margin-bottom: 1rem; text-align: center;">📢 CAMPAIGN HUB - Central Command Center</h2>
-        <p style="color: #fff; font-size: 1.2rem; text-align: center; margin-bottom: 1.5rem; opacity: 0.95;">Integrated Case Tracking, Lawsuit Rally & Public Awareness Center</p>
-        <div style="text-align: center;">
-            <a href="campaign_hub.html" style="display: inline-block; background: #fff; color: #dc143c; padding: 1rem 2.5rem; font-size: 1.3rem; font-weight: bold; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: all 0.3s ease;">ENTER CAMPAIGN HUB ➡️</a>
-        </div>
-        <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap;">
-            <div style="text-align: center; color: #fff;">
-                <div style="font-size: 2rem; font-weight: bold;">8</div>
-                <div style="opacity: 0.9;">Active Cases</div>
-            </div>
-            <div style="text-align: center; color: #fff;">
-                <div style="font-size: 2rem; font-weight: bold;">23</div>
-                <div style="opacity: 0.9;">Filed Complaints</div>
-            </div>
-            <div style="text-align: center; color: #fff;">
-                <div style="font-size: 2rem; font-weight: bold;">147</div>
-                <div style="opacity: 0.9;">Evidence Items</div>
-            </div>
-        </div>
+  <!-- FEATURED -->
+  <div class="featured-card">
+    <div class="fc-label">&#9733; Featured &nbsp;&middot;&nbsp; Central Command</div>
+    <h2>&#128226; Campaign Hub</h2>
+    <p>Integrated case tracking, lawsuit rally &amp; public awareness center. All active cases, filed complaints, and evidence items in one unified command center.</p>
+    <div class="fc-stats">
+      <div class="fc-stat"><div class="n">8</div><div class="l">Active Cases</div></div>
+      <div class="fc-stat"><div class="n">23</div><div class="l">Filed Complaints</div></div>
+      <div class="fc-stat"><div class="n">147</div><div class="l">Evidence Items</div></div>
     </div>
-
-  <div class="section">
-    <h2>🎓 Virtual Classroom</h2>
-    <ul>
-      <li><a href="virtual_classroom.html">Enter Virtual Classroom</a> - Interactive learning environment</li>
-    </ul>
+    <div class="btn-row">
+      <a href="campaign_hub.html" class="btn-primary">Enter Campaign Hub &#8594;</a>
+      <a href="investigation_dashboard.html" class="btn-outline">&#128269; Investigation Center</a>
+    </div>
   </div>
 
-  <div class="section">
-    <h2>📊 Dashboards</h2>
-    <ul>
-      <li><a href="investigation_dashboard.html">🔍 Investigation Command Center</a> - Unified event ledger, defendants, surveillance analysis &amp; legal claims</li>
-      <li><a href="dashboard.html">Trust Scan Dashboard</a></li>
-      <li><a href="connections_dashboard.html">Identifier Connections Dashboard</a> - Comprehensive connection discovery</li>
-      <li><a href="syndicate_dashboard.html">Syndicate Dashboard</a></li>
-      <li><a href="learning_analytics.html">Learning Analytics Dashboard</a></li>
-    </ul>
+  <!-- DASHBOARDS -->
+  <div class="section-head">&#128202; Dashboards &amp; Analysis Tools</div>
+  <div class="nav-grid">
+    <a class="nav-card" href="investigation_dashboard.html">
+      <div class="nc-icon">&#128269;</div>
+      <span class="nc-badge badge-hot">Command</span>
+      <div class="nc-title">Investigation Command Center</div>
+      <div class="nc-desc">Unified event ledger, defendants, surveillance analysis &amp; legal claims.</div>
+    </a>
+    <a class="nav-card" href="dashboard.html">
+      <div class="nc-icon">&#128204;</div>
+      <span class="nc-badge badge-live">Live</span>
+      <div class="nc-title">Trust Scan Dashboard</div>
+      <div class="nc-desc">Real-time identifier status, D3 visual trace map, and overlay links.</div>
+    </a>
+    <a class="nav-card" href="connections_dashboard.html">
+      <div class="nc-icon">&#128279;</div>
+      <span class="nc-badge badge-info">Graph</span>
+      <div class="nc-title">Identifier Connections</div>
+      <div class="nc-desc">Comprehensive network graph of all identifier cross-connections.</div>
+    </a>
+    <a class="nav-card" href="syndicate_dashboard.html">
+      <div class="nc-icon">&#128099;</div>
+      <span class="nc-badge badge-info">Archive</span>
+      <div class="nc-title">Syndicate Dashboard</div>
+      <div class="nc-desc">Multi-run aggregation and historical scan results.</div>
+    </a>
+    <a class="nav-card" href="learning_analytics.html">
+      <div class="nc-icon">&#128200;</div>
+      <span class="nc-badge badge-yellow">Analytics</span>
+      <div class="nc-title">Learning Analytics</div>
+      <div class="nc-desc">Progress metrics and educational engagement tracking.</div>
+    </a>
+    <a class="nav-card" href="virtual_classroom.html">
+      <div class="nc-icon">&#127891;</div>
+      <span class="nc-badge badge-info">Education</span>
+      <div class="nc-title">Virtual Classroom</div>
+      <div class="nc-desc">Interactive legal education and rights-awareness environment.</div>
+    </a>
   </div>
 
-  <div class="section">
-    <h2>?? Symbolic Registry</h2>
-    <ul>
-      <li><a href="registry_overlay.yml">View Registry Overlay</a></li>
-    </ul>
+  <!-- ARTIFACTS -->
+  <div class="section-head">&#128196; Raw Artifacts &amp; Overlays</div>
+  <div class="artifact-row">
+    <a class="artifact-chip" href="output/scan_results.json">&#128202; scan_results.json</a>
+    <a class="artifact-chip" href="overlays/trust_overlay.yml">&#128196; trust_overlay.yml</a>
+    <a class="artifact-chip" href="registry_overlay.yml">&#128196; registry_overlay.yml</a>
+    <a class="artifact-chip" href="evidence_manifest.json">&#128202; evidence_manifest.json</a>
+    <a class="artifact-chip" href="scan_results.json">&#128202; scan_results (root)</a>
+    <a class="artifact-chip" href="gleif_results.xml">&#128196; gleif_results.xml</a>
+    <a class="artifact-chip" href="trust_overlay.xml">&#128196; trust_overlay.xml</a>
+    <a class="artifact-chip" href="identifiers.json">&#128202; identifiers.json</a>
+    <a class="artifact-chip" href="identifiers.yaml">&#128196; identifiers.yaml</a>
   </div>
 
-  <div class="section">
-    <h2>?? Artifacts</h2>
-    <ul>
-      <li><a href="output/scan_results.json">Latest Scan Results</a></li>
-      <li><a href="overlays/trust_overlay.yml">Trust Overlay File</a></li>
-    </ul>
-  </div>
+</main>
+
+<footer>
+  &copy; 2025 Travis Ryle Private Bank &amp; Trust Syndicate &nbsp;&middot;&nbsp;
+  Ryle Family Nation Evidence &amp; Remedy System &nbsp;&middot;&nbsp;
+  <a href="https://github.com/lawfullyillegal-droid/Trust-identifier-trace">GitHub Repository</a>
+</footer>
+
 </body>
 </html>

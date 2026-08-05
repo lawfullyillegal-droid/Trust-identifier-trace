@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Investigation Event Schema",
+  "description": "Schema for the Trust Identifier Trace investigation event ledger. Each event links one or more identifiers to a defendant, legal claims, and evidence files with chain-of-custody hashes.",
+  "type": "object",
+  "required": ["event_id", "event_date", "event_type", "summary", "status"],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique UUID v4 for this investigation event"
+    },
+    "event_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 UTC timestamp when the event occurred or was recorded"
+    },
+    "recorded_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 UTC timestamp when this entry was added to the ledger"
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "disclosure_received",
+        "filing_made",
+        "violation_observed",
+        "correspondence_sent",
+        "court_action",
+        "surveillance_detected",
+        "data_breach",
+        "legal_threat",
+        "remedy_action"
+      ],
+      "description": "Category of investigation event"
+    },
+    "identifiers_involved": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Array of identifier strings from identifiers.json that are referenced by this event"
+    },
+    "defendant": {
+      "type": "string",
+      "description": "Defendant ID from defendants.json (e.g. 'LEXISNEXIS', 'ARIZONA_DPS')"
+    },
+    "legal_claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["statute", "section"],
+        "properties": {
+          "statute": { "type": "string", "description": "e.g. 'FCRA', '42USC1983', 'CLRA', 'DPPA'" },
+          "section": { "type": "string", "description": "e.g. '1681b(a)', '1681e(b)', '1983'" },
+          "description": { "type": "string", "description": "Human-readable claim description" }
+        }
+      }
+    },
+    "evidence_files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["label", "path_or_url"],
+        "properties": {
+          "label": { "type": "string" },
+          "path_or_url": { "type": "string" },
+          "sha256_hash": { "type": "string", "description": "SHA-256 hex digest for chain-of-custody verification" },
+          "verified_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "description": "Human-readable narrative of the event"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional legal or investigative notes"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["open", "pending", "resolved", "escalated"],
+      "description": "Current disposition of this investigation event"
+    },
+    "linked_event_ids": {
+      "type": "array",
+      "items": { "type": "string", "format": "uuid" },
+      "description": "UUIDs of related events in the ledger"
+    }
+  }
+}

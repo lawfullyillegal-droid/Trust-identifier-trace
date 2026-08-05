@@ -1,0 +1,173 @@
+[
+  {
+    "defendant_id": "LEXISNEXIS",
+    "full_name": "RELX / LexisNexis Risk Solutions, Inc.",
+    "aliases": ["LexisNexis", "RELX", "LexisNexis Risk Solutions"],
+    "type": "Data Broker / Consumer Reporting Agency",
+    "jurisdiction": "Federal / Georgia",
+    "identifiers_held": [
+      "SSN-602-05-7209",
+      "LN-CONSUMER-11133734",
+      "LN-CASE-31568224",
+      "LEXID-XXXXXX7079",
+      "EMAIL-TRAVISLITE@GMAIL.COM",
+      "EMAIL-TRAVISREL@GMAIL.COM",
+      "ENTITY-TRAVIS-STEVEN-RYLE",
+      "ENTITY-MR-TRAVIS-S-RYLEE",
+      "ADDR-GOLDENVALLEY-AZ-5570-TONTO",
+      "ADDR-OXNARD-CA-5034-NAUTILUS",
+      "ADDR-TEMPLECITY-CA-4641-DACOTAH",
+      "ADDR-HUNTSVILLE-AL-2704-PACIFIC",
+      "VIN-4T1B11AK1M",
+      "VEHICLE-TOYOTA-CAMRY-2021"
+    ],
+    "primary_claims": [
+      { "statute": "FCRA", "section": "1681e(b)", "description": "Failure to maintain maximum possible accuracy" },
+      { "statute": "FCRA", "section": "1681b(a)", "description": "Permissible purpose — unauthorized dissemination" },
+      { "statute": "FCRA", "section": "1681i", "description": "Failure to conduct proper reinvestigation" }
+    ],
+    "status": "escalated",
+    "notes": "Consumer Number 11133734, Case 31568224. 74-page disclosure received May 28 2025 showing multi-broker identity aggregation."
+  },
+  {
+    "defendant_id": "OPENCORPORATES",
+    "full_name": "OpenCorporates Ltd.",
+    "aliases": ["OpenCorporates"],
+    "type": "Data Publisher / Corporate Registry Aggregator",
+    "jurisdiction": "UK / International",
+    "identifiers_held": ["ENTITY-TRAVIS-STEVEN-RYLE", "ENTITY-MR-TRAVIS-S-RYLEE"],
+    "primary_claims": [
+      { "statute": "FCRA", "section": "1681b(a)", "description": "Unauthorized publication of consumer information" },
+      { "statute": "CA_CLRA", "section": "1750", "description": "California Consumer Legal Remedies Act" }
+    ],
+    "status": "open",
+    "notes": "Wrongfully listed Estate as 'applicant' on LAN DAO, DDS, INC. (Company No. 3406684). Claims CA SOS as source with no Estate authorization."
+  },
+  {
+    "defendant_id": "CA_SOS",
+    "full_name": "California Secretary of State / Bizfile Online",
+    "aliases": ["CA SOS", "Bizfile"],
+    "type": "State Government Agency",
+    "jurisdiction": "California",
+    "identifiers_held": ["ENTITY-EIGHTYLEE-MARKETING-GRP"],
+    "primary_claims": [
+      { "statute": "CA_COPPA", "section": "22575", "description": "California Online Privacy Protection Act" },
+      { "statute": "CA_CLRA", "section": "1750", "description": "Third-party data syndication without consent" }
+    ],
+    "status": "open",
+    "notes": "UCC File Numbers U250170282628, U250170278933. Third-party data syndication issues confirmed."
+  },
+  {
+    "defendant_id": "AZTEC_CONSTRUCTORS",
+    "full_name": "Aztec Constructors, Inc. & AALRR (Counsel)",
+    "aliases": ["Aztec Constructors", "AALRR"],
+    "type": "Private Corporation / Legal Counsel",
+    "jurisdiction": "California",
+    "identifiers_held": [],
+    "primary_claims": [
+      { "statute": "CA_CIVIL", "section": "Abuse_of_Process", "description": "Coercive litigation threats based on bad data" },
+      { "statute": "CA_CIVIL", "section": "Tortious_Interference", "description": "Tortious interference with UCC liens" },
+      { "statute": "FCRA", "section": "1681n", "description": "Willful noncompliance — using inaccurate data as coercive leverage" }
+    ],
+    "status": "escalated",
+    "notes": "Demanded termination of UCC liens, rescission letters to Contra Costa and Solano Counties, and public apology. Estate complied under duress while reserving all rights."
+  },
+  {
+    "defendant_id": "ARIZONA_DPS",
+    "full_name": "Arizona Department of Public Safety & Mohave County DA",
+    "aliases": ["AZ DPS", "Mohave County DA", "Arizona DPS"],
+    "type": "Law Enforcement / Prosecutorial Agency",
+    "jurisdiction": "Arizona",
+    "identifiers_held": [
+      "VIOLATION-FTA-CRIMINAL-KINGMAN-2004",
+      "VIOLATION-FINRESP-FAIL-KINGMAN-2004",
+      "VIOLATION-NOREG-KINGMAN-2024",
+      "VIOLATION-SPEED-20PLUS-KINGMAN-2024",
+      "WARRANT-QUASHED-KINGMAN-2004",
+      "ADOT-CUST-16088582"
+    ],
+    "primary_claims": [
+      { "statute": "42USC1983", "section": "1983", "description": "Civil rights violation — Fourth Amendment unreasonable search and seizure" },
+      { "statute": "42USC1983", "section": "1983", "description": "Fourteenth Amendment due process violation" }
+    ],
+    "status": "escalated",
+    "notes": "Traffic stop with weapon drawn. Questionable warrant issued after plea rejection. Objections never properly answered by DA. Records propagated in LexisNexis and other databases."
+  },
+  {
+    "defendant_id": "HIROAD_INSURANCE",
+    "full_name": "HiRoad Insurance",
+    "aliases": ["HiRoad"],
+    "type": "Insurance Company / CLUE Reporter",
+    "jurisdiction": "Federal",
+    "identifiers_held": [
+      "SURVEILLANCE-CLUE-VIN-4T1B11AK1M-20250328",
+      "VIN-4T1B11AK1M",
+      "VEHICLE-TOYOTA-CAMRY-2021"
+    ],
+    "primary_claims": [
+      { "statute": "FCRA", "section": "1681b(a)", "description": "CLUE report submission without permissible purpose" },
+      { "statute": "DPPA", "section": "2721", "description": "Driver's Privacy Protection Act — unauthorized VIN/vehicle data use" }
+    ],
+    "status": "open",
+    "notes": "CLUE VIN surveillance event recorded 2025-03-28."
+  },
+  {
+    "defendant_id": "SENTRY_INSURANCE",
+    "full_name": "Sentry Insurance",
+    "aliases": ["Sentry"],
+    "type": "Insurance Company / CLUE Reporter",
+    "jurisdiction": "Federal",
+    "identifiers_held": [
+      "SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328",
+      "VIN-4T1B11AK1M"
+    ],
+    "primary_claims": [
+      { "statute": "FCRA", "section": "1681b(a)", "description": "CLUE report submission without permissible purpose" },
+      { "statute": "DPPA", "section": "2721", "description": "Driver's Privacy Protection Act — VIN tracking" }
+    ],
+    "status": "open",
+    "notes": "CLUE VIN surveillance event recorded 2025-03-28, same date as HiRoad — indicates coordinated inquiry."
+  },
+  {
+    "defendant_id": "AMERICAN_EXPRESS",
+    "full_name": "American Express",
+    "aliases": ["AMEX"],
+    "type": "Financial Institution",
+    "jurisdiction": "Federal",
+    "identifiers_held": ["SURVEILLANCE-AMEX-RISKVIEW-20250411"],
+    "primary_claims": [
+      { "statute": "FCRA", "section": "1681b(a)", "description": "RiskView pull without permissible purpose or existing account relationship" },
+      { "statute": "FCRA", "section": "1681m", "description": "Failure to notify of adverse action based on consumer report" }
+    ],
+    "status": "open",
+    "notes": "RiskView surveillance event 2025-04-11. Same date as Progressive and Credit Karma — indicates coordinated data-sharing event."
+  },
+  {
+    "defendant_id": "PROGRESSIVE_INSURANCE",
+    "full_name": "Progressive Insurance",
+    "aliases": ["Progressive"],
+    "type": "Insurance Company",
+    "jurisdiction": "Federal",
+    "identifiers_held": ["SURVEILLANCE-PROGRESSIVE-REVIEW-20250411"],
+    "primary_claims": [
+      { "statute": "FCRA", "section": "1681b(a)", "description": "Insurance review pull without permissible purpose" },
+      { "statute": "DPPA", "section": "2721", "description": "Driver data use without proper authorization" }
+    ],
+    "status": "open",
+    "notes": "Review surveillance event 2025-04-11. Clustered with AMEX and Credit Karma on same date."
+  },
+  {
+    "defendant_id": "CREDIT_KARMA",
+    "full_name": "Credit Karma / Intuit",
+    "aliases": ["Credit Karma", "Intuit Credit Karma"],
+    "type": "Financial Technology / Data Broker",
+    "jurisdiction": "Federal / California",
+    "identifiers_held": ["SURVEILLANCE-CREDITKARMA-PREQ-20250411"],
+    "primary_claims": [
+      { "statute": "FCRA", "section": "1681b(c)", "description": "Pre-qualification firm offer — no existing relationship, no opt-in" },
+      { "statute": "CA_CCPA", "section": "1798.100", "description": "California Consumer Privacy Act — unauthorized use of consumer data" }
+    ],
+    "status": "open",
+    "notes": "Pre-qualification pull 2025-04-11. Clustered with AMEX and Progressive — same-day coordinated inquiry."
+  }
+]

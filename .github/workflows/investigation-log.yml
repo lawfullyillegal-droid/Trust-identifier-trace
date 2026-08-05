@@ -1,0 +1,58 @@
+name: Investigation Log Automation
+
+on:
+  push:
+    paths:
+      - 'investigations/events.json'
+      - 'investigations/defendants.json'
+  workflow_dispatch:
+
+jobs:
+  update-investigation-log:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Validate chain of custody
+        run: python3 integrity_check.py --verify || echo "⚠️ Changes detected since last manifest — regenerating manifest"
+
+      - name: Generate investigation timeline
+        run: python3 investigation_bot.py --timeline
+
+      - name: Export complaint summaries for all defendants
+        run: |
+          python3 investigation_bot.py --list-defendants
+          for did in LEXISNEXIS OPENCORPORATES CA_SOS AZTEC_CONSTRUCTORS ARIZONA_DPS HIROAD_INSURANCE SENTRY_INSURANCE AMERICAN_EXPRESS PROGRESSIVE_INSURANCE CREDIT_KARMA; do
+            echo "📄 Exporting complaint for $did"
+            python3 investigation_bot.py --export-complaint $did || echo "⚠️ Skipping $did"
+          done
+
+      - name: Regenerate evidence manifest
+        run: python3 integrity_check.py
+
+      - name: Show ledger summary
+        run: python3 investigation_bot.py --summary
+
+      - name: Commit updated outputs
+        run: |
+          git config user.name "investigation-bot[bot]"
+          git config user.email "investigation-bot@lawfully-illegal"
+          git add output/investigation_timeline.json
+          git add output/investigation_timeline.md
+          git add output/complaint_*.json
+          git add output/complaint_*.md
+          git add evidence_manifest.json
+          git diff --staged --quiet || git commit -m "bot: update investigation timeline and complaint summaries [skip ci]"
+          git push

@@ -1,0 +1,56 @@
+name: Surveillance Monitor
+
+on:
+  schedule:
+    # Every Sunday at 06:00 UTC
+    - cron: '0 6 * * 0'
+  workflow_dispatch:
+
+jobs:
+  surveillance-analysis:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run surveillance pattern analysis
+        run: python3 surveillance_analyzer.py -v
+
+      - name: Show analysis summary
+        run: |
+          echo "🔍 Surveillance Analysis Output:"
+          python3 -c "
+          import json
+          with open('output/surveillance_analysis.json') as f:
+              d = json.load(f)
+          risk = d['risk_assessment']
+          print(f\"Risk: {risk['score']}/100 — {risk['level']}\")
+          print(f\"Correlations: {len(d['cross_entity_correlations'])}\")
+          print(f\"VIN links: {len(d['vin_tracking_links'])}\")
+          for factor in risk['factors']:
+              print(f'  {factor}')
+          "
+
+      - name: Update evidence manifest
+        run: python3 integrity_check.py
+
+      - name: Commit surveillance results
+        run: |
+          git config user.name "surveillance-monitor[bot]"
+          git config user.email "surveillance-monitor@lawfully-illegal"
+          git add output/surveillance_analysis.json
+          git add overlays/*_surveillance_overlay.yml
+          git add evidence_manifest.json
+          git diff --staged --quiet || git commit -m "bot: weekly surveillance pattern analysis [skip ci]"
+          git push

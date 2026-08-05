@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investigation Command Center — Trust Identifier Trace</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #21262d;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --yellow: #d29922;
+    --red: #f85149;
+    --orange: #f0883e;
+    --purple: #bc8cff;
+    --pink: #ff79c6;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', monospace; font-size: 14px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  header h1 { font-size: 18px; color: var(--text); }
+  header .badge { background: var(--red); color: #fff; font-size: 11px; padding: 2px 8px; border-radius: 12px; font-weight: 700; }
+  header nav { margin-left: auto; display: flex; gap: 12px; }
+  header nav a { color: var(--text-muted); font-size: 13px; }
+  header nav a:hover { color: var(--text); }
+
+  .container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+
+  /* Stat cards */
+  .stats-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin-bottom: 32px; }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .stat-card .label { color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 8px; }
+  .stat-card .value { font-size: 32px; font-weight: 700; line-height: 1; }
+  .stat-card .sub { color: var(--text-muted); font-size: 12px; margin-top: 4px; }
+  .red    { color: var(--red); }
+  .orange { color: var(--orange); }
+  .yellow { color: var(--yellow); }
+  .green  { color: var(--green); }
+  .blue   { color: var(--accent); }
+  .purple { color: var(--purple); }
+
+  /* Section */
+  .section { margin-bottom: 40px; }
+  .section-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title .count {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 11px;
+    padding: 1px 8px;
+    color: var(--text-muted);
+  }
+
+  /* Status badges */
+  .badge-escalated { background: rgba(248,81,73,.2); color: var(--red); border: 1px solid rgba(248,81,73,.4); padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+  .badge-open      { background: rgba(88,166,255,.2); color: var(--accent); border: 1px solid rgba(88,166,255,.4); padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+  .badge-pending   { background: rgba(210,153,34,.2); color: var(--yellow); border: 1px solid rgba(210,153,34,.4); padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+  .badge-resolved  { background: rgba(63,185,80,.2); color: var(--green); border: 1px solid rgba(63,185,80,.4); padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; }
+
+  /* Table */
+  .data-table { width: 100%; border-collapse: collapse; }
+  .data-table th { background: var(--surface2); color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+  .data-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .data-table tr:hover td { background: var(--surface2); }
+  .data-table .identifier { font-family: monospace; font-size: 12px; color: var(--accent); }
+  .data-table .summary { color: var(--text-muted); font-size: 12px; max-width: 360px; }
+  .data-table .claims { font-size: 11px; color: var(--purple); }
+
+  /* Timeline */
+  #timeline-svg { width: 100%; overflow: visible; }
+  .timeline-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; overflow-x: auto; }
+
+  /* Defendant cards */
+  .defendant-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .defendant-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .defendant-card h3 { font-size: 13px; margin-bottom: 8px; }
+  .defendant-card .meta { color: var(--text-muted); font-size: 11px; margin-bottom: 8px; }
+  .defendant-card .claims-list { font-size: 11px; color: var(--purple); margin-top: 8px; }
+
+  /* Surveillance risk gauge */
+  .risk-gauge { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; }
+  .gauge-circle { position: relative; width: 120px; height: 120px; flex-shrink: 0; }
+  .gauge-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; }
+  .gauge-value { font-size: 36px; font-weight: 700; }
+  .gauge-level { font-size: 13px; font-weight: 600; }
+  .factors-list { list-style: none; }
+  .factors-list li { color: var(--text-muted); font-size: 12px; padding: 2px 0; }
+  .factors-list li::before { content: '▸ '; color: var(--orange); }
+
+  /* Correlation cards */
+  .correlation-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--red);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+  .correlation-card .date-chip { background: rgba(248,81,73,.15); color: var(--red); border-radius: 6px; padding: 2px 8px; font-size: 12px; font-weight: 600; display: inline-block; margin-bottom: 8px; }
+  .correlation-card .sources { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+  .source-chip { background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 2px 10px; font-size: 11px; color: var(--text-muted); }
+
+  /* Detail panel */
+  #detail-panel {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 420px;
+    background: var(--surface);
+    border-left: 1px solid var(--border);
+    padding: 24px;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform .25s;
+    z-index: 200;
+  }
+  #detail-panel.open { transform: none; }
+  #detail-panel h2 { font-size: 15px; margin-bottom: 16px; }
+  #detail-panel .close-btn { float: right; cursor: pointer; color: var(--text-muted); font-size: 20px; }
+  #detail-panel .detail-section { margin-bottom: 16px; }
+  #detail-panel .detail-label { color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 4px; }
+  #detail-panel .detail-value { font-size: 13px; }
+  #detail-panel .identifier-tag { display: inline-block; background: rgba(88,166,255,.15); border: 1px solid rgba(88,166,255,.4); border-radius: 4px; padding: 2px 6px; font-family: monospace; font-size: 11px; color: var(--accent); margin: 2px; }
+  #detail-panel .claim-item { background: rgba(188,140,255,.1); border: 1px solid rgba(188,140,255,.3); border-radius: 6px; padding: 8px; margin-bottom: 6px; font-size: 12px; }
+  #detail-panel .claim-statute { color: var(--purple); font-weight: 600; }
+
+  /* Search */
+  .search-bar { display: flex; gap: 12px; margin-bottom: 16px; }
+  .search-bar input {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    color: var(--text);
+    font-size: 13px;
+    outline: none;
+  }
+  .search-bar input:focus { border-color: var(--accent); }
+
+  /* Loading */
+  .loading { color: var(--text-muted); text-align: center; padding: 40px; }
+
+  /* Tabs */
+  .tabs { display: flex; gap: 4px; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
+  .tab { padding: 8px 16px; cursor: pointer; color: var(--text-muted); border-bottom: 2px solid transparent; font-size: 13px; }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  @media (max-width: 768px) {
+    #detail-panel { width: 100%; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span>🔍</span>
+  <h1>Investigation Command Center</h1>
+  <span class="badge" id="risk-badge">HIGH RISK</span>
+  <nav>
+    <a href="index.html">← Hub</a>
+    <a href="dashboard.html">Trust Scan</a>
+    <a href="connections_dashboard.html">Connections</a>
+    <a href="output/investigation_timeline.md" target="_blank">Timeline MD</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <!-- Stats Row -->
+  <div class="stats-row" id="stats-row">
+    <div class="stat-card"><div class="label">Total Events</div><div class="value blue" id="stat-total">—</div><div class="sub">investigation log</div></div>
+    <div class="stat-card"><div class="label">Escalated</div><div class="value red" id="stat-escalated">—</div><div class="sub">require action</div></div>
+    <div class="stat-card"><div class="label">Open</div><div class="value orange" id="stat-open">—</div><div class="sub">under review</div></div>
+    <div class="stat-card"><div class="label">Defendants</div><div class="value purple" id="stat-defendants">—</div><div class="sub">registered</div></div>
+    <div class="stat-card"><div class="label">Surveillance</div><div class="value yellow" id="stat-surveillance">—</div><div class="sub">events detected</div></div>
+    <div class="stat-card"><div class="label">Risk Score</div><div class="value red" id="stat-risk">—</div><div class="sub">surveillance index</div></div>
+    <div class="stat-card"><div class="label">Legal Claims</div><div class="value purple" id="stat-claims">—</div><div class="sub">unique statutes</div></div>
+    <div class="stat-card"><div class="label">Correlations</div><div class="value red" id="stat-correlations">—</div><div class="sub">coordinated inquiry</div></div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('timeline-tab', this)">⏱ Timeline</div>
+    <div class="tab" onclick="switchTab('defendants-tab', this)">🎯 Defendants</div>
+    <div class="tab" onclick="switchTab('surveillance-tab', this)">👁 Surveillance</div>
+    <div class="tab" onclick="switchTab('events-tab', this)">📋 All Events</div>
+    <div class="tab" onclick="switchTab('claims-tab', this)">⚖️ Legal Claims</div>
+  </div>
+
+  <!-- Timeline Tab -->
+  <div id="timeline-tab" class="tab-content active section">
+    <div class="section-title">📅 Investigation Timeline <span class="count" id="timeline-count"></span></div>
+    <div class="timeline-wrap">
+      <svg id="timeline-svg" height="300"></svg>
+    </div>
+    <div id="timeline-events" style="margin-top:16px;"></div>
+  </div>
+
+  <!-- Defendants Tab -->
+  <div id="defendants-tab" class="tab-content section">
+    <div class="section-title">🎯 Defendant Registry</div>
+    <div class="defendant-grid" id="defendant-grid"></div>
+  </div>
+
+  <!-- Surveillance Tab -->
+  <div id="surveillance-tab" class="tab-content section">
+    <div class="section-title">👁 Surveillance Pattern Analysis</div>
+    <div id="surveillance-risk" style="margin-bottom:24px;"></div>
+
+    <div class="section-title">🚨 Cross-Entity Correlations (Same-Day) <span class="count" id="corr-count"></span></div>
+    <div id="correlation-cards"></div>
+
+    <div class="section-title">📅 Surveillance Timeline</div>
+    <div class="timeline-wrap">
+      <svg id="surv-svg" height="140"></svg>
+    </div>
+  </div>
+
+  <!-- All Events Tab -->
+  <div id="events-tab" class="tab-content section">
+    <div class="section-title">📋 All Investigation Events</div>
+    <div class="search-bar">
+      <input type="text" id="event-search" placeholder="Search events, identifiers, defendants…" oninput="filterEvents()">
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="data-table" id="events-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Defendant</th>
+            <th>Status</th>
+            <th>Identifiers</th>
+            <th>Summary</th>
+          </tr>
+        </thead>
+        <tbody id="events-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Legal Claims Tab -->
+  <div id="claims-tab" class="tab-content section">
+    <div class="section-title">⚖️ Legal Claims Index</div>
+    <div id="claims-grid" style="overflow-x:auto;"></div>
+  </div>
+
+</div>
+
+<!-- Detail Panel -->
+<div id="detail-panel">
+  <span class="close-btn" onclick="closeDetail()">✕</span>
+  <h2 id="detail-title">Event Detail</h2>
+  <div id="detail-content"></div>
+</div>
+
+<script>
+// ── Data Loading ──────────────────────────────────────────────────────────────
+
+let EVENTS = [], DEFENDANTS = [], SURVEILLANCE = null;
+
+const TYPE_EMOJI = {
+  disclosure_received: '📋', filing_made: '📄', violation_observed: '⚠️',
+  correspondence_sent: '📬', court_action: '⚖️', surveillance_detected: '👁️',
+  data_breach: '💥', legal_threat: '🚨', remedy_action: '🛡️'
+};
+
+function badgeHtml(status) {
+  return `<span class="badge-${status}">${status.toUpperCase()}</span>`;
+}
+
+async function loadAll() {
+  try {
+    const [eventsRes, defendantsRes, survRes] = await Promise.all([
+      fetch('investigations/events.json'),
+      fetch('investigations/defendants.json'),
+      fetch('output/surveillance_analysis.json'),
+    ]);
+    EVENTS = await eventsRes.json();
+    DEFENDANTS = await defendantsRes.json();
+    SURVEILLANCE = await survRes.json();
+  } catch(e) {
+    console.warn('Could not load data files:', e);
+    document.body.innerHTML += `<div style="color:var(--yellow);padding:20px;">⚠️ Run from a local HTTP server: python3 -m http.server 8000</div>`;
+    return false;
+  }
+  return true;
+}
+
+// ── Stats ─────────────────────────────────────────────────────────────────────
+
+function updateStats() {
+  const escalated = EVENTS.filter(e => e.status === 'escalated').length;
+  const open = EVENTS.filter(e => e.status === 'open').length;
+  const surveillance = EVENTS.filter(e => e.event_type === 'surveillance_detected').length;
+  const riskScore = SURVEILLANCE ? SURVEILLANCE.risk_assessment.score : 0;
+  const riskLevel = SURVEILLANCE ? SURVEILLANCE.risk_assessment.level : '—';
+  const correlations = SURVEILLANCE ? SURVEILLANCE.cross_entity_correlations.length : 0;
+
+  // Unique legal claims
+  const claimSet = new Set();
+  EVENTS.forEach(e => (e.legal_claims || []).forEach(c => claimSet.add(`${c.statute}§${c.section}`)));
+
+  document.getElementById('stat-total').textContent = EVENTS.length;
+  document.getElementById('stat-escalated').textContent = escalated;
+  document.getElementById('stat-open').textContent = open;
+  document.getElementById('stat-defendants').textContent = DEFENDANTS.length;
+  document.getElementById('stat-surveillance').textContent = surveillance;
+  document.getElementById('stat-risk').textContent = `${riskScore}/100`;
+  document.getElementById('stat-claims').textContent = claimSet.size;
+  document.getElementById('stat-correlations').textContent = correlations;
+  document.getElementById('timeline-count').textContent = EVENTS.length;
+
+  const badge = document.getElementById('risk-badge');
+  badge.textContent = `${riskLevel} RISK`;
+  badge.style.background = riskScore >= 60 ? 'var(--red)' : riskScore >= 30 ? 'var(--yellow)' : 'var(--green)';
+}
+
+// ── Timeline SVG ──────────────────────────────────────────────────────────────
+
+function drawTimeline(svgId, events) {
+  const svg = d3.select(`#${svgId}`);
+  const W = svg.node().parentElement.clientWidth - 32;
+  const H = 180;
+  svg.attr('height', H).attr('width', W);
+
+  if (!events.length) return;
+
+  const sorted = [...events].sort((a,b) => a.event_date.localeCompare(b.event_date));
+  const dates = sorted.map(e => new Date(e.event_date));
+  const x = d3.scaleTime().domain([d3.min(dates), d3.max(dates)]).range([60, W-60]);
+
+  // Axis
+  svg.append('line').attr('x1', 60).attr('x2', W-60).attr('y1', H/2).attr('y2', H/2)
+    .attr('stroke', '#30363d').attr('stroke-width', 2);
+
+  const statusColor = { escalated: '#f85149', open: '#58a6ff', pending: '#d29922', resolved: '#3fb950' };
+
+  svg.selectAll('circle.evt').data(sorted).enter()
+    .append('circle')
+    .attr('class', 'evt')
+    .attr('cx', d => x(new Date(d.event_date)))
+    .attr('cy', H/2)
+    .attr('r', 8)
+    .attr('fill', d => statusColor[d.status] || '#8b949e')
+    .attr('stroke', '#0d1117').attr('stroke-width', 2)
+    .style('cursor', 'pointer')
+    .on('click', (ev, d) => showDetail(d))
+    .append('title').text(d => `${d.event_date.slice(0,10)} — ${d.event_type}\n${d.defendant}`);
+
+  // Labels (top/bottom alternating)
+  svg.selectAll('text.evt-label').data(sorted).enter()
+    .append('text')
+    .attr('class', 'evt-label')
+    .attr('x', d => x(new Date(d.event_date)))
+    .attr('y', (d,i) => i % 2 === 0 ? H/2 - 18 : H/2 + 26)
+    .attr('text-anchor', 'middle')
+    .attr('fill', '#8b949e')
+    .attr('font-size', 10)
+    .text(d => d.event_date.slice(0,10));
+}
+
+// ── Surveillance chart ────────────────────────────────────────────────────────
+
+function drawSurveillanceTimeline() {
+  if (!SURVEILLANCE) return;
+  const events = SURVEILLANCE.surveillance_timeline;
+  const svgEl = d3.select('#surv-svg');
+  const W = svgEl.node().parentElement.clientWidth - 32;
+  const H = 100;
+  svgEl.attr('height', H).attr('width', W);
+  if (!events.length) return;
+
+  const dates = events.map(e => new Date(e.event_date));
+  const x = d3.scaleTime().domain([d3.min(dates), d3.max(dates)]).range([80, W-80]);
+
+  svgEl.append('line').attr('x1',80).attr('x2',W-80).attr('y1',H/2).attr('y2',H/2)
+    .attr('stroke','#30363d').attr('stroke-width',2);
+
+  const typeColor = { CLUE:'#f85149', RISKVIEW:'#f0883e', REVIEW:'#d29922', PREQ:'#bc8cff' };
+
+  svgEl.selectAll('circle.surv').data(events).enter()
+    .append('circle').attr('class','surv')
+    .attr('cx', d => x(new Date(d.event_date))).attr('cy', H/2)
+    .attr('r', 10).attr('fill', d => typeColor[d.surveillance_type] || '#8b949e')
+    .attr('stroke','#0d1117').attr('stroke-width',2).style('cursor','pointer')
+    .append('title').text(d => `${d.event_date} — ${d.surveillance_type}\n${d.source}`);
+
+  svgEl.selectAll('text.surv-label').data(events).enter()
+    .append('text').attr('class','surv-label')
+    .attr('x', d => x(new Date(d.event_date))).attr('y', (d,i) => i%2===0 ? H/2-18 : H/2+28)
+    .attr('text-anchor','middle').attr('fill','#8b949e').attr('font-size',10)
+    .text(d => d.source.replace(' Insurance','').replace(' Karma',''));
+}
+
+// ── Defendant Cards ───────────────────────────────────────────────────────────
+
+function renderDefendants() {
+  const grid = document.getElementById('defendant-grid');
+  const eventsByDef = {};
+  EVENTS.forEach(e => {
+    eventsByDef[e.defendant] = (eventsByDef[e.defendant] || 0) + 1;
+  });
+
+  grid.innerHTML = DEFENDANTS.map(d => {
+    const count = eventsByDef[d.defendant_id] || 0;
+    const claimsHtml = (d.primary_claims || []).map(c =>
+      `<div>${c.statute} §${c.section}</div>`
+    ).join('');
+    return `
+      <div class="defendant-card" onclick="filterByDefendant('${d.defendant_id}')">
+        <h3>${d.full_name}</h3>
+        <div class="meta">${d.type} · ${d.jurisdiction}</div>
+        ${badgeHtml(d.status)}
+        <div style="margin-top:8px;font-size:12px;color:var(--text-muted);">
+          ${count} event(s) in ledger
+        </div>
+        <div class="claims-list">${claimsHtml}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ── Timeline Events List ──────────────────────────────────────────────────────
+
+function renderTimelineEvents() {
+  const sorted = [...EVENTS].sort((a,b) => a.event_date.localeCompare(b.event_date));
+  const defMap = {};
+  DEFENDANTS.forEach(d => defMap[d.defendant_id] = d.full_name);
+
+  document.getElementById('timeline-events').innerHTML = sorted.map(e => `
+    <div style="display:flex;gap:16px;margin-bottom:16px;cursor:pointer;" onclick="showDetail(${JSON.stringify(e).replace(/"/g,'&quot;')})">
+      <div style="flex-shrink:0;text-align:right;width:90px;color:var(--text-muted);font-size:12px;padding-top:2px;">${e.event_date.slice(0,10)}</div>
+      <div style="flex-shrink:0;width:4px;background:${{escalated:'var(--red)',open:'var(--accent)',pending:'var(--yellow)',resolved:'var(--green)'}[e.status]||'#8b949e'};border-radius:2px;"></div>
+      <div style="flex:1;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+          <span>${TYPE_EMOJI[e.event_type]||'📌'} <strong>${e.event_type.replace(/_/g,' ')}</strong></span>
+          ${badgeHtml(e.status)}
+        </div>
+        <div style="color:var(--text-muted);font-size:12px;">${defMap[e.defendant]||e.defendant}</div>
+        <div style="color:var(--text-muted);font-size:12px;margin-top:4px;">${e.summary.slice(0,120)}…</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── Events Table ──────────────────────────────────────────────────────────────
+
+let allRows = [];
+function renderEventsTable() {
+  const defMap = {};
+  DEFENDANTS.forEach(d => defMap[d.defendant_id] = d.full_name);
+  allRows = [...EVENTS].sort((a,b) => a.event_date.localeCompare(b.event_date));
+  renderFilteredRows(allRows, defMap);
+}
+
+function renderFilteredRows(rows, defMap) {
+  if (!defMap) { defMap = {}; DEFENDANTS.forEach(d => defMap[d.defendant_id] = d.full_name); }
+  const tbody = document.getElementById('events-tbody');
+  tbody.innerHTML = rows.map(e => `
+    <tr style="cursor:pointer;" onclick="showDetail(${JSON.stringify(e).replace(/"/g,'&quot;')})">
+      <td style="white-space:nowrap;font-family:monospace;font-size:12px;">${e.event_date.slice(0,10)}</td>
+      <td>${TYPE_EMOJI[e.event_type]||''} ${e.event_type.replace(/_/g,' ')}</td>
+      <td style="font-size:12px;">${defMap[e.defendant]||e.defendant}</td>
+      <td>${badgeHtml(e.status)}</td>
+      <td class="identifier">${(e.identifiers_involved||[]).slice(0,2).join('<br>')}</td>
+      <td class="summary">${e.summary.slice(0,100)}…</td>
+    </tr>
+  `).join('');
+}
+
+function filterEvents() {
+  const q = document.getElementById('event-search').value.toLowerCase();
+  const defMap = {};
+  DEFENDANTS.forEach(d => defMap[d.defendant_id] = d.full_name);
+  const filtered = allRows.filter(e =>
+    JSON.stringify(e).toLowerCase().includes(q)
+  );
+  renderFilteredRows(filtered, defMap);
+}
+
+function filterByDefendant(did) {
+  switchTab('events-tab', document.querySelectorAll('.tab')[3]);
+  document.getElementById('event-search').value = did;
+  filterEvents();
+}
+
+// ── Legal Claims ──────────────────────────────────────────────────────────────
+
+function renderClaims() {
+  const claimMap = {};
+  EVENTS.forEach(e => {
+    (e.legal_claims||[]).forEach(c => {
+      const key = `${c.statute} §${c.section}`;
+      if (!claimMap[key]) claimMap[key] = { statute: c.statute, section: c.section, description: c.description, count: 0, events: [] };
+      claimMap[key].count++;
+      claimMap[key].events.push(e.event_id.slice(0,8));
+    });
+  });
+
+  const sorted = Object.values(claimMap).sort((a,b) => b.count - a.count);
+
+  document.getElementById('claims-grid').innerHTML = `
+    <table class="data-table">
+      <thead><tr><th>Statute</th><th>Section</th><th>Count</th><th>Description</th><th>Event IDs</th></tr></thead>
+      <tbody>
+        ${sorted.map(c => `
+          <tr>
+            <td style="color:var(--purple);font-weight:600;">${c.statute}</td>
+            <td style="font-family:monospace;">§${c.section}</td>
+            <td style="color:var(--red);font-weight:700;">${c.count}</td>
+            <td style="color:var(--text-muted);font-size:12px;">${c.description}</td>
+            <td style="font-family:monospace;font-size:11px;color:var(--text-muted);">${c.events.join(', ')}</td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+// ── Surveillance Panel ────────────────────────────────────────────────────────
+
+function renderSurveillance() {
+  if (!SURVEILLANCE) return;
+  const risk = SURVEILLANCE.risk_assessment;
+  const riskColor = risk.score >= 60 ? 'var(--red)' : risk.score >= 30 ? 'var(--yellow)' : 'var(--green)';
+
+  document.getElementById('surveillance-risk').innerHTML = `
+    <div class="risk-gauge">
+      <div>
+        <div class="gauge-label">Surveillance Risk Score</div>
+        <div class="gauge-value" style="color:${riskColor};">${risk.score}<span style="font-size:18px;">/100</span></div>
+        <div class="gauge-level" style="color:${riskColor};">${risk.level}</div>
+      </div>
+      <div>
+        <div class="gauge-label" style="margin-bottom:8px;">Risk Factors</div>
+        <ul class="factors-list">
+          ${(risk.factors||[]).map(f=>`<li>${f}</li>`).join('')}
+        </ul>
+      </div>
+    </div>
+    <div style="background:rgba(248,81,73,.1);border:1px solid rgba(248,81,73,.3);border-radius:8px;padding:12px;font-size:13px;color:var(--text-muted);">
+      ${risk.interpretation}
+    </div>
+  `;
+
+  const corrCards = document.getElementById('correlation-cards');
+  document.getElementById('corr-count').textContent = SURVEILLANCE.cross_entity_correlations.length;
+  corrCards.innerHTML = (SURVEILLANCE.cross_entity_correlations||[]).map(c => `
+    <div class="correlation-card">
+      <span class="date-chip">${c.date}</span>
+      <strong>${c.entity_count} entities — same-day inquiry</strong>
+      <div class="sources">${c.sources.map(s=>`<span class="source-chip">${s}</span>`).join('')}</div>
+      <div style="font-size:12px;color:var(--text-muted);">${c.risk_indicator}</div>
+      <div style="font-size:12px;color:var(--purple);margin-top:4px;">⚖️ ${c.recommended_claim}</div>
+    </div>
+  `).join('');
+}
+
+// ── Detail Panel ──────────────────────────────────────────────────────────────
+
+function showDetail(evt) {
+  if (typeof evt === 'string') evt = JSON.parse(evt);
+  const defMap = {};
+  DEFENDANTS.forEach(d => defMap[d.defendant_id] = d.full_name);
+
+  document.getElementById('detail-title').textContent =
+    `${TYPE_EMOJI[evt.event_type]||''} ${evt.event_type.replace(/_/g,' ').toUpperCase()}`;
+
+  document.getElementById('detail-content').innerHTML = `
+    <div class="detail-section">${badgeHtml(evt.status)}</div>
+    <div class="detail-section">
+      <div class="detail-label">Event ID</div>
+      <div class="detail-value" style="font-family:monospace;font-size:11px;">${evt.event_id}</div>
+    </div>
+    <div class="detail-section">
+      <div class="detail-label">Date</div>
+      <div class="detail-value">${evt.event_date ? evt.event_date.slice(0,10) : '—'}</div>
+    </div>
+    <div class="detail-section">
+      <div class="detail-label">Defendant</div>
+      <div class="detail-value">${defMap[evt.defendant]||evt.defendant}</div>
+    </div>
+    <div class="detail-section">
+      <div class="detail-label">Summary</div>
+      <div class="detail-value" style="font-size:12px;color:var(--text-muted);">${evt.summary}</div>
+    </div>
+    ${evt.notes ? `<div class="detail-section"><div class="detail-label">Notes</div><div class="detail-value" style="font-size:12px;color:var(--text-muted);">${evt.notes}</div></div>` : ''}
+    <div class="detail-section">
+      <div class="detail-label">Identifiers</div>
+      <div>${(evt.identifiers_involved||[]).map(i=>`<span class="identifier-tag">${i}</span>`).join('')}</div>
+    </div>
+    <div class="detail-section">
+      <div class="detail-label">Legal Claims</div>
+      ${(evt.legal_claims||[]).map(c=>`
+        <div class="claim-item">
+          <div class="claim-statute">${c.statute} §${c.section}</div>
+          <div style="font-size:11px;color:var(--text-muted);">${c.description}</div>
+        </div>
+      `).join('')}
+    </div>
+    ${(evt.evidence_files||[]).length ? `
+      <div class="detail-section">
+        <div class="detail-label">Evidence</div>
+        ${evt.evidence_files.map(ef=>`
+          <div style="margin-bottom:6px;">
+            <a href="${ef.path_or_url}" target="_blank" style="font-size:12px;">${ef.label}</a>
+            ${ef.sha256_hash ? `<div style="font-family:monospace;font-size:10px;color:var(--text-muted);">sha256:${ef.sha256_hash.slice(0,24)}…</div>` : ''}
+          </div>
+        `).join('')}
+      </div>
+    ` : ''}
+    ${(evt.linked_event_ids||[]).length ? `
+      <div class="detail-section">
+        <div class="detail-label">Linked Events</div>
+        ${evt.linked_event_ids.map(lid=>`<div style="font-family:monospace;font-size:11px;color:var(--accent);">${lid}</div>`).join('')}
+      </div>
+    ` : ''}
+  `;
+  document.getElementById('detail-panel').classList.add('open');
+}
+
+function closeDetail() {
+  document.getElementById('detail-panel').classList.remove('open');
+}
+
+// ── Tabs ──────────────────────────────────────────────────────────────────────
+
+function switchTab(id, el) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+  if (id === 'surveillance-tab') setTimeout(drawSurveillanceTimeline, 50);
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+
+async function init() {
+  const ok = await loadAll();
+  if (!ok) return;
+  updateStats();
+  renderDefendants();
+  renderTimelineEvents();
+  renderEventsTable();
+  renderClaims();
+  renderSurveillance();
+  setTimeout(() => drawTimeline('timeline-svg', EVENTS), 100);
+}
+
+document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDetail(); });
+</script>
+</body>
+</html>

@@ -1,33 +1,55 @@
-[2025-09-17 09:47:23] Found 5 Python files to test
-[2025-09-17 09:47:23] Testing gleif_echo.py...
-[2025-09-17 09:47:23]   ❌ IMPORT ERROR in gleif_echo.py
-[2025-09-17 09:47:23] Testing reddit_trace.py...
-[2025-09-17 09:47:23]   ✅ SUCCESS: reddit_trace.py
-[2025-09-17 09:47:23] Testing gleif_alias_scan.py...
-[2025-09-17 09:47:23]   ❌ IMPORT ERROR in gleif_alias_scan.py
-[2025-09-17 09:47:23] Testing trust_scan_bot.py...
-[2025-09-17 09:47:24]   ❌ RUNTIME ERROR in trust_scan_bot.py (exit code: 1)
-[2025-09-17 09:47:24] Testing gleif_trace.py...
-[2025-09-17 09:47:24]   ✅ SUCCESS: gleif_trace.py
-[2025-09-17 09:47:24] 
+[2026-08-05 16:08:49] Found 13 Python files to test
+[2026-08-05 16:08:49] Testing gleif_alias_scan.py...
+[2026-08-05 16:08:49]   ✅ SUCCESS: gleif_alias_scan.py
+[2026-08-05 16:08:49] Testing gleif_scan.py...
+[2026-08-05 16:08:49]   ❌ SYNTAX ERROR in gleif_scan.py
+[2026-08-05 16:08:49] Testing surveillance_analyzer.py...
+[2026-08-05 16:08:50]   ✅ SUCCESS: surveillance_analyzer.py
+[2026-08-05 16:08:50] Testing identifier_connections_bot.py...
+[2026-08-05 16:08:50]   ✅ SUCCESS: identifier_connections_bot.py
+[2026-08-05 16:08:50] Testing generate_syndicate_dashboard.py...
+[2026-08-05 16:08:50]   ✅ SUCCESS: generate_syndicate_dashboard.py
+[2026-08-05 16:08:50] Testing integrity_check.py...
+[2026-08-05 16:08:50]   ✅ SUCCESS: integrity_check.py
+[2026-08-05 16:08:50] Testing investigation_bot.py...
+[2026-08-05 16:08:50]   ✅ SUCCESS: investigation_bot.py
+[2026-08-05 16:08:50] Testing trust_scan_bot.py...
+[2026-08-05 16:08:51]   ✅ SUCCESS: trust_scan_bot.py
+[2026-08-05 16:08:51] Testing storm_breaker.py...
+[2026-08-05 16:08:51]   ✅ SUCCESS: storm_breaker.py
+[2026-08-05 16:08:51] Testing scrape_public_records.py...
+[2026-08-05 16:08:51]   ✅ SUCCESS: scrape_public_records.py
+[2026-08-05 16:08:51] Testing gleif_echo.py...
+[2026-08-05 16:08:51]   ✅ SUCCESS: gleif_echo.py
+[2026-08-05 16:08:51] Testing reddit_trace.py...
+[2026-08-05 16:08:51]   ✅ SUCCESS: reddit_trace.py
+[2026-08-05 16:08:51] Testing gleif_trace.py...
+[2026-08-05 16:08:52]   ✅ SUCCESS: gleif_trace.py
+[2026-08-05 16:08:52] 
 🔍 Analyzing specific failure patterns...
-[2025-09-17 09:47:24]   📡 Network connectivity failures: gleif_echo.py, gleif_alias_scan.py, trust_scan_bot.py
-[2025-09-17 09:47:24]   📦 Import failures: gleif_echo.py, gleif_alias_scan.py
-[2025-09-17 09:47:24] 
+[2026-08-05 16:08:52] 
 📊 ANALYSIS SUMMARY:
-[2025-09-17 09:47:24]   Total files tested: 5
-[2025-09-17 09:47:24]   Successful executions: 2
-[2025-09-17 09:47:24]   Failed executions: 3
-[2025-09-17 09:47:24]   Success rate: 40.0%
-[2025-09-17 09:47:24] 
+[2026-08-05 16:08:52]   Total files tested: 13
+[2026-08-05 16:08:52]   Successful executions: 12
+[2026-08-05 16:08:52]   Failed executions: 1
+[2026-08-05 16:08:52]   Success rate: 92.3%
+[2026-08-05 16:08:52] 
 ❌ FAILING CODES:
-[2025-09-17 09:47:24]   - gleif_echo.py: import_error
-[2025-09-17 09:47:24]   - gleif_alias_scan.py: import_error
-[2025-09-17 09:47:24]   - trust_scan_bot.py: runtime_error
-[2025-09-17 09:47:24] 
+[2026-08-05 16:08:52]   - gleif_scan.py: syntax_error
+[2026-08-05 16:08:52] 
 ✅ SUCCESSFUL CODES:
-[2025-09-17 09:47:24]   - reddit_trace.py
-[2025-09-17 09:47:24]   - gleif_trace.py
-[2025-09-17 09:47:24] 
+[2026-08-05 16:08:52]   - gleif_alias_scan.py
+[2026-08-05 16:08:52]   - surveillance_analyzer.py
+[2026-08-05 16:08:52]   - identifier_connections_bot.py
+[2026-08-05 16:08:52]   - generate_syndicate_dashboard.py
+[2026-08-05 16:08:52]   - integrity_check.py
+[2026-08-05 16:08:52]   - investigation_bot.py
+[2026-08-05 16:08:52]   - trust_scan_bot.py
+[2026-08-05 16:08:52]   - storm_breaker.py
+[2026-08-05 16:08:52]   - scrape_public_records.py
+[2026-08-05 16:08:52]   - gleif_echo.py
+[2026-08-05 16:08:52]   - reddit_trace.py
+[2026-08-05 16:08:52]   - gleif_trace.py
+[2026-08-05 16:08:52] 
 📄 Detailed report saved to: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/failing_codes_report.json
-[2025-09-17 09:47:24] 📄 Log file saved to: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/failing_codes_log.txt
+[2026-08-05 16:08:52] 📄 Log file saved to: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/failing_codes_log.txt

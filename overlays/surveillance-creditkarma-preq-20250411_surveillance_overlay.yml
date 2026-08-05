@@ -1,0 +1,23 @@
+# Surveillance Event Overlay — SURVEILLANCE-CREDITKARMA-PREQ-20250411
+identifier: SURVEILLANCE-CREDITKARMA-PREQ-20250411
+surveillance_type: CREDITKARMA
+event_date: 2025-04-11
+source: Credit Karma
+defendant_id: CREDIT_KARMA
+vin_involved: None
+overlay_hash: 3ff593cf57f810dd
+generated_at: 2026-08-05T16:08:50.058048+00:00
+
+legal_claims:
+
+
+risk_indicators:
+  - type: unauthorized_access
+    basis: "No documented permissible purpose or existing account relationship found"
+  - type: coordinated_inquiry
+    basis: "Same-date or same-window inquiry pattern with other entities detected"
+
+remedy_actions:
+  - Send FCRA §604 dispute letter demanding permissible purpose documentation
+  - File CFPB complaint citing unauthorized consumer report access
+  - Preserve all related disclosures as evidence for litigation

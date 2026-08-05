@@ -1,0 +1,136 @@
+{
+  "generated_at": "2026-08-05T16:05:54.356046+00:00",
+  "defendant": {
+    "defendant_id": "LEXISNEXIS",
+    "full_name": "RELX / LexisNexis Risk Solutions, Inc.",
+    "aliases": [
+      "LexisNexis",
+      "RELX",
+      "LexisNexis Risk Solutions"
+    ],
+    "type": "Data Broker / Consumer Reporting Agency",
+    "jurisdiction": "Federal / Georgia",
+    "identifiers_held": [
+      "SSN-602-05-7209",
+      "LN-CONSUMER-11133734",
+      "LN-CASE-31568224",
+      "LEXID-XXXXXX7079",
+      "EMAIL-TRAVISLITE@GMAIL.COM",
+      "EMAIL-TRAVISREL@GMAIL.COM",
+      "ENTITY-TRAVIS-STEVEN-RYLE",
+      "ENTITY-MR-TRAVIS-S-RYLEE",
+      "ADDR-GOLDENVALLEY-AZ-5570-TONTO",
+      "ADDR-OXNARD-CA-5034-NAUTILUS",
+      "ADDR-TEMPLECITY-CA-4641-DACOTAH",
+      "ADDR-HUNTSVILLE-AL-2704-PACIFIC",
+      "VIN-4T1B11AK1M",
+      "VEHICLE-TOYOTA-CAMRY-2021"
+    ],
+    "primary_claims": [
+      {
+        "statute": "FCRA",
+        "section": "1681e(b)",
+        "description": "Failure to maintain maximum possible accuracy"
+      },
+      {
+        "statute": "FCRA",
+        "section": "1681b(a)",
+        "description": "Permissible purpose \u2014 unauthorized dissemination"
+      },
+      {
+        "statute": "FCRA",
+        "section": "1681i",
+        "description": "Failure to conduct proper reinvestigation"
+      }
+    ],
+    "status": "escalated",
+    "notes": "Consumer Number 11133734, Case 31568224. 74-page disclosure received May 28 2025 showing multi-broker identity aggregation."
+  },
+  "total_events": 1,
+  "identifiers_affected": [
+    "ADDR-GOLDENVALLEY-AZ-5570-TONTO",
+    "ADDR-HUNTSVILLE-AL-2704-PACIFIC",
+    "ADDR-OXNARD-CA-5034-NAUTILUS",
+    "ADDR-TEMPLECITY-CA-4641-DACOTAH",
+    "EMAIL-TRAVISLITE@GMAIL.COM",
+    "EMAIL-TRAVISREL@GMAIL.COM",
+    "ENTITY-MR-TRAVIS-S-RYLEE",
+    "ENTITY-TRAVIS-STEVEN-RYLE",
+    "LEXID-XXXXXX7079",
+    "LN-CASE-31568224",
+    "LN-CONSUMER-11133734",
+    "SSN-602-05-7209"
+  ],
+  "legal_claims": [
+    {
+      "claim": "FCRA \u00a71681g",
+      "description": "Consumer right to disclosure \u2014 triggered disclosure request"
+    },
+    {
+      "claim": "FCRA \u00a71681e(b)",
+      "description": "Failure to maintain maximum possible accuracy \u2014 multiple data aggregation errors identified"
+    },
+    {
+      "claim": "FCRA \u00a71681b(a)",
+      "description": "Sources of data ingestion not all documented with permissible purpose"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "a1b2c3d4-0006-4000-8000-000000000006",
+      "event_date": "2025-05-28T00:00:00Z",
+      "recorded_at": "2025-11-16T09:48:00Z",
+      "event_type": "disclosure_received",
+      "identifiers_involved": [
+        "SSN-602-05-7209",
+        "LN-CONSUMER-11133734",
+        "LN-CASE-31568224",
+        "LEXID-XXXXXX7079",
+        "EMAIL-TRAVISLITE@GMAIL.COM",
+        "EMAIL-TRAVISREL@GMAIL.COM",
+        "ENTITY-TRAVIS-STEVEN-RYLE",
+        "ENTITY-MR-TRAVIS-S-RYLEE",
+        "ADDR-GOLDENVALLEY-AZ-5570-TONTO",
+        "ADDR-OXNARD-CA-5034-NAUTILUS",
+        "ADDR-TEMPLECITY-CA-4641-DACOTAH",
+        "ADDR-HUNTSVILLE-AL-2704-PACIFIC"
+      ],
+      "defendant": "LEXISNEXIS",
+      "legal_claims": [
+        {
+          "statute": "FCRA",
+          "section": "1681g",
+          "description": "Consumer right to disclosure \u2014 triggered disclosure request"
+        },
+        {
+          "statute": "FCRA",
+          "section": "1681e(b)",
+          "description": "Failure to maintain maximum possible accuracy \u2014 multiple data aggregation errors identified"
+        },
+        {
+          "statute": "FCRA",
+          "section": "1681b(a)",
+          "description": "Sources of data ingestion not all documented with permissible purpose"
+        }
+      ],
+      "evidence_files": [
+        {
+          "label": "LexisNexis 74-Page Consumer Disclosure Report",
+          "path_or_url": "https://lawfully-illegal.atlassian.net/",
+          "sha256_hash": null,
+          "verified_at": null
+        },
+        {
+          "label": "LexisNexis Consumer Overlay",
+          "path_or_url": "overlays/lexisnexis_overlay.yml",
+          "sha256_hash": null,
+          "verified_at": null
+        }
+      ],
+      "summary": "74-page LexisNexis consumer disclosure received on 2025-05-28. Report shows identity aggregation across multiple data brokers including TransUnion, Verisk, Mercury Insurance, American Student List, and DataSys Group. Consumer Number 11133734, Case Number 31568224.",
+      "notes": "Disclosure reveals unauthorized name variant 'MR-TRAVIS-S-RYLEE' \u2014 different from legal name 'TRAVIS STEVEN RYLE'. Multiple historical addresses, email addresses, and entity linkages without consent. Key inaccuracies and unauthorized data sources form the basis of FCRA \u00a71681e(b) and \u00a71681i reinvestigation demands.",
+      "status": "escalated",
+      "linked_event_ids": []
+    }
+  ]
+}

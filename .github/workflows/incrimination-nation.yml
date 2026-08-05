@@ -30,36 +30,22 @@ jobs:
 
       - name: Scrape public records
         run: |
-          cat > scrape_public_records.py << 'EOF'
-          #!/usr/bin/env python3
-          """
-          Public Record Scraper - Automated public record collection
-          """
-          import os
-          import json
-          from datetime import datetime, timezone
-          
-          def scrape_records():
-              """Scrape and record public information"""
-              records = {
-                  "timestamp": datetime.now(timezone.utc).isoformat(),
-                  "source": "public_records",
-                  "records": [
-                      {"type": "example", "data": "sample_data"}
-                  ]
-              }
-              
-              # Save records
-              with open("public_records/records.json", "w") as f:
-                  json.dump(records, f, indent=2)
-              
-              print(f"📄 Records scraped: {len(records['records'])} entries")
-          
-          if __name__ == "__main__":
-              scrape_records()
-          EOF
-          
           python scrape_public_records.py
+
+      - name: Sync investigation ledger summary
+        run: |
+          python3 investigation_bot.py --summary
+          python3 investigation_bot.py --timeline
+          echo "🔍 Escalated events:"
+          python3 -c "
+          import json
+          with open('investigations/events.json') as f:
+              events = json.load(f)
+          escalated = [e for e in events if e.get('status') == 'escalated']
+          for e in escalated:
+              print(f\"  [{e['event_date'][:10]}] {e['event_type']} — {e['defendant']}\")
+          print(f'Total escalated: {len(escalated)}/{len(events)}')
+          "
 
       - name: Configure Git
         run: |

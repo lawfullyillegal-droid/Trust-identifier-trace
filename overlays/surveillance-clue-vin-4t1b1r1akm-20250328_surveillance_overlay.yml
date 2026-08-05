@@ -1,0 +1,28 @@
+# Surveillance Event Overlay — SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328
+identifier: SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328
+surveillance_type: CLUE
+event_date: 2025-03-28
+source: Sentry Insurance
+defendant_id: SENTRY_INSURANCE
+vin_involved: 4T1B1R1AKM
+overlay_hash: 4917a9534c4b2a4d
+generated_at: 2026-08-05T16:08:50.057625+00:00
+
+legal_claims:
+  - statute: FCRA
+    section: "1681b(a)"
+    description: "C.L.U.E. report access without documented permissible purpose"
+  - statute: DPPA
+    section: "2721"
+    description: "Driver's Privacy Protection Act — VIN/vehicle data access without authorization"
+
+risk_indicators:
+  - type: unauthorized_access
+    basis: "No documented permissible purpose or existing account relationship found"
+  - type: coordinated_inquiry
+    basis: "Same-date or same-window inquiry pattern with other entities detected"
+
+remedy_actions:
+  - Send FCRA §604 dispute letter demanding permissible purpose documentation
+  - File CFPB complaint citing unauthorized consumer report access
+  - Preserve all related disclosures as evidence for litigation

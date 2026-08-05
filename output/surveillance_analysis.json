@@ -1,0 +1,331 @@
+{
+  "generated_at": "2026-08-05T16:08:50.058174+00:00",
+  "total_surveillance_events": 5,
+  "risk_assessment": {
+    "score": 60,
+    "level": "HIGH",
+    "factors": [
+      "+25 pts \u2014 5 total surveillance events",
+      "+20 pts \u2014 2 cross-entity date correlation(s)",
+      "+15 pts \u2014 2 VIN tracking event(s)"
+    ],
+    "interpretation": "Score 60/100 (HIGH): Strong indicators of coordinated surveillance, data-sharing, and VIN-level tracking across multiple entities. Immediate FCRA \u00a71681b(a) challenge letters and CFPB complaint recommended."
+  },
+  "surveillance_timeline": [
+    {
+      "identifier": "SURVEILLANCE-CLUE-VIN-4T1B11AK1M-20250328",
+      "surveillance_type": "CLUE",
+      "detail": "VIN-4T1B11AK1M",
+      "event_date": "2025-03-28",
+      "vin": "4T1B11AK1M",
+      "legal_claims": [
+        {
+          "statute": "FCRA",
+          "section": "1681b(a)",
+          "description": "C.L.U.E. report access without documented permissible purpose"
+        },
+        {
+          "statute": "DPPA",
+          "section": "2721",
+          "description": "Driver's Privacy Protection Act \u2014 VIN/vehicle data access without authorization"
+        }
+      ],
+      "source": "HiRoad Insurance",
+      "defendant_id": "HIROAD_INSURANCE"
+    },
+    {
+      "identifier": "SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328",
+      "surveillance_type": "CLUE",
+      "detail": "VIN-4T1B1R1AKM",
+      "event_date": "2025-03-28",
+      "vin": "4T1B1R1AKM",
+      "legal_claims": [
+        {
+          "statute": "FCRA",
+          "section": "1681b(a)",
+          "description": "C.L.U.E. report access without documented permissible purpose"
+        },
+        {
+          "statute": "DPPA",
+          "section": "2721",
+          "description": "Driver's Privacy Protection Act \u2014 VIN/vehicle data access without authorization"
+        }
+      ],
+      "source": "Sentry Insurance",
+      "defendant_id": "SENTRY_INSURANCE"
+    },
+    {
+      "identifier": "SURVEILLANCE-AMEX-RISKVIEW-20250411",
+      "surveillance_type": "AMEX",
+      "detail": "RISKVIEW",
+      "event_date": "2025-04-11",
+      "vin": null,
+      "legal_claims": [],
+      "source": "American Express",
+      "defendant_id": "AMERICAN_EXPRESS"
+    },
+    {
+      "identifier": "SURVEILLANCE-PROGRESSIVE-REVIEW-20250411",
+      "surveillance_type": "PROGRESSIVE",
+      "detail": "REVIEW",
+      "event_date": "2025-04-11",
+      "vin": null,
+      "legal_claims": [],
+      "source": "Progressive Insurance",
+      "defendant_id": "PROGRESSIVE_INSURANCE"
+    },
+    {
+      "identifier": "SURVEILLANCE-CREDITKARMA-PREQ-20250411",
+      "surveillance_type": "CREDITKARMA",
+      "detail": "PREQ",
+      "event_date": "2025-04-11",
+      "vin": null,
+      "legal_claims": [],
+      "source": "Credit Karma",
+      "defendant_id": "CREDIT_KARMA"
+    }
+  ],
+  "temporal_clusters": [
+    {
+      "cluster_id": "cluster_001",
+      "window_days": 30,
+      "member_count": 5,
+      "date_range": "2025-03-28 to 2025-04-11",
+      "sources": [
+        "HiRoad Insurance",
+        "Sentry Insurance",
+        "American Express",
+        "Progressive Insurance",
+        "Credit Karma"
+      ],
+      "identifiers": [
+        "SURVEILLANCE-CLUE-VIN-4T1B11AK1M-20250328",
+        "SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328",
+        "SURVEILLANCE-AMEX-RISKVIEW-20250411",
+        "SURVEILLANCE-PROGRESSIVE-REVIEW-20250411",
+        "SURVEILLANCE-CREDITKARMA-PREQ-20250411"
+      ],
+      "same_day": false,
+      "risk_indicator": "MEDIUM \u2014 temporal cluster"
+    },
+    {
+      "cluster_id": "cluster_002",
+      "window_days": 30,
+      "member_count": 5,
+      "date_range": "2025-03-28 to 2025-04-11",
+      "sources": [
+        "Sentry Insurance",
+        "HiRoad Insurance",
+        "American Express",
+        "Progressive Insurance",
+        "Credit Karma"
+      ],
+      "identifiers": [
+        "SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328",
+        "SURVEILLANCE-CLUE-VIN-4T1B11AK1M-20250328",
+        "SURVEILLANCE-AMEX-RISKVIEW-20250411",
+        "SURVEILLANCE-PROGRESSIVE-REVIEW-20250411",
+        "SURVEILLANCE-CREDITKARMA-PREQ-20250411"
+      ],
+      "same_day": false,
+      "risk_indicator": "MEDIUM \u2014 temporal cluster"
+    },
+    {
+      "cluster_id": "cluster_003",
+      "window_days": 30,
+      "member_count": 5,
+      "date_range": "2025-03-28 to 2025-04-11",
+      "sources": [
+        "American Express",
+        "HiRoad Insurance",
+        "Sentry Insurance",
+        "Progressive Insurance",
+        "Credit Karma"
+      ],
+      "identifiers": [
+        "SURVEILLANCE-AMEX-RISKVIEW-20250411",
+        "SURVEILLANCE-CLUE-VIN-4T1B11AK1M-20250328",
+        "SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328",
+        "SURVEILLANCE-PROGRESSIVE-REVIEW-20250411",
+        "SURVEILLANCE-CREDITKARMA-PREQ-20250411"
+      ],
+      "same_day": false,
+      "risk_indicator": "MEDIUM \u2014 temporal cluster"
+    },
+    {
+      "cluster_id": "cluster_004",
+      "window_days": 30,
+      "member_count": 5,
+      "date_range": "2025-03-28 to 2025-04-11",
+      "sources": [
+        "Progressive Insurance",
+        "HiRoad Insurance",
+        "Sentry Insurance",
+        "American Express",
+        "Credit Karma"
+      ],
+      "identifiers": [
+        "SURVEILLANCE-PROGRESSIVE-REVIEW-20250411",
+        "SURVEILLANCE-CLUE-VIN-4T1B11AK1M-20250328",
+        "SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328",
+        "SURVEILLANCE-AMEX-RISKVIEW-20250411",
+        "SURVEILLANCE-CREDITKARMA-PREQ-20250411"
+      ],
+      "same_day": false,
+      "risk_indicator": "MEDIUM \u2014 temporal cluster"
+    },
+    {
+      "cluster_id": "cluster_005",
+      "window_days": 30,
+      "member_count": 5,
+      "date_range": "2025-03-28 to 2025-04-11",
+      "sources": [
+        "Credit Karma",
+        "HiRoad Insurance",
+        "Sentry Insurance",
+        "American Express",
+        "Progressive Insurance"
+      ],
+      "identifiers": [
+        "SURVEILLANCE-CREDITKARMA-PREQ-20250411",
+        "SURVEILLANCE-CLUE-VIN-4T1B11AK1M-20250328",
+        "SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328",
+        "SURVEILLANCE-AMEX-RISKVIEW-20250411",
+        "SURVEILLANCE-PROGRESSIVE-REVIEW-20250411"
+      ],
+      "same_day": false,
+      "risk_indicator": "MEDIUM \u2014 temporal cluster"
+    }
+  ],
+  "cross_entity_correlations": [
+    {
+      "date": "2025-03-28",
+      "entity_count": 2,
+      "sources": [
+        "HiRoad Insurance",
+        "Sentry Insurance"
+      ],
+      "identifiers": [
+        "SURVEILLANCE-CLUE-VIN-4T1B11AK1M-20250328",
+        "SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328"
+      ],
+      "risk_indicator": "HIGH \u2014 coordinated multi-entity same-day inquiry",
+      "recommended_claim": "FCRA \u00a71681b(a) \u2014 permissible purpose absent for all parties; investigate data-sharing agreement"
+    },
+    {
+      "date": "2025-04-11",
+      "entity_count": 3,
+      "sources": [
+        "American Express",
+        "Progressive Insurance",
+        "Credit Karma"
+      ],
+      "identifiers": [
+        "SURVEILLANCE-AMEX-RISKVIEW-20250411",
+        "SURVEILLANCE-PROGRESSIVE-REVIEW-20250411",
+        "SURVEILLANCE-CREDITKARMA-PREQ-20250411"
+      ],
+      "risk_indicator": "HIGH \u2014 coordinated multi-entity same-day inquiry",
+      "recommended_claim": "FCRA \u00a71681b(a) \u2014 permissible purpose absent for all parties; investigate data-sharing agreement"
+    }
+  ],
+  "vin_tracking_links": [
+    {
+      "vin": "4T1B11AK1M",
+      "surveillance_identifier": "SURVEILLANCE-CLUE-VIN-4T1B11AK1M-20250328",
+      "surveillance_date": "2025-03-28",
+      "source": "HiRoad Insurance",
+      "linked_address_identifiers": [
+        "ADDR-GOLDENVALLEY-AZ-5570-TONTO",
+        "ADDR-GOLDENVALLEY-AZ-7090-RURAL-RD",
+        "ADDR-OXNARD-CA-5034-NAUTILUS",
+        "ADDR-TEMPLECITY-CA-4641-DACOTAH",
+        "ADDR-HUNTSVILLE-AL-2704-PACIFIC"
+      ],
+      "risk_indicator": "VIN tracked across insurance C.L.U.E. system; VIN-to-address correlation possible via DMV/DPPA records",
+      "recommended_claims": [
+        {
+          "statute": "DPPA",
+          "section": "2721",
+          "description": "VIN used to access DMV records without permissible purpose"
+        },
+        {
+          "statute": "FCRA",
+          "section": "1681b(a)",
+          "description": "C.L.U.E. VIN-based report access without documented permissible purpose"
+        }
+      ]
+    },
+    {
+      "vin": "4T1B1R1AKM",
+      "surveillance_identifier": "SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328",
+      "surveillance_date": "2025-03-28",
+      "source": "Sentry Insurance",
+      "linked_address_identifiers": [
+        "ADDR-GOLDENVALLEY-AZ-5570-TONTO",
+        "ADDR-GOLDENVALLEY-AZ-7090-RURAL-RD",
+        "ADDR-OXNARD-CA-5034-NAUTILUS",
+        "ADDR-TEMPLECITY-CA-4641-DACOTAH",
+        "ADDR-HUNTSVILLE-AL-2704-PACIFIC"
+      ],
+      "risk_indicator": "VIN tracked across insurance C.L.U.E. system; VIN-to-address correlation possible via DMV/DPPA records",
+      "recommended_claims": [
+        {
+          "statute": "DPPA",
+          "section": "2721",
+          "description": "VIN used to access DMV records without permissible purpose"
+        },
+        {
+          "statute": "FCRA",
+          "section": "1681b(a)",
+          "description": "C.L.U.E. VIN-based report access without documented permissible purpose"
+        }
+      ]
+    }
+  ],
+  "recommended_actions": [
+    {
+      "priority": 1,
+      "action": "FCRA \u00a71681b(a) dispute letters",
+      "targets": [
+        "American Express",
+        "HiRoad Insurance",
+        "Credit Karma",
+        "Progressive Insurance",
+        "Sentry Insurance"
+      ],
+      "description": "Demand written documentation of permissible purpose for each surveillance event"
+    },
+    {
+      "priority": 2,
+      "action": "CFPB complaint filing",
+      "targets": [
+        "American Express",
+        "HiRoad Insurance",
+        "Credit Karma",
+        "Progressive Insurance",
+        "Sentry Insurance"
+      ],
+      "description": "File Consumer Financial Protection Bureau complaints for unauthorized consumer report access"
+    },
+    {
+      "priority": 3,
+      "action": "DPPA demand letters",
+      "targets": [
+        "HiRoad Insurance",
+        "Sentry Insurance"
+      ],
+      "description": "Driver's Privacy Protection Act demand for VIN-related surveillance events"
+    },
+    {
+      "priority": 4,
+      "action": "Insurance regulatory complaint",
+      "targets": [
+        "HiRoad Insurance",
+        "Sentry Insurance",
+        "Progressive Insurance"
+      ],
+      "description": "File complaint with state insurance commissioner for unauthorized C.L.U.E. access"
+    }
+  ]
+}

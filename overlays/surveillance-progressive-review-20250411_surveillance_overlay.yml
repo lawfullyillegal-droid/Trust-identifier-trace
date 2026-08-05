@@ -1,0 +1,23 @@
+# Surveillance Event Overlay — SURVEILLANCE-PROGRESSIVE-REVIEW-20250411
+identifier: SURVEILLANCE-PROGRESSIVE-REVIEW-20250411
+surveillance_type: PROGRESSIVE
+event_date: 2025-04-11
+source: Progressive Insurance
+defendant_id: PROGRESSIVE_INSURANCE
+vin_involved: None
+overlay_hash: 785aef801133c90b
+generated_at: 2026-08-05T16:08:50.057906+00:00
+
+legal_claims:
+
+
+risk_indicators:
+  - type: unauthorized_access
+    basis: "No documented permissible purpose or existing account relationship found"
+  - type: coordinated_inquiry
+    basis: "Same-date or same-window inquiry pattern with other entities detected"
+
+remedy_actions:
+  - Send FCRA §604 dispute letter demanding permissible purpose documentation
+  - File CFPB complaint citing unauthorized consumer report access
+  - Preserve all related disclosures as evidence for litigation

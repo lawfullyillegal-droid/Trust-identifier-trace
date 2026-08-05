@@ -1,0 +1,187 @@
+# Trust Identifier Trace — Investigation Timeline
+*Generated: 2026-08-05T16:05:54.304259+00:00*
+*Total events: 10*
+
+---
+
+## ⚖️ 2004-01-01 — Court Action
+**Status:** 🔵 OPEN  
+**Event ID:** `a1b2c3d4-0009-4000-8000-000000000009`  
+**Defendant:** Arizona Department of Public Safety & Mohave County DA  
+**Identifiers:** `VIOLATION-FTA-CRIMINAL-KINGMAN-2004`, `VIOLATION-FINRESP-FAIL-KINGMAN-2004`, `WARRANT-QUASHED-KINGMAN-2004`  
+**Claims:** 42USC1983 §1983 | FCRA §1681e(b)  
+
+Kingman Court 2004 violations: FTA-Criminal and Financial Responsibility Failure. Warrant was subsequently quashed. These records have propagated into LexisNexis and other data broker databases despite quashed warrant status, causing ongoing consumer report harm.
+
+> **Notes:** Quashed warrant should not appear on consumer reports. Persistent reporting by LexisNexis of quashed warrant records is an FCRA §1681e(b) accuracy violation. Each propagation to a new data broker creates a new actionable event.
+
+**Evidence:**
+- [Warrant Quashed Overlay](overlays/warrant-quashed-kingman-2004_storm_overlay.yml)
+
+**Linked events:** `a1b2c3d4-0010-4000-8000-000000000010`
+
+---
+
+## ⚠️ 2024-01-01 — Violation Observed
+**Status:** 🔴 ESCALATED  
+**Event ID:** `a1b2c3d4-0010-4000-8000-000000000010`  
+**Defendant:** Arizona Department of Public Safety & Mohave County DA  
+**Identifiers:** `VIOLATION-NOREG-KINGMAN-2024`, `VIOLATION-SPEED-20PLUS-KINGMAN-2024`, `ADOT-CUST-16088582`  
+**Claims:** 42USC1983 §1983 | 42USC1983 §1983 | FCRA §1681e(b)  
+
+Kingman Court 2024 violations: No-Registration and Speeding 20+ MPH. Traffic stop initiated with weapon drawn. Questionable warrant process. Objections filed with DA were never properly answered. ADOT Customer ID 16088582 linked to these records.
+
+> **Notes:** Traffic stop with weapon drawn without documented exigent circumstances raises Fourth Amendment §1983 claim. Records now circulating in LexisNexis and other databases amplify harm. ADOT data tie-in to violation record requires investigation of ADOT data sharing protocols.
+
+**Evidence:**
+- [No-Registration Violation Overlay](overlays/violation-noreg-kingman-2024_storm_overlay.yml)
+- [Speeding Violation Overlay](overlays/violation-speed-20plus-kingman-2024_storm_overlay.yml)
+- [ADOT Customer Overlay](overlays/adot-cust-16088582_storm_overlay.yml)
+
+**Linked events:** `a1b2c3d4-0009-4000-8000-000000000009`
+
+---
+
+## 👁️ 2025-03-28 — Surveillance Detected
+**Status:** 🔵 OPEN  
+**Event ID:** `a1b2c3d4-0001-4000-8000-000000000001`  
+**Defendant:** HiRoad Insurance  
+**Identifiers:** `SURVEILLANCE-CLUE-VIN-4T1B11AK1M-20250328`, `VIN-4T1B11AK1M`, `VEHICLE-TOYOTA-CAMRY-2021`  
+**Claims:** FCRA §1681b(a) | DPPA §2721  
+
+HiRoad Insurance accessed C.L.U.E. report tied to VIN 4T1B11AK1M (2021 Toyota Camry) on 2025-03-28. No documented permissible purpose. Same date as Sentry Insurance CLUE pull — indicates coordinated dual-carrier inquiry.
+
+> **Notes:** Possible insurance score manipulation. Dual same-day CLUE pull by two separate carriers on same VIN without active claim is anomalous and potentially constitutes unauthorized access under FCRA §1681b(a).
+
+**Evidence:**
+- [HiRoad CLUE VIN Storm Overlay](overlays/surveillance-clue-vin-4t1b11ak1m-20250328_storm_overlay.yml)
+
+**Linked events:** `a1b2c3d4-0002-4000-8000-000000000002`
+
+---
+
+## 👁️ 2025-03-28 — Surveillance Detected
+**Status:** 🔵 OPEN  
+**Event ID:** `a1b2c3d4-0002-4000-8000-000000000002`  
+**Defendant:** Sentry Insurance  
+**Identifiers:** `SURVEILLANCE-CLUE-VIN-4T1B1R1AKM-20250328`, `VIN-4T1B11AK1M`, `VEHICLE-TOYOTA-CAMRY-2021`  
+**Claims:** FCRA §1681b(a) | DPPA §2721  
+
+Sentry Insurance accessed C.L.U.E. report tied to VIN 4T1B11AK1M (2021 Toyota Camry) on 2025-03-28. Same date as HiRoad Insurance pull — coordinated dual-carrier inquiry on same VIN with no active claim documented.
+
+> **Notes:** See linked event a1b2c3d4-0001 for HiRoad parallel access. Two separate insurance companies accessing CLUE on the same VIN on the same date without a pending claim or policy application constitutes pattern evidence of coordinated surveillance.
+
+**Evidence:**
+- [Sentry CLUE VIN Storm Overlay](overlays/surveillance-clue-vin-4t1b1r1akm-20250328_storm_overlay.yml)
+
+**Linked events:** `a1b2c3d4-0001-4000-8000-000000000001`
+
+---
+
+## 👁️ 2025-04-11 — Surveillance Detected
+**Status:** 🔵 OPEN  
+**Event ID:** `a1b2c3d4-0003-4000-8000-000000000003`  
+**Defendant:** American Express  
+**Identifiers:** `SURVEILLANCE-AMEX-RISKVIEW-20250411`  
+**Claims:** FCRA §1681b(a) | FCRA §1681m  
+
+American Express accessed RiskView consumer report on 2025-04-11 with no active account or application on record. Same date as Progressive Insurance and Credit Karma pulls — three-entity same-day inquiry cluster.
+
+> **Notes:** No AMEX account exists or was applied for. RiskView access without permissible purpose under FCRA §1681b(a) is a willful violation. Failure to issue adverse action notice compounds the violation under §1681m.
+
+**Evidence:**
+- [AMEX RiskView Storm Overlay](overlays/surveillance-amex-riskview-20250411_storm_overlay.yml)
+
+**Linked events:** `a1b2c3d4-0004-4000-8000-000000000004`, `a1b2c3d4-0005-4000-8000-000000000005`
+
+---
+
+## 👁️ 2025-04-11 — Surveillance Detected
+**Status:** 🔵 OPEN  
+**Event ID:** `a1b2c3d4-0004-4000-8000-000000000004`  
+**Defendant:** Progressive Insurance  
+**Identifiers:** `SURVEILLANCE-PROGRESSIVE-REVIEW-20250411`  
+**Claims:** FCRA §1681b(a) | DPPA §2721  
+
+Progressive Insurance accessed review-type consumer report on 2025-04-11. No active Progressive policy or application on file. Same-day cluster with AMEX and Credit Karma.
+
+> **Notes:** Insurance review pulls on existing policies require documented permissible purpose tied to a specific policy action. No such action is documented.
+
+**Evidence:**
+- [Progressive Review Storm Overlay](overlays/surveillance-progressive-review-20250411_storm_overlay.yml)
+
+**Linked events:** `a1b2c3d4-0003-4000-8000-000000000003`, `a1b2c3d4-0005-4000-8000-000000000005`
+
+---
+
+## 👁️ 2025-04-11 — Surveillance Detected
+**Status:** 🔵 OPEN  
+**Event ID:** `a1b2c3d4-0005-4000-8000-000000000005`  
+**Defendant:** Credit Karma / Intuit  
+**Identifiers:** `SURVEILLANCE-CREDITKARMA-PREQ-20250411`  
+**Claims:** FCRA §1681b(c) | CA_CCPA §1798.100  
+
+Credit Karma executed a pre-qualification inquiry on 2025-04-11 with no documented opt-in or existing relationship. FCRA §1681b(c) requires a firm offer of credit with a pre-screen. Same-day cluster with AMEX and Progressive.
+
+> **Notes:** Three-entity same-day cluster (AMEX, Progressive, Credit Karma) on 2025-04-11 strongly suggests data-sharing event or coordinated trigger. Recommend CFPB complaint and FCRA §1681b(c) challenge letters to all three.
+
+**Evidence:**
+- [Credit Karma Pre-Q Storm Overlay](overlays/surveillance-creditkarma-preq-20250411_storm_overlay.yml)
+
+**Linked events:** `a1b2c3d4-0003-4000-8000-000000000003`, `a1b2c3d4-0004-4000-8000-000000000004`
+
+---
+
+## 📋 2025-05-28 — Disclosure Received
+**Status:** 🔴 ESCALATED  
+**Event ID:** `a1b2c3d4-0006-4000-8000-000000000006`  
+**Defendant:** RELX / LexisNexis Risk Solutions, Inc.  
+**Identifiers:** `SSN-602-05-7209`, `LN-CONSUMER-11133734`, `LN-CASE-31568224`, `LEXID-XXXXXX7079`, `EMAIL-TRAVISLITE@GMAIL.COM`, `EMAIL-TRAVISREL@GMAIL.COM`, `ENTITY-TRAVIS-STEVEN-RYLE`, `ENTITY-MR-TRAVIS-S-RYLEE`, `ADDR-GOLDENVALLEY-AZ-5570-TONTO`, `ADDR-OXNARD-CA-5034-NAUTILUS`, `ADDR-TEMPLECITY-CA-4641-DACOTAH`, `ADDR-HUNTSVILLE-AL-2704-PACIFIC`  
+**Claims:** FCRA §1681g | FCRA §1681e(b) | FCRA §1681b(a)  
+
+74-page LexisNexis consumer disclosure received on 2025-05-28. Report shows identity aggregation across multiple data brokers including TransUnion, Verisk, Mercury Insurance, American Student List, and DataSys Group. Consumer Number 11133734, Case Number 31568224.
+
+> **Notes:** Disclosure reveals unauthorized name variant 'MR-TRAVIS-S-RYLEE' — different from legal name 'TRAVIS STEVEN RYLE'. Multiple historical addresses, email addresses, and entity linkages without consent. Key inaccuracies and unauthorized data sources form the basis of FCRA §1681e(b) and §1681i reinvestigation demands.
+
+**Evidence:**
+- [LexisNexis 74-Page Consumer Disclosure Report](https://lawfully-illegal.atlassian.net/)
+- [LexisNexis Consumer Overlay](overlays/lexisnexis_overlay.yml)
+
+---
+
+## 📄 2025-07-15 — Filing Made
+**Status:** 🔴 ESCALATED  
+**Event ID:** `a1b2c3d4-0007-4000-8000-000000000007`  
+**Defendant:** California Secretary of State / Bizfile Online  
+**Identifiers:** `ENTITY-TRAVIS-STEVEN-RYLE`  
+**Claims:** UCC §9-509  
+
+UCC financing statements filed by The Travis Ryle Private Bank Estate & Trust as secured party. File Numbers U250170282628 (Amendment dated 2025-07-15) and U250170278933. Debtor: TRAVIS STEVEN RYLE. These filings anchor downstream data ingestion by broker networks.
+
+> **Notes:** These UCC filings triggered the Aztec Constructors coercive legal threat. Estate complied under duress but reserves all rights. CA SOS third-party data syndication of these records to OpenCorporates and others is under investigation.
+
+**Evidence:**
+- [UCC Filing U250170282628 — Amendment](https://bizfileonline.sos.ca.gov/)
+- [UCC Filing U250170278933](https://bizfileonline.sos.ca.gov/)
+
+**Linked events:** `a1b2c3d4-0008-4000-8000-000000000008`
+
+---
+
+## 🚨 2025-12-16 — Legal Threat
+**Status:** 🔴 ESCALATED  
+**Event ID:** `a1b2c3d4-0008-4000-8000-000000000008`  
+**Defendant:** Aztec Constructors, Inc. & AALRR (Counsel)  
+**Identifiers:** `ENTITY-TRAVIS-STEVEN-RYLE`, `ENTITY-EIGHTYLEE-MARKETING-GRP`  
+**Claims:** CA_CIVIL §Abuse_of_Process | CA_CIVIL §Tortious_Interference | FCRA §1681n  
+
+Aztec Constructors Inc. and counsel AALRR threatened lawsuit conditioned on: (1) termination of UCC liens, (2) rescission letters to Contra Costa and Solano Counties, (3) public apology. Estate complied under duress while explicitly reserving all rights.
+
+> **Notes:** Campaign Launch Date per INCRIMINATION-NATION doc: 2025-12-16. Coercive conditions tied to UCC lien termination constitute abuse of process and tortious interference with the Estate's secured interest rights. Compliance under duress does not waive claims.
+
+**Evidence:**
+- [INCRIMINATION-NATION Intent to Sue](legal-documents/INCRIMINATION-NATION-Intent-to-Sue.md)
+
+**Linked events:** `a1b2c3d4-0007-4000-8000-000000000007`
+
+---

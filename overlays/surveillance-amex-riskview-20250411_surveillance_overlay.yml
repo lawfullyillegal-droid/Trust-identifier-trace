@@ -1,0 +1,23 @@
+# Surveillance Event Overlay — SURVEILLANCE-AMEX-RISKVIEW-20250411
+identifier: SURVEILLANCE-AMEX-RISKVIEW-20250411
+surveillance_type: AMEX
+event_date: 2025-04-11
+source: American Express
+defendant_id: AMERICAN_EXPRESS
+vin_involved: None
+overlay_hash: d166170475e9db3e
+generated_at: 2026-08-05T16:08:50.057752+00:00
+
+legal_claims:
+
+
+risk_indicators:
+  - type: unauthorized_access
+    basis: "No documented permissible purpose or existing account relationship found"
+  - type: coordinated_inquiry
+    basis: "Same-date or same-window inquiry pattern with other entities detected"
+
+remedy_actions:
+  - Send FCRA §604 dispute letter demanding permissible purpose documentation
+  - File CFPB complaint citing unauthorized consumer report access
+  - Preserve all related disclosures as evidence for litigation

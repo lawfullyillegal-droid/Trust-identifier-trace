@@ -1,38 +1,3 @@
-
-[Travis@Termux] ~ $ proot-distro login ubuntu
-root@localhost:~# python3 scrape_identifiers.py
-[*] Initiating multi-vector extraction...
-[*] Tracking Entity: Target Alpha (SEC Data) | Bypassing perimeter...
-[+] Payload secured for Target Alpha (SEC Data) | Target Title: SEC.gov | Request Rate Threshold Exceeded
-[*] Tracking Entity: Target Beta (Test Node) | Bypassing perimeter...
-[+] Payload secured for Target Beta (Test Node) | Target Title: Example Domain
-[+] Operation complete. Awaiting commit to immutable ledger.
-root@localhost:~# nano gleif_scan.py
-root@localhost:~#
-root@localhost:~# python3 gleif_scan.py
-[*] Initiating GLEIF Global Network Scan for: Equifax Inc.
-[+] Target Node Verified: EQUIFAX INC.
-    - Cryptographic LEI:  5493004MCF8JDC86VS77
-[*] Extracting Structural Overlay Data...
-    - Entity Status:      ACTIVE
-    - Legal Form Code:    MFYJ
-    - Jurisdiction ID:    US-GA
-[+] Scan complete. Data staged for GIS mapping.
-root@localhost:~# nano gleif_scan.py
-root@localhost:~# python3 gleif_scan.py
-[*] Initiating Recursive Corporate Network Hunt for: Equifax Inc.
-
-[+] BASE TARGET SECURED: EQUIFAX INC. (LEI: 5493004MCF8JDC86VS77)
-[*] Traversing corporate ownership tree...
-
-[-] No ultimate parent found. Target operates as the peak holding entity.
-
-[+] FOUND 1 SUBSIDIARY CHILD-NODE(S):
-    -> [SHIELD] EQUIFAX LUXEMBOURG (NO. 3) S.ÀR.L.
-       LEI: 213800GB3OH2VZTZ5I94 | Jurisdiction: LU
-
-[+] Recursive traversal complete. Network mapped.
-root@localhost:~# cat gleif_scan.py
 import urllib.request
 import urllib.parse
 import json

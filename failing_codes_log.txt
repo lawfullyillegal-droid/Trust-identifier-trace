@@ -1,46 +1,44 @@
-[2026-08-06 06:06:14] Found 10 Python files to test
-[2026-08-06 06:06:14] Testing gleif_alias_scan.py...
-[2026-08-06 06:06:15]   ✅ SUCCESS: gleif_alias_scan.py
-[2026-08-06 06:06:15] Testing gleif_scan.py...
-[2026-08-06 06:06:15]   ❌ SYNTAX ERROR in gleif_scan.py
-[2026-08-06 06:06:15] Testing identifier_connections_bot.py...
-[2026-08-06 06:06:15]   ✅ SUCCESS: identifier_connections_bot.py
-[2026-08-06 06:06:15] Testing generate_syndicate_dashboard.py...
-[2026-08-06 06:06:15]   ✅ SUCCESS: generate_syndicate_dashboard.py
-[2026-08-06 06:06:15] Testing trust_scan_bot.py...
-[2026-08-06 06:06:16]   ✅ SUCCESS: trust_scan_bot.py
-[2026-08-06 06:06:16] Testing storm_breaker.py...
-[2026-08-06 06:06:16]   ✅ SUCCESS: storm_breaker.py
-[2026-08-06 06:06:16] Testing scrape_public_records.py...
-[2026-08-06 06:06:16]   ✅ SUCCESS: scrape_public_records.py
-[2026-08-06 06:06:16] Testing gleif_echo.py...
-[2026-08-06 06:06:16]   ✅ SUCCESS: gleif_echo.py
-[2026-08-06 06:06:16] Testing reddit_trace.py...
-[2026-08-06 06:06:16]   ✅ SUCCESS: reddit_trace.py
-[2026-08-06 06:06:16] Testing gleif_trace.py...
-[2026-08-06 06:06:17]   ✅ SUCCESS: gleif_trace.py
-[2026-08-06 06:06:17] 
+[2026-08-06 06:09:10] Found 10 Python files to test
+[2026-08-06 06:09:10] Testing gleif_alias_scan.py...
+[2026-08-06 06:09:11]   ✅ SUCCESS: gleif_alias_scan.py
+[2026-08-06 06:09:11] Testing gleif_scan.py...
+[2026-08-06 06:09:11]   ✅ SUCCESS: gleif_scan.py
+[2026-08-06 06:09:11] Testing identifier_connections_bot.py...
+[2026-08-06 06:09:11]   ✅ SUCCESS: identifier_connections_bot.py
+[2026-08-06 06:09:11] Testing generate_syndicate_dashboard.py...
+[2026-08-06 06:09:11]   ✅ SUCCESS: generate_syndicate_dashboard.py
+[2026-08-06 06:09:11] Testing trust_scan_bot.py...
+[2026-08-06 06:09:12]   ✅ SUCCESS: trust_scan_bot.py
+[2026-08-06 06:09:12] Testing storm_breaker.py...
+[2026-08-06 06:09:12]   ✅ SUCCESS: storm_breaker.py
+[2026-08-06 06:09:12] Testing scrape_public_records.py...
+[2026-08-06 06:09:12]   ✅ SUCCESS: scrape_public_records.py
+[2026-08-06 06:09:12] Testing gleif_echo.py...
+[2026-08-06 06:09:12]   ✅ SUCCESS: gleif_echo.py
+[2026-08-06 06:09:12] Testing reddit_trace.py...
+[2026-08-06 06:09:12]   ✅ SUCCESS: reddit_trace.py
+[2026-08-06 06:09:12] Testing gleif_trace.py...
+[2026-08-06 06:09:13]   ✅ SUCCESS: gleif_trace.py
+[2026-08-06 06:09:13] 
 🔍 Analyzing specific failure patterns...
-[2026-08-06 06:06:17] 
+[2026-08-06 06:09:13] 
 📊 ANALYSIS SUMMARY:
-[2026-08-06 06:06:17]   Total files tested: 10
-[2026-08-06 06:06:17]   Successful executions: 9
-[2026-08-06 06:06:17]   Failed executions: 1
-[2026-08-06 06:06:17]   Success rate: 90.0%
-[2026-08-06 06:06:17] 
-❌ FAILING CODES:
-[2026-08-06 06:06:17]   - gleif_scan.py: syntax_error
-[2026-08-06 06:06:17] 
+[2026-08-06 06:09:13]   Total files tested: 10
+[2026-08-06 06:09:13]   Successful executions: 10
+[2026-08-06 06:09:13]   Failed executions: 0
+[2026-08-06 06:09:13]   Success rate: 100.0%
+[2026-08-06 06:09:13] 
 ✅ SUCCESSFUL CODES:
-[2026-08-06 06:06:17]   - gleif_alias_scan.py
-[2026-08-06 06:06:17]   - identifier_connections_bot.py
-[2026-08-06 06:06:17]   - generate_syndicate_dashboard.py
-[2026-08-06 06:06:17]   - trust_scan_bot.py
-[2026-08-06 06:06:17]   - storm_breaker.py
-[2026-08-06 06:06:17]   - scrape_public_records.py
-[2026-08-06 06:06:17]   - gleif_echo.py
-[2026-08-06 06:06:17]   - reddit_trace.py
-[2026-08-06 06:06:17]   - gleif_trace.py
-[2026-08-06 06:06:17] 
+[2026-08-06 06:09:13]   - gleif_alias_scan.py
+[2026-08-06 06:09:13]   - gleif_scan.py
+[2026-08-06 06:09:13]   - identifier_connections_bot.py
+[2026-08-06 06:09:13]   - generate_syndicate_dashboard.py
+[2026-08-06 06:09:13]   - trust_scan_bot.py
+[2026-08-06 06:09:13]   - storm_breaker.py
+[2026-08-06 06:09:13]   - scrape_public_records.py
+[2026-08-06 06:09:13]   - gleif_echo.py
+[2026-08-06 06:09:13]   - reddit_trace.py
+[2026-08-06 06:09:13]   - gleif_trace.py
+[2026-08-06 06:09:13] 
 📄 Detailed report saved to: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/failing_codes_report.json
-[2026-08-06 06:06:17] 📄 Log file saved to: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/failing_codes_log.txt
+[2026-08-06 06:09:13] 📄 Log file saved to: /home/runner/work/Trust-identifier-trace/Trust-identifier-trace/failing_codes_log.txt

@@ -11,12 +11,17 @@ on:
 jobs:
   archive-scan:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Timestamp scan_results.json
         run: |
+          if [ ! -f output/scan_results.json ]; then
+            echo "output/scan_results.json not found, skipping archive"
+            exit 0
+          fi
           ts=$(date -u +'%Y-%m-%d_%H-%M-%S')
           mkdir -p archive
           cp output/scan_results.json archive/scan_results_${ts}.json
@@ -29,5 +34,5 @@ jobs:
       - name: Commit archive file
         run: |
           git add archive/
-          git commit -m "Archive scan results at $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+          git commit -m "Archive scan results at $(date -u +'%Y-%m-%d %H:%M:%S UTC')" || echo "No changes to commit"
           git push || echo "Push skipped due to branch protection rules"

@@ -1,0 +1,18 @@
+[
+  {
+    "identifier": "CORP-NUM-C2362627",
+    "status": "verified",
+    "source": "OpenCorporates",
+    "timestamp": "2025-08-30 10:49 UTC",
+    "overlay": "overlays/registry_overlay.yml",
+    "reason": "Registry match confirmed"
+  },
+  {
+    "identifier": "LN-NAME-RYLE-TRAVIS-STEVEN",
+    "status": "flagged",
+    "source": "LexisNexis",
+    "timestamp": "2025-08-30 10:49 UTC", 
+    "overlay": "overlays/registry_overlay.yml",
+    "reason": "Partial match with discrepancies"
+  }
+]

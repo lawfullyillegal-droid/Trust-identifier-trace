@@ -25,7 +25,7 @@
   <h2 style="margin-top:40px;">🧠 Visual Trace Map</h2>
   <div id="traceMap" style="width:100%; height:500px; background:#222; border:1px solid #444;"></div>
 
-  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
   <script>
     fetch('output/scan_results.json')
       .then(res => res.json())
@@ -156,24 +156,39 @@
         event.subject.fx = null;
         event.subject.fy = null;
       }
-      return d3.drag().on("start", dragstarted).on("drag", dragged).on("end", dragended);
+
+      simulation.on("tick", () => {
+        link
+          .attr("x1", d => d.source.x)
+          .attr("y1", d => d.source.y)
+          .attr("x2", d => d.target.x)
+          .attr("y2", d => d.target.y);
+
+        node
+          .attr("cx", d => d.x)
+          .attr("cy", d => d.y);
+
+        label
+          .attr("x", d => d.x + 12)
+          .attr("y", d => d.y + 4);
+      });
+    } else {
+      // Fallback when D3.js is not available
+      document.getElementById("traceMap").innerHTML = `
+        <div style="padding: 50px; text-align: center; color: #888;">
+          <h3>📊 Visual Trace Map</h3>
+          <p>Interactive visualization requires D3.js library</p>
+          <p style="margin-top: 20px;">Identifier connections:</p>
+          <ul style="text-align: left; max-width: 500px; margin: 0 auto;">
+            <li>CORP-NUM-C2362627 → OpenCorporates</li>
+            <li>LN-NAME-RYLE-TRAVIS-STEVEN → LexisNexis</li>
+            <li>PROP-SS-GUARANTEE-104-0190-003558 → IRS Form 1099-A</li>
+            <li>IRS-TRACK-108541264370 → IRS Non-Filing</li>
+            <li>EIN-92-6319308 → EIN Registry</li>
+          </ul>
+        </div>
+      `;
     }
-
-    simulation.on("tick", () => {
-      link
-        .attr("x1", d => d.source.x)
-        .attr("y1", d => d.source.y)
-        .attr("x2", d => d.target.x)
-        .attr("y2", d => d.target.y);
-
-      node
-        .attr("cx", d => d.x)
-        .attr("cy", d => d.y);
-
-      label
-        .attr("x", d => d.x + 12)
-        .attr("y", d => d.y + 4);
-    });
   </script>
 </body>
 </html>

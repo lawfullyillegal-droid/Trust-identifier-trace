@@ -61,3 +61,12 @@ Thumbs.db
 *.tmp
 *.temp
 /tmp/
+private/
+
+.env
+
+.env.*
+
+*.pem
+
+*.key

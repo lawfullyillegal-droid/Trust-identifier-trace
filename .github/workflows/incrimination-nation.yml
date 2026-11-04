@@ -1,80 +1,42 @@
-name: Incrimination Nation - Public Record Scraper
+name: Incrimination Nation - Evidence Integrity Checks
 
 on:
-  schedule:
-    - cron: '0 0 * * *'  # Daily at midnight UTC
+  push:
+    paths:
+      - 'scripts/incrimination_nation.py'
+      - 'tests/test_incrimination_nation.py'
+      - 'public_records/**'
+      - '.github/workflows/incrimination-nation.yml'
+  pull_request:
+    paths:
+      - 'scripts/incrimination_nation.py'
+      - 'tests/test_incrimination_nation.py'
+      - 'public_records/**'
+      - '.github/workflows/incrimination-nation.yml'
   workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  public-record-scrape:
+  validate-public-index:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
-      - name: Install dependencies
+      - name: Test provenance and public-data rules
+        run: python -m unittest discover -s tests -v
+      - name: Rebuild public index and check committed data
         run: |
-          python -m pip install --upgrade pip
-          pip install requests pyyaml
-
-      - name: Create output directory
-        run: mkdir -p public_records
-
-      - name: Scrape public records
+          python scripts/incrimination_nation.py --input public_records/intake.json --output /tmp/incrimination_records.json
+          diff -u public_records/records.json /tmp/incrimination_records.json
+      - name: Assert no legacy fabricated sample
         run: |
-          cat > scrape_public_records.py << 'EOF'
-          #!/usr/bin/env python3
-          """
-          Public Record Scraper - Automated public record collection
-          """
-          import os
-          import json
-          from datetime import datetime, timezone
-          
-          def scrape_records():
-              """Scrape and record public information"""
-              records = {
-                  "timestamp": datetime.now(timezone.utc).isoformat(),
-                  "source": "public_records",
-                  "records": [
-                      {"type": "example", "data": "sample_data"}
-                  ]
-              }
-              
-              # Save records
-              with open("public_records/records.json", "w") as f:
-                  json.dump(records, f, indent=2)
-              
-              print(f"📄 Records scraped: {len(records['records'])} entries")
-          
-          if __name__ == "__main__":
-              scrape_records()
-          EOF
-          
-          python scrape_public_records.py
-
-      - name: Configure Git
-        run: |
-          git config user.name "PublicRecordBot"
-          git config user.email "bot@lawfully-illegal.com"
-
-      - name: Commit public records
-        run: |
-          TIMESTAMP=$(date -u +'%Y-%m-%d_%H-%M-%S')
-          git add public_records/ scrape_public_records.py
-          if git diff --cached --quiet; then
-            echo "✅ No changes to commit."
-          else
-            git commit -m "📜 Incrimination Nation: Record snapshot ${TIMESTAMP} - Automated public record scrape committed to immutable Git history. Website: https://www.lawfully-illegal.com/public-ledge - This record cannot be destroyed - it is part of Git history."
-            git push || echo "Push skipped due to branch protection rules"
-      - name: Record completion
-        run: |
-          echo "✅ Public record scrape complete and committed to Git history"
+          if grep -q 'sample_data' public_records/records.json; then
+            echo 'Fabricated sample record must not be published'
+            exit 1
+          fi

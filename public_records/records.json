@@ -1,10 +1,12 @@
 {
-  "timestamp": "2026-02-12T00:18:03.372742+00:00",
-  "source": "public_records",
-  "records": [
-    {
-      "type": "example",
-      "data": "sample_data"
-    }
-  ]
+  "claims": [],
+  "counts": {
+    "claims": 0,
+    "links": 0,
+    "sources": 0
+  },
+  "links": [],
+  "notice": "Research index; claims are not judicial findings. Hashes identify bytes, not truth.",
+  "schema_version": 1,
+  "sources": []
 }

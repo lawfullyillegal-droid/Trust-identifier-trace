@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Incrimination Nation | Source Index</title>
+<style>body{font:16px/1.6 system-ui,sans-serif;background:#101922;color:#edf3fa;margin:0}main{max-width:950px;margin:3rem auto;padding:0 1.4rem}a{color:#8cdcff}section{background:#192835;border:1px solid #334c60;border-radius:12px;padding:1.3rem;margin:1rem 0}h1,h2{line-height:1.2}.stats{display:flex;gap:1rem;flex-wrap:wrap}.stats strong{font-size:1.5rem}.muted{color:#b9c8d4}li{margin:.6rem 0}code{overflow-wrap:anywhere}</style></head>
+<body><main><a href="index.html">← Incrimination Nation</a><h1>Public source and claim index</h1>
+<p class="muted">Source-linked research, not a judicial finding. A SHA-256 hash identifies a specific file version; it does not verify the truth of a claim.</p>
+<section class="stats"><div><strong id="sourcesCount">—</strong><div>Public sources</div></div><div><strong id="claimsCount">—</strong><div>Published claims</div></div><div><strong id="linksCount">—</strong><div>Documented links</div></div></section>
+<section><h2>Sources</h2><ul id="sources"><li>Loading reviewed records…</li></ul></section>
+<section><h2>Claims</h2><ul id="claims"><li>Loading reviewed records…</li></ul></section>
+<section><h2>Connections</h2><ul id="links"><li>Loading reviewed records…</li></ul></section>
+<script>
+function line(parent, title, detail, url) {
+  const li=document.createElement('li'), b=document.createElement('strong');b.textContent=title;li.append(b);
+  if(detail){const s=document.createElement('span');s.textContent=' — '+detail;li.append(s)}
+  if(url){const a=document.createElement('a');a.textContent=' View original';a.href=url;a.target='_blank';a.rel='noopener noreferrer';li.append(a)}
+  parent.append(li);
+}
+function show(id, rows, fn) {const el=document.getElementById(id);el.replaceChildren();if(!rows.length){line(el,'No approved public records yet','The private investigation is not represented as verified publication.');return;}rows.forEach(x=>fn(el,x));}
+fetch('public_records/records.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Index unavailable');return r.json()}).then(d=>{
+  document.getElementById('sourcesCount').textContent=d.sources.length;
+  document.getElementById('claimsCount').textContent=d.claims.length;
+  document.getElementById('linksCount').textContent=d.links.length;
+  show('sources',d.sources,(el,s)=>line(el,s.title,s.verification+(s.sha256?' · SHA-256 '+s.sha256:''),s.url));
+  show('claims',d.claims,(el,c)=>line(el,c.statement,c.status+' · sources: '+(c.source_ids.join(', ')||'none')));
+  show('links',d.links,(el,e)=>line(el,e.from+' → '+e.to,e.relationship+' · sources: '+e.source_ids.join(', ')));
+}).catch(err=>{for(const id of ['sources','claims','links']){const el=document.getElementById(id);el.replaceChildren();line(el,'Index unavailable',err.message);}});
+</script></main></body></html>

@@ -3,6 +3,7 @@ import json
 import requests
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import quote
 from reddit_trace import query_reddit_threads
 
 BASE_URL = "https://raw.githubusercontent.com/lawfullyillegal-droid/Trust-identifier-trace/main/overlays/"
@@ -49,7 +50,7 @@ def run_scan():
             "status": status,
             "source": ident["source"],
             "timestamp": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
-            "overlay": BASE_URL + overlay_name
+            "overlay": BASE_URL + quote(overlay_name)
         }
         if "reddit_hits" in ident:
             result_block["reddit_hits"] = ident["reddit_hits"]

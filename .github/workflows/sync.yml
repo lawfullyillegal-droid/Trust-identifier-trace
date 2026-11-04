@@ -1,15 +1,37 @@
-name: Sync with Tracking Bots
-permissions:
-  contents: write
+name: Notify trusted CaseOps endpoint
+
 on:
   push:
-  workflow_run:
-  page_build:
+    branches: [main]
+  workflow_dispatch:
+
+# Reads GitHub metadata only; does not checkout or transmit case materials.
+permissions:
+  contents: read
+
 jobs:
   notify:
     runs-on: ubuntu-latest
+    timeout-minutes: 2
+    env:
+      CASEOPS_SYNC_ENDPOINT: ${{ secrets.CASEOPS_SYNC_ENDPOINT }}
+      CASEOPS_SYNC_TOKEN: ${{ secrets.CASEOPS_SYNC_TOKEN }}
     steps:
-      - name: Send update to bot
-        run: curl -X POST https://your-bot-endpoint/api/sync \
-          -H "Content-Type: application/json" \
-          -d '{"repo":"${{ github.repository }}","commit":"${{ github.sha }}"}'
+      - name: Skip when integration is unconfigured
+        if: ${{ env.CASEOPS_SYNC_ENDPOINT == '' || env.CASEOPS_SYNC_TOKEN == '' }}
+        run: echo 'CaseOps notification is not configured; nothing sent.'
+
+      - name: Send minimal notification to trusted endpoint
+        if: ${{ env.CASEOPS_SYNC_ENDPOINT != '' && env.CASEOPS_SYNC_TOKEN != '' }}
+        shell: bash
+        run: |
+          case "$CASEOPS_SYNC_ENDPOINT" in
+            https://*) ;;
+            *) echo 'CASEOPS_SYNC_ENDPOINT must use HTTPS' >&2; exit 1 ;;
+          esac
+          payload="$(jq -nc --arg repo "$GITHUB_REPOSITORY" --arg commit "$GITHUB_SHA" '{repository:$repo, commit:$commit}')"
+          curl --fail --silent --show-error --retry 2 --max-time 20 \
+            -X POST "$CASEOPS_SYNC_ENDPOINT" \
+            -H 'Content-Type: application/json' \
+            -H "Authorization: Bearer $CASEOPS_SYNC_TOKEN" \
+            --data "$payload"
